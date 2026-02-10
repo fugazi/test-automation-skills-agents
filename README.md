@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="copilot-banner.jpg" width="1200" alt="Test Automation AI Agents & Skills - Copilot DAWless Live Set">
+  <img src="copilot-banner.jpg" width="500" alt="Test Automation AI Agents & Skills - Copilot DAWless Live Set">
 </div>
 
 # Test Automation AI Agents & Skills (Tool-Agnostic) 🚀
@@ -156,7 +156,7 @@ When in doubt, keep the frontmatter minimal and portable:
 - Agents: `description` (required), plus optional `name`, `tools`, `target`, `infer`
 - Skills: `name` + `description` (required), optional `license`
 
-## Tool-agnostic usage (Claude/Cursor/Windsurf)
+## Tool-agnostic usage (Claude/Cursor/OpenCode/Windsurf)
 
 Use this repo as a shared “QA automation brain” for your team:
 
@@ -359,6 +359,22 @@ If a skill still does not activate automatically:
 | Generated tests are unstable | Locator/wait anti-patterns | Follow the locator priority + web-first assertions from Playwright skills |
 | Selenium tests flaky | `Thread.sleep()` or missing explicit waits | Use `WebDriverWait` patterns from Selenium instructions/skills |
 
-## License
+---
 
-MIT License. See `LICENSE`.
+## 🏠 Author
+* Name: `Douglas Urrea Ocampo`
+* Job: `SDET - Software Developer Engineer in Test`
+* Country: `Colombia`
+* City: `Medellin`
+* E-mail: `douglas@douglasfugazi.co`
+* LinkedIn: [https://www.linkedin.com/in/douglasfugazi](https://www.linkedin.com/in/douglasfugazi)
+* Contact: [https://douglasfugazi.co](https://douglasfugazi.co)
+
+---
+
+## 📄 License
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<p align="center">Built with ❤️ by Douglas Urrea Ocampo for the QA Community.</p>
