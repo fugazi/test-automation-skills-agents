@@ -1,6 +1,6 @@
 ---
 name: qa-test-planner
-description: Generate comprehensive test plans, manual test cases, automated Playwright tests, regression test suites, and bug reports for QA Automation engineers. Includes Playwright MCP integration for browser-based test execution and validation.
+description: Comprehensive QA toolkit for creating test plans, manual test cases, automated Playwright tests, regression suites, and bug reports. Uses safe, non-executable templates following skill best practices. Ideal for QA Automation engineers.
 ---
 
 # QA Test Planner
@@ -15,46 +15,71 @@ A comprehensive skill for QA Automation engineers to create test plans, generate
 
 **Create a test plan:**
 ```
-"Create a test plan for the user authentication feature"
+"Create a test plan for the user authentication feature using the test-plan.md template"
 ```
 
 **Generate test cases:**
 ```
-"Generate manual test cases for the checkout flow"
+"Generate manual test cases for the checkout flow using the test-case.md template"
 ```
 
 **Create automated Playwright tests:**
 ```
-"Create Playwright automated tests for the login flow"
+"Create Playwright automated tests for the login flow using the playwright-test.md template"
 ```
 
 **Validate UI with browser:**
 ```
-"Navigate to the login page and validate all form elements are visible"
+"Navigate to the login page and validate all form elements are visible using Playwright MCP"
 ```
 
 **Build regression suite:**
 ```
-"Build a regression test suite for the payment module"
+"Build a regression test suite for the payment module using test-case.md templates grouped by priority"
 ```
 
 **Create bug report:**
 ```
-"Create a bug report for the form validation issue"
+"Create a bug report for the form validation issue using the bug-report.md template"
 ```
 
 ---
 
 ## Quick Reference
 
-| Task | What You Get | Time |
-|------|--------------|------|
-| Test Plan | Strategy, scope, schedule, risks | 10-15 min |
-| Test Cases | Step-by-step instructions, expected results | 5-10 min each |
-| Automated Tests | Playwright .spec.ts files with assertions | 5-15 min each |
-| Regression Suite | Smoke tests, critical paths, execution order | 15-20 min |
-| Browser Validation | Live UI validation, screenshots, element checks | 5-10 min |
-| Bug Report | Reproducible steps, environment, evidence | 5 min |
+| Task | Template | Time |
+|------|----------|------|
+| Test Plan | `assets/templates/test-plan.md` | 10-15 min |
+| Test Case | `assets/templates/test-case.md` | 5-10 min each |
+| Automated Test | `assets/templates/playwright-test.md` | 5-15 min each |
+| Bug Report | `assets/templates/bug-report.md` | 5 min |
+
+---
+
+## When to Use This Skill
+
+Use this skill when you need to:
+
+- Create or review **test plans** and **test strategies**
+- Generate **test cases** from requirements or user stories
+- Write **bug reports** with clear reproduction steps
+- Build **regression suites** with risk-based selection
+- Implement **Playwright automation** with best practices
+- Document **test execution** and results
+- Conduct **exploratory testing** sessions
+- Validate **UI elements** with browser automation
+
+---
+
+## Prerequisites
+
+| Requirement | Notes |
+|-------------|-------|
+| Node.js 18+ | Required for Playwright automation |
+ | Playwright | `npm init playwright@latest` for automation |
+ | Text editor | For creating/editing markdown files |
+ | Git | Recommended for testware version control |
+| Playwright MCP | Optional, for browser-based validation |
 
 ---
 
@@ -65,22 +90,27 @@ Your Request
     │
     ▼
 ┌─────────────────────────────────────────────────────┐
-│ 1. ANALYZE                                          │
+│ 1. ANALYZE                                        │
 │    • Parse feature/requirement                      │
 │    • Identify test types needed (manual/automated)  │
 │    • Determine scope and priorities                 │
 ├─────────────────────────────────────────────────────┤
-│ 2. GENERATE                                         │
-│    • Create structured deliverables                 │
-│    • Apply Playwright best practices                │
-│    • Include edge cases and variations              │
+│ 2. SELECT TEMPLATE                                │
+│    • Choose appropriate template from assets/        │
+│    • Review template structure and sections         │
+│    • Identify placeholders to fill                 │
 ├─────────────────────────────────────────────────────┤
-│ 3. EXECUTE (with Playwright MCP)                    │
+│ 3. CUSTOMIZE                                      │
+│    • Fill in placeholders with project details      │
+│    • Add specific test steps and scenarios         │
+│    • Apply Playwright best practices               │
+├─────────────────────────────────────────────────────┤
+│ 4. EXECUTE (with Playwright MCP)                 │
 │    • Navigate and interact with browser             │
 │    • Capture screenshots and evidence               │
 │    • Validate UI elements and behavior              │
 ├─────────────────────────────────────────────────────┤
-│ 4. VALIDATE                                         │
+│ 5. VALIDATE                                       │
 │    • Check completeness                             │
 │    • Verify traceability                            │
 │    • Ensure actionable steps                        │
@@ -92,26 +122,71 @@ QA Deliverable Ready
 
 ---
 
-## Commands
+## Workflows
 
-### Interactive Scripts
+### 1) Create a Test Plan
 
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| `./scripts/generate_test_cases.sh` | Create manual test cases interactively | Step-by-step prompts |
-| `./scripts/create_bug_report.sh` | Generate bug reports | Guided input collection |
-| `./scripts/generate_playwright_test.sh` | Create automated Playwright tests | Feature-based prompts |
+1. Use `assets/templates/test-plan.md` as your starting point
+2. Identify test objectives, scope, assumptions, and constraints
+3. Define test levels and types (functional, UI, performance, etc.)
+4. Specify environments, test data, tooling, and configuration needs
+5. Define entry/exit criteria, deliverables, and reporting cadence
+6. Add a risk matrix and mitigation actions
+7. Prioritize testing accordingly (risk-based testing)
 
-### Natural Language
+**Template:** [`assets/templates/test-plan.md`](assets/templates/test-plan.md)
 
-| Request | Output |
-|---------|--------|
-| "Create test plan for {feature}" | Complete test plan document |
-| "Generate {N} test cases for {feature}" | Numbered test cases with steps |
-| "Create Playwright tests for {feature}" | .spec.ts automated test files |
-| "Build smoke test suite" | Critical path tests |
-| "Navigate to {URL} and validate {elements}" | Live browser validation with screenshots |
-| "Document bug: {description}" | Structured bug report |
+### 2) Generate Test Cases
+
+1. Use `assets/templates/test-case.md` for individual test cases
+3. Convert requirements into test conditions (what to test)
+4. Pick a test design technique:
+   - Equivalence partitions and boundary values for inputs
+   - Decision tables for rule combinations
+   - State transitions for lifecycle/flows
+   - Use-case/scenario tests for end-to-end journeys
+5. Write test cases that are atomic, unambiguous, and traceable
+6. Add expected results that are observable and measurable
+7. Add priority and risk tags to support risk-based regression
+8. Mark automation candidates using stability + value criteria
+
+**Templates:**
+- [`assets/templates/test-case.md`](assets/templates/test-case.md) - Individual test case
+
+### 3) Implement Automation Test Scripts (Playwright)
+
+1. Use `assets/templates/playwright-test.md` as a template
+2. Keep tests readable and aligned with test cases
+3. Prefer stable locators (e.g., `getByTestId`) over brittle selectors
+4. Avoid arbitrary sleeps; rely on Playwright auto-waits and explicit assertions
+5. Make tests independent (setup preconditions explicitly)
+6. Use tagging in test titles (e.g., `@smoke`, `@regression`) for suite runs
+7. Capture artifacts for triage (screenshots/video/trace) when debugging
+
+**Template:** [`assets/templates/playwright-test.md`](assets/templates/playwright-test.md)
+
+### 4) Build and Maintain Regression Suites
+
+1. Use `assets/templates/regression-suite.md` to define the suite
+2. Define suite tiers: smoke (critical paths), sanity (build verification), regression (broad), full (release)
+3. Select tests using risk + frequency + criticality + defect history
+4. Tag tests consistently and document selection rules
+5. Review the suite regularly: remove obsolete coverage, add coverage for escaped defects
+
+**Template:** Use individual `test-case.md` templates grouped by priority
+
+### 5) Create Bug Reports
+
+1. Use `assets/templates/bug-report.md` as your starting point
+2. Reproduce reliably; reduce to minimal steps
+3. Note variability (frequency) and scope
+4. Capture environment details (build/app version, OS, browser/device, account/role)
+5. Describe expected vs actual behavior
+6. Include impact; set severity and priority consistently
+7. Attach evidence (screenshots, console logs, network traces, Playwright trace)
+8. Track lifecycle: triage notes, owner, fix version, verification steps
+
+**Template:** [`assets/templates/bug-report.md`](assets/templates/bug-report.md)
 
 ---
 
@@ -125,18 +200,25 @@ QA Deliverable Ready
 - Risk assessment
 - Timeline and milestones
 
+**Template:** [`assets/templates/test-plan.md`](assets/templates/test-plan.md)
+
 ### 2. Manual Test Cases
 - Step-by-step instructions
 - Expected vs actual results
 - Preconditions and setup
-- Test data requirements
+- Test data requirements (use placeholders)
 - Priority and severity
 
+**Templates:**
+- [`assets/templates/test-case.md`](assets/templates/test-case.md) - Individual test case
+
 ### 3. Regression Suites
-- Smoke tests (15-30 min)
-- Full regression (2-4 hours)
-- Targeted regression (30-60 min)
-- Execution order and dependencies
+- Smoke tests (15-30 min) - P0 tests only
+- Full regression (2-4 hours) - P0, P1, P2 tests
+- Targeted regression (30-60 min) - Tests for specific feature
+- Execution order by priority (P0 first, then P1, then P2)
+
+**Template:** Use individual `test-case.md` templates grouped by priority
 
 ### 4. Automated Playwright Tests
 - Role-based locator strategies
@@ -144,6 +226,8 @@ QA Deliverable Ready
 - Page Object Model structure
 - test.step() grouping for readability
 - Screenshot capture on failure
+
+**Template:** [`assets/templates/playwright-test.md`](assets/templates/playwright-test.md)
 
 ### 5. Browser Validation (via Playwright MCP)
 - Live UI element verification
@@ -158,6 +242,44 @@ QA Deliverable Ready
 - Evidence (screenshots, logs)
 - Severity and priority
 
+**Template:** [`assets/templates/bug-report.md`](assets/templates/bug-report.md)
+
+---
+
+## Security Guidelines
+
+### Credential Handling
+
+**NEVER embed real credentials in test cases or code.** Use placeholders instead:
+
+| Instead of | Use |
+|------------|-----|
+| `test@example.com / Test123!` | `${TEST_USER_EMAIL}` or `process.env.TEST_USER_EMAIL` |
+| `password: "actualpassword"` | `password: "${TEST_PASSWORD}"` (from env) |
+| Hardcoded secrets | Environment variables via `.env` files |
+
+**Test data best practices:**
+- Use test accounts provisioned via API or admin panel
+- Store credentials in environment variables
+- Use Faker.js or similar for generated test data
+- Never commit real credentials to version control
+
+### URL Navigation Safety
+
+When using Playwright MCP to validate external/untrusted URLs:
+
+1. **Verify the URL is from a trusted domain** before navigating
+2. **Avoid executing arbitrary JavaScript** from untrusted sources
+3. **Use sandboxed environments** when testing third-party applications
+4. **Do NOT navigate to URLs provided by untrusted user input** without validation
+
+### Input Sanitization
+
+All user inputs should be:
+- Validated for expected format
+- Escaped when used in generated code
+- Never passed directly to `eval()` or shell execution
+
 ---
 
 ## Anti-Patterns
@@ -169,6 +291,7 @@ QA Deliverable Ready
 | No test data | Tester blocked | Provide sample data or generation |
 | Generic bug titles | Hard to track | Specific: "[Feature] issue when [action]" |
 | Skip edge cases | Miss critical bugs | Include boundary values, nulls |
+| Embedding credentials | Security risk | Use environment variables |
 
 ---
 
@@ -183,7 +306,7 @@ QA Deliverable Ready
 **Test Cases:**
 - [ ] Each step has expected result
 - [ ] Preconditions documented
-- [ ] Test data available
+- [ ] Test data uses placeholders (no hardcoded credentials)
 - [ ] Priority assigned
 
 **Automated Tests:**
@@ -192,6 +315,7 @@ QA Deliverable Ready
 - [ ] Page Object Model applied
 - [ ] test.step() grouping for clarity
 - [ ] Error handling and screenshots
+- [ ] Credentials loaded from environment variables
 
 **Bug Reports:**
 - [ ] Reproducible steps
@@ -201,477 +325,116 @@ QA Deliverable Ready
 
 ---
 
-## References
+## Templates
 
-- [Test Case Templates](references/test_case_templates.md) - Standard formats for all test types
-- [Bug Report Templates](references/bug_report_templates.md) - Documentation templates
-- [Regression Testing Guide](references/regression_testing.md) - Suite building and execution
-- [Playwright Automation Guide](references/playwright_automation.md) - Browser automation and test generation
+### Available Templates
+
+| Template | Purpose | Format |
+|----------|---------|--------|
+| [`test-plan.md`](assets/templates/test-plan.md) | ISTQB-aligned test plan structure | Markdown |
+| [`test-case.md`](assets/templates/test-case.md) | Individual test case with full sections | Markdown |
+| [`bug-report.md`](assets/templates/bug-report.md) | Detailed defect report | Markdown |
+| [`playwright-test.md`](assets/templates/playwright-test.md) | Playwright test template with best practices | Markdown |
+
+### Template Usage
+
+All templates are located in `assets/templates/`. To use them:
+
+1. **Copy the template** to your project directory
+2. **Fill in placeholders** (marked with `[brackets]` or `${VARIABLE}`)
+3. **Customize sections** based on your specific needs
+4. **Remove or add sections** as appropriate
+5. **Save and version control** the completed document
 
 ---
 
+## References
+
+- [`references/test_case_templates.md`](references/test_case_templates.md) - Standard formats for all test types
+- [`references/bug_report_templates.md`](references/bug_report_templates.md) - Documentation templates
+- [`references/regression_testing.md`](references/regression_testing.md) - Suite building and execution
+- [`references/playwright_automation.md`](references/playwright_automation.md) - Browser automation and test generation
+
+---
+
+## Examples
+
 <details>
-<summary><strong>Deep Dive: Test Case Structure</strong></summary>
+<summary><strong>Example: Using the Test Case Template</strong></summary>
 
-### Standard Test Case Format
-
-```markdown
-## TC-001: [Test Case Title]
-
-**Priority:** High | Medium | Low
-**Type:** Functional | UI | Integration | Regression
-**Status:** Not Run | Pass | Fail | Blocked
-
-### Objective
-[What are we testing and why]
-
-### Preconditions
-- [Setup requirement 1]
-- [Setup requirement 2]
-- [Test data needed]
-
-### Test Steps
-1. [Action to perform]
-   **Expected:** [What should happen]
-
-2. [Action to perform]
-   **Expected:** [What should happen]
-
-3. [Action to perform]
-   **Expected:** [What should happen]
-
-### Test Data
-- Input: [Test data values]
-- User: [Test account details]
-- Configuration: [Environment settings]
-
-### Post-conditions
-- [System state after test]
-- [Cleanup required]
-
-### Notes
-- [Edge cases to consider]
-- [Related test cases]
-- [Known issues]
+**Request:**
+```
+"Create a test case for user login with valid credentials using the test-case.md template"
 ```
 
-### Test Types
-
-| Type | Focus | Example |
-|------|-------|---------|
-| Functional | Business logic | Login with valid credentials |
-| UI/Visual | Appearance, layout | Button matches Figma design |
-| Integration | Component interaction | API returns data to frontend |
-| Regression | Existing functionality | Previous features still work |
-| Performance | Speed, load handling | Page loads under 3 seconds |
-| Security | Vulnerabilities | SQL injection prevented |
+**Result:**
+The AI will:
+1. Open `assets/templates/test-case.md`
+2. Fill in the placeholders with specific details:
+   - TC-ID: `TC-LOGIN-001`
+   - Title: `Verify valid user login with correct credentials`
+   - Priority: `P0 (Critical)`
+   - Type: `Functional`
+   - Objective: `Verify users can successfully login with valid credentials`
+   - Preconditions: `User account exists in test environment; Browser cookies cleared`
+   - Test Steps: Fill with specific login steps
+   - Test Data: Use `${TEST_USER_EMAIL}` and `${TEST_USER_PASSWORD}` placeholders
+3. Provide the completed test case markdown file
 
 </details>
 
 <details>
-<summary><strong>Deep Dive: Test Plan Template</strong></summary>
+<summary><strong>Example: Using the Bug Report Template</strong></summary>
 
-### Test Plan Structure
-
-```markdown
-# Test Plan: [Feature/Release Name]
-
-## Executive Summary
-- Feature/product being tested
-- Testing objectives
-- Key risks
-- Timeline overview
-
-## Test Scope
-
-**In Scope:**
-- Features to be tested
-- Test types (functional, UI, performance)
-- Platforms and environments
-- User flows and scenarios
-
-**Out of Scope:**
-- Features not being tested
-- Known limitations
-- Third-party integrations (if applicable)
-
-## Test Strategy
-
-**Test Types:**
-- Manual testing
-- Exploratory testing
-- Regression testing
-- Integration testing
-- User acceptance testing
-
-**Test Approach:**
-- Black box testing
-- Positive and negative testing
-- Boundary value analysis
-- Equivalence partitioning
-
-## Test Environment
-- Operating systems
-- Browsers and versions
-- Devices (mobile, tablet, desktop)
-- Test data requirements
-- Backend/API environments
-
-## Entry Criteria
-- [ ] Requirements documented
-- [ ] Designs finalized
-- [ ] Test environment ready
-- [ ] Test data prepared
-- [ ] Build deployed
-
-## Exit Criteria
-- [ ] All high-priority test cases executed
-- [ ] 90%+ test case pass rate
-- [ ] All critical bugs fixed
-- [ ] No open high-severity bugs
-- [ ] Regression suite passed
-
-## Risk Assessment
-
-| Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|------------|
-| [Risk 1] | H/M/L | H/M/L | [Mitigation] |
-
-## Test Deliverables
-- Test plan document
-- Test cases
-- Test execution reports
-- Bug reports
-- Test summary report
+**Request:**
 ```
+"Create a bug report for a login form validation issue using the bug-report.md template"
+```
+
+**Result:**
+The AI will:
+1. Open `assets/templates/bug-report.md`
+2. Generate a unique bug ID (e.g., `BUG-1715345678`)
+3. Fill in the placeholders:
+   - Title: `Login form accepts invalid email format`
+   - Severity: `High`
+   - Priority: `P1`
+   - Environment: Fill with actual OS, browser, build details
+   - Steps to Reproduce: Add specific, reproducible steps
+   - Expected vs Actual: Clear description of the issue
+   - Impact: Describe user and business impact
+4. Provide the completed bug report markdown file
 
 </details>
 
 <details>
-<summary><strong>Deep Dive: Bug Reporting</strong></summary>
+<summary><strong>Example: Using the Playwright Spec Template</strong></summary>
 
-### Bug Report Template
-
-```markdown
-# BUG-[ID]: [Clear, specific title]
-
-**Severity:** Critical | High | Medium | Low
-**Priority:** P0 | P1 | P2 | P3
-**Type:** Functional | UI | Performance | Security
-**Status:** Open | In Progress | Fixed | Closed
-
-## Environment
-- **OS:** [Windows 11, macOS 14, etc.]
-- **Browser:** [Chrome 120, Firefox 121, etc.]
-- **Device:** [Desktop, iPhone 15, etc.]
-- **Build:** [Version/commit]
-- **URL:** [Page where bug occurs]
-
-## Description
-[Clear, concise description of the issue]
-
-## Steps to Reproduce
-1. [Specific step]
-2. [Specific step]
-3. [Specific step]
-
-## Expected Behavior
-[What should happen]
-
-## Actual Behavior
-[What actually happens]
-
-## Visual Evidence
-- Screenshot: [attached]
-- Video: [link if applicable]
-- Console errors: [paste errors]
-
-## Impact
-- **User Impact:** [How many users affected]
-- **Frequency:** [Always, Sometimes, Rarely]
-- **Workaround:** [If one exists]
-
-## Additional Context
-- Related to: [Feature/ticket]
-- Regression: [Yes/No]
-- Figma design: [Link if UI bug]
+**Request:**
+```
+"Create Playwright tests for the login flow using the playwright-test.md template"
 ```
 
-### Severity Definitions
-
-| Level | Criteria | Examples |
-|-------|----------|----------|
-| **Critical (P0)** | System crash, data loss, security | Payment fails, login broken |
-| **High (P1)** | Major feature broken, no workaround | Search not working |
-| **Medium (P2)** | Feature partial, workaround exists | Filter missing one option |
-| **Low (P3)** | Cosmetic, rare edge cases | Typo, minor alignment |
+**Result:**
+The AI will:
+1. Open `assets/templates/playwright-test.md`
+2. Customize the test describe block for login functionality
+3. Add specific test cases:
+   - `TC-LOGIN-001 @smoke @regression` - Valid login
+   - `TC-LOGIN-002 @regression @negative` - Invalid credentials
+   - `TC-LOGIN-003 @regression @boundary` - Password validation
+4. Implement test steps using Playwright best practices:
+   - Role-based locators (`getByRole`)
+   - Web-first assertions (`toBeVisible`, `toHaveText`)
+   - test.step() grouping for readability
+5. Add security notes about environment variables
+6. Provide the completed markdown template with TypeScript code examples
 
 </details>
 
-<details>
-<summary><strong>Deep Dive: Playwright MCP Integration</strong></summary>
+---
 
-### Browser Automation Workflow
-
-**Prerequisites:**
-- Playwright MCP server configured
-- Node.js installed
-- Application running locally or accessible URL
-
-**Playwright MCP Tools Available:**
-
-| Tool | Purpose |
-|------|---------|
-| `browser_navigate` | Navigate to a URL |
-| `browser_snapshot` | Get accessibility tree (DOM state) |
-| `browser_click` | Click on elements |
-| `browser_fill_form` | Fill form fields |
-| `browser_take_screenshot` | Capture screenshots |
-| `browser_console_messages` | View console logs |
-| `browser_hover` | Hover over elements |
-| `browser_press_key` | Keyboard interactions |
-
-**Process:**
-
-1. **Navigate and Capture Initial State**
-```
-"Navigate to http://localhost:3000/login"
-"Take a screenshot of the current page"
-"Get the accessibility snapshot"
-```
-
-2. **Validate UI Elements**
-```
-Using browser_snapshot to verify:
-- Form fields are present and labeled
-- Buttons have correct text
-- Error messages are accessible
-- Page structure matches requirements
-```
-
-3. **Test User Interactions**
-```
-"Click the 'Login' button"
-"Fill the email field with 'test@example.com'"
-"Verify the error message appears"
-"Take a screenshot of the error state"
-```
-
-4. **Capture Evidence for Bug Reports**
-```
-"Take a screenshot of the current page"
-"Get console messages for any errors"
-"Document the accessibility tree for element structure"
-```
-
-### What to Validate with Playwright MCP
-
-| Element | How to Validate | Tool |
-|---------|-----------------|------|
-| Element presence | Check accessibility snapshot | `browser_snapshot` |
-| Visual state | Capture screenshot | `browser_take_screenshot` |
-| Form fields | Fill and verify | `browser_fill_form` |
-| Buttons/Links | Click and verify navigation | `browser_click` |
-| Console errors | Check for JS errors | `browser_console_messages` |
-| Responsive views | Resize and snapshot | `browser_resize` |
-
-### Example Validation Queries
-```
-"Navigate to the checkout page and verify all form fields are present"
-"Fill the login form and capture screenshot of the result"
-"Click the submit button and check for console errors"
-"Validate the navigation menu has all required links"
-"Test the form validation by submitting empty fields"
-```
-
-### Generating Automated Tests from Validation
-
-After validating with Playwright MCP, generate automated .spec.ts tests:
-
-```typescript
-import { test, expect } from '@playwright/test';
-
-test.describe('Login Page Validation', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/login');
-  });
-
-  test('displays all required form elements', async ({ page }) => {
-    await test.step('Verify form fields', async () => {
-      await expect(page.getByRole('textbox', { name: 'Email' })).toBeVisible();
-      await expect(page.getByRole('textbox', { name: 'Password' })).toBeVisible();
-      await expect(page.getByRole('button', { name: 'Login' })).toBeEnabled();
-    });
-  });
-
-  test('shows error for invalid credentials', async ({ page }) => {
-    await test.step('Submit invalid credentials', async () => {
-      await page.getByRole('textbox', { name: 'Email' }).fill('invalid@test.com');
-      await page.getByRole('textbox', { name: 'Password' }).fill('wrongpass');
-      await page.getByRole('button', { name: 'Login' }).click();
-    });
-
-    await test.step('Verify error message', async () => {
-      await expect(page.getByRole('alert')).toContainText('Invalid credentials');
-    });
-  });
-});
-```
-
-</details>
-
-<details>
-<summary><strong>Deep Dive: Regression Testing</strong></summary>
-
-### Suite Structure
-
-| Suite Type | Duration | Frequency | Coverage |
-|------------|----------|-----------|----------|
-| Smoke | 15-30 min | Daily | Critical paths only |
-| Targeted | 30-60 min | Per change | Affected areas |
-| Full | 2-4 hours | Weekly/Release | Comprehensive |
-| Sanity | 10-15 min | After hotfix | Quick validation |
-
-### Building a Regression Suite
-
-**Step 1: Identify Critical Paths**
-- What can users NOT live without?
-- What generates revenue?
-- What handles sensitive data?
-- What's used most frequently?
-
-**Step 2: Prioritize Test Cases**
-
-| Priority | Description | Must Run |
-|----------|-------------|----------|
-| P0 | Business-critical, security | Always |
-| P1 | Major features, common flows | Weekly+ |
-| P2 | Minor features, edge cases | Releases |
-
-**Step 3: Execution Order**
-1. Smoke first - if fails, stop and fix build
-2. P0 tests next - must pass before proceeding
-3. P1 then P2 - track all failures
-4. Exploratory - find unexpected issues
-
-### Pass/Fail Criteria
-
-**PASS:**
-- All P0 tests pass
-- 90%+ P1 tests pass
-- No critical bugs open
-
-**FAIL (Block Release):**
-- Any P0 test fails
-- Critical bug discovered
-- Security vulnerability
-- Data loss scenario
-
-**CONDITIONAL:**
-- P1 failures with workarounds
-- Known issues documented
-- Fix plan in place
-
-</details>
-
-<details>
-<summary><strong>Deep Dive: Test Execution Tracking</strong></summary>
-
-### Test Run Report Template
-
-```markdown
-# Test Run: [Release Version]
-
-**Date:** 2024-01-15
-**Build:** v2.5.0-rc1
-**Tester:** [Name]
-**Environment:** Staging
-
-## Summary
-- Total Test Cases: 150
-- Executed: 145
-- Passed: 130
-- Failed: 10
-- Blocked: 5
-- Not Run: 5
-- Pass Rate: 90%
-
-## Test Cases by Priority
-
-| Priority | Total | Pass | Fail | Blocked |
-|----------|-------|------|------|---------|
-| P0 (Critical) | 25 | 23 | 2 | 0 |
-| P1 (High) | 50 | 45 | 3 | 2 |
-| P2 (Medium) | 50 | 45 | 3 | 2 |
-| P3 (Low) | 25 | 17 | 2 | 1 |
-
-## Critical Failures
-- TC-045: Payment processing fails
-  - Bug: BUG-234
-  - Status: Open
-
-## Blocked Tests
-- TC-112: Dashboard widget (API endpoint down)
-
-## Risks
-- 2 critical bugs blocking release
-- Payment integration needs attention
-
-## Next Steps
-- Retest after BUG-234 fix
-- Complete remaining 5 test cases
-- Run full regression before sign-off
-```
-
-### Coverage Tracking
-
-```markdown
-## Coverage Matrix
-
-| Feature | Requirements | Test Cases | Status | Gaps |
-|---------|--------------|------------|--------|------|
-| Login | 8 | 12 | Complete | None |
-| Checkout | 15 | 10 | Partial | Payment errors |
-| Dashboard | 12 | 15 | Complete | None |
-```
-
-</details>
-
-<details>
-<summary><strong>QA Process Workflow</strong></summary>
-
-### Phase 1: Planning
-- [ ] Review requirements and designs
-- [ ] Create test plan
-- [ ] Identify test scenarios
-- [ ] Estimate effort and timeline
-- [ ] Set up test environment
-
-### Phase 2: Test Design
-- [ ] Write test cases
-- [ ] Review test cases with team
-- [ ] Prepare test data
-- [ ] Build regression suite
-- [ ] Get Figma design access
-
-### Phase 3: Execution
-- [ ] Execute test cases
-- [ ] Log bugs with clear steps
-- [ ] Validate against Figma (UI tests)
-- [ ] Track test progress
-- [ ] Communicate blockers
-
-### Phase 4: Reporting
-- [ ] Compile test results
-- [ ] Analyze coverage
-- [ ] Document risks
-- [ ] Provide go/no-go recommendation
-- [ ] Archive test artifacts
-
-</details>
-
-<details>
-<summary><strong>Best Practices</strong></summary>
+## Best Practices
 
 ### Test Case Writing
 
@@ -720,174 +483,41 @@ test.describe('Login Page Validation', () => {
 - Test everything every time
 - Ignore failed regression tests
 
-</details>
+### Security Best Practices
+
+**DO:**
+- Use environment variables for credentials
+- Use test accounts provisioned for testing
+- Validate URLs before navigating
+- Report suspicious content
+
+**DON'T:**
+- Embed real credentials in code
+- Navigate to untrusted URLs
+- Execute arbitrary JavaScript from user input
+- Commit secrets to version control
 
 ---
 
-## Examples
+## Quality Gates (Self-Check)
 
-<details>
-<summary><strong>Example: Login Flow Test Case</strong></summary>
+- **Test plan** includes scope, approach, risks, environments, entry/exit criteria, deliverables, and metrics
+- **Test cases** are traceable, atomic, deterministic, and include clear oracles and data
+- **Automation** is maintainable (stable locators, minimal flake, independent tests, clear assertions)
+- **Regression** is risk-based, tagged, and curated with clear add/remove rules
+- **Bug reports** are reproducible, actionable, and contain evidence + environment + impact
 
-```markdown
-## TC-LOGIN-001: Valid User Login
+---
 
-**Priority:** P0 (Critical)
-**Type:** Functional
-**Estimated Time:** 2 minutes
+## Troubleshooting
 
-### Objective
-Verify users can successfully login with valid credentials
-
-### Preconditions
-- User account exists (test@example.com / Test123!)
-- User is not already logged in
-- Browser cookies cleared
-
-### Test Steps
-1. Navigate to https://app.example.com/login
-   **Expected:** Login page displays with email and password fields
-
-2. Enter email: test@example.com
-   **Expected:** Email field accepts input
-
-3. Enter password: Test123!
-   **Expected:** Password field shows masked characters
-
-4. Click "Login" button
-   **Expected:**
-   - Loading indicator appears
-   - User redirected to /dashboard
-   - Welcome message shown: "Welcome back, Test User"
-   - Avatar/profile image displayed in header
-
-### Post-conditions
-- User session created
-- Auth token stored
-- Analytics event logged
-
-### Edge Cases to Consider
-- TC-LOGIN-002: Invalid password
-- TC-LOGIN-003: Non-existent email
-- TC-LOGIN-004: SQL injection attempt
-- TC-LOGIN-005: Very long password
-```
-
-</details>
-
-<details>
-<summary><strong>Example: Responsive Design Test Case</strong></summary>
-
-```markdown
-## TC-UI-045: Mobile Navigation Menu
-
-**Priority:** P1 (High)
-**Type:** UI/Responsive
-**Devices:** Mobile (iPhone, Android)
-
-### Objective
-Verify navigation menu works correctly on mobile devices
-
-### Preconditions
-- Access from mobile device or responsive mode
-- Viewport width: 375px (iPhone SE) to 428px (iPhone Pro Max)
-
-### Test Steps
-1. Open homepage on mobile device
-   **Expected:** Hamburger menu icon visible (top-right)
-
-2. Tap hamburger icon
-   **Expected:**
-   - Menu slides in from right
-   - Overlay appears over content
-   - Close (X) button visible
-
-3. Tap menu item
-   **Expected:** Navigate to section, menu closes
-
-4. Validate with Playwright MCP
-   **Actions:**
-   - Navigate to homepage with mobile viewport
-   - Take screenshot of menu closed state
-   - Click hamburger icon
-   - Take screenshot of menu open state
-   - Verify menu items via accessibility snapshot
-
-### Breakpoints to Test
-- 375px (iPhone SE)
-- 390px (iPhone 14)
-- 428px (iPhone 14 Pro Max)
-- 360px (Galaxy S21)
-```
-
-</details>
-
-<details>
-<summary><strong>Example: Playwright Automated Test</strong></summary>
-
-```typescript
-import { test, expect } from '@playwright/test';
-
-test.describe('Mobile Navigation Menu', () => {
-  test.use({ viewport: { width: 375, height: 667 } });
-
-  test.beforeEach(async ({ page }) => {
-    await page.goto('https://app.example.com');
-  });
-
-  test('TC-UI-045: Mobile navigation menu opens and closes correctly', async ({ page }) => {
-    await test.step('Verify hamburger menu is visible on mobile', async () => {
-      await expect(page.getByRole('button', { name: /menu/i })).toBeVisible();
-      await expect(page.getByRole('navigation')).toBeHidden();
-    });
-
-    await test.step('Open navigation menu', async () => {
-      await page.getByRole('button', { name: /menu/i }).click();
-      await expect(page.getByRole('navigation')).toBeVisible();
-      await expect(page.getByRole('button', { name: /close/i })).toBeVisible();
-    });
-
-    await test.step('Verify menu items are accessible', async () => {
-      await expect(page.getByRole('navigation')).toMatchAriaSnapshot(`
-        - navigation:
-          - list:
-            - listitem:
-              - link "Home"
-            - listitem:
-              - link "Products"
-            - listitem:
-              - link "About"
-            - listitem:
-              - link "Contact"
-      `);
-    });
-
-    await test.step('Close menu and verify navigation', async () => {
-      await page.getByRole('link', { name: 'Products' }).click();
-      await expect(page).toHaveURL(/.*products/);
-      await expect(page.getByRole('navigation')).toBeHidden();
-    });
-  });
-
-  test('navigation menu is responsive across breakpoints', async ({ page }) => {
-    const breakpoints = [
-      { width: 375, name: 'iPhone SE' },
-      { width: 390, name: 'iPhone 14' },
-      { width: 428, name: 'iPhone 14 Pro Max' },
-      { width: 360, name: 'Galaxy S21' },
-    ];
-
-    for (const bp of breakpoints) {
-      await test.step(`Test at ${bp.name} (${bp.width}px)`, async () => {
-        await page.setViewportSize({ width: bp.width, height: 800 });
-        await expect(page.getByRole('button', { name: /menu/i })).toBeVisible();
-      });
-    }
-  });
-});
-```
-
-</details>
+| Problem | Cause | Solution |
+|---------|-------|----------|
+| Test cases lack traceability | Missing requirement IDs | Add `requirement_id` column; link to user stories/ACs |
+| Bug reports get rejected | Insufficient reproduction steps | Use minimal steps; include exact data and environment |
+| Regression suite too slow | Too many tests, no prioritization | Apply risk-based selection; tier into smoke/sanity/full |
+| Flaky automated tests | Unstable locators or timing | Use `data-testid`; avoid sleeps; use Playwright auto-waits |
+| Test estimates are wrong | Scope creep, missing risks | Add contingency; re-estimate when scope changes |
 
 ---
 

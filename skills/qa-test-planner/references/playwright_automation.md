@@ -60,7 +60,7 @@ npx playwright --version
 
 **Navigate to the page:**
 ```
-"Navigate to http://localhost:3000/login"
+"Navigate to BASE_URL/login"
 ```
 
 **Capture accessibility snapshot:**
@@ -97,10 +97,20 @@ Look in the snapshot for:
 
 **Fill and submit form:**
 ```
-"Fill the email field with 'test@example.com'"
-"Fill the password field with 'Password123'"
+"Fill the email field with test email placeholder"
+"Fill the password field with test password placeholder"
 "Click the Login button"
 ```
+
+**Security Note:** Always use environment variables for credentials in generated code:
+
+```typescript
+const { TEST_USER_EMAIL, TEST_USER_PASSWORD } = process.env;
+await page.getByRole('textbox', { name: 'Email' }).fill(TEST_USER_EMAIL);
+await page.getByRole('textbox', { name: 'Password' }).fill(TEST_USER_PASSWORD);
+```
+
+**Verify results:**
 
 **Verify results:**
 ```
@@ -147,7 +157,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Feature Name', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://app.example.com/page');
+    await page.goto('BASE_URL/page');
   });
 
   test('descriptive test name', async ({ page }) => {
