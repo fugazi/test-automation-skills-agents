@@ -503,7 +503,7 @@ class SampleTest extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Sample test - verify setup works")
     void shouldVerifySetupWorks() {
-        driver.get("https://www.google.com");
+        driver.get("BASE_URL");
         
         assertThat(driver.getTitle())
             .as("Page title should contain 'Google'")
