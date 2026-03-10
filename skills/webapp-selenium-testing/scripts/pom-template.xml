@@ -7,57 +7,58 @@
 
     <groupId>com.example</groupId>
     <artifactId>selenium-tests</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Selenium Test Automation</name>
-    <description>Selenium WebDriver tests with Java 21, JUnit 5, and Allure reporting</description>
+    <description>Selenium WebDriver tests with Java and JUnit 5</description>
 
     <properties>
-        <!-- Java Version -->
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- Dependency Versions -->
-        <selenium.version>4.27.0</selenium.version>
-        <junit.version>5.11.3</junit.version>
-        <assertj.version>3.26.3</assertj.version>
-        <allure.version>2.29.0</allure.version>
-        <lombok.version>1.18.36</lombok.version>
-        <slf4j.version>2.0.16</slf4j.version>
-        <logback.version>1.5.12</logback.version>
-        <datafaker.version>2.4.2</datafaker.version>
-        <jackson.version>2.18.1</jackson.version>
-        <restassured.version>5.5.0</restassured.version>
-
-        <!-- Plugin Versions -->
-        <maven-surefire.version>3.5.2</maven-surefire.version>
+        <maven-surefire.version>3.5.0</maven-surefire.version>
         <maven-compiler.version>3.13.0</maven-compiler.version>
-        <allure-maven.version>2.14.0</allure-maven.version>
-        <aspectj.version>1.9.22.1</aspectj.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>5.10.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-bom</artifactId>
+                <version>3.25.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-bom</artifactId>
+                <version>4.20.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- Selenium WebDriver -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
         </dependency>
 
         <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -65,64 +66,23 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- Allure Reporting -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit5</artifactId>
-            <version>${allure.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-
-        <!-- Test Data Generation -->
-        <dependency>
-            <groupId>net.datafaker</groupId>
-            <artifactId>datafaker</artifactId>
-            <version>${datafaker.version}</version>
-        </dependency>
-
-        <!-- JSON Processing -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
-        <!-- REST API Testing (Optional) -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>${restassured.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -130,76 +90,27 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
 
-            <!-- Surefire Plugin (Test Execution) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire.version}</version>
                 <configuration>
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                    <systemPropertyVariables>
-                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-                        <browser>${browser}</browser>
-                        <headless>${headless}</headless>
-                    </systemPropertyVariables>
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
-                    <!-- Parallel Execution -->
-                    <properties>
-                        <configurationParameters>
-                            junit.jupiter.execution.parallel.enabled = true
-                            junit.jupiter.execution.parallel.mode.default = concurrent
-                            junit.jupiter.execution.parallel.config.strategy = fixed
-                            junit.jupiter.execution.parallel.config.fixed.parallelism = 4
-                        </configurationParameters>
-                    </properties>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <!-- Allure Maven Plugin -->
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>${allure-maven.version}</version>
-                <configuration>
-                    <reportVersion>${allure.version}</reportVersion>
-                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-    <!-- Profiles for different environments -->
     <profiles>
         <profile>
             <id>chrome</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <browser>chrome</browser>
-                <headless>false</headless>
             </properties>
         </profile>
 
@@ -207,7 +118,6 @@
             <id>firefox</id>
             <properties>
                 <browser>firefox</browser>
-                <headless>false</headless>
             </properties>
         </profile>
 
@@ -215,21 +125,12 @@
             <id>edge</id>
             <properties>
                 <browser>edge</browser>
-                <headless>false</headless>
             </properties>
         </profile>
 
         <profile>
             <id>headless</id>
             <properties>
-                <headless>true</headless>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>ci</id>
-            <properties>
-                <browser>chrome</browser>
                 <headless>true</headless>
             </properties>
         </profile>
