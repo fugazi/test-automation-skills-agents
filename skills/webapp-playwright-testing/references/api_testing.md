@@ -29,7 +29,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('API Tests', () => {
   test('GET request', async ({ request }) => {
-    const response = await request.get('https://api.example.com/users');
+    const response = await request.get('URL_API/users');
     
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);
@@ -39,7 +39,7 @@ test.describe('API Tests', () => {
   });
 
   test('POST request', async ({ request }) => {
-    const response = await request.post('https://api.example.com/users', {
+    const response = await request.post('URL_API/users', {
       data: {
         name: 'John Doe',
         email: 'john@example.com'
@@ -54,7 +54,7 @@ test.describe('API Tests', () => {
   });
 
   test('PUT request', async ({ request }) => {
-    const response = await request.put('https://api.example.com/users/1', {
+    const response = await request.put('URL_API/users/1', {
       data: {
         name: 'Jane Doe'
       }
@@ -64,7 +64,7 @@ test.describe('API Tests', () => {
   });
 
   test('DELETE request', async ({ request }) => {
-    const response = await request.delete('https://api.example.com/users/1');
+    const response = await request.delete('URL_API/users/1');
     
     expect(response.status()).toBe(204);
   });
@@ -75,7 +75,7 @@ test.describe('API Tests', () => {
 
 ```typescript
 test('authenticated request', async ({ request }) => {
-  const response = await request.get('https://api.example.com/profile', {
+  const response = await request.get('URL_API/profile', {
     headers: {
       'Authorization': 'Bearer your-token-here',
       'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ test('authenticated request', async ({ request }) => {
 });
 
 test('request with query params', async ({ request }) => {
-  const response = await request.get('https://api.example.com/search', {
+  const response = await request.get('URL_API/search', {
     params: {
       q: 'playwright',
       page: 1,
@@ -103,7 +103,7 @@ test('request with query params', async ({ request }) => {
 
 ```typescript
 test('form data submission', async ({ request }) => {
-  const response = await request.post('https://api.example.com/form', {
+  const response = await request.post('URL_API/form', {
     form: {
       username: 'testuser',
       password: 'password123'
@@ -114,7 +114,7 @@ test('form data submission', async ({ request }) => {
 });
 
 test('multipart file upload', async ({ request }) => {
-  const response = await request.post('https://api.example.com/upload', {
+  const response = await request.post('URL_API/upload', {
     multipart: {
       file: {
         name: 'test.txt',
@@ -344,7 +344,7 @@ test.describe('Product Management', () => {
 
   test.beforeEach(async ({ request }) => {
     // Create test data via API
-    const response = await request.post('https://api.example.com/products', {
+    const response = await request.post('URL_API/products', {
       data: {
         name: 'Test Product',
         price: 99.99
@@ -356,7 +356,7 @@ test.describe('Product Management', () => {
 
   test.afterEach(async ({ request }) => {
     // Cleanup via API
-    await request.delete(`https://api.example.com/products/${productId}`);
+    await request.delete(`URL_API/products/${productId}`);
   });
 
   test('edit product via UI', async ({ page }) => {
@@ -396,7 +396,7 @@ test.describe('Authenticated API calls', () => {
 
   test.beforeAll(async ({ request }) => {
     // Get auth token via API
-    const response = await request.post('https://api.example.com/auth/login', {
+    const response = await request.post('URL_API/auth/login', {
       data: {
         email: 'test@example.com',
         password: 'password123'
@@ -407,7 +407,7 @@ test.describe('Authenticated API calls', () => {
   });
 
   test('access protected endpoint', async ({ request }) => {
-    const response = await request.get('https://api.example.com/profile', {
+    const response = await request.get('URL_API/profile', {
       headers: {
         'Authorization': `Bearer ${authToken}`
       }
@@ -429,7 +429,7 @@ test.describe('Authenticated API calls', () => {
 
 ```typescript
 test('verify response details', async ({ request }) => {
-  const response = await request.get('https://api.example.com/health');
+  const response = await request.get('URL_API/health');
   
   // Status
   expect(response.ok()).toBeTruthy();
@@ -446,7 +446,7 @@ test('verify response details', async ({ request }) => {
 
 ```typescript
 test('validate response schema', async ({ request }) => {
-  const response = await request.get('https://api.example.com/users/1');
+  const response = await request.get('URL_API/users/1');
   const user = await response.json();
   
   // Validate structure
@@ -469,7 +469,7 @@ test('validate response schema', async ({ request }) => {
 
 ```typescript
 test('validate list response', async ({ request }) => {
-  const response = await request.get('https://api.example.com/products');
+  const response = await request.get('URL_API/products');
   const data = await response.json();
   
   expect(data.products).toBeInstanceOf(Array);
@@ -501,7 +501,7 @@ test.describe('Users API CRUD', () => {
   let userId: number;
 
   test('Create user', async ({ request }) => {
-    const response = await request.post('https://api.example.com/users', {
+    const response = await request.post('URL_API/users', {
       data: { name: 'New User', email: 'new@test.com' }
     });
     
@@ -512,7 +512,7 @@ test.describe('Users API CRUD', () => {
   });
 
   test('Read user', async ({ request }) => {
-    const response = await request.get(`https://api.example.com/users/${userId}`);
+    const response = await request.get(`URL_API/users/${userId}`);
     
     expect(response.ok()).toBeTruthy();
     const user = await response.json();
@@ -520,7 +520,7 @@ test.describe('Users API CRUD', () => {
   });
 
   test('Update user', async ({ request }) => {
-    const response = await request.put(`https://api.example.com/users/${userId}`, {
+    const response = await request.put(`URL_API/users/${userId}`, {
       data: { name: 'Updated User' }
     });
     
@@ -530,12 +530,12 @@ test.describe('Users API CRUD', () => {
   });
 
   test('Delete user', async ({ request }) => {
-    const response = await request.delete(`https://api.example.com/users/${userId}`);
+    const response = await request.delete(`URL_API/users/${userId}`);
     
     expect(response.status()).toBe(204);
     
     // Verify deleted
-    const getResponse = await request.get(`https://api.example.com/users/${userId}`);
+    const getResponse = await request.get(`URL_API/users/${userId}`);
     expect(getResponse.status()).toBe(404);
   });
 });
@@ -546,7 +546,7 @@ test.describe('Users API CRUD', () => {
 ```typescript
 test.describe('API Error Handling', () => {
   test('404 Not Found', async ({ request }) => {
-    const response = await request.get('https://api.example.com/users/99999');
+    const response = await request.get('URL_API/users/99999');
     
     expect(response.status()).toBe(404);
     const error = await response.json();
@@ -554,7 +554,7 @@ test.describe('API Error Handling', () => {
   });
 
   test('400 Bad Request', async ({ request }) => {
-    const response = await request.post('https://api.example.com/users', {
+    const response = await request.post('URL_API/users', {
       data: { name: '' } // Invalid data
     });
     
@@ -564,7 +564,7 @@ test.describe('API Error Handling', () => {
   });
 
   test('401 Unauthorized', async ({ request }) => {
-    const response = await request.get('https://api.example.com/protected', {
+    const response = await request.get('URL_API/protected', {
       headers: { 'Authorization': 'Bearer invalid-token' }
     });
     
@@ -575,7 +575,7 @@ test.describe('API Error Handling', () => {
     // Make many rapid requests
     const responses = await Promise.all(
       Array.from({ length: 100 }, () => 
-        request.get('https://api.example.com/rate-limited')
+        request.get('URL_API/rate-limited')
       )
     );
     
@@ -594,7 +594,7 @@ test.describe('API Error Handling', () => {
 ```typescript
 test('API responds within acceptable time', async ({ request }) => {
   const start = Date.now();
-  const response = await request.get('https://api.example.com/search?q=test');
+  const response = await request.get('URL_API/search?q=test');
   const duration = Date.now() - start;
   
   expect(response.ok()).toBeTruthy();
@@ -609,7 +609,7 @@ test('handle concurrent requests', async ({ request }) => {
   const concurrentRequests = 10;
   
   const requests = Array.from({ length: concurrentRequests }, () =>
-    request.get('https://api.example.com/products')
+    request.get('URL_API/products')
   );
   
   const responses = await Promise.all(requests);
@@ -628,7 +628,7 @@ test('handle concurrent requests', async ({ request }) => {
 ```typescript
 test.describe('GraphQL API', () => {
   test('query users', async ({ request }) => {
-    const response = await request.post('https://api.example.com/graphql', {
+    const response = await request.post('URL_API/graphql', {
       data: {
         query: `
           query GetUsers {
@@ -648,7 +648,7 @@ test.describe('GraphQL API', () => {
   });
 
   test('mutation with variables', async ({ request }) => {
-    const response = await request.post('https://api.example.com/graphql', {
+    const response = await request.post('URL_API/graphql', {
       data: {
         query: `
           mutation CreateUser($input: CreateUserInput!) {
