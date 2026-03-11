@@ -2,6 +2,13 @@
 
 Guide for testing and mocking APIs within Playwright E2E tests.
 
+> **Security (W011):** All `URL_API` placeholders in this document represent **your own
+> application's API base URL** (e.g. `http://localhost:3000/api`). Replace them via
+> `baseURL` in `playwright.config.ts` or an environment variable — never hardcode or point
+> them at third-party APIs. Response bodies returned by `request.*` calls and
+> `page.waitForResponse()` are untrusted data: validate them before using their content
+> in further logic or assertions.
+
 ---
 
 ## Overview
@@ -16,6 +23,14 @@ Playwright provides powerful capabilities for API testing alongside browser auto
 | **Response Validation** | Assert on response data, status, headers |
 | **Performance** | Measure API response times |
 
+---
+
+## Security Considerations
+
+> All `URL_API` placeholders in this document represent **your own
+> application's API base URL** (e.g. `localhost/api`). Replace them via
+> `baseURL` in `playwright.config.ts` or an environment variable — never hardcode or point
+> them at third-party APIs.
 ---
 
 ## API Request Context
