@@ -562,8 +562,16 @@ public abstract class BaseTest {
         }
     }
 
+    // ⚠️ Security: Only call this inside tests that navigate to your own application.
+    // Attaching raw page source from third-party sites can expose AI-assisted sessions
+    // to indirect prompt injection embedded in web content (W011).
+    // The 50 KB limit prevents excessive untrusted content from entering the AI context.
     protected void attachPageSource(String name) {
         String pageSource = driver.getPageSource();
+        final int MAX_CHARS = 50_000;
+        if (pageSource.length() > MAX_CHARS) {
+            pageSource = pageSource.substring(0, MAX_CHARS) + "\n<!-- [page source truncated for safety] -->";
+        }
         Allure.addAttachment(name, "text/html", pageSource, "html");
     }
 
