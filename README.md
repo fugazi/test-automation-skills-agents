@@ -122,6 +122,9 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill a
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill playwright-regression-testing
 ```
+```bash
+npx skills add https://github.com/fugazi/test-automation-skills-agents --skill playwright-cli
+```
 
 ---
 
