@@ -242,3 +242,5 @@ When creating new agents or skills:
 - [Official: Creating Custom Agents](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents)
 - [Official: Agent Skills Specification](https://agentskills.io/)
 - [Orchestration Workflow](./instructions/orchestration-workflow.instructions.md) — TOP 8-step workflow for AI-driven test automation
+- [File Map Template (Playwright)](./skills/playwright-e2e-testing/references/file-map-template.md) — Recommended project structure for Playwright TypeScript
+- [File Map Template (Selenium)](./skills/webapp-selenium-testing/references/file-map-template.md) — Recommended project structure for Selenium Java
