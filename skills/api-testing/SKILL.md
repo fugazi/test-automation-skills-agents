@@ -52,17 +52,24 @@ test('GET /api/users returns 200 with valid schema', async ({ request }) => {
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+import java.util.List;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 @Test
-@DisplayName('GET /api/users returns 200 with valid schema')
+@DisplayName("GET /api/users returns 200 with valid schema")
 void getUsers() {
+    String token = "test-token";
+
     given()
-        .header('Authorization', 'Bearer ' + token)
+        .header("Authorization", "Bearer " + token)
     .when()
-        .get('/api/users')
+        .get("/api/users")
     .then()
         .statusCode(200)
-        .body('data', is(instanceOf(List.class)))
-        .body('data.size()', greaterThan(0));
+        .body("data", is(instanceOf(List.class)))
+        .body("data.size()", greaterThan(0));
 }
 ```
 
