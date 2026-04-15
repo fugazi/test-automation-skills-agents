@@ -32,15 +32,15 @@ Complete ISTQB Foundation Level (CTFL) aligned workflow for QA test engineers co
 
 ## Quick Start (choose one)
 
-- Create a test plan: use `assets/templates/test-plan.md` as a starting point.
-- Create a test summary report: use `assets/templates/test-summary-report.md`.
-- Generate test cases: use `assets/templates/test-cases.csv` and fill it from the test basis (requirements, user stories, acceptance criteria).
-- Create a bug report: use `assets/templates/bug-report.md`.
-- Create a bug log: use `assets/templates/bug-log.csv`.
-- Create traceability: use `assets/templates/traceability-matrix.csv`.
-- Build a regression suite definition: use `assets/templates/regression-suite.md`.
-- Scaffold Playwright tests: use `assets/templates/playwright-spec.ts` and adapt to the system under test.
-- Run exploratory testing: use `assets/templates/exploratory-charter.md` to timebox and capture outcomes.
+- Create a test plan: use `templates/test-plan.md` as a starting point.
+- Create a test summary report: use `templates/test-summary-report.md`.
+- Generate test cases: use `templates/test-cases.csv` and fill it from the test basis (requirements, user stories, acceptance criteria).
+- Create a bug report: use `templates/bug-report.md`.
+- Create a bug log: use `templates/bug-log.csv`.
+- Create traceability: use `templates/traceability-matrix.csv`.
+- Build a regression suite definition: use `templates/regression-suite.md`.
+- Scaffold Playwright tests: use `templates/playwright-spec.ts` and adapt to the system under test.
+- Run exploratory testing: use `templates/exploratory-charter.md` to timebox and capture outcomes.
 
 If running locally, generate artifacts with the bundled CLI:
 
@@ -70,7 +70,7 @@ node scripts/qa_artifacts.mjs create bug-report --out specs/bugs --title "Search
 5. Define entry/exit criteria, deliverables, and reporting cadence/metrics.
 6. Add a risk matrix and mitigation actions; prioritize testing accordingly (risk-based testing).
 
-Use: `assets/templates/test-plan.md` (detailed sections + checklists).
+Use: `templates/test-plan.md` (detailed sections + checklists).
 
 ### 2) Generate test conditions and test cases
 
@@ -80,13 +80,13 @@ Use: `assets/templates/test-plan.md` (detailed sections + checklists).
    - Decision tables for rule combinations.
    - State transitions for lifecycle/flows.
    - Use-case/scenario tests for end-to-end journeys.
-   - Exploratory testing sessions to learn quickly (see `assets/templates/exploratory-charter.md`).
+   - Exploratory testing sessions to learn quickly (see `templates/exploratory-charter.md`).
 3. Write test cases that are atomic, unambiguous, and traceable to requirement/user story IDs.
 4. Add expected results that are observable and measurable (define the test oracle).
 5. Add priority and risk tags to support risk-based regression selection.
 6. Mark automation candidates using stability + value criteria (see `references/automation-playwright-best-practices.md`).
 
-Use: `assets/templates/test-cases.csv`.
+Use: `templates/test-cases.csv`.
 
 ### 3) Implement automation test scripts (Playwright-first)
 
@@ -97,7 +97,7 @@ Use: `assets/templates/test-cases.csv`.
 5. Use tagging in test titles (e.g., `@smoke`, `@regression`) so suites are runnable via `--grep`.
 6. Capture artifacts for triage (screenshots/video/trace) when debugging failures.
 
-Use: `assets/templates/playwright-spec.ts` and `references/automation-playwright-best-practices.md`.
+Use: `templates/playwright-spec.ts` and `references/automation-playwright-best-practices.md`.
 
 ### 4) Build and maintain regression suites
 
@@ -106,7 +106,7 @@ Use: `assets/templates/playwright-spec.ts` and `references/automation-playwright
 3. Tag tests consistently and document selection rules and ownership.
 4. Review the suite regularly: remove obsolete coverage, add coverage for escaped defects and high-risk changes.
 
-Use: `assets/templates/regression-suite.md` and `references/regression-suite-strategy.md`.
+Use: `templates/regression-suite.md` and `references/regression-suite-strategy.md`.
 
 ### 5) Create bug reports and document bugs effectively
 
@@ -116,7 +116,7 @@ Use: `assets/templates/regression-suite.md` and `references/regression-suite-str
 4. Attach evidence (screenshots, console logs, network traces, Playwright trace) and link related tests/requirements.
 5. Track lifecycle: triage notes, owner, fix version, verification steps and results, closure criteria.
 
-Use: `assets/templates/bug-report.md` and `references/bug-report-quality.md`.
+Use: `templates/bug-report.md` and `references/bug-report-quality.md`.
 
 ### 6) Conduct static testing (reviews)
 
@@ -172,7 +172,7 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 
 ## Bundled Resources
 
-### Templates (`assets/templates/`)
+### Templates (`templates/`)
 
 | Template | Purpose |
 |----------|---------|

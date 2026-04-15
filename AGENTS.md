@@ -76,6 +76,16 @@ Follow this structure in agent files:
 
 Clear statement of who the agent is and its primary role.
 
+## Constitution (from TOP)
+
+### MUST DO
+
+- [5-6 rules that are NON-NEGOTIABLE for this agent]
+
+### WON'T DO
+
+- [4-5 rules that this agent must NEVER violate]
+
 ## Core Responsibilities
 
 - List specific tasks the agent performs
@@ -95,6 +105,10 @@ Clear statement of who the agent is and its primary role.
 
 - Expected format and quality
 ```
+
+### Constitution Pattern
+
+Agents that generate or modify test code should include a `## Constitution (from TOP)` section defining hard guardrails. The Constitution follows the Test Orchestration Pattern (TOP) and is defined centrally in `agents/qa-orchestrator.agent.md`. Individual agents copy the relevant MUST DO / WON'T DO rules into their own Constitution section so the rules are visible at the agent level.
 
 ### Skill Content Structure
 

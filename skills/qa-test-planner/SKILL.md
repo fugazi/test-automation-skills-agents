@@ -49,10 +49,10 @@ A comprehensive skill for QA Automation engineers to create test plans, generate
 
 | Task | Template | Time |
 |------|----------|------|
-| Test Plan | `assets/templates/test-plan.md` | 10-15 min |
-| Test Case | `assets/templates/test-case.md` | 5-10 min each |
-| Automated Test | `assets/templates/playwright-test.md` | 5-15 min each |
-| Bug Report | `assets/templates/bug-report.md` | 5 min |
+| Test Plan | `templates/test-plan.md` | 10-15 min |
+| Test Case | `templates/test-case.md` | 5-10 min each |
+| Automated Test | `templates/playwright-test.md` | 5-15 min each |
+| Bug Report | `templates/bug-report.md` | 5 min |
 
 ---
 
@@ -126,7 +126,7 @@ QA Deliverable Ready
 
 ### 1) Create a Test Plan
 
-1. Use `assets/templates/test-plan.md` as your starting point
+1. Use `templates/test-plan.md` as your starting point
 2. Identify test objectives, scope, assumptions, and constraints
 3. Define test levels and types (functional, UI, performance, etc.)
 4. Specify environments, test data, tooling, and configuration needs
@@ -134,11 +134,11 @@ QA Deliverable Ready
 6. Add a risk matrix and mitigation actions
 7. Prioritize testing accordingly (risk-based testing)
 
-**Template:** [`assets/templates/test-plan.md`](assets/templates/test-plan.md)
+**Template:** [`templates/test-plan.md`](templates/test-plan.md)
 
 ### 2) Generate Test Cases
 
-1. Use `assets/templates/test-case.md` for individual test cases
+1. Use `templates/test-case.md` for individual test cases
 3. Convert requirements into test conditions (what to test)
 4. Pick a test design technique:
    - Equivalence partitions and boundary values for inputs
@@ -151,11 +151,11 @@ QA Deliverable Ready
 8. Mark automation candidates using stability + value criteria
 
 **Templates:**
-- [`assets/templates/test-case.md`](assets/templates/test-case.md) - Individual test case
+- [`templates/test-case.md`](templates/test-case.md) - Individual test case
 
 ### 3) Implement Automation Test Scripts (Playwright)
 
-1. Use `assets/templates/playwright-test.md` as a template
+1. Use `templates/playwright-test.md` as a template
 2. Keep tests readable and aligned with test cases
 3. Prefer stable locators (e.g., `getByTestId`) over brittle selectors
 4. Avoid arbitrary sleeps; rely on Playwright auto-waits and explicit assertions
@@ -163,11 +163,11 @@ QA Deliverable Ready
 6. Use tagging in test titles (e.g., `@smoke`, `@regression`) for suite runs
 7. Capture artifacts for triage (screenshots/video/trace) when debugging
 
-**Template:** [`assets/templates/playwright-test.md`](assets/templates/playwright-test.md)
+**Template:** [`templates/playwright-test.md`](templates/playwright-test.md)
 
 ### 4) Build and Maintain Regression Suites
 
-1. Use `assets/templates/regression-suite.md` to define the suite
+1. Use `templates/regression-suite.md` to define the suite
 2. Define suite tiers: smoke (critical paths), sanity (build verification), regression (broad), full (release)
 3. Select tests using risk + frequency + criticality + defect history
 4. Tag tests consistently and document selection rules
@@ -177,7 +177,7 @@ QA Deliverable Ready
 
 ### 5) Create Bug Reports
 
-1. Use `assets/templates/bug-report.md` as your starting point
+1. Use `templates/bug-report.md` as your starting point
 2. Reproduce reliably; reduce to minimal steps
 3. Note variability (frequency) and scope
 4. Capture environment details (build/app version, OS, browser/device, account/role)
@@ -186,7 +186,7 @@ QA Deliverable Ready
 7. Attach evidence (screenshots, console logs, network traces, Playwright trace)
 8. Track lifecycle: triage notes, owner, fix version, verification steps
 
-**Template:** [`assets/templates/bug-report.md`](assets/templates/bug-report.md)
+**Template:** [`templates/bug-report.md`](templates/bug-report.md)
 
 ---
 
@@ -200,7 +200,7 @@ QA Deliverable Ready
 - Risk assessment
 - Timeline and milestones
 
-**Template:** [`assets/templates/test-plan.md`](assets/templates/test-plan.md)
+**Template:** [`templates/test-plan.md`](templates/test-plan.md)
 
 ### 2. Manual Test Cases
 - Step-by-step instructions
@@ -210,7 +210,7 @@ QA Deliverable Ready
 - Priority and severity
 
 **Templates:**
-- [`assets/templates/test-case.md`](assets/templates/test-case.md) - Individual test case
+- [`templates/test-case.md`](templates/test-case.md) - Individual test case
 
 ### 3. Regression Suites
 - Smoke tests (15-30 min) - P0 tests only
@@ -227,7 +227,7 @@ QA Deliverable Ready
 - test.step() grouping for readability
 - Screenshot capture on failure
 
-**Template:** [`assets/templates/playwright-test.md`](assets/templates/playwright-test.md)
+**Template:** [`templates/playwright-test.md`](templates/playwright-test.md)
 
 ### 5. Browser Validation (via Playwright MCP)
 - Live UI element verification
@@ -242,7 +242,7 @@ QA Deliverable Ready
 - Evidence (screenshots, logs)
 - Severity and priority
 
-**Template:** [`assets/templates/bug-report.md`](assets/templates/bug-report.md)
+**Template:** [`templates/bug-report.md`](templates/bug-report.md)
 
 ---
 
@@ -331,14 +331,14 @@ All user inputs should be:
 
 | Template | Purpose | Format |
 |----------|---------|--------|
-| [`test-plan.md`](assets/templates/test-plan.md) | ISTQB-aligned test plan structure | Markdown |
-| [`test-case.md`](assets/templates/test-case.md) | Individual test case with full sections | Markdown |
-| [`bug-report.md`](assets/templates/bug-report.md) | Detailed defect report | Markdown |
-| [`playwright-test.md`](assets/templates/playwright-test.md) | Playwright test template with best practices | Markdown |
+| [`test-plan.md`](templates/test-plan.md) | ISTQB-aligned test plan structure | Markdown |
+| [`test-case.md`](templates/test-case.md) | Individual test case with full sections | Markdown |
+| [`bug-report.md`](templates/bug-report.md) | Detailed defect report | Markdown |
+| [`playwright-test.md`](templates/playwright-test.md) | Playwright test template with best practices | Markdown |
 
 ### Template Usage
 
-All templates are located in `assets/templates/`. To use them:
+All templates are located in `templates/`. To use them:
 
 1. **Copy the template** to your project directory
 2. **Fill in placeholders** (marked with `[brackets]` or `${VARIABLE}`)
@@ -369,7 +369,7 @@ All templates are located in `assets/templates/`. To use them:
 
 **Result:**
 The AI will:
-1. Open `assets/templates/test-case.md`
+1. Open `templates/test-case.md`
 2. Fill in the placeholders with specific details:
    - TC-ID: `TC-LOGIN-001`
    - Title: `Verify valid user login with correct credentials`
@@ -393,7 +393,7 @@ The AI will:
 
 **Result:**
 The AI will:
-1. Open `assets/templates/bug-report.md`
+1. Open `templates/bug-report.md`
 2. Generate a unique bug ID (e.g., `BUG-1715345678`)
 3. Fill in the placeholders:
    - Title: `Login form accepts invalid email format`
@@ -417,7 +417,7 @@ The AI will:
 
 **Result:**
 The AI will:
-1. Open `assets/templates/playwright-test.md`
+1. Open `templates/playwright-test.md`
 2. Customize the test describe block for login functionality
 3. Add specific test cases:
    - `TC-LOGIN-001 @smoke @regression` - Valid login
