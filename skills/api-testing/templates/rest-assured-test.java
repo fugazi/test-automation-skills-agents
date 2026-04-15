@@ -9,7 +9,11 @@ class {Feature}ApiTest {
 
     @BeforeAll
     static void setup() {
-        RestAssured.baseURI = System.getenv("API_BASE_URL");
+        String apiBaseUrl = System.getenv("API_BASE_URL");
+        if (apiBaseUrl == null || apiBaseUrl.isBlank()) {
+            throw new IllegalStateException("Missing required environment variable: API_BASE_URL");
+        }
+        RestAssured.baseURI = apiBaseUrl;
         RestAssured.basePath = "/api/{resource}";
     }
 
