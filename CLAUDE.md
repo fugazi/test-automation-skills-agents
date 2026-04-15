@@ -49,6 +49,9 @@ Agents can define `handoffs` in frontmatter for guided sequential workflows. Eac
 - `assets/` - Static files used AS-IS in output
 - `templates/` - Starter code that AI modifies and builds upon
 
+**5. Test Orchestration Workflow**
+The TOP defines an 8-step workflow: Initialize → Explore → Plan → Generate → Implement → Review → Refactor → Run Tests. See `instructions/orchestration-workflow.instructions.md`.
+
 ## File Naming Conventions
 
 | Type | Pattern | Example |
@@ -238,3 +241,4 @@ When creating new agents or skills:
 - [instructions/agent-skills.instructions.md](./instructions/agent-skills.instructions.md) - Skill creation guidelines
 - [Official: Creating Custom Agents](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents)
 - [Official: Agent Skills Specification](https://agentskills.io/)
+- [Orchestration Workflow](./instructions/orchestration-workflow.instructions.md) — TOP 8-step workflow for AI-driven test automation
