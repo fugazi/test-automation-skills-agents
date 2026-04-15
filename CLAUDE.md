@@ -14,9 +14,11 @@ It contains custom agent definitions and skill instructions for:
 
 - **Playwright** (TypeScript) - End-to-end browser automation
 - **Selenium WebDriver** (Java 21+) - UI testing with JUnit 5 and AssertJ
+- **API Testing** - REST/GraphQL testing with Playwright request fixture and REST Assured
 - **Accessibility Testing** - WCAG 2.1 AA compliance testing
 - **Manual QA** - ISTQB-based testing practices
 - **Test Planning** - Test strategy and documentation
+- **CI/CD Pipelines** - GitHub Actions test automation workflows
 
 **Important:** This repository has **no build system**. Files are Markdown with YAML frontmatter. No build, lint, or test commands are required.
 
@@ -208,6 +210,18 @@ When creating orchestrator agents that delegate to sub-agents:
 - Modern Java: Records, Streams, Optional, Pattern Matching
 - See `instructions/selenium-webdriver-java.instructions.md`
 
+### API Testing
+- Playwright request fixture and REST Assured (Java 21+)
+- Schema validation (Zod for TS, JSON Schema Validator for Java)
+- Contract testing, idempotency, authentication flows
+- See `skills/api-testing/`
+
+### CI/CD Test Pipelines
+- Tiered test system: smoke → sanity → selective → full regression
+- GitHub Actions workflows with sharding and parallel execution
+- Deployment gates, flaky test handling, failure notifications
+- See `instructions/cicd-testing.instructions.md`
+
 ### Accessibility Testing
 - WCAG 2.1 AA compliance
 - Use axe-core or Playwright's built-in accessibility tree
@@ -244,3 +258,4 @@ When creating new agents or skills:
 - [Orchestration Workflow](./instructions/orchestration-workflow.instructions.md) — TOP 8-step workflow for AI-driven test automation
 - [File Map Template (Playwright)](./skills/playwright-e2e-testing/references/file-map-template.md) — Recommended project structure for Playwright TypeScript
 - [File Map Template (Selenium)](./skills/webapp-selenium-testing/references/file-map-template.md) — Recommended project structure for Selenium Java
+- [CI/CD Test Pipelines](./instructions/cicd-testing.instructions.md) — GitHub Actions workflows, test tiers, parallel execution

@@ -125,6 +125,9 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill p
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill playwright-cli
 ```
+```bash
+npx skills add https://github.com/fugazi/test-automation-skills-agents --skill api-testing
+```
 
 ---
 
@@ -164,6 +167,7 @@ Instructions are cross-cutting rules that keep outputs consistent:
 - Playwright coding standards, locator strategy, POM patterns
 - Selenium Java standards, explicit waits, AssertJ, Allure
 - Accessibility expectations (WCAG 2.1 AA)
+- CI/CD test pipeline configuration (GitHub Actions, test tiers, parallel execution)
 - Agent authoring guidelines (frontmatter, handoffs, tool selection)
 
 In practice:
@@ -254,6 +258,8 @@ Recommended pattern:
 
 This repo currently includes the following agents (see `agents/`):
 
+- **QA Orchestrator**: routes test tasks to specialist agents, enforces Test Constitution
+- **Architect**: orchestrator-style agent (delegation-focused)
 - **API Tester Specialist**: API test creation (REST Assured / Playwright API / Supertest), auth, contracts, schemas
 - **Flaky Test Hunter**: identifies root causes of flaky tests, applies stabilization strategies
 - **Playwright Test Planner**: explores an app and produces a structured test plan
@@ -265,7 +271,6 @@ This repo currently includes the following agents (see `agents/`):
 - **Docs Agent**: technical writer focused on docs output (note: its default paths reference a typical app repo)
 - **Implementation Plan Generation Mode**: produces deterministic implementation plans (no code changes)
 - **Principal Software Engineer**: principal-level guidance (architecture, quality, pragmatic trade-offs)
-- **Architect**: orchestrator-style agent (delegation-focused)
 
 > Note: Some agents are intended for orchestration or cross-repo workflows. Use the specialists for daily QA tasks.
 
@@ -309,6 +314,7 @@ Typical triggers:
 | `playwright-regression-testing` | Regression strategy + test selection + CI/CD optimization | “Organize tests into tiers (smoke, selective, full) and set up GitHub Actions pipeline.” |
 | `qa-manual-istqb` | ISTQB-aligned artifacts + test design techniques | “Create a risk-based regression suite and a traceability matrix.” |
 | `qa-test-planner` | Test plans + test cases + bug reports + Playwright artifacts | “Use the skill qa-test-planner to create a test plan for payments.” |
+| `api-testing` | REST/GraphQL testing with Playwright and REST Assured | “Create API tests for user endpoints with schema validation.” |
 
 > Note: `qa-test-planner` is intentionally strict: it is designed to trigger only when you call it by name.
 
@@ -371,6 +377,18 @@ If a skill still does not activate automatically:
    - Schema/contract checks
    - Idempotency where relevant
    - Pagination/sorting/filtering edge cases
+3. Use `api-testing` skill for schema validation patterns (Zod, JSON Schema) and contract testing.
+
+### Workflow 6 — CI/CD pipeline setup
+
+1. Use `cicd-testing` instruction for pipeline configuration guidance.
+2. Set up tiered GitHub Actions workflows:
+   - Smoke (every commit, < 2 min)
+   - Sanity (every PR, < 10 min)
+   - Selective regression (on merge, < 30 min)
+   - Full regression (nightly, < 60 min)
+3. Configure parallel execution with sharding.
+4. Add deployment gates, flaky test handling, and failure notifications.
 
 ## Contributing
 
@@ -416,7 +434,7 @@ If a skill still does not activate automatically:
 * Job: `SDET - Software Developer Engineer in Test`
 * Country: `Colombia`
 * City: `Medellin`
-* E-mail: `douglas@douglasfugazi.co`
+* E-mail: `info@douglasfugazi.co`
 * LinkedIn: [https://www.linkedin.com/in/douglasfugazi](https://www.linkedin.com/in/douglasfugazi)
 * Contact: [https://douglasfugazi.co](https://douglasfugazi.co)
 
