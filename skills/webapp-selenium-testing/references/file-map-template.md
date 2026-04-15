@@ -43,12 +43,25 @@ import com.project.factories.WebDriverFactory;
 import io.qameta.allure.Allure;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
 import org.openqa.selenium.*;
 import java.io.ByteArrayInputStream;
 
 @Slf4j
 public abstract class BaseTest {
     protected WebDriver driver;
+
+    @RegisterExtension
+    TestWatcher screenshotWatcher = new TestWatcher() {
+        @Override
+        public void testFailed(ExtensionContext context, Throwable cause) {
+            if (driver != null) {
+                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                Allure.addAttachment("Screenshot on failure", "image/png",
+                    new ByteArrayInputStream(screenshot), ".png");
+            }
+        }
+    };
 
     @BeforeEach
     void setUp(TestInfo testInfo) {
@@ -60,14 +73,9 @@ public abstract class BaseTest {
     @AfterEach
     void tearDown(TestInfo testInfo) {
         if (driver != null) {
-            captureScreenshotOnFailure(testInfo);
             driver.quit();
             log.info("Completed test: {}", testInfo.getDisplayName());
         }
-    }
-
-    private void captureScreenshotOnFailure(TestInfo testInfo) {
-        // Capture on failure for Allure reporting
     }
 }
 ```
@@ -109,6 +117,7 @@ public class LoginPage extends BasePage {
 package com.project.tests.feature;
 
 import com.project.fixtures.BaseTest;
+import com.project.pages.feature.LoginPage;
 import io.qameta.allure.*;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
@@ -116,6 +125,13 @@ import org.junit.jupiter.api.*;
 @Epic("Feature Epic")
 @Feature("Feature Name")
 class LoginTest extends BaseTest {
+
+    private LoginPage loginPage;
+
+    @BeforeEach
+    void initPages() {
+        loginPage = new LoginPage(driver);
+    }
 
     @Test
     @Tag("smoke")
