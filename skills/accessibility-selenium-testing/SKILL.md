@@ -428,6 +428,21 @@ class AccessibilityTest extends BaseTest {
 
 ---
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "Selenium isn't good for a11y testing" | axe-core + Selenium is battle-tested, CI-ready, and covers WCAG violations programmatically. |
+| "We can just run a scan at the end" | Shift-left: catch violations as code is written. Late scans mean expensive fixes. |
+| "The framework handles accessibility" | No framework auto-generates proper ARIA roles, labels, or keyboard interactions. |
+| "We only need to test the homepage" | Every page a user visits must be accessible. Start with high-risk pages, expand coverage. |
+| "Skip the contrast checks, designers fix that" | Automated contrast checks take seconds and prevent lawsuits. They are tests, not design reviews. |
+| "Our users don't have disabilities" | ~15% of the global population has some form of disability. Accessibility is for everyone. |
+
+---
+
 ## References
 
 - [Axe Patterns Guide](references/axe_patterns.md) - AxeBuilder patterns and helpers

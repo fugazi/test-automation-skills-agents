@@ -73,6 +73,21 @@ void getUsers() {
 }
 ```
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "Schema validation is overkill" | Without schema validation, a silent field rename becomes a production incident. Validate every response. |
+| "Happy path testing is enough" | Error states (400, 401, 403, 404, 409, 500) are where real failures happen. Test all status codes. |
+| "Auth tests can wait" | Unauthenticated access to protected endpoints is a security vulnerability, not a backlog item. |
+| "This endpoint won't change" | APIs evolve. Contract tests catch breaking changes before they reach production. |
+| "Manual API testing with Postman is sufficient" | Manual testing isn't repeatable, can't run in CI, and doesn't scale. Automate API tests. |
+| "Idempotency doesn't matter" | Duplicate requests happen in production. Without idempotency testing, you get duplicate records and charges. |
+
+---
+
 ## References
 
 | Document | Content |

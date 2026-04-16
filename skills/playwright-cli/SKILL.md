@@ -338,6 +338,20 @@ playwright-cli tracing-stop
 playwright-cli close
 ```
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "CLI tests aren't real tests" | CLI browser automation validates real rendering, DOM structure, and interaction — not mock output. |
+| "Just use the API instead" | Visual and structural validation requires an actual browser. API tests can't catch layout or a11y issues. |
+| "Screenshots are enough" | Accessibility snapshots catch structural issues (missing labels, roles, headings) that screenshots miss entirely. |
+| "I'll test manually in the browser" | Manual testing doesn't scale, isn't repeatable, and can't run in CI. Automate repeatable checks. |
+| "Console errors don't matter if the test passes" | Unhandled JavaScript exceptions indicate latent bugs. Always check console output during automation. |
+
+---
+
 ## Specific tasks
 
 * **Running and Debugging Playwright tests** [references/playwright-tests.md](references/playwright-tests.md)

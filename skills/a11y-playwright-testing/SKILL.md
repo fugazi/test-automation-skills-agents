@@ -260,6 +260,21 @@ new AxeBuilder({ page })
 
 ---
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "Accessibility can be tested manually later" | Automated a11y catches 30-57% of issues instantly. Write a11y tests now, not after release. |
+| "axe-core catches everything" | axe covers ~30-50% of WCAG criteria. Manual review and keyboard testing are still required. |
+| "Color contrast is a design concern" | It's a legal requirement under WCAG 2.1 AA 1.4.3. Automated contrast checks take zero effort. |
+| "Keyboard navigation tests are optional" | Keyboard-only users represent ~10% of your audience. Tab order and focus traps are testable. |
+| "Screen reader testing is too hard to automate" | ARIA role and label validation via Playwright catches most structural issues without a real screen reader. |
+| "A11y only matters for public-sector sites" | ADA lawsuits target e-commerce, SaaS, and private companies. Non-compliance is expensive. |
+
+---
+
 ## References
 
 | Document | Content |

@@ -212,3 +212,18 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 | Script | Purpose |
 |--------|---------|
 | `qa_artifacts.mjs` | CLI tool to generate QA artifacts from templates |
+
+---
+
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "ISTQB theory doesn't apply in practice" | Equivalence partitioning and boundary value analysis directly reduce test count while maintaining coverage. |
+| "We don't need test plans for small projects" | Even small projects benefit from structured testing. A lightweight test plan prevents scope creep. |
+| "Exploratory testing isn't real testing" | Exploratory testing finds bugs that scripted tests never will. It's a disciplined technique, not ad-hoc clicking. |
+| "Risk-based testing means testing less" | It means testing smarter — focusing effort where failure impact is highest, not testing everything equally. |
+| "Traceability matrices are bureaucratic overhead" | They prove coverage, support audit readiness, and reveal gaps between requirements and tests. |
+| "Manual testing is obsolete" | Manual testing catches usability, visual, and accessibility issues that automation misses entirely. |

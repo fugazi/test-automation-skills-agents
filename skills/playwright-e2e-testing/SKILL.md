@@ -247,6 +247,23 @@ export default defineConfig({
 
 ---
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "I'll add assertions later" | A test without assertions is a script, not a test. Add meaningful assertions now — later never comes. |
+| "This selector is stable enough" | CSS selectors break on refactor. Use `data-testid` or role-based locators for stability. |
+| "The test passes on my machine" | Local passes don't guarantee CI passes. Always validate in the target environment. |
+| "Skip the edge cases for now" | Edge cases are where production bugs live. Test them first, not last. |
+| "Visual tests aren't needed" | Visual regression catches CSS/layout bugs that functional assertions miss entirely. |
+| "This API won't change" | APIs evolve constantly. Contract tests prevent silent downstream failures. |
+| "One browser is enough" | Cross-browser issues are real and common. Test at least Chromium and Firefox. |
+| "`networkidle` is fine for waiting" | `networkidle` is deprecated and unreliable. Wait for specific conditions (elements, responses, URL changes). |
+
+---
+
 ## References
 
 | Document | Content |

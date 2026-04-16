@@ -76,6 +76,21 @@ Tier 3 — Full        (< 60 min)  → Complete regression, runs nightly/pre-rel
 
 ---
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "Run all tests every time" | Change-based test selection reduces CI time 60-80%. Run the full suite nightly, not every commit. |
+| "Flaky tests are normal" | Flaky tests erode trust in the entire suite. Quarantine, investigate, and fix them. |
+| "Regression testing is just re-running everything" | Strategic selection (risk-based, change-based) catches more defects in less time than brute-force runs. |
+| "Test sharding is premature optimization" | Parallel sharding cuts CI time linearly with workers. Start with 4 shards from day one. |
+| "Smoke tests cover regression" | Smoke tests verify health; regression tests verify behavior. They serve different purposes. |
+| "Tagging tests is busywork" | Tags enable selective execution, prioritization, and suite analysis. Untagged suites are unmanageable. |
+
+---
+
 ## References
 
 | Document | Content |

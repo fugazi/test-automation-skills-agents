@@ -330,6 +330,21 @@ page.locator('//div[@class="container"]/button[1]')
 
 ---
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "Just click and check the result" | Proper waits, assertions, and state validation are non-negotiable. A click without verification proves nothing. |
+| "Screenshots prove it works" | Screenshots prove it rendered, not that it works. Verify behavior with assertions, not just visuals. |
+| "I don't need to check console errors" | Console errors indicate JavaScript failures invisible to UI assertions. Always inspect browser logs. |
+| "The form submitted successfully" | Verify the database/API state, not just the UI response. A success message doesn't guarantee data persistence. |
+| "Skip responsive testing, it looks fine" | Viewport-specific layout bugs are the most reported mobile issue. Test at least 3 breakpoints. |
+| "Live browser testing is slow" | Accessibility snapshots are fast, deterministic, and catch structural issues that screenshots miss. |
+
+---
+
 ## References
 
 - [Locator Strategies Guide](references/locator_strategies.md) - Detailed locator patterns and best practices

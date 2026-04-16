@@ -521,6 +521,21 @@ The AI will:
 
 ---
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "Test plans are documentation theater" | A good test plan prevents scope creep, missed scenarios, and misaligned expectations before testing begins. |
+| "We can figure out test cases as we go" | Ad-hoc testing leaves gaps. Structured test cases ensure systematic coverage and traceability. |
+| "Bug reports can be informal" | Reproducible bug reports with exact steps save hours of back-and-forth between tester and developer. |
+| "Estimation is just guessing" | Test estimation techniques (function point analysis, Delphi method) improve accuracy and credibility. |
+| "Regression suites maintain themselves" | Without curation, suites grow bloated and slow. Regular review and pruning are mandatory. |
+| "Templates slow us down" | Templates ensure nothing is forgotten and standardize quality across the team. |
+
+---
+
 **"Testing shows the presence, not the absence of bugs." - Edsger Dijkstra**
 
 **"Quality is not an act, it is a habit." - Aristotle**
