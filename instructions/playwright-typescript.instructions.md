@@ -40,7 +40,7 @@ applyTo: '**'
 ## Example Test Structure
 
 ```typescript
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
 test.describe("Movie Search Feature", () => {
   test.beforeEach(async ({ page }) => {
