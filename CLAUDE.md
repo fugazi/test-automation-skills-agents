@@ -127,7 +127,7 @@ license: "Complete terms in LICENSE.txt" # Or SPDX identifier
 
 - Line length: Under 120 characters where practical
 - Indentation: 2 spaces for YAML and Markdown lists
-- Quotes: Single quotes for YAML string values
+- Quotes: Double quotes for YAML string values
 - Frontmatter markers: Triple-dash `---` at start and end
 
 ### Content Structure (Agents)
