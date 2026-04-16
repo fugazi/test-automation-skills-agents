@@ -124,7 +124,7 @@ Create `.windsurfrules` with project-level QA conventions:
 
 ### Testing Standards
 
-- Locator priority: getByRole() > getByTestId() > getByLabel() > CSS selectors
+- Locator priority: getByRole() > getByLabel()/getByPlaceholder()/getByText() > getByTestId() > CSS selectors
 - Use web-first assertions: await expect(locator).toBeVisible()
 - Page Object Model required for all test files
 - Custom fixtures for dependency injection — never use new PageObject()
