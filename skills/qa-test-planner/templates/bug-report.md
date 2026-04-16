@@ -124,9 +124,9 @@
 - [ ] Related test cases passing
 - [ ] Ready for release
 
-**Verified By:** ****\_\_\_****
-**Date:** ****\_\_\_****
-**Build Verified:** ****\_\_\_****
+**Verified By:** [Name]
+**Date:** [YYYY-MM-DD]
+**Build Verified:** [vX.X.X or commit hash]
 
 ---
 
