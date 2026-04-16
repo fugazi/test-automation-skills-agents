@@ -292,3 +292,18 @@ new AxeBuilder({ page })
 | WAI-ARIA Authoring Practices | https://www.w3.org/WAI/ARIA/apg/ |
 | axe-core Rules | https://dequeuniversity.com/rules/axe/ |
 
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **axe-core audit passes** — `AxeBuilder.analyze()` returns zero violations
+- [ ] **Keyboard navigation tested** — All interactive elements reachable via Tab; focus order is logical
+- [ ] **ARIA attributes valid** — No duplicate IDs, no missing labels, roles match element types
+- [ ] **Color contrast sufficient** — WCAG 2.1 AA minimum contrast ratios met (4.5:1 normal text, 3:1 large text)
+- [ ] **Screen reader compatible** — All images have alt text; form inputs have labels; landmarks present
+- [ ] **Accessibility scan integrated in CI** — Accessibility tests run as part of the standard CI pipeline
+- [ ] **Violation report generated** — Axe results saved to file for review and tracking
+
+

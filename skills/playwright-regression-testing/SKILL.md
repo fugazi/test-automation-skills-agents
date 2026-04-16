@@ -98,3 +98,18 @@ Tier 3 — Full        (< 60 min)  → Complete regression, runs nightly/pre-rel
 | [Regression Strategy](./references/regression-strategy.md) | Tier definitions, test selection (change-based, risk-based, historical, time-budget), directory layout, tagging, naming conventions, Playwright best practices, example test |
 | [CI/CD Integration](./references/ci-cd-integration.md) | GitHub Actions tiered pipeline, sharding, merge reports, Playwright config, performance optimization, CLI reference |
 | [Flaky Management](./references/flaky-management.md) | Retry policies, quarantine strategies, detection checklist, suite health metrics, troubleshooting |
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Regression suite covers critical paths** — All priority-1 user flows have regression tests
+- [ ] **Smoke test subset identified** — Tagged `@smoke` tests run in under 2 minutes
+- [ ] **No test duplication** — Each scenario tested exactly once at the appropriate level
+- [ ] **Test isolation verified** — Running tests in random order produces same results as sequential
+- [ ] **Flaky test baseline established** — All tests pass 5/5 consecutive runs
+- [ ] **CI pipeline configured** — GitHub Actions workflow runs regression on schedule
+- [ ] **Allure or HTML report generated** — Test results available in human-readable format
+

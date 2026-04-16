@@ -227,3 +227,18 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 | "Risk-based testing means testing less" | It means testing smarter — focusing effort where failure impact is highest, not testing everything equally. |
 | "Traceability matrices are bureaucratic overhead" | They prove coverage, support audit readiness, and reveal gaps between requirements and tests. |
 | "Manual testing is obsolete" | Manual testing catches usability, visual, and accessibility issues that automation misses entirely. |
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Test cases follow ISTQB structure** — Each case has: ID, description, preconditions, steps, expected result, actual result
+- [ ] **Coverage matrix maintained** — Requirements mapped to test cases; no uncovered requirements
+- [ ] **Priority levels assigned** — Each test case has a priority (Critical, High, Medium, Low)
+- [ ] **Positive and negative scenarios** — Both valid and invalid inputs tested
+- [ ] **Edge cases documented** — Boundary values, empty inputs, and extreme values covered
+- [ ] **Test data documented** — Specific test data values listed, not just "valid data"
+- [ ] **Traceability maintained** — Each test case links to a requirement or user story
+

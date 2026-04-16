@@ -273,3 +273,17 @@ export default defineConfig({
 | [Page Object Model](./references/page_object_model.md) | POM implementation patterns |
 | [Debugging Guide](./references/debugging.md) | Troubleshooting & debugging techniques |
 
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Test file follows naming convention** — File named `*.spec.ts` in the appropriate directory
+- [ ] **Uses custom fixture injection** — No `new PageObject()` calls in spec files; all POMs injected via fixtures
+- [ ] **Locators use recommended strategies** — All locators use `getByRole()`, `getByTestId()`, or `getByText()`; no CSS selectors for interactive elements
+- [ ] **Auto-waiting patterns used** — No `page.waitForTimeout()` or `sleep()` calls; all waits use `waitForSelector()`, `waitForURL()`, or built-in auto-waiting
+- [ ] **Tests are independent** — Each test sets up and tears down its own state; no `beforeAll` with shared mutable state
+- [ ] **Error states covered** — At least one test verifies error/empty/loading states alongside happy path
+- [ ] **All tests pass** — `npx playwright test` exits with code 0
+- [ ] **No skipped tests** — `grep -r "test.skip\|test.fixme" *.spec.ts` returns no results

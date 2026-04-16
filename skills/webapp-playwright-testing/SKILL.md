@@ -369,3 +369,18 @@ page.locator('//div[@class="container"]/button[1]')
 | Click element | "Click the {name} button" |
 | Check errors | "Show console messages" |
 | Test mobile | "Resize browser to 375x667" |
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Webapp fixture configured** — `playwright.config.ts` includes webapp-specific baseURL and viewport settings
+- [ ] **Authentication flow tested** — Login/logout scenarios covered with auth state management
+- [ ] **Network interception used appropriately** — API mocking uses `route.fulfill()` for deterministic tests
+- [ ] **Responsive breakpoints covered** — Tests include mobile, tablet, and desktop viewports
+- [ ] **JavaScript rendering handled** — Tests wait for dynamic content to load before asserting
+- [ ] **Console errors checked** — No unexpected console errors during test execution
+- [ ] **All tests pass in CI** — `npx playwright test --project=chromium` passes in CI environment
+

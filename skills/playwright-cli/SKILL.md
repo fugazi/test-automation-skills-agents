@@ -363,3 +363,16 @@ playwright-cli close
 * **Tracing** [references/tracing.md](references/tracing.md)
 * **Video recording** [references/video-recording.md](references/video-recording.md)
 * **Inspecting element attributes** [references/element-attributes.md](references/element-attributes.md)
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **CLI commands execute correctly** — All playwright-cli commands return expected output
+- [ ] **Screenshots captured** — Visual evidence saved for key states
+- [ ] **Console output clean** — No errors or warnings during CLI test execution
+- [ ] **Performance acceptable** — CLI operations complete within expected timeframes
+- [ ] **Results saved to specified path** — Output files exist at the declared location
+

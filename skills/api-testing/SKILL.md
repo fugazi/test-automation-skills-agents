@@ -115,3 +115,18 @@ void getUsers() {
 | Flaky API tests | Add retry logic; check for rate limiting; use unique test data |
 | Schema validation too strict | Use `.passthrough()` (Zod) or `additionalProperties: true` for flexible fields |
 | Timeout on slow endpoints | Increase `timeout` in request options; check for server load |
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **All CRUD operations tested** — POST, GET, PUT, PATCH, DELETE covered for the resource
+- [ ] **Status codes verified** — Success (2xx) AND error codes (4xx, 5xx) tested
+- [ ] **Schema validation in place** — Every response validated against a schema (Zod or JSON Schema)
+- [ ] **Authentication tested** — 401 returned for protected endpoints without valid credentials
+- [ ] **Idempotency verified** — PUT/DELETE produce same result when called multiple times
+- [ ] **Edge cases covered** — Empty payloads, invalid types, boundary values, SQL injection attempts
+- [ ] **All tests pass** — Playwright API tests or REST Assured tests exit successfully
+

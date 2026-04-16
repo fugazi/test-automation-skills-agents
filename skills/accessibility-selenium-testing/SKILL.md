@@ -466,4 +466,17 @@ class AccessibilityTest extends BaseTest {
 | Tab navigation | `element.sendKeys(Keys.TAB)` |
 | Get focused element | `driver.switchTo().activeElement()` |
 
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Axe WebDriver audit passes** — `AxeBuilder.analyze(driver)` returns zero violations
+- [ ] **WCAG 2.1 AA compliance** — All rules for AA level pass
+- [ ] **ARIA labels present** — All interactive elements have accessible names
+- [ ] **Keyboard accessibility verified** — Tab navigation reaches all interactive elements
+- [ ] **Violation report saved** — Accessibility results written to JSON/HTML file
+- [ ] **Tests pass with Java 21+** — `mvn test -Dtest=*Accessibility*` passes
+
 ````

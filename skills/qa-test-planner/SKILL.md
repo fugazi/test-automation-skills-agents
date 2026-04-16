@@ -539,3 +539,18 @@ The AI will:
 **"Testing shows the presence, not the absence of bugs." - Edsger Dijkstra**
 
 **"Quality is not an act, it is a habit." - Aristotle**
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Test strategy document created** — Covers scope, approach, resources, schedule, and risks
+- [ ] **Test levels defined** — Unit, integration, E2E, and acceptance levels with criteria
+- [ ] **Entry/exit criteria documented** — Clear definition of when testing starts and ends
+- [ ] **Risk-based prioritization** — Tests prioritized by impact x likelihood
+- [ ] **Environment requirements listed** — Hardware, software, data, and network requirements
+- [ ] **Defect management process defined** — How bugs are reported, tracked, and resolved
+- [ ] **Stakeholder sign-off** — Test plan reviewed and approved by relevant stakeholders
+
