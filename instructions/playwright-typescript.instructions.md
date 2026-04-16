@@ -17,7 +17,7 @@ applyTo: '**'
 
 ### Test Structure
 
-- **Imports**: Start with `import { test, expect } from '@playwright/test';`.
+- **Imports**: Start with `import { test, expect } from "@playwright/test";`.
 - **Organization**: Group related tests for a feature under a `test.describe()` block.
 - **Hooks**: Use `beforeEach` for setup actions common to all tests in a `describe` block (e.g., navigating to a page).
 - **Titles**: Follow a clear naming convention, such as `Feature - Specific action or scenario`.
