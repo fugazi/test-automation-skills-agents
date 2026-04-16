@@ -27,4 +27,3 @@
 - Suite duration per tier
 - Flake rate (retries, non-deterministic failures)
 - Defect detection effectiveness (escaped defect trends)
-

@@ -20,4 +20,3 @@
 - Reduce to the smallest reliable reproduction.
 - Include any constraints (only happens on Safari, only for Admin role, only after refresh).
 - Link related requirements, test cases, and recent changes if known.
-

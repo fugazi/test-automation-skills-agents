@@ -71,9 +71,9 @@
 
 ## Execution History
 
-| Date | Tester | Build | Result | Notes |
-|------|--------|-------|--------|-------|
-| [YYYY-MM-DD] | [Name] | [vX.X.X] | Not Run | |
+| Date         | Tester | Build    | Result  | Notes |
+| ------------ | ------ | -------- | ------- | ----- |
+| [YYYY-MM-DD] | [Name] | [vX.X.X] | Not Run |       |
 
 ---
 
@@ -107,10 +107,12 @@
 **Application URL:** [URL to validate]
 
 **Elements to validate:**
+
 - [Element 1]
 - [Element 2]
 
 **Playwright MCP Commands:**
+
 ```
 "Navigate to [URL]"
 "Get the accessibility snapshot"

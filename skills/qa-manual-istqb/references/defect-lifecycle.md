@@ -18,4 +18,3 @@
 - Reproduce on the fixed build using the same (or controlled) data
 - Run focused regression around the changed area
 - Add/adjust test cases and automation to prevent recurrence (especially for escaped defects)
-

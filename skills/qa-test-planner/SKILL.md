@@ -14,31 +14,37 @@ A comprehensive skill for QA Automation engineers to create test plans, generate
 ## Quick Start
 
 **Create a test plan:**
+
 ```
 "Create a test plan for the user authentication feature using the test-plan.md template"
 ```
 
 **Generate test cases:**
+
 ```
 "Generate manual test cases for the checkout flow using the test-case.md template"
 ```
 
 **Create automated Playwright tests:**
+
 ```
 "Create Playwright automated tests for the login flow using the playwright-test.md template"
 ```
 
 **Validate UI with browser:**
+
 ```
 "Navigate to the login page and validate all form elements are visible using Playwright MCP"
 ```
 
 **Build regression suite:**
+
 ```
 "Build a regression test suite for the payment module using test-case.md templates grouped by priority"
 ```
 
 **Create bug report:**
+
 ```
 "Create a bug report for the form validation issue using the bug-report.md template"
 ```
@@ -47,12 +53,12 @@ A comprehensive skill for QA Automation engineers to create test plans, generate
 
 ## Quick Reference
 
-| Task | Template | Time |
-|------|----------|------|
-| Test Plan | `templates/test-plan.md` | 10-15 min |
-| Test Case | `templates/test-case.md` | 5-10 min each |
+| Task           | Template                       | Time          |
+| -------------- | ------------------------------ | ------------- |
+| Test Plan      | `templates/test-plan.md`       | 10-15 min     |
+| Test Case      | `templates/test-case.md`       | 5-10 min each |
 | Automated Test | `templates/playwright-test.md` | 5-15 min each |
-| Bug Report | `templates/bug-report.md` | 5 min |
+| Bug Report     | `templates/bug-report.md`      | 5 min         |
 
 ---
 
@@ -73,13 +79,13 @@ Use this skill when you need to:
 
 ## Prerequisites
 
-| Requirement | Notes |
-|-------------|-------|
-| Node.js 18+ | Required for Playwright automation |
- | Playwright | `npm init playwright@latest` for automation |
- | Text editor | For creating/editing markdown files |
- | Git | Recommended for testware version control |
-| Playwright MCP | Optional, for browser-based validation |
+| Requirement    | Notes                                       |
+| -------------- | ------------------------------------------- |
+| Node.js 18+    | Required for Playwright automation          |
+| Playwright     | `npm init playwright@latest` for automation |
+| Text editor    | For creating/editing markdown files         |
+| Git            | Recommended for testware version control    |
+| Playwright MCP | Optional, for browser-based validation      |
 
 ---
 
@@ -139,18 +145,19 @@ QA Deliverable Ready
 ### 2) Generate Test Cases
 
 1. Use `templates/test-case.md` for individual test cases
-3. Convert requirements into test conditions (what to test)
-4. Pick a test design technique:
+2. Convert requirements into test conditions (what to test)
+3. Pick a test design technique:
    - Equivalence partitions and boundary values for inputs
    - Decision tables for rule combinations
    - State transitions for lifecycle/flows
    - Use-case/scenario tests for end-to-end journeys
-5. Write test cases that are atomic, unambiguous, and traceable
-6. Add expected results that are observable and measurable
-7. Add priority and risk tags to support risk-based regression
-8. Mark automation candidates using stability + value criteria
+4. Write test cases that are atomic, unambiguous, and traceable
+5. Add expected results that are observable and measurable
+6. Add priority and risk tags to support risk-based regression
+7. Mark automation candidates using stability + value criteria
 
 **Templates:**
+
 - [`templates/test-case.md`](templates/test-case.md) - Individual test case
 
 ### 3) Implement Automation Test Scripts (Playwright)
@@ -193,6 +200,7 @@ QA Deliverable Ready
 ## Core Deliverables
 
 ### 1. Test Plans
+
 - Test scope and objectives
 - Testing approach and strategy
 - Environment requirements
@@ -203,6 +211,7 @@ QA Deliverable Ready
 **Template:** [`templates/test-plan.md`](templates/test-plan.md)
 
 ### 2. Manual Test Cases
+
 - Step-by-step instructions
 - Expected vs actual results
 - Preconditions and setup
@@ -210,9 +219,11 @@ QA Deliverable Ready
 - Priority and severity
 
 **Templates:**
+
 - [`templates/test-case.md`](templates/test-case.md) - Individual test case
 
 ### 3. Regression Suites
+
 - Smoke tests (15-30 min) - P0 tests only
 - Full regression (2-4 hours) - P0, P1, P2 tests
 - Targeted regression (30-60 min) - Tests for specific feature
@@ -221,6 +232,7 @@ QA Deliverable Ready
 **Template:** Use individual `test-case.md` templates grouped by priority
 
 ### 4. Automated Playwright Tests
+
 - Role-based locator strategies
 - Web-first assertions
 - Page Object Model structure
@@ -230,6 +242,7 @@ QA Deliverable Ready
 **Template:** [`templates/playwright-test.md`](templates/playwright-test.md)
 
 ### 5. Browser Validation (via Playwright MCP)
+
 - Live UI element verification
 - Screenshot capture for evidence
 - Console log inspection
@@ -237,6 +250,7 @@ QA Deliverable Ready
 - Responsive viewport validation
 
 ### 6. Bug Reports
+
 - Clear reproduction steps
 - Environment details
 - Evidence (screenshots, logs)
@@ -252,13 +266,14 @@ QA Deliverable Ready
 
 **NEVER embed real credentials in test cases or code.** Use placeholders instead:
 
-| Instead of | Use |
-|------------|-----|
+| Instead of                    | Use                                                   |
+| ----------------------------- | ----------------------------------------------------- |
 | `test@example.com / Test123!` | `${TEST_USER_EMAIL}` or `process.env.TEST_USER_EMAIL` |
-| `password: "actualpassword"` | `password: "${TEST_PASSWORD}"` (from env) |
-| Hardcoded secrets | Environment variables via `.env` files |
+| `password: "actualpassword"`  | `password: "${TEST_PASSWORD}"` (from env)             |
+| Hardcoded secrets             | Environment variables via `.env` files                |
 
 **Test data best practices:**
+
 - Use test accounts provisioned via API or admin panel
 - Store credentials in environment variables
 - Use Faker.js or similar for generated test data
@@ -276,6 +291,7 @@ When using Playwright MCP to validate external/untrusted URLs:
 ### Input Sanitization
 
 All user inputs should be:
+
 - Validated for expected format
 - Escaped when used in generated code
 - Never passed directly to `eval()` or shell execution
@@ -284,32 +300,35 @@ All user inputs should be:
 
 ## Anti-Patterns
 
-| Avoid | Why | Instead |
-|-------|-----|---------|
-| Vague test steps | Can't reproduce | Specific actions + expected results |
-| Missing preconditions | Tests fail unexpectedly | Document all setup requirements |
-| No test data | Tester blocked | Provide sample data or generation |
-| Generic bug titles | Hard to track | Specific: "[Feature] issue when [action]" |
-| Skip edge cases | Miss critical bugs | Include boundary values, nulls |
-| Embedding credentials | Security risk | Use environment variables |
+| Avoid                 | Why                     | Instead                                   |
+| --------------------- | ----------------------- | ----------------------------------------- |
+| Vague test steps      | Can't reproduce         | Specific actions + expected results       |
+| Missing preconditions | Tests fail unexpectedly | Document all setup requirements           |
+| No test data          | Tester blocked          | Provide sample data or generation         |
+| Generic bug titles    | Hard to track           | Specific: "[Feature] issue when [action]" |
+| Skip edge cases       | Miss critical bugs      | Include boundary values, nulls            |
+| Embedding credentials | Security risk           | Use environment variables                 |
 
 ---
 
 ## Verification Checklist
 
 **Test Plan:**
+
 - [ ] Scope clearly defined (in/out)
 - [ ] Entry/exit criteria specified
 - [ ] Risks identified with mitigations
 - [ ] Timeline realistic
 
 **Test Cases:**
+
 - [ ] Each step has expected result
 - [ ] Preconditions documented
 - [ ] Test data uses placeholders (no hardcoded credentials)
 - [ ] Priority assigned
 
 **Automated Tests:**
+
 - [ ] Role-based locators used
 - [ ] Web-first assertions implemented
 - [ ] Page Object Model applied
@@ -318,6 +337,7 @@ All user inputs should be:
 - [ ] Credentials loaded from environment variables
 
 **Bug Reports:**
+
 - [ ] Reproducible steps
 - [ ] Environment documented
 - [ ] Screenshots/evidence attached
@@ -329,11 +349,11 @@ All user inputs should be:
 
 ### Available Templates
 
-| Template | Purpose | Format |
-|----------|---------|--------|
-| [`test-plan.md`](templates/test-plan.md) | ISTQB-aligned test plan structure | Markdown |
-| [`test-case.md`](templates/test-case.md) | Individual test case with full sections | Markdown |
-| [`bug-report.md`](templates/bug-report.md) | Detailed defect report | Markdown |
+| Template                                             | Purpose                                      | Format   |
+| ---------------------------------------------------- | -------------------------------------------- | -------- |
+| [`test-plan.md`](templates/test-plan.md)             | ISTQB-aligned test plan structure            | Markdown |
+| [`test-case.md`](templates/test-case.md)             | Individual test case with full sections      | Markdown |
+| [`bug-report.md`](templates/bug-report.md)           | Detailed defect report                       | Markdown |
 | [`playwright-test.md`](templates/playwright-test.md) | Playwright test template with best practices | Markdown |
 
 ### Template Usage
@@ -363,12 +383,14 @@ All templates are located in `templates/`. To use them:
 <summary><strong>Example: Using the Test Case Template</strong></summary>
 
 **Request:**
+
 ```
 "Create a test case for user login with valid credentials using the test-case.md template"
 ```
 
 **Result:**
 The AI will:
+
 1. Open `templates/test-case.md`
 2. Fill in the placeholders with specific details:
    - TC-ID: `TC-LOGIN-001`
@@ -387,12 +409,14 @@ The AI will:
 <summary><strong>Example: Using the Bug Report Template</strong></summary>
 
 **Request:**
+
 ```
 "Create a bug report for a login form validation issue using the bug-report.md template"
 ```
 
 **Result:**
 The AI will:
+
 1. Open `templates/bug-report.md`
 2. Generate a unique bug ID (e.g., `BUG-1715345678`)
 3. Fill in the placeholders:
@@ -411,12 +435,14 @@ The AI will:
 <summary><strong>Example: Using the Playwright Spec Template</strong></summary>
 
 **Request:**
+
 ```
 "Create Playwright tests for the login flow using the playwright-test.md template"
 ```
 
 **Result:**
 The AI will:
+
 1. Open `templates/playwright-test.md`
 2. Customize the test describe block for login functionality
 3. Add specific test cases:
@@ -439,6 +465,7 @@ The AI will:
 ### Test Case Writing
 
 **DO:**
+
 - Be specific and unambiguous
 - Include expected results for each step
 - Test one thing per test case
@@ -446,6 +473,7 @@ The AI will:
 - Keep test cases maintainable
 
 **DON'T:**
+
 - Assume knowledge
 - Make test cases too long
 - Skip preconditions
@@ -455,6 +483,7 @@ The AI will:
 ### Bug Reporting
 
 **DO:**
+
 - Provide clear reproduction steps
 - Include screenshots/videos
 - Specify exact environment details
@@ -462,6 +491,7 @@ The AI will:
 - Link to Figma for UI bugs
 
 **DON'T:**
+
 - Report without reproduction steps
 - Use vague descriptions
 - Skip environment details
@@ -471,6 +501,7 @@ The AI will:
 ### Regression Testing
 
 **DO:**
+
 - Automate repetitive tests when possible
 - Maintain regression suite regularly
 - Prioritize critical paths
@@ -478,6 +509,7 @@ The AI will:
 - Update suite after each release
 
 **DON'T:**
+
 - Skip regression before releases
 - Let suite become outdated
 - Test everything every time
@@ -486,12 +518,14 @@ The AI will:
 ### Security Best Practices
 
 **DO:**
+
 - Use environment variables for credentials
 - Use test accounts provisioned for testing
 - Validate URLs before navigating
 - Report suspicious content
 
 **DON'T:**
+
 - Embed real credentials in code
 - Navigate to untrusted URLs
 - Execute arbitrary JavaScript from user input
@@ -511,16 +545,45 @@ The AI will:
 
 ## Troubleshooting
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| Test cases lack traceability | Missing requirement IDs | Add `requirement_id` column; link to user stories/ACs |
-| Bug reports get rejected | Insufficient reproduction steps | Use minimal steps; include exact data and environment |
-| Regression suite too slow | Too many tests, no prioritization | Apply risk-based selection; tier into smoke/sanity/full |
-| Flaky automated tests | Unstable locators or timing | Use `data-testid`; avoid sleeps; use Playwright auto-waits |
-| Test estimates are wrong | Scope creep, missing risks | Add contingency; re-estimate when scope changes |
+| Problem                      | Cause                             | Solution                                                   |
+| ---------------------------- | --------------------------------- | ---------------------------------------------------------- |
+| Test cases lack traceability | Missing requirement IDs           | Add `requirement_id` column; link to user stories/ACs      |
+| Bug reports get rejected     | Insufficient reproduction steps   | Use minimal steps; include exact data and environment      |
+| Regression suite too slow    | Too many tests, no prioritization | Apply risk-based selection; tier into smoke/sanity/full    |
+| Flaky automated tests        | Unstable locators or timing       | Use `data-testid`; avoid sleeps; use Playwright auto-waits |
+| Test estimates are wrong     | Scope creep, missing risks        | Add contingency; re-estimate when scope changes            |
+
+---
+
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization                         | Reality                                                                                                     |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| "Test plans are documentation theater"  | A good test plan prevents scope creep, missed scenarios, and misaligned expectations before testing begins. |
+| "We can figure out test cases as we go" | Ad-hoc testing leaves gaps. Structured test cases ensure systematic coverage and traceability.              |
+| "Bug reports can be informal"           | Reproducible bug reports with exact steps save hours of back-and-forth between tester and developer.        |
+| "Estimation is just guessing"           | Test estimation techniques (function point analysis, Delphi method) improve accuracy and credibility.       |
+| "Regression suites maintain themselves" | Without curation, suites grow bloated and slow. Regular review and pruning are mandatory.                   |
+| "Templates slow us down"                | Templates ensure nothing is forgotten and standardize quality across the team.                              |
 
 ---
 
 **"Testing shows the presence, not the absence of bugs." - Edsger Dijkstra**
 
 **"Quality is not an act, it is a habit." - Aristotle**
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Test strategy document created** — Covers scope, approach, resources, schedule, and risks
+- [ ] **Test levels defined** — Unit, integration, E2E, and acceptance levels with criteria
+- [ ] **Entry/exit criteria documented** — Clear definition of when testing starts and ends
+- [ ] **Risk-based prioritization** — Tests prioritized by impact x likelihood
+- [ ] **Environment requirements listed** — Hardware, software, data, and network requirements
+- [ ] **Defect management process defined** — How bugs are reported, tracked, and resolved
+- [ ] **Stakeholder sign-off** — Test plan reviewed and approved by relevant stakeholders

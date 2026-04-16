@@ -23,11 +23,11 @@ This skill provides patterns and best practices for browser-based test automatio
 
 ## Prerequisites
 
-| Component | Requirement |
-|-----------|-------------|
-| Java JDK | 11 or higher (17+ recommended) |
-| Maven | 3.6 or higher |
-| Browser | Chrome, Firefox, or Edge |
+| Component | Requirement                    |
+| --------- | ------------------------------ |
+| Java JDK  | 11 or higher (17+ recommended) |
+| Maven     | 3.6 or higher                  |
+| Browser   | Chrome, Firefox, or Edge       |
 
 > **Note:** Selenium Manager (included in Selenium 4.6+) automatically handles browser driver binaries.
 
@@ -109,23 +109,27 @@ assertThat(errorMessage.isDisplayed())
 ### Workflow 2: Debug Failing Test
 
 1. **Run in non-headless mode**
+
    ```bash
    mvn test -Dtest=FailingTest -Dheadless=false
    ```
 
 2. **Capture screenshot on failure**
+
    ```java
    ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
    ```
 
 3. **Check browser console logs**
+
    ```java
    driver.manage().logs().get(LogType.BROWSER);
    ```
 
 4. **Verify locator in browser DevTools**
+
    ```javascript
-   document.querySelector('[data-testid="element"]')
+   document.querySelector('[data-testid="element"]');
    ```
 
 5. **Adjust wait conditions** - increase timeout or change ExpectedCondition
@@ -133,6 +137,7 @@ assertThat(errorMessage.isDisplayed())
 ### Workflow 3: Set Up New Project
 
 1. **Use the included setup script**
+
    ```powershell
    # Run from skills/webapp-selenium-testing/scripts/
    .\setup-maven-project.ps1 -ProjectName "my-tests"
@@ -185,26 +190,26 @@ assertThat(errorMessage.isDisplayed())
 
 ## Troubleshooting
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| Element not found | Not loaded yet | Use `WebDriverWait` with `visibilityOfElementLocated` |
-| Stale element reference | DOM changed | Re-locate element before interaction |
-| Click intercepted | Overlay blocking | Scroll into view or wait for overlay |
-| Timeout exception | Element never visible | Verify locator, check for iframes |
-| Session not created | Driver mismatch | Selenium Manager handles this |
-| Flaky tests | Race conditions | Add proper waits, use stable locators |
+| Problem                 | Cause                 | Solution                                              |
+| ----------------------- | --------------------- | ----------------------------------------------------- |
+| Element not found       | Not loaded yet        | Use `WebDriverWait` with `visibilityOfElementLocated` |
+| Stale element reference | DOM changed           | Re-locate element before interaction                  |
+| Click intercepted       | Overlay blocking      | Scroll into view or wait for overlay                  |
+| Timeout exception       | Element never visible | Verify locator, check for iframes                     |
+| Session not created     | Driver mismatch       | Selenium Manager handles this                         |
+| Flaky tests             | Race conditions       | Add proper waits, use stable locators                 |
 
 ---
 
 ## Maven Commands
 
-| Command | Purpose |
-|---------|---------|
-| `mvn test` | Run all tests |
-| `mvn test -Dtest=LoginTest` | Run specific class |
+| Command                                | Purpose             |
+| -------------------------------------- | ------------------- |
+| `mvn test`                             | Run all tests       |
+| `mvn test -Dtest=LoginTest`            | Run specific class  |
 | `mvn test -Dtest=LoginTest#methodName` | Run specific method |
-| `mvn test -Dgroups=smoke` | Run tagged tests |
-| `mvn test -Dheadless=true` | Run headless |
+| `mvn test -Dgroups=smoke`              | Run tagged tests    |
+| `mvn test -Dheadless=true`             | Run headless        |
 
 ### CI/CD Integration
 
@@ -212,6 +217,21 @@ assertThat(errorMessage.isDisplayed())
 - name: Run Selenium Tests
   run: mvn clean test -Dheadless=true -Dbrowser=chrome
 ```
+
+---
+
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization                                  | Reality                                                                                                              |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| "Selenium is outdated, use Playwright"           | Selenium has the largest ecosystem, broadest language support, and runs everywhere. It's not outdated — it's proven. |
+| "`Thread.sleep` is fine for waits"               | `WebDriverWait` with `ExpectedConditions` is faster, more reliable, and doesn't waste CI time.                       |
+| "Page Object Model is overkill"                  | Without POM, test maintenance cost grows quadratically as the suite scales.                                          |
+| "We don't need cross-browser testing"            | Cross-browser issues account for ~30% of frontend bugs. Test at least Chrome and Firefox.                            |
+| "Screenshot on failure is enough debugging info" | Combine screenshots with HTML source, console logs, and network logs for effective triage.                           |
+| "JUnit 5 extensions aren't needed"               | Extensions handle lifecycle, dependency injection, and parallel execution cleanly. Use them.                         |
 
 ---
 
@@ -227,11 +247,25 @@ assertThat(errorMessage.isDisplayed())
 
 ## Quick Reference
 
-| Task | Pattern |
-|------|---------|
-| Find by ID | `By.id("elementId")` |
-| Find by test ID | `By.cssSelector("[data-testid='name']")` |
-| Wait for visible | `wait.until(ExpectedConditions.visibilityOfElementLocated(by))` |
-| Click safely | `wait.until(ExpectedConditions.elementToBeClickable(by)).click()` |
-| Assert title | `assertThat(driver.getTitle()).contains("Expected")` |
-| Take screenshot | `((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE)` |
+| Task             | Pattern                                                           |
+| ---------------- | ----------------------------------------------------------------- |
+| Find by ID       | `By.id("elementId")`                                              |
+| Find by test ID  | `By.cssSelector("[data-testid='name']")`                          |
+| Wait for visible | `wait.until(ExpectedConditions.visibilityOfElementLocated(by))`   |
+| Click safely     | `wait.until(ExpectedConditions.elementToBeClickable(by)).click()` |
+| Assert title     | `assertThat(driver.getTitle()).contains("Expected")`              |
+| Take screenshot  | `((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE)`     |
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Page Object pattern followed** — Each page has a corresponding Java class with `@FindBy` annotations
+- [ ] **WebDriverManager used** — No manual driver setup; browser initialization uses WebDriverManager
+- [ ] **Explicit waits only** — No `Thread.sleep()` calls; all waits use `WebDriverWait` with ExpectedConditions
+- [ ] **Tests use AssertJ** — All assertions use `assertThat()` from AssertJ, not JUnit Assert
+- [ ] **Test data externalized** — No hard-coded test data in test methods; values come from test data providers or config files
+- [ ] **Browser cleanup guaranteed** — `@AfterEach` or `@AfterAll` includes `driver.quit()` in try-finally block
+- [ ] **All tests pass** — `mvn test` or `gradle test` exits with BUILD SUCCESS

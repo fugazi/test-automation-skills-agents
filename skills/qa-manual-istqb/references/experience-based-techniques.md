@@ -4,11 +4,11 @@ Experience-based techniques leverage the tester's knowledge, intuition, and skil
 
 ## Overview of Experience-Based Techniques
 
-| Technique | Best For | Key Benefit |
-|-----------|----------|-------------|
-| Error Guessing | Finding defects based on experience | Quick identification of likely failure points |
-| Checklist-Based | Consistent coverage of known areas | Structured approach with flexibility |
-| Exploratory Testing | Learning while testing; incomplete specs | Adaptive, creative defect discovery |
+| Technique           | Best For                                 | Key Benefit                                   |
+| ------------------- | ---------------------------------------- | --------------------------------------------- |
+| Error Guessing      | Finding defects based on experience      | Quick identification of likely failure points |
+| Checklist-Based     | Consistent coverage of known areas       | Structured approach with flexibility          |
+| Exploratory Testing | Learning while testing; incomplete specs | Adaptive, creative defect discovery           |
 
 ## 1. Error Guessing
 
@@ -23,16 +23,16 @@ Error guessing uses the tester's experience to anticipate where defects are like
 
 ### Common Error Categories to Guess
 
-| Category | Examples |
-|----------|----------|
-| **Input handling** | Empty inputs, special characters, SQL injection, XSS |
-| **Boundary conditions** | Off-by-one errors, max length exceeded, zero values |
-| **State management** | Invalid state transitions, race conditions, session expiry |
-| **Integration points** | API failures, timeout handling, data format mismatches |
-| **Error handling** | Missing error messages, incorrect error codes, unhandled exceptions |
-| **Concurrency** | Simultaneous updates, deadlocks, data corruption |
-| **Configuration** | Default values, environment differences, feature flags |
-| **Edge cases** | First/last item, empty collections, null values |
+| Category                | Examples                                                            |
+| ----------------------- | ------------------------------------------------------------------- |
+| **Input handling**      | Empty inputs, special characters, SQL injection, XSS                |
+| **Boundary conditions** | Off-by-one errors, max length exceeded, zero values                 |
+| **State management**    | Invalid state transitions, race conditions, session expiry          |
+| **Integration points**  | API failures, timeout handling, data format mismatches              |
+| **Error handling**      | Missing error messages, incorrect error codes, unhandled exceptions |
+| **Concurrency**         | Simultaneous updates, deadlocks, data corruption                    |
+| **Configuration**       | Default values, environment differences, feature flags              |
+| **Edge cases**          | First/last item, empty collections, null values                     |
 
 ### Error Guessing Checklist
 
@@ -63,13 +63,13 @@ Checklist-based testing uses predefined lists of conditions or quality attribute
 
 ### Types of Checklists
 
-| Checklist Type | Purpose | Example Items |
-|----------------|---------|---------------|
-| **Functional** | Feature-specific coverage | Login flows, CRUD operations |
-| **Quality characteristic** | Non-functional aspects | Performance, security, usability |
-| **Platform/device** | Cross-platform coverage | Browsers, OS versions, devices |
-| **Regulatory** | Compliance requirements | WCAG, GDPR, HIPAA |
-| **User journey** | End-to-end flows | Purchase, onboarding, support |
+| Checklist Type             | Purpose                   | Example Items                    |
+| -------------------------- | ------------------------- | -------------------------------- |
+| **Functional**             | Feature-specific coverage | Login flows, CRUD operations     |
+| **Quality characteristic** | Non-functional aspects    | Performance, security, usability |
+| **Platform/device**        | Cross-platform coverage   | Browsers, OS versions, devices   |
+| **Regulatory**             | Compliance requirements   | WCAG, GDPR, HIPAA                |
+| **User journey**           | End-to-end flows          | Purchase, onboarding, support    |
 
 ### Sample Functional Checklist: User Authentication
 
@@ -129,22 +129,24 @@ Exploratory testing is a **simultaneous learning, test design, and test executio
 
 Structure exploratory testing with **charters** and **sessions**:
 
-| Element | Description |
-|---------|-------------|
-| **Charter** | Mission statement: what to explore, why, how long |
-| **Session** | Time-boxed period of testing (typically 45-90 min) |
-| **Session notes** | Observations, questions, ideas, findings |
-| **Debrief** | Review session with stakeholders; plan next steps |
+| Element           | Description                                        |
+| ----------------- | -------------------------------------------------- |
+| **Charter**       | Mission statement: what to explore, why, how long  |
+| **Session**       | Time-boxed period of testing (typically 45-90 min) |
+| **Session notes** | Observations, questions, ideas, findings           |
+| **Debrief**       | Review session with stakeholders; plan next steps  |
 
 ### Writing Effective Charters
 
 A charter should answer:
+
 - **What** area or feature to explore?
 - **Why** is this important (risk, change, unknowns)?
 - **How** to approach (techniques, data, personas)?
 - **What** are the expected oracles (how to judge correct behavior)?
 
 **Charter template:**
+
 ```
 Explore [target area]
 With [resources: data, tools, persona]
@@ -152,6 +154,7 @@ To discover [information sought: risks, behaviors, issues]
 ```
 
 **Example charters:**
+
 - "Explore the checkout flow with edge-case payment methods to discover error handling gaps"
 - "Explore the admin dashboard with slow network to discover performance and usability issues"
 - "Explore user registration with special characters to discover input validation defects"
@@ -160,17 +163,18 @@ To discover [information sought: risks, behaviors, issues]
 
 Use heuristics to guide exploration:
 
-| Heuristic | Description |
-|-----------|-------------|
-| **SFDPOT** | Structure, Function, Data, Platform, Operations, Time |
-| **HICCUPPS** | History, Image, Comparable products, Claims, User expectations, Product, Purpose, Standards |
-| **Boundaries** | Test at limits, just inside, just outside |
-| **Interruptions** | Cancel, back, refresh, timeout mid-operation |
-| **Data variations** | Valid, invalid, empty, long, special characters |
+| Heuristic           | Description                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------------- |
+| **SFDPOT**          | Structure, Function, Data, Platform, Operations, Time                                       |
+| **HICCUPPS**        | History, Image, Comparable products, Claims, User expectations, Product, Purpose, Standards |
+| **Boundaries**      | Test at limits, just inside, just outside                                                   |
+| **Interruptions**   | Cancel, back, refresh, timeout mid-operation                                                |
+| **Data variations** | Valid, invalid, empty, long, special characters                                             |
 
 ### Documenting Exploratory Sessions
 
 During the session, capture:
+
 - **Observations**: What you noticed (good and bad)
 - **Questions**: Things to investigate or clarify
 - **Ideas**: New test ideas spawned
@@ -178,20 +182,21 @@ During the session, capture:
 - **Risks**: Areas needing more testing
 
 After the session:
+
 - **Summary**: What was explored, how long, coverage
 - **Findings**: Defects, issues, concerns
 - **Follow-up**: New charters, test cases to formalize, automation candidates
 
 ## Combining Techniques
 
-| Situation | Recommended Approach |
-|-----------|---------------------|
+| Situation               | Recommended Approach            |
+| ----------------------- | ------------------------------- |
 | Well-documented feature | Specification-based + checklist |
-| New or changed feature | Exploratory + error guessing |
-| High-risk area | All techniques combined |
-| Time-constrained | Error guessing + checklist |
-| Learning the system | Exploratory testing |
-| Regression testing | Checklist + automated tests |
+| New or changed feature  | Exploratory + error guessing    |
+| High-risk area          | All techniques combined         |
+| Time-constrained        | Error guessing + checklist      |
+| Learning the system     | Exploratory testing             |
+| Regression testing      | Checklist + automated tests     |
 
 ## Metrics for Experience-Based Testing
 

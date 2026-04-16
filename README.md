@@ -34,6 +34,8 @@ This repository is designed to be **copied/embedded into real testing projects**
 agents/           # Custom agent definitions (*.agent.md)
 instructions/     # Authoring & operational guidelines (*.instructions.md)
 skills/           # Reusable capabilities (skills/*/SKILL.md + resources)
+docs/             # Setup guides and documentation
+references/       # Shared reference material (anti-patterns, patterns)
 AGENTS.md         # House style, file standards, frontmatter rules
 CLAUDE.md         # Additional guidance (legacy + architecture notes)
 ```
@@ -46,6 +48,16 @@ This repo is a **catalog**. Choose the integration style for your tool.
 
 - **GitHub Copilot (customizations)**: use `.github/agents`, `.github/instructions`, and `.github/skills`.
 - **Claude/Cursor/OpenCode/Windsurf/etc.**: copy the same content into the tool’s repo/workspace rules system, keeping the same structure and naming so your team shares a consistent vocabulary.
+
+### Setup guides
+
+| Tool           | Setup Guide                                              |
+| -------------- | -------------------------------------------------------- |
+| Claude Code    | [docs/claude-code-setup.md](./docs/claude-code-setup.md) |
+| Cursor         | [docs/cursor-setup.md](./docs/cursor-setup.md)           |
+| GitHub Copilot | [docs/copilot-setup.md](./docs/copilot-setup.md)         |
+| Gemini CLI     | [docs/gemini-cli-setup.md](./docs/gemini-cli-setup.md)   |
+| Windsurf       | [docs/windsurf-setup.md](./docs/windsurf-setup.md)       |
 
 ### Option A — Copy into your target repository (most reliable)
 
@@ -101,30 +113,39 @@ Copy/paste any of these commands:
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill playwright-e2e-testing
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill a11y-playwright-testing
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill webapp-playwright-testing
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill qa-test-planner
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill webapp-selenium-testing
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill qa-manual-istqb
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill accessibility-selenium-testing
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill playwright-regression-testing
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill playwright-cli
 ```
+
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill api-testing
 ```
@@ -136,6 +157,7 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill a
 > Packaging note: the current folder layout and `frontmatter` conventions are optimized for `GitHub Copilot` customizations.
 > If you use another tool, you can still reuse the same content by mapping it to that tool’s
 > equivalent mechanisms (rules files, system prompts, playbooks, templates).
+
 ---
 
 ## Core concepts
@@ -185,11 +207,11 @@ Tool-agnostic mapping:
 Customizations can behave slightly differently depending on where you run Copilot.
 
 - **VS Code**
-   - Supports agent `model` and `handoffs` (depending on version).
-   - Great for interactive workflows (planning → generate → debug → heal).
+  - Supports agent `model` and `handoffs` (depending on version).
+  - Great for interactive workflows (planning → generate → debug → heal).
 - **GitHub (Copilot Coding Agent)**
-   - Commonly expects agents under `.github/agents/`.
-   - Some frontmatter fields may be ignored depending on the environment.
+  - Commonly expects agents under `.github/agents/`.
+  - Some frontmatter fields may be ignored depending on the environment.
 
 When in doubt, keep the frontmatter minimal and portable:
 
@@ -304,17 +326,17 @@ Typical triggers:
 
 ### Skills catalog (this repo)
 
-| Skill | Best for | Typical prompts |
-|------|----------|-----------------|
-| `playwright-e2e-testing` | Playwright TypeScript E2E + API-in-test patterns | “Write Playwright tests for checkout with POM and stable locators.” |
-| `webapp-playwright-testing` | Live browser interaction + debugging via Playwright MCP | “Navigate to /login, fill the form, and verify validation errors.” |
-| `a11y-playwright-testing` | WCAG 2.1 AA checks using Playwright + axe-core | “Add automated a11y scans for auth pages and keyboard nav tests.” |
-| `webapp-selenium-testing` | Selenium Java automation patterns | “Create Selenium POM + JUnit 5 tests for login and profile update.” |
-| `accessibility-selenium-testing` | A11y scanning with Selenium + axe-core | “Scan key pages for WCAG issues and generate an Allure-friendly report.” |
-| `playwright-regression-testing` | Regression strategy + test selection + CI/CD optimization | “Organize tests into tiers (smoke, selective, full) and set up GitHub Actions pipeline.” |
-| `qa-manual-istqb` | ISTQB-aligned artifacts + test design techniques | “Create a risk-based regression suite and a traceability matrix.” |
-| `qa-test-planner` | Test plans + test cases + bug reports + Playwright artifacts | “Use the skill qa-test-planner to create a test plan for payments.” |
-| `api-testing` | REST/GraphQL testing with Playwright and REST Assured | “Create API tests for user endpoints with schema validation.” |
+| Skill                            | Best for                                                     | Typical prompts                                                                          |
+| -------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `playwright-e2e-testing`         | Playwright TypeScript E2E + API-in-test patterns             | “Write Playwright tests for checkout with POM and stable locators.”                      |
+| `webapp-playwright-testing`      | Live browser interaction + debugging via Playwright MCP      | “Navigate to /login, fill the form, and verify validation errors.”                       |
+| `a11y-playwright-testing`        | WCAG 2.1 AA checks using Playwright + axe-core               | “Add automated a11y scans for auth pages and keyboard nav tests.”                        |
+| `webapp-selenium-testing`        | Selenium Java automation patterns                            | “Create Selenium POM + JUnit 5 tests for login and profile update.”                      |
+| `accessibility-selenium-testing` | A11y scanning with Selenium + axe-core                       | “Scan key pages for WCAG issues and generate an Allure-friendly report.”                 |
+| `playwright-regression-testing`  | Regression strategy + test selection + CI/CD optimization    | “Organize tests into tiers (smoke, selective, full) and set up GitHub Actions pipeline.” |
+| `qa-manual-istqb`                | ISTQB-aligned artifacts + test design techniques             | “Create a risk-based regression suite and a traceability matrix.”                        |
+| `qa-test-planner`                | Test plans + test cases + bug reports + Playwright artifacts | “Use the skill qa-test-planner to create a test plan for payments.”                      |
+| `api-testing`                    | REST/GraphQL testing with Playwright and REST Assured        | “Create API tests for user endpoints with schema validation.”                            |
 
 > Note: `qa-test-planner` is intentionally strict: it is designed to trigger only when you call it by name.
 
@@ -419,28 +441,30 @@ If a skill still does not activate automatically:
 
 ## Troubleshooting
 
-| Symptom | Likely cause | Fix |
-|--------|--------------|-----|
-| Agent not visible in selector | Wrong folder path | Ensure `.github/agents/*.agent.md` in target repo |
-| Skill never triggers | Description too vague or folder not in canonical location | Improve `description` and ensure `.github/skills/<skill>/SKILL.md` |
-| `qa-test-planner` doesn’t activate | Designed to be explicit-only | Mention it by name: “use the skill qa-test-planner …” |
-| Generated tests are unstable | Locator/wait anti-patterns | Follow the locator priority + web-first assertions from Playwright skills |
-| Selenium tests flaky | `Thread.sleep()` or missing explicit waits | Use `WebDriverWait` patterns from Selenium instructions/skills |
+| Symptom                            | Likely cause                                              | Fix                                                                       |
+| ---------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Agent not visible in selector      | Wrong folder path                                         | Ensure `.github/agents/*.agent.md` in target repo                         |
+| Skill never triggers               | Description too vague or folder not in canonical location | Improve `description` and ensure `.github/skills/<skill>/SKILL.md`        |
+| `qa-test-planner` doesn’t activate | Designed to be explicit-only                              | Mention it by name: “use the skill qa-test-planner …”                     |
+| Generated tests are unstable       | Locator/wait anti-patterns                                | Follow the locator priority + web-first assertions from Playwright skills |
+| Selenium tests flaky               | `Thread.sleep()` or missing explicit waits                | Use `WebDriverWait` patterns from Selenium instructions/skills            |
 
 ---
 
 ## 🏠 Author
-* Name: `Douglas Urrea Ocampo`
-* Job: `SDET - Software Developer Engineer in Test`
-* Country: `Colombia`
-* City: `Medellin`
-* E-mail: `info@douglasfugazi.co`
-* LinkedIn: [https://www.linkedin.com/in/douglasfugazi](https://www.linkedin.com/in/douglasfugazi)
-* Contact: [https://douglasfugazi.co](https://douglasfugazi.co)
+
+- Name: `Douglas Urrea Ocampo`
+- Job: `SDET - Software Developer Engineer in Test`
+- Country: `Colombia`
+- City: `Medellin`
+- E-mail: `info@douglasfugazi.co`
+- LinkedIn: [https://www.linkedin.com/in/douglasfugazi](https://www.linkedin.com/in/douglasfugazi)
+- Contact: [https://douglasfugazi.co](https://douglasfugazi.co)
 
 ---
 
 ## 📄 License
+
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---

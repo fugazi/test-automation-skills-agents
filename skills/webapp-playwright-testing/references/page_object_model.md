@@ -14,13 +14,13 @@ Page Object Model (POM) is a design pattern that creates an abstraction layer be
 
 ### Benefits
 
-| Benefit | Description |
-|---------|-------------|
-| Maintainability | Change locator once, not in every test |
-| Readability | Tests read like user stories |
-| Reusability | Share page logic across tests |
-| Separation | Test logic separate from implementation |
-| Scalability | Easy to add new pages/components |
+| Benefit         | Description                             |
+| --------------- | --------------------------------------- |
+| Maintainability | Change locator once, not in every test  |
+| Readability     | Tests read like user stories            |
+| Reusability     | Share page logic across tests           |
+| Separation      | Test logic separate from implementation |
+| Scalability     | Easy to add new pages/components        |
 
 ---
 
@@ -52,7 +52,7 @@ Create a base class with common functionality:
 
 ```typescript
 // pages/BasePage.ts
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect } from "@playwright/test";
 
 export class BasePage {
   readonly page: Page;
@@ -62,13 +62,13 @@ export class BasePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.header = page.getByRole('banner');
-    this.footer = page.getByRole('contentinfo');
-    this.loadingSpinner = page.getByRole('progressbar');
+    this.header = page.getByRole("banner");
+    this.footer = page.getByRole("contentinfo");
+    this.loadingSpinner = page.getByRole("progressbar");
   }
 
   async waitForPageLoad(): Promise<void> {
-    await this.loadingSpinner.waitFor({ state: 'hidden' });
+    await this.loadingSpinner.waitFor({ state: "hidden" });
   }
 
   async getPageTitle(): Promise<string> {
@@ -76,16 +76,16 @@ export class BasePage {
   }
 
   async takeScreenshot(name: string): Promise<void> {
-    await this.page.screenshot({ 
+    await this.page.screenshot({
       path: `screenshots/${name}-${Date.now()}.png`,
-      fullPage: true 
+      fullPage: true,
     });
   }
 
   async expectNoConsoleErrors(): Promise<void> {
     const errors: string[] = [];
-    this.page.on('console', msg => {
-      if (msg.type() === 'error') {
+    this.page.on("console", (msg) => {
+      if (msg.type() === "error") {
         errors.push(msg.text());
       }
     });
@@ -102,9 +102,9 @@ export class BasePage {
 
 ```typescript
 // pages/LoginPage.ts
-import { Page, Locator, expect } from '@playwright/test';
-import { BasePage } from './BasePage';
-import { DashboardPage } from './DashboardPage';
+import { Page, Locator, expect } from "@playwright/test";
+import { BasePage } from "./BasePage";
+import { DashboardPage } from "./DashboardPage";
 
 export class LoginPage extends BasePage {
   // Locators
@@ -117,17 +117,19 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.emailInput = page.getByRole('textbox', { name: 'Email' });
-    this.passwordInput = page.getByRole('textbox', { name: 'Password' });
-    this.loginButton = page.getByRole('button', { name: 'Login' });
-    this.errorMessage = page.getByRole('alert');
-    this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot password?' });
-    this.signUpLink = page.getByRole('link', { name: 'Sign up' });
+    this.emailInput = page.getByRole("textbox", { name: "Email" });
+    this.passwordInput = page.getByRole("textbox", { name: "Password" });
+    this.loginButton = page.getByRole("button", { name: "Login" });
+    this.errorMessage = page.getByRole("alert");
+    this.forgotPasswordLink = page.getByRole("link", {
+      name: "Forgot password?",
+    });
+    this.signUpLink = page.getByRole("link", { name: "Sign up" });
   }
 
   // Navigation
   async goto(): Promise<this> {
-    await this.page.goto('/login');
+    await this.page.goto("/login");
     return this;
   }
 
@@ -174,8 +176,8 @@ export class LoginPage extends BasePage {
 
 ```typescript
 // pages/DashboardPage.ts
-import { Page, Locator, expect } from '@playwright/test';
-import { BasePage } from './BasePage';
+import { Page, Locator, expect } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
 export class DashboardPage extends BasePage {
   readonly welcomeHeading: Locator;
@@ -186,15 +188,17 @@ export class DashboardPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.welcomeHeading = page.getByRole('heading', { level: 1 });
-    this.userMenu = page.getByRole('button', { name: /user menu/i });
-    this.logoutButton = page.getByRole('menuitem', { name: 'Logout' });
-    this.statsCards = page.getByTestId('stats-card');
-    this.recentActivityList = page.getByRole('list', { name: 'Recent Activity' });
+    this.welcomeHeading = page.getByRole("heading", { level: 1 });
+    this.userMenu = page.getByRole("button", { name: /user menu/i });
+    this.logoutButton = page.getByRole("menuitem", { name: "Logout" });
+    this.statsCards = page.getByTestId("stats-card");
+    this.recentActivityList = page.getByRole("list", {
+      name: "Recent Activity",
+    });
   }
 
   async goto(): Promise<this> {
-    await this.page.goto('/dashboard');
+    await this.page.goto("/dashboard");
     return this;
   }
 
@@ -204,7 +208,7 @@ export class DashboardPage extends BasePage {
   }
 
   async getWelcomeMessage(): Promise<string> {
-    return await this.welcomeHeading.textContent() ?? '';
+    return (await this.welcomeHeading.textContent()) ?? "";
   }
 
   async expectWelcomeMessage(name: string): Promise<void> {
@@ -225,13 +229,11 @@ Design methods to return `this` or the next page object for method chaining:
 
 ```typescript
 // Fluent chaining within same page
-await loginPage
-  .fillEmail('user@test.com')
-  .fillPassword('password123');
+await loginPage.fillEmail("user@test.com").fillPassword("password123");
 
 // Fluent navigation to next page
-const dashboard = await loginPage.login('user@test.com', 'password');
-await dashboard.expectWelcomeMessage('John');
+const dashboard = await loginPage.login("user@test.com", "password");
+await dashboard.expectWelcomeMessage("John");
 ```
 
 ### Implementation Pattern
@@ -240,7 +242,7 @@ await dashboard.expectWelcomeMessage('John');
 export class CheckoutPage extends BasePage {
   // Actions that stay on same page return 'this'
   async selectShipping(method: string): Promise<this> {
-    await this.page.getByRole('radio', { name: method }).check();
+    await this.page.getByRole("radio", { name: method }).check();
     return this;
   }
 
@@ -260,8 +262,8 @@ export class CheckoutPage extends BasePage {
 
 // Usage
 const payment = await checkoutPage
-  .selectShipping('Express')
-  .enterPromoCode('SAVE10')
+  .selectShipping("Express")
+  .enterPromoCode("SAVE10")
   .proceedToPayment();
 ```
 
@@ -273,7 +275,7 @@ For reusable UI components (header, footer, modals):
 
 ```typescript
 // pages/components/HeaderComponent.ts
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator } from "@playwright/test";
 
 export class HeaderComponent {
   readonly page: Page;
@@ -285,21 +287,21 @@ export class HeaderComponent {
 
   constructor(page: Page) {
     this.page = page;
-    this.logo = page.getByRole('banner').getByRole('link', { name: 'Home' });
-    this.searchBox = page.getByRole('searchbox');
-    this.cartIcon = page.getByRole('link', { name: /cart/i });
-    this.cartCount = page.getByTestId('cart-count');
-    this.userMenu = page.getByRole('button', { name: /account/i });
+    this.logo = page.getByRole("banner").getByRole("link", { name: "Home" });
+    this.searchBox = page.getByRole("searchbox");
+    this.cartIcon = page.getByRole("link", { name: /cart/i });
+    this.cartCount = page.getByTestId("cart-count");
+    this.userMenu = page.getByRole("button", { name: /account/i });
   }
 
   async search(query: string): Promise<void> {
     await this.searchBox.fill(query);
-    await this.searchBox.press('Enter');
+    await this.searchBox.press("Enter");
   }
 
   async getCartItemCount(): Promise<number> {
     const text = await this.cartCount.textContent();
-    return parseInt(text ?? '0', 10);
+    return parseInt(text ?? "0", 10);
   }
 
   async goToCart(): Promise<void> {
@@ -312,9 +314,9 @@ export class HeaderComponent {
 
 ```typescript
 // pages/ProductPage.ts
-import { Page, Locator } from '@playwright/test';
-import { BasePage } from './BasePage';
-import { HeaderComponent } from './components/HeaderComponent';
+import { Page, Locator } from "@playwright/test";
+import { BasePage } from "./BasePage";
+import { HeaderComponent } from "./components/HeaderComponent";
 
 export class ProductPage extends BasePage {
   readonly header: HeaderComponent;
@@ -325,9 +327,9 @@ export class ProductPage extends BasePage {
   constructor(page: Page) {
     super(page);
     this.header = new HeaderComponent(page);
-    this.productTitle = page.getByRole('heading', { level: 1 });
-    this.addToCartButton = page.getByRole('button', { name: 'Add to Cart' });
-    this.quantityInput = page.getByRole('spinbutton', { name: 'Quantity' });
+    this.productTitle = page.getByRole("heading", { level: 1 });
+    this.addToCartButton = page.getByRole("button", { name: "Add to Cart" });
+    this.quantityInput = page.getByRole("spinbutton", { name: "Quantity" });
   }
 
   async addToCart(quantity: number = 1): Promise<this> {
@@ -346,10 +348,10 @@ Create fixtures to inject page objects into tests:
 
 ```typescript
 // fixtures/test-fixtures.ts
-import { test as base } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { DashboardPage } from '../pages/DashboardPage';
-import { ProductPage } from '../pages/ProductPage';
+import { test as base } from "@playwright/test";
+import { LoginPage } from "../pages/LoginPage";
+import { DashboardPage } from "../pages/DashboardPage";
+import { ProductPage } from "../pages/ProductPage";
 
 type Pages = {
   loginPage: LoginPage;
@@ -369,28 +371,28 @@ export const test = base.extend<Pages>({
   },
 });
 
-export { expect } from '@playwright/test';
+export { expect } from "@playwright/test";
 ```
 
 ### Using Custom Fixtures
 
 ```typescript
 // login.spec.ts
-import { test, expect } from './fixtures/test-fixtures';
+import { test, expect } from "./fixtures/test-fixtures";
 
-test.describe('Login', () => {
-  test('successful login', async ({ loginPage }) => {
+test.describe("Login", () => {
+  test("successful login", async ({ loginPage }) => {
     await loginPage.goto();
-    const dashboard = await loginPage.login('user@test.com', 'password123');
-    await dashboard.expectWelcomeMessage('Test User');
+    const dashboard = await loginPage.login("user@test.com", "password123");
+    await dashboard.expectWelcomeMessage("Test User");
   });
 
-  test('invalid credentials', async ({ loginPage }) => {
+  test("invalid credentials", async ({ loginPage }) => {
     await loginPage.goto();
-    await loginPage.fillEmail('wrong@test.com');
-    await loginPage.fillPassword('wrongpassword');
+    await loginPage.fillEmail("wrong@test.com");
+    await loginPage.fillPassword("wrongpassword");
     await loginPage.clickLogin();
-    await loginPage.expectError('Invalid credentials');
+    await loginPage.expectError("Invalid credentials");
   });
 });
 ```
@@ -403,9 +405,9 @@ Pre-authenticate for tests that require login:
 
 ```typescript
 // fixtures/test-fixtures.ts
-import { test as base } from '@playwright/test';
-import { DashboardPage } from '../pages/DashboardPage';
-import { LoginPage } from '../pages/LoginPage';
+import { test as base } from "@playwright/test";
+import { DashboardPage } from "../pages/DashboardPage";
+import { LoginPage } from "../pages/LoginPage";
 
 type AuthPages = {
   authenticatedPage: DashboardPage;
@@ -416,8 +418,8 @@ export const authenticatedTest = base.extend<AuthPages>({
     // Perform login
     const loginPage = new LoginPage(page);
     await loginPage.goto();
-    const dashboard = await loginPage.login('test@example.com', 'password123');
-    
+    const dashboard = await loginPage.login("test@example.com", "password123");
+
     // Pass authenticated dashboard to test
     await use(dashboard);
   },
@@ -428,24 +430,24 @@ export const authenticatedTest = base.extend<AuthPages>({
 
 ```typescript
 // fixtures/auth.setup.ts
-import { test as setup } from '@playwright/test';
+import { test as setup } from "@playwright/test";
 
-setup('authenticate', async ({ page }) => {
-  await page.goto('/login');
-  await page.getByRole('textbox', { name: 'Email' }).fill('user@test.com');
-  await page.getByRole('textbox', { name: 'Password' }).fill('password');
-  await page.getByRole('button', { name: 'Login' }).click();
+setup("authenticate", async ({ page }) => {
+  await page.goto("/login");
+  await page.getByRole("textbox", { name: "Email" }).fill("user@test.com");
+  await page.getByRole("textbox", { name: "Password" }).fill("password");
+  await page.getByRole("button", { name: "Login" }).click();
   await page.waitForURL(/.*dashboard/);
-  
+
   // Save authentication state
-  await page.context().storageState({ path: 'auth.json' });
+  await page.context().storageState({ path: "auth.json" });
 });
 
 // In tests
-test.describe('Authenticated tests', () => {
-  test.use({ storageState: 'auth.json' });
+test.describe("Authenticated tests", () => {
+  test.use({ storageState: "auth.json" });
 
-  test('view profile', async ({ dashboardPage }) => {
+  test("view profile", async ({ dashboardPage }) => {
     await dashboardPage.goto();
     // Already logged in via storage state
   });
@@ -517,27 +519,27 @@ async fillEmail(email: string): Promise<void> {
 
 ## Anti-Patterns to Avoid
 
-| Anti-Pattern | Problem | Solution |
-|--------------|---------|----------|
-| Fat Page Objects | Too many methods, hard to maintain | Split into components |
-| Locators in tests | Duplicated, hard to update | Keep all locators in page objects |
-| Assertions in PO | Mixes concerns | Keep assertions in tests or separate expect methods |
-| God Page Object | One class for entire app | One class per page/component |
-| Hardcoded waits | Flaky tests | Use auto-waiting locators |
-| Direct page access | Bypasses abstraction | Always use page object methods |
+| Anti-Pattern       | Problem                            | Solution                                            |
+| ------------------ | ---------------------------------- | --------------------------------------------------- |
+| Fat Page Objects   | Too many methods, hard to maintain | Split into components                               |
+| Locators in tests  | Duplicated, hard to update         | Keep all locators in page objects                   |
+| Assertions in PO   | Mixes concerns                     | Keep assertions in tests or separate expect methods |
+| God Page Object    | One class for entire app           | One class per page/component                        |
+| Hardcoded waits    | Flaky tests                        | Use auto-waiting locators                           |
+| Direct page access | Bypasses abstraction               | Always use page object methods                      |
 
 ---
 
 ## Quick Reference
 
-| Pattern | When to Use |
-|---------|-------------|
-| `return this` | Action stays on same page |
-| `return new NextPage()` | Action navigates to new page |
-| Component Object | Reusable UI part (header, modal) |
-| Custom Fixture | Inject page objects into tests |
-| Storage State | Skip login for authenticated tests |
-| Base Page | Share common functionality |
+| Pattern                 | When to Use                        |
+| ----------------------- | ---------------------------------- |
+| `return this`           | Action stays on same page          |
+| `return new NextPage()` | Action navigates to new page       |
+| Component Object        | Reusable UI part (header, modal)   |
+| Custom Fixture          | Inject page objects into tests     |
+| Storage State           | Skip login for authenticated tests |
+| Base Page               | Share common functionality         |
 
 ---
 
@@ -545,46 +547,43 @@ async fillEmail(email: string): Promise<void> {
 
 ```typescript
 // Test using all patterns
-import { test, expect } from './fixtures/test-fixtures';
+import { test, expect } from "./fixtures/test-fixtures";
 
-test.describe('E-commerce Checkout', () => {
-  test('complete purchase flow', async ({ page }) => {
+test.describe("E-commerce Checkout", () => {
+  test("complete purchase flow", async ({ page }) => {
     // Start from product page
     const productPage = new ProductPage(page);
-    await productPage.goto('/products/laptop-pro');
-    
+    await productPage.goto("/products/laptop-pro");
+
     // Add to cart (fluent)
-    await productPage
-      .selectVariant('16GB RAM')
-      .setQuantity(2)
-      .addToCart();
-    
+    await productPage.selectVariant("16GB RAM").setQuantity(2).addToCart();
+
     // Verify cart via header component
     expect(await productPage.header.getCartItemCount()).toBe(2);
-    
+
     // Navigate to cart
     await productPage.header.goToCart();
     const cartPage = new CartPage(page);
-    
+
     // Proceed to checkout (returns next page)
     const checkoutPage = await cartPage.proceedToCheckout();
-    
+
     // Complete checkout (fluent chain)
     const confirmationPage = await checkoutPage
       .fillShippingAddress({
-        name: 'John Doe',
-        address: '123 Main St',
-        city: 'Seattle',
-        zip: '98101'
+        name: "John Doe",
+        address: "123 Main St",
+        city: "Seattle",
+        zip: "98101",
       })
-      .selectShipping('Express')
+      .selectShipping("Express")
       .enterPayment({
-        card: '4111111111111111',
-        expiry: '12/25',
-        cvv: '123'
+        card: "4111111111111111",
+        expiry: "12/25",
+        cvv: "123",
       })
       .placeOrder();
-    
+
     // Verify confirmation
     await confirmationPage.expectOrderConfirmed();
     await confirmationPage.expectOrderNumber();

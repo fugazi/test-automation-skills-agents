@@ -14,14 +14,14 @@ Page Object Model (POM) creates an abstraction layer between test logic and page
 
 ### Benefits
 
-| Benefit | Description |
-|---------|-------------|
+| Benefit         | Description                            |
+| --------------- | -------------------------------------- |
 | Maintainability | Change locator once, not in every test |
-| Readability | Tests read like user stories |
-| Reusability | Share page logic across tests |
-| Separation | Test logic separate from page details |
-| Scalability | Easy to add new pages/components |
-| Type Safety | TypeScript ensures correct usage |
+| Readability     | Tests read like user stories           |
+| Reusability     | Share page logic across tests          |
+| Separation      | Test logic separate from page details  |
+| Scalability     | Easy to add new pages/components       |
+| Type Safety     | TypeScript ensures correct usage       |
 
 ---
 
@@ -55,7 +55,7 @@ Create a base class with common functionality:
 
 ```typescript
 // pages/BasePage.ts
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect } from "@playwright/test";
 
 export abstract class BasePage {
   readonly page: Page;
@@ -65,9 +65,9 @@ export abstract class BasePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.header = page.getByRole('banner');
-    this.footer = page.getByRole('contentinfo');
-    this.loadingSpinner = page.getByRole('progressbar');
+    this.header = page.getByRole("banner");
+    this.footer = page.getByRole("contentinfo");
+    this.loadingSpinner = page.getByRole("progressbar");
   }
 
   /**
@@ -79,7 +79,7 @@ export abstract class BasePage {
    * Wait for page to fully load
    */
   async waitForPageLoad(): Promise<void> {
-    await this.loadingSpinner.waitFor({ state: 'hidden', timeout: 30000 });
+    await this.loadingSpinner.waitFor({ state: "hidden", timeout: 30000 });
   }
 
   /**
@@ -123,9 +123,9 @@ export abstract class BasePage {
 
 ```typescript
 // pages/LoginPage.ts
-import { Page, Locator, expect } from '@playwright/test';
-import { BasePage } from './BasePage';
-import { DashboardPage } from './DashboardPage';
+import { Page, Locator, expect } from "@playwright/test";
+import { BasePage } from "./BasePage";
+import { DashboardPage } from "./DashboardPage";
 
 export class LoginPage extends BasePage {
   // Locators (defined in constructor)
@@ -139,18 +139,22 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.emailInput = page.getByLabel('Email');
-    this.passwordInput = page.getByLabel('Password');
-    this.loginButton = page.getByRole('button', { name: 'Sign in' });
-    this.errorMessage = page.getByRole('alert');
-    this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot password?' });
-    this.signUpLink = page.getByRole('link', { name: 'Sign up' });
-    this.rememberMeCheckbox = page.getByRole('checkbox', { name: 'Remember me' });
+    this.emailInput = page.getByLabel("Email");
+    this.passwordInput = page.getByLabel("Password");
+    this.loginButton = page.getByRole("button", { name: "Sign in" });
+    this.errorMessage = page.getByRole("alert");
+    this.forgotPasswordLink = page.getByRole("link", {
+      name: "Forgot password?",
+    });
+    this.signUpLink = page.getByRole("link", { name: "Sign up" });
+    this.rememberMeCheckbox = page.getByRole("checkbox", {
+      name: "Remember me",
+    });
   }
 
   // Navigation
   async goto(): Promise<this> {
-    await this.page.goto('/login');
+    await this.page.goto("/login");
     return this;
   }
 
@@ -205,7 +209,7 @@ export class LoginPage extends BasePage {
   }
 
   async expectEmailFieldError(): Promise<void> {
-    await expect(this.emailInput).toHaveAttribute('aria-invalid', 'true');
+    await expect(this.emailInput).toHaveAttribute("aria-invalid", "true");
   }
 }
 ```
@@ -214,9 +218,9 @@ export class LoginPage extends BasePage {
 
 ```typescript
 // pages/DashboardPage.ts
-import { Page, Locator, expect } from '@playwright/test';
-import { BasePage } from './BasePage';
-import { HeaderComponent } from './components/HeaderComponent';
+import { Page, Locator, expect } from "@playwright/test";
+import { BasePage } from "./BasePage";
+import { HeaderComponent } from "./components/HeaderComponent";
 
 export class DashboardPage extends BasePage {
   readonly header: HeaderComponent;
@@ -228,19 +232,21 @@ export class DashboardPage extends BasePage {
   constructor(page: Page) {
     super(page);
     this.header = new HeaderComponent(page);
-    this.welcomeHeading = page.getByRole('heading', { level: 1 });
-    this.statsCards = page.getByTestId('stats-card');
-    this.recentActivityList = page.getByRole('list', { name: 'Recent Activity' });
-    this.quickActionsMenu = page.getByRole('menu', { name: 'Quick Actions' });
+    this.welcomeHeading = page.getByRole("heading", { level: 1 });
+    this.statsCards = page.getByTestId("stats-card");
+    this.recentActivityList = page.getByRole("list", {
+      name: "Recent Activity",
+    });
+    this.quickActionsMenu = page.getByRole("menu", { name: "Quick Actions" });
   }
 
   async goto(): Promise<this> {
-    await this.page.goto('/dashboard');
+    await this.page.goto("/dashboard");
     return this;
   }
 
   async getWelcomeMessage(): Promise<string> {
-    return (await this.welcomeHeading.textContent()) ?? '';
+    return (await this.welcomeHeading.textContent()) ?? "";
   }
 
   async getStatsCount(): Promise<number> {
@@ -248,7 +254,9 @@ export class DashboardPage extends BasePage {
   }
 
   async clickQuickAction(actionName: string): Promise<void> {
-    await this.quickActionsMenu.getByRole('menuitem', { name: actionName }).click();
+    await this.quickActionsMenu
+      .getByRole("menuitem", { name: actionName })
+      .click();
   }
 
   async expectWelcomeMessage(name: string): Promise<void> {
@@ -271,7 +279,7 @@ For reusable UI components (header, footer, modals):
 
 ```typescript
 // pages/components/HeaderComponent.ts
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect } from "@playwright/test";
 
 export class HeaderComponent {
   readonly page: Page;
@@ -285,23 +293,23 @@ export class HeaderComponent {
 
   constructor(page: Page) {
     this.page = page;
-    this.container = page.getByRole('banner');
-    this.logo = this.container.getByRole('link', { name: 'Home' });
-    this.searchBox = page.getByRole('searchbox');
-    this.cartIcon = this.container.getByRole('link', { name: /cart/i });
-    this.cartCount = page.getByTestId('cart-count');
-    this.userMenu = this.container.getByRole('button', { name: /account/i });
-    this.logoutButton = page.getByRole('menuitem', { name: 'Logout' });
+    this.container = page.getByRole("banner");
+    this.logo = this.container.getByRole("link", { name: "Home" });
+    this.searchBox = page.getByRole("searchbox");
+    this.cartIcon = this.container.getByRole("link", { name: /cart/i });
+    this.cartCount = page.getByTestId("cart-count");
+    this.userMenu = this.container.getByRole("button", { name: /account/i });
+    this.logoutButton = page.getByRole("menuitem", { name: "Logout" });
   }
 
   async search(query: string): Promise<void> {
     await this.searchBox.fill(query);
-    await this.searchBox.press('Enter');
+    await this.searchBox.press("Enter");
   }
 
   async getCartItemCount(): Promise<number> {
     const text = await this.cartCount.textContent();
-    return parseInt(text ?? '0', 10);
+    return parseInt(text ?? "0", 10);
   }
 
   async goToCart(): Promise<void> {
@@ -330,7 +338,7 @@ export class HeaderComponent {
 
 ```typescript
 // pages/components/ModalComponent.ts
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator, expect } from "@playwright/test";
 
 export class ModalComponent {
   readonly page: Page;
@@ -343,12 +351,14 @@ export class ModalComponent {
   constructor(page: Page, name?: string) {
     this.page = page;
     this.container = name
-      ? page.getByRole('dialog', { name })
-      : page.getByRole('dialog');
-    this.title = this.container.getByRole('heading');
-    this.closeButton = this.container.getByRole('button', { name: 'Close' });
-    this.confirmButton = this.container.getByRole('button', { name: /confirm|save|submit/i });
-    this.cancelButton = this.container.getByRole('button', { name: /cancel/i });
+      ? page.getByRole("dialog", { name })
+      : page.getByRole("dialog");
+    this.title = this.container.getByRole("heading");
+    this.closeButton = this.container.getByRole("button", { name: "Close" });
+    this.confirmButton = this.container.getByRole("button", {
+      name: /confirm|save|submit/i,
+    });
+    this.cancelButton = this.container.getByRole("button", { name: /cancel/i });
   }
 
   async waitForOpen(): Promise<void> {
@@ -388,13 +398,13 @@ Design methods to return `this` for chaining:
 ```typescript
 // Actions on same page return 'this'
 await loginPage
-  .fillEmail('user@test.com')
-  .fillPassword('password123')
+  .fillEmail("user@test.com")
+  .fillPassword("password123")
   .checkRememberMe();
 
 // Navigation returns next page
-const dashboard = await loginPage.login('user@test.com', 'password123');
-await dashboard.expectWelcomeMessage('John');
+const dashboard = await loginPage.login("user@test.com", "password123");
+await dashboard.expectWelcomeMessage("John");
 ```
 
 ### Implementation Rules
@@ -403,7 +413,7 @@ await dashboard.expectWelcomeMessage('John');
 export class CheckoutPage extends BasePage {
   // Actions staying on same page → return 'this'
   async selectShipping(method: string): Promise<this> {
-    await this.page.getByRole('radio', { name: method }).check();
+    await this.page.getByRole("radio", { name: method }).check();
     return this;
   }
 
@@ -435,10 +445,10 @@ Inject page objects into tests via fixtures:
 
 ```typescript
 // fixtures/pages.fixture.ts
-import { test as base } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { DashboardPage } from '../pages/DashboardPage';
-import { ProductPage } from '../pages/ProductPage';
+import { test as base } from "@playwright/test";
+import { LoginPage } from "../pages/LoginPage";
+import { DashboardPage } from "../pages/DashboardPage";
+import { ProductPage } from "../pages/ProductPage";
 
 type Pages = {
   loginPage: LoginPage;
@@ -458,29 +468,29 @@ export const test = base.extend<Pages>({
   },
 });
 
-export { expect } from '@playwright/test';
+export { expect } from "@playwright/test";
 ```
 
 ### Using in Tests
 
 ```typescript
 // specs/login.spec.ts
-import { test, expect } from '../fixtures/pages.fixture';
+import { test, expect } from "../fixtures/pages.fixture";
 
-test.describe('Login', () => {
-  test('successful login', async ({ loginPage }) => {
+test.describe("Login", () => {
+  test("successful login", async ({ loginPage }) => {
     await loginPage.goto();
-    const dashboard = await loginPage.login('user@test.com', 'password123');
-    await dashboard.expectWelcomeMessage('Test User');
+    const dashboard = await loginPage.login("user@test.com", "password123");
+    await dashboard.expectWelcomeMessage("Test User");
   });
 
-  test('invalid credentials', async ({ loginPage }) => {
+  test("invalid credentials", async ({ loginPage }) => {
     await loginPage.goto();
-    await loginPage.attemptInvalidLogin('wrong@test.com', 'wrong');
-    await loginPage.expectErrorMessage('Invalid credentials');
+    await loginPage.attemptInvalidLogin("wrong@test.com", "wrong");
+    await loginPage.expectErrorMessage("Invalid credentials");
   });
 
-  test('empty form validation', async ({ loginPage }) => {
+  test("empty form validation", async ({ loginPage }) => {
     await loginPage.goto();
     await loginPage.clickLogin();
     await loginPage.expectEmailFieldError();
@@ -496,9 +506,9 @@ Pre-authenticate for tests requiring login:
 
 ```typescript
 // fixtures/auth.fixture.ts
-import { test as base } from '@playwright/test';
-import { DashboardPage } from '../pages/DashboardPage';
-import { LoginPage } from '../pages/LoginPage';
+import { test as base } from "@playwright/test";
+import { DashboardPage } from "../pages/DashboardPage";
+import { LoginPage } from "../pages/LoginPage";
 
 type AuthFixtures = {
   authenticatedDashboard: DashboardPage;
@@ -510,32 +520,32 @@ export const test = base.extend<AuthFixtures>({
     await loginPage.goto();
     const dashboard = await loginPage.login(
       process.env.TEST_USER_EMAIL!,
-      process.env.TEST_USER_PASSWORD!
+      process.env.TEST_USER_PASSWORD!,
     );
     await use(dashboard);
   },
 });
 
-export { expect } from '@playwright/test';
+export { expect } from "@playwright/test";
 ```
 
 ### Or Use Storage State
 
 ```typescript
 // auth.setup.ts
-import { test as setup } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { test as setup } from "@playwright/test";
+import { LoginPage } from "../pages/LoginPage";
 
-setup('authenticate', async ({ page }) => {
+setup("authenticate", async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
-  await loginPage.login('user@test.com', 'password123');
-  
-  await page.context().storageState({ path: 'playwright/.auth/user.json' });
+  await loginPage.login("user@test.com", "password123");
+
+  await page.context().storageState({ path: "playwright/.auth/user.json" });
 });
 
 // In specs:
-test.use({ storageState: 'playwright/.auth/user.json' });
+test.use({ storageState: "playwright/.auth/user.json" });
 ```
 
 ---
@@ -604,14 +614,14 @@ get pageInstance() { return this.page; }  // Breaks encapsulation
 
 ## Anti-Patterns
 
-| Anti-Pattern | Problem | Solution |
-|--------------|---------|----------|
-| God Page Object | One class for entire app | One class per page/component |
-| Fat Page Object | Too many methods | Split into components |
-| Locators in tests | Duplicated, hard to update | Keep in page objects |
-| Assertions in actions | Mixes concerns | Separate expect methods |
-| Hardcoded waits | Flaky | Use auto-waiting locators |
-| Direct page access | Bypasses abstraction | Use page object methods |
+| Anti-Pattern          | Problem                    | Solution                     |
+| --------------------- | -------------------------- | ---------------------------- |
+| God Page Object       | One class for entire app   | One class per page/component |
+| Fat Page Object       | Too many methods           | Split into components        |
+| Locators in tests     | Duplicated, hard to update | Keep in page objects         |
+| Assertions in actions | Mixes concerns             | Separate expect methods      |
+| Hardcoded waits       | Flaky                      | Use auto-waiting locators    |
+| Direct page access    | Bypasses abstraction       | Use page object methods      |
 
 ---
 
@@ -619,50 +629,48 @@ get pageInstance() { return this.page; }  // Breaks encapsulation
 
 ```typescript
 // Full flow using page objects
-import { test, expect } from '../fixtures/pages.fixture';
+import { test, expect } from "../fixtures/pages.fixture";
 
-test.describe('E-commerce Purchase', () => {
-  test('complete purchase flow', async ({ page }) => {
+test.describe("E-commerce Purchase", () => {
+  test("complete purchase flow", async ({ page }) => {
     // Start from login
     const loginPage = new LoginPage(page);
     await loginPage.goto();
-    
+
     // Login → Dashboard
-    const dashboard = await loginPage.login('user@test.com', 'password');
-    await dashboard.expectWelcomeMessage('Test User');
-    
+    const dashboard = await loginPage.login("user@test.com", "password");
+    await dashboard.expectWelcomeMessage("Test User");
+
     // Search for product
-    await dashboard.header.search('laptop');
-    
+    await dashboard.header.search("laptop");
+
     // Navigate to product
     const productPage = new ProductPage(page);
-    await productPage.goto('/products/laptop-pro');
-    
+    await productPage.goto("/products/laptop-pro");
+
     // Add to cart (fluent)
-    await productPage
-      .selectVariant('16GB RAM')
-      .setQuantity(2);
+    await productPage.selectVariant("16GB RAM").setQuantity(2);
     await productPage.addToCart();
-    
+
     // Verify cart via header
     expect(await dashboard.header.getCartItemCount()).toBe(2);
-    
+
     // Checkout
     await dashboard.header.goToCart();
     const cartPage = new CartPage(page);
-    
+
     const checkoutPage = await cartPage.proceedToCheckout();
-    
+
     const confirmationPage = await checkoutPage
       .fillShippingAddress({
-        name: 'John Doe',
-        address: '123 Main St',
-        city: 'Seattle',
-        zip: '98101'
+        name: "John Doe",
+        address: "123 Main St",
+        city: "Seattle",
+        zip: "98101",
       })
-      .selectShipping('Express')
+      .selectShipping("Express")
       .placeOrder();
-    
+
     // Verify
     await confirmationPage.expectOrderConfirmed();
   });

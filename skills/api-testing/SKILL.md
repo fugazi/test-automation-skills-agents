@@ -20,10 +20,10 @@ Comprehensive API testing skill covering both Playwright TypeScript (request fix
 
 ## Prerequisites
 
-| Stack | Requirements |
-|-------|-------------|
-| TypeScript | Node.js 18+, `@playwright/test` or `supertest`, `zod` |
-| Java | Java 21+, REST Assured 5.x, AssertJ, Jackson, `json-schema-validator` |
+| Stack      | Requirements                                                          |
+| ---------- | --------------------------------------------------------------------- |
+| TypeScript | Node.js 18+, `@playwright/test` or `supertest`, `zod`                 |
+| Java       | Java 21+, REST Assured 5.x, AssertJ, Jackson, `json-schema-validator` |
 
 ## Core Principles
 
@@ -36,10 +36,10 @@ Comprehensive API testing skill covering both Playwright TypeScript (request fix
 ## Quick Reference — Playwright
 
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('GET /api/users returns 200 with valid schema', async ({ request }) => {
-  const response = await request.get('/api/users');
+test("GET /api/users returns 200 with valid schema", async ({ request }) => {
+  const response = await request.get("/api/users");
   expect(response.ok()).toBeTruthy();
   const body = await response.json();
   expect(body).toMatchObject({ data: expect.any(Array) });
@@ -73,15 +73,30 @@ void getUsers() {
 }
 ```
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization                                 | Reality                                                                                                      |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| "Schema validation is overkill"                 | Without schema validation, a silent field rename becomes a production incident. Validate every response.     |
+| "Happy path testing is enough"                  | Error states (400, 401, 403, 404, 409, 500) are where real failures happen. Test all status codes.           |
+| "Auth tests can wait"                           | Unauthenticated access to protected endpoints is a security vulnerability, not a backlog item.               |
+| "This endpoint won't change"                    | APIs evolve. Contract tests catch breaking changes before they reach production.                             |
+| "Manual API testing with Postman is sufficient" | Manual testing isn't repeatable, can't run in CI, and doesn't scale. Automate API tests.                     |
+| "Idempotency doesn't matter"                    | Duplicate requests happen in production. Without idempotency testing, you get duplicate records and charges. |
+
+---
+
 ## References
 
-| Document | Content |
-|----------|---------|
-| [REST API Patterns](./references/rest-api-patterns.md) | CRUD, pagination, filtering, error patterns |
-| [Playwright API Testing](./references/playwright-api-testing.md) | Request fixture, Supertest, TypeScript patterns |
-| [REST Assured Testing](./references/rest-assured-testing.md) | REST Assured, AssertJ, Java patterns |
-| [Schema Validation](./references/schema-validation.md) | Zod (TS), JSON Schema (Java), strict vs loose |
-| [Contract Testing](./references/contract-testing.md) | Request/response contracts, idempotency, versioning |
+| Document                                                         | Content                                             |
+| ---------------------------------------------------------------- | --------------------------------------------------- |
+| [REST API Patterns](./references/rest-api-patterns.md)           | CRUD, pagination, filtering, error patterns         |
+| [Playwright API Testing](./references/playwright-api-testing.md) | Request fixture, Supertest, TypeScript patterns     |
+| [REST Assured Testing](./references/rest-assured-testing.md)     | REST Assured, AssertJ, Java patterns                |
+| [Schema Validation](./references/schema-validation.md)           | Zod (TS), JSON Schema (Java), strict vs loose       |
+| [Contract Testing](./references/contract-testing.md)             | Request/response contracts, idempotency, versioning |
 
 ## Templates
 
@@ -94,9 +109,23 @@ void getUsers() {
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| 401 on authenticated endpoints | Verify token is fresh; check expiry; re-authenticate |
-| Flaky API tests | Add retry logic; check for rate limiting; use unique test data |
-| Schema validation too strict | Use `.passthrough()` (Zod) or `additionalProperties: true` for flexible fields |
-| Timeout on slow endpoints | Increase `timeout` in request options; check for server load |
+| Issue                          | Solution                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------ |
+| 401 on authenticated endpoints | Verify token is fresh; check expiry; re-authenticate                           |
+| Flaky API tests                | Add retry logic; check for rate limiting; use unique test data                 |
+| Schema validation too strict   | Use `.passthrough()` (Zod) or `additionalProperties: true` for flexible fields |
+| Timeout on slow endpoints      | Increase `timeout` in request options; check for server load                   |
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **All CRUD operations tested** — POST, GET, PUT, PATCH, DELETE covered for the resource
+- [ ] **Status codes verified** — Success (2xx) AND error codes (4xx, 5xx) tested
+- [ ] **Schema validation in place** — Every response validated against a schema (Zod or JSON Schema)
+- [ ] **Authentication tested** — 401 returned for protected endpoints without valid credentials
+- [ ] **Idempotency verified** — PUT/DELETE produce same result when called multiple times
+- [ ] **Edge cases covered** — Empty payloads, invalid types, boundary values, SQL injection attempts
+- [ ] **All tests pass** — Playwright API tests or REST Assured tests exit successfully

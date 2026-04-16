@@ -211,14 +211,14 @@ public void verifyPageAccessibility(WebDriver driver) {
 public void verifyComponentAccessibility(WebDriver driver, String... selectors) {
     AxeBuilder builder = new AxeBuilder()
         .withTags(List.of("wcag2a", "wcag2aa"));
-    
+
     for (String selector : selectors) {
         builder.include(selector);
     }
-    
+
     Results results = builder.analyze(driver);
     logViolations(results.getViolations());
-    
+
     assertThat(results.violationFree())
         .as("Component accessibility check failed")
         .isTrue();
@@ -278,12 +278,12 @@ private void logViolations(List<Rule> violations) {
 
     log.error("✗ Found {} accessibility violations:", violations.size());
     for (Rule violation : violations) {
-        log.error("  [{}/{}] {}", 
+        log.error("  [{}/{}] {}",
             violation.getImpact().toUpperCase(),
             violation.getId(),
             violation.getDescription());
         log.error("    Help: {}", violation.getHelpUrl());
-        
+
         for (CheckedNode node : violation.getNodes()) {
             log.error("    Target: {}", String.join(", ", node.getTarget()));
             log.error("    HTML: {}", truncate(node.getHtml(), 100));
@@ -325,7 +325,7 @@ class AccessibilityTest extends BaseTest {
     @DisplayName("Login modal should be keyboard accessible")
     void loginModal_shouldBeKeyboardAccessible() {
         driver.get(ConfigReader.get("base.url"));
-        
+
         // Open modal
         driver.findElement(By.id("login-btn")).click();
         waitForVisible(By.id("login-modal"));
@@ -341,7 +341,7 @@ class AccessibilityTest extends BaseTest {
         // Test keyboard navigation
         WebElement modal = driver.findElement(By.id("login-modal"));
         WebElement firstInput = modal.findElement(By.cssSelector("input:first-of-type"));
-        
+
         assertThat(driver.switchTo().activeElement())
             .as("Focus should be inside modal")
             .isEqualTo(firstInput);
@@ -418,13 +418,28 @@ class AccessibilityTest extends BaseTest {
 ```yaml
 - name: Run Accessibility Tests
   run: mvn test -Dgroups=a11y -Dheadless=true
-  
+
 - name: Upload A11y Report
   uses: actions/upload-artifact@v3
   with:
     name: a11y-report
     path: target/a11y-results/
 ```
+
+---
+
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization | Reality |
+| --------------- | ------- |
+| "Selenium isn't good for a11y testing" | axe-core + Selenium is battle-tested, CI-ready, and covers WCAG violations programmatically. |
+| "We can just run a scan at the end" | Shift-left: catch violations as code is written. Late scans mean expensive fixes. |
+| "The framework handles accessibility" | No framework auto-generates proper ARIA roles, labels, or keyboard interactions. |
+| "We only need to test the homepage" | Every page a user visits must be accessible. Start with high-risk pages, expand coverage. |
+| "Skip the contrast checks, designers fix that" | Automated contrast checks take seconds and prevent lawsuits. They are tests, not design reviews. |
+| "Our users don't have disabilities" | ~15% of the global population has some form of disability. Accessibility is for everyone. |
 
 ---
 
@@ -450,5 +465,18 @@ class AccessibilityTest extends BaseTest {
 | Get help URL | `violation.getHelpUrl()` |
 | Tab navigation | `element.sendKeys(Keys.TAB)` |
 | Get focused element | `driver.switchTo().activeElement()` |
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **Axe WebDriver audit passes** — `AxeBuilder.analyze(driver)` returns zero violations
+- [ ] **WCAG 2.1 AA compliance** — All rules for AA level pass
+- [ ] **ARIA labels present** — All interactive elements have accessible names
+- [ ] **Keyboard accessibility verified** — Tab navigation reaches all interactive elements
+- [ ] **Violation report saved** — Accessibility results written to JSON/HTML file
+- [ ] **Tests pass with Java 21+** — `mvn test -Dtest=*Accessibility*` passes
 
 ````

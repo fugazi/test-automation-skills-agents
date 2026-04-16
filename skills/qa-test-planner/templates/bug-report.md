@@ -55,11 +55,13 @@
 - [ ] Network trace captured
 
 **Console Errors:**
+
 ```
 [Paste any console errors here]
 ```
 
 **Screenshots:**
+
 - [Describe what screenshots show]
 
 ---
@@ -76,12 +78,12 @@
 
 ## Severity and Priority Definitions
 
-| Severity | Criteria | Priority | Urgency |
-|----------|----------|----------|---------|
-| **Critical** | System crash, data loss, security breach, complete feature failure | P0 | Fix immediately, block release |
-| **High** | Major feature broken, no workaround, significant user impact | P1 | Fix in current sprint, high priority |
-| **Medium** | Feature partial, workaround exists, moderate user impact | P2 | Fix in next sprint or release |
-| **Low** | Cosmetic, rare edge cases, minor usability issues | P3 | Fix when time permits |
+| Severity     | Criteria                                                           | Priority | Urgency                              |
+| ------------ | ------------------------------------------------------------------ | -------- | ------------------------------------ |
+| **Critical** | System crash, data loss, security breach, complete feature failure | P0       | Fix immediately, block release       |
+| **High**     | Major feature broken, no workaround, significant user impact       | P1       | Fix in current sprint, high priority |
+| **Medium**   | Feature partial, workaround exists, moderate user impact           | P2       | Fix in next sprint or release        |
+| **Low**      | Cosmetic, rare edge cases, minor usability issues                  | P3       | Fix when time permits                |
 
 ---
 
@@ -107,6 +109,7 @@
 ## Fix
 
 [To be filled by developer]
+
 - [ ] Code changes made
 - [ ] Unit tests added/updated
 - [ ] Documentation updated
@@ -121,9 +124,9 @@
 - [ ] Related test cases passing
 - [ ] Ready for release
 
-**Verified By:** ___________
-**Date:** ___________
-**Build Verified:** ___________
+**Verified By:** [Name]
+**Date:** [YYYY-MM-DD]
+**Build Verified:** [vX.X.X or commit hash]
 
 ---
 
@@ -146,5 +149,5 @@
 
 **Resolution Type:** [Fixed / Won't Fix / Works as Designed / Duplicate / Cannot Reproduce]
 **Resolution Notes:** [Why this resolution was chosen]
-**Closed By:** ___________
-**Closed Date:** ___________
+**Closed By:** ****\_\_\_****
+**Closed Date:** ****\_\_\_****

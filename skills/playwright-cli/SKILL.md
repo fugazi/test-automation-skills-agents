@@ -176,6 +176,7 @@ playwright-cli --raw localstorage-get theme
 ```
 
 ## Open parameters
+
 ```bash
 # Use specific browser when creating session
 playwright-cli open --browser=chrome
@@ -338,14 +339,40 @@ playwright-cli tracing-stop
 playwright-cli close
 ```
 
+## Common Rationalizations
+
+> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
+
+| Rationalization                                  | Reality                                                                                                           |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| "CLI tests aren't real tests"                    | CLI browser automation validates real rendering, DOM structure, and interaction — not mock output.                |
+| "Just use the API instead"                       | Visual and structural validation requires an actual browser. API tests can't catch layout or a11y issues.         |
+| "Screenshots are enough"                         | Accessibility snapshots catch structural issues (missing labels, roles, headings) that screenshots miss entirely. |
+| "I'll test manually in the browser"              | Manual testing doesn't scale, isn't repeatable, and can't run in CI. Automate repeatable checks.                  |
+| "Console errors don't matter if the test passes" | Unhandled JavaScript exceptions indicate latent bugs. Always check console output during automation.              |
+
+---
+
 ## Specific tasks
 
-* **Running and Debugging Playwright tests** [references/playwright-tests.md](references/playwright-tests.md)
-* **Request mocking** [references/request-mocking.md](references/request-mocking.md)
-* **Running Playwright code** [references/running-code.md](references/running-code.md)
-* **Browser session management** [references/session-management.md](references/session-management.md)
-* **Storage state (cookies, localStorage)** [references/storage-state.md](references/storage-state.md)
-* **Test generation** [references/test-generation.md](references/test-generation.md)
-* **Tracing** [references/tracing.md](references/tracing.md)
-* **Video recording** [references/video-recording.md](references/video-recording.md)
-* **Inspecting element attributes** [references/element-attributes.md](references/element-attributes.md)
+- **Running and Debugging Playwright tests** [references/playwright-tests.md](references/playwright-tests.md)
+- **Request mocking** [references/request-mocking.md](references/request-mocking.md)
+- **Running Playwright code** [references/running-code.md](references/running-code.md)
+- **Browser session management** [references/session-management.md](references/session-management.md)
+- **Storage state (cookies, localStorage)** [references/storage-state.md](references/storage-state.md)
+- **Test generation** [references/test-generation.md](references/test-generation.md)
+- **Tracing** [references/tracing.md](references/tracing.md)
+- **Video recording** [references/video-recording.md](references/video-recording.md)
+- **Inspecting element attributes** [references/element-attributes.md](references/element-attributes.md)
+
+---
+
+## Verification
+
+After completing this skill's workflow, confirm:
+
+- [ ] **CLI commands execute correctly** — All playwright-cli commands return expected output
+- [ ] **Screenshots captured** — Visual evidence saved for key states
+- [ ] **Console output clean** — No errors or warnings during CLI test execution
+- [ ] **Performance acceptable** — CLI operations complete within expected timeframes
+- [ ] **Results saved to specified path** — Output files exist at the declared location

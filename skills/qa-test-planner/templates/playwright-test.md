@@ -24,13 +24,13 @@
 ## Test Suite Structure
 
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test.describe('[Feature/Module Name]', () => {
+test.describe("[Feature/Module Name]", () => {
   // Common setup for all tests in this suite
   test.beforeEach(async ({ page }) => {
     // Navigate to base URL
-    await page.goto(process.env.BASE_URL || 'BASE_URL_HERE');
+    await page.goto(process.env.BASE_URL || "BASE_URL_HERE");
 
     // Additional setup if needed
     // - Login with test credentials
@@ -39,24 +39,26 @@ test.describe('[Feature/Module Name]', () => {
   });
 
   // Example test - replace with your actual tests
-  test('TC-XXX @smoke @regression [Test Description]', async ({ page }) => {
-    await test.step('Verify initial state', async () => {
+  test("TC-XXX @smoke @regression [Test Description]", async ({ page }) => {
+    await test.step("Verify initial state", async () => {
       // Use role-based locators for accessibility
-      await expect(page.getByRole('heading', { name: 'Page Title' })).toBeVisible();
+      await expect(
+        page.getByRole("heading", { name: "Page Title" }),
+      ).toBeVisible();
     });
 
-    await test.step('Perform user action', async () => {
+    await test.step("Perform user action", async () => {
       // Prefer stable locators (data-testid) when available
       // await page.getByTestId('submit-button').click();
 
       // Or use role-based locators
-      await page.getByRole('button', { name: 'Submit' }).click();
+      await page.getByRole("button", { name: "Submit" }).click();
     });
 
-    await test.step('Verify expected outcome', async () => {
+    await test.step("Verify expected outcome", async () => {
       // Use web-first assertions
       await expect(page).toHaveURL(/.*success/);
-      await expect(page.getByRole('alert')).toContainText('Success');
+      await expect(page.getByRole("alert")).toContainText("Success");
     });
   });
 
@@ -80,6 +82,7 @@ test.describe('[Feature/Module Name]', () => {
 - Use test accounts provisioned for testing
 
 **Example:**
+
 ```typescript
 const { TEST_USER_EMAIL, TEST_USER_PASSWORD } = process.env;
 ```
@@ -91,80 +94,91 @@ const { TEST_USER_EMAIL, TEST_USER_PASSWORD } = process.env;
 ### 1. Locator Strategies
 
 **Prefer:**
+
 - `getByRole()` - Most accessible and stable
 - `getByTestId()` - Most stable when available
 - `getByLabel()` - Good for form fields
 
 **Avoid:**
+
 - CSS selectors - Brittle to style changes
 - XPath - Brittle and hard to maintain
 
 **Examples:**
+
 ```typescript
 // Good - Role-based
-await page.getByRole('button', { name: 'Submit' }).click();
+await page.getByRole("button", { name: "Submit" }).click();
 
 // Good - Test ID
-await page.getByTestId('submit-button').click();
+await page.getByTestId("submit-button").click();
 
 // Good - Label
-await page.getByLabel('Email').fill('test@example.com');
+await page.getByLabel("Email").fill("test@example.com");
 
 // Avoid - CSS selector
-await page.locator('.btn.submit').click();
+await page.locator(".btn.submit").click();
 ```
 
 ### 2. Assertions
 
 **Use web-first assertions:**
+
 ```typescript
 // Good
-await expect(page.getByRole('heading')).toBeVisible();
-await expect(page.getByRole('alert')).toHaveText('Success');
+await expect(page.getByRole("heading")).toBeVisible();
+await expect(page.getByRole("alert")).toHaveText("Success");
 await expect(page).toHaveURL(/.*dashboard/);
 
 // Avoid - Manual waits
-await page.waitForSelector('.alert');
+await page.waitForSelector(".alert");
 ```
 
 ### 3. Test Organization
 
 **Group related steps with test.step():**
+
 ```typescript
-test('example test', async ({ page }) => {
-  await test.step('Setup', async () => {
+test("example test", async ({ page }) => {
+  await test.step("Setup", async () => {
     // Setup code
   });
 
-  await test.step('Execute', async () => {
+  await test.step("Execute", async () => {
     // Main test code
   });
 
-  await test.step('Verify', async () => {
+  await test.step("Verify", async () => {
     // Verification code
   });
 });
 ```
 
 **Keep tests independent:**
+
 ```typescript
 test.beforeEach(async ({ page }) => {
   // Setup preconditions explicitly
-  await page.goto('/login');
+  await page.goto("/login");
 });
 
 // Each test is independent and can run alone
-test('test 1', async ({ page }) => { /* ... */ });
-test('test 2', async ({ page }) => { /* ... */ });
+test("test 1", async ({ page }) => {
+  /* ... */
+});
+test("test 2", async ({ page }) => {
+  /* ... */
+});
 ```
 
 ### 4. Error Handling
 
 **Playwright auto-waits for elements:**
+
 ```typescript
 // No need for explicit waits
-await page.getByRole('button', { name: 'Submit' }).click();
-await expect(page.getByRole('alert')).toBeVisible();
+await page.getByRole("button", { name: "Submit" }).click();
+await expect(page.getByRole("alert")).toBeVisible();
 
 // Screenshots captured automatically on failure
 ```
@@ -172,6 +186,7 @@ await expect(page.getByRole('alert')).toBeVisible();
 ### 5. Test Data
 
 **Load from environment variables:**
+
 ```typescript
 // .env file (never commit this)
 TEST_USER_EMAIL=test@example.com
@@ -183,9 +198,10 @@ const { TEST_USER_EMAIL, TEST_USER_PASSWORD, BASE_URL } = process.env;
 ```
 
 **Use test data generators:**
+
 ```typescript
 // Example with Faker.js
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 const testEmail = faker.internet.email();
 const testName = faker.person.fullName();
@@ -196,11 +212,13 @@ const testName = faker.person.fullName();
 ## Running Tests
 
 ### Run All Tests
+
 ```bash
 npx playwright test
 ```
 
 ### Run by Tag
+
 ```bash
 npx playwright test --grep "@smoke"
 npx playwright test --grep "@regression"
@@ -208,21 +226,25 @@ npx playwright test --grep "@critical"
 ```
 
 ### Run Specific File
+
 ```bash
 npx playwright test tests/feature/test.spec.ts
 ```
 
 ### Run with UI
+
 ```bash
 npx playwright test --ui
 ```
 
 ### Run in Debug Mode
+
 ```bash
 npx playwright test --debug
 ```
 
 ### Run on Specific Browsers
+
 ```bash
 npx playwright test --project=chromium
 npx playwright test --project=firefox
@@ -233,11 +255,11 @@ npx playwright test --project=webkit
 
 ## Test Cases
 
-| Test ID | Description | Tags | Status |
-|----------|-------------|-------|--------|
-| TC-XXX | [Description] | @smoke @regression | Not Run |
-| TC-XXX | [Description] | @regression @negative | Not Run |
-| TC-XXX | [Description] | @regression @boundary | Not Run |
+| Test ID | Description   | Tags                  | Status  |
+| ------- | ------------- | --------------------- | ------- |
+| TC-XXX  | [Description] | @smoke @regression    | Not Run |
+| TC-XXX  | [Description] | @regression @negative | Not Run |
+| TC-XXX  | [Description] | @regression @boundary | Not Run |
 
 ---
 

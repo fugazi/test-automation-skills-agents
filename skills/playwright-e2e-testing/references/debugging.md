@@ -6,14 +6,14 @@ Comprehensive techniques for debugging Playwright tests, investigating failures,
 
 ## Debugging Tools Overview
 
-| Tool | Use Case | Command |
-|------|----------|---------|
-| UI Mode | Interactive debugging, time-travel | `npx playwright test --ui` |
-| Inspector | Step-by-step debugging | `PWDEBUG=1 npx playwright test` |
-| Headed Mode | See browser during test | `npx playwright test --headed` |
-| Trace Viewer | Post-mortem analysis | `npx playwright show-report` |
-| Codegen | Generate locators | `npx playwright codegen <url>` |
-| Verbose Logs | API-level debugging | `DEBUG=pw:api npx playwright test` |
+| Tool         | Use Case                           | Command                            |
+| ------------ | ---------------------------------- | ---------------------------------- |
+| UI Mode      | Interactive debugging, time-travel | `npx playwright test --ui`         |
+| Inspector    | Step-by-step debugging             | `PWDEBUG=1 npx playwright test`    |
+| Headed Mode  | See browser during test            | `npx playwright test --headed`     |
+| Trace Viewer | Post-mortem analysis               | `npx playwright show-report`       |
+| Codegen      | Generate locators                  | `npx playwright codegen <url>`     |
+| Verbose Logs | API-level debugging                | `DEBUG=pw:api npx playwright test` |
 
 ---
 
@@ -72,13 +72,13 @@ PWDEBUG=1 npx playwright test
 ### In-Code Breakpoint
 
 ```typescript
-test('debug this test', async ({ page }) => {
-  await page.goto('/');
-  
+test("debug this test", async ({ page }) => {
+  await page.goto("/");
+
   // Pause execution here
   await page.pause();
-  
-  await page.getByRole('button', { name: 'Submit' }).click();
+
+  await page.getByRole("button", { name: "Submit" }).click();
 });
 ```
 
@@ -94,7 +94,7 @@ Post-mortem debugging with recorded traces:
 // playwright.config.ts
 export default defineConfig({
   use: {
-    trace: 'on-first-retry',        // Record on retry
+    trace: "on-first-retry", // Record on retry
     // trace: 'on',                  // Always record
     // trace: 'retain-on-failure',   // Keep only on failure
   },
@@ -117,7 +117,7 @@ npx playwright show-trace https://example.com/trace.zip
 ### Manual Trace Recording
 
 ```typescript
-test('with trace', async ({ page, context }) => {
+test("with trace", async ({ page, context }) => {
   // Start recording
   await context.tracing.start({
     screenshots: true,
@@ -125,11 +125,11 @@ test('with trace', async ({ page, context }) => {
     sources: true,
   });
 
-  await page.goto('/');
-  await page.getByRole('button').click();
+  await page.goto("/");
+  await page.getByRole("button").click();
 
   // Stop and save
-  await context.tracing.stop({ path: 'traces/my-trace.zip' });
+  await context.tracing.stop({ path: "traces/my-trace.zip" });
 });
 ```
 
@@ -156,9 +156,9 @@ PWDEBUG=1 npx playwright test --headed
 // playwright.config.ts
 export default defineConfig({
   use: {
-    headless: false,  // Always headed
+    headless: false, // Always headed
     launchOptions: {
-      slowMo: 500,    // Slow down
+      slowMo: 500, // Slow down
     },
   },
 });
@@ -187,12 +187,12 @@ $env:DEBUG="pw:api"; npx playwright test
 
 ### Log Channels
 
-| Channel | Description |
-|---------|-------------|
-| `pw:api` | Playwright API calls |
-| `pw:browser` | Browser logs |
-| `pw:protocol` | CDP/WebSocket messages |
-| `pw:webserver` | Web server logs |
+| Channel        | Description            |
+| -------------- | ---------------------- |
+| `pw:api`       | Playwright API calls   |
+| `pw:browser`   | Browser logs           |
+| `pw:protocol`  | CDP/WebSocket messages |
+| `pw:webserver` | Web server logs        |
 
 ---
 
@@ -204,8 +204,8 @@ $env:DEBUG="pw:api"; npx playwright test
 // playwright.config.ts
 export default defineConfig({
   use: {
-    screenshot: 'only-on-failure',   // 'on' | 'off' | 'only-on-failure'
-    video: 'retain-on-failure',      // 'on' | 'off' | 'retain-on-failure'
+    screenshot: "only-on-failure", // 'on' | 'off' | 'only-on-failure'
+    video: "retain-on-failure", // 'on' | 'off' | 'retain-on-failure'
   },
 });
 ```
@@ -213,19 +213,19 @@ export default defineConfig({
 ### Manual Screenshots
 
 ```typescript
-test('capture state', async ({ page }) => {
-  await page.goto('/');
-  
+test("capture state", async ({ page }) => {
+  await page.goto("/");
+
   // Full page screenshot
-  await page.screenshot({ path: 'screenshots/full.png', fullPage: true });
-  
+  await page.screenshot({ path: "screenshots/full.png", fullPage: true });
+
   // Element screenshot
-  await page.getByTestId('chart').screenshot({ path: 'screenshots/chart.png' });
-  
+  await page.getByTestId("chart").screenshot({ path: "screenshots/chart.png" });
+
   // With mask for dynamic content
   await page.screenshot({
-    path: 'screenshots/masked.png',
-    mask: [page.getByTestId('timestamp')],
+    path: "screenshots/masked.png",
+    mask: [page.getByTestId("timestamp")],
   });
 });
 ```
@@ -233,15 +233,15 @@ test('capture state', async ({ page }) => {
 ### Attach to Report
 
 ```typescript
-test('with attachments', async ({ page }, testInfo) => {
-  await page.goto('/');
-  
+test("with attachments", async ({ page }, testInfo) => {
+  await page.goto("/");
+
   // Attach screenshot on failure
   if (testInfo.status !== testInfo.expectedStatus) {
     const screenshot = await page.screenshot();
-    await testInfo.attach('failure-screenshot', {
+    await testInfo.attach("failure-screenshot", {
       body: screenshot,
-      contentType: 'image/png',
+      contentType: "image/png",
     });
   }
 });
@@ -254,21 +254,21 @@ test('with attachments', async ({ page }, testInfo) => {
 ### Capture Console Messages
 
 ```typescript
-test('monitor console', async ({ page }) => {
+test("monitor console", async ({ page }) => {
   const consoleLogs: string[] = [];
-  
-  page.on('console', (msg) => {
+
+  page.on("console", (msg) => {
     consoleLogs.push(`[${msg.type()}] ${msg.text()}`);
   });
-  
-  page.on('pageerror', (error) => {
+
+  page.on("pageerror", (error) => {
     consoleLogs.push(`[ERROR] ${error.message}`);
   });
-  
-  await page.goto('/');
-  
+
+  await page.goto("/");
+
   // Check for errors
-  const errors = consoleLogs.filter(log => log.includes('[error]'));
+  const errors = consoleLogs.filter((log) => log.includes("[error]"));
   expect(errors).toHaveLength(0);
 });
 ```
@@ -277,22 +277,22 @@ test('monitor console', async ({ page }) => {
 
 ```typescript
 // fixtures/debug.fixture.ts
-import { test as base, TestInfo } from '@playwright/test';
+import { test as base, TestInfo } from "@playwright/test";
 
 export const test = base.extend({
   page: async ({ page }, use, testInfo) => {
     const logs: string[] = [];
-    
-    page.on('console', (msg) => logs.push(`[${msg.type()}] ${msg.text()}`));
-    page.on('pageerror', (err) => logs.push(`[ERROR] ${err.message}`));
-    
+
+    page.on("console", (msg) => logs.push(`[${msg.type()}] ${msg.text()}`));
+    page.on("pageerror", (err) => logs.push(`[ERROR] ${err.message}`));
+
     await use(page);
-    
+
     // Attach logs on failure
     if (testInfo.status !== testInfo.expectedStatus && logs.length) {
-      await testInfo.attach('console-logs.txt', {
-        body: logs.join('\n'),
-        contentType: 'text/plain',
+      await testInfo.attach("console-logs.txt", {
+        body: logs.join("\n"),
+        contentType: "text/plain",
       });
     }
   },
@@ -306,48 +306,48 @@ export const test = base.extend({
 ### Monitor Requests
 
 ```typescript
-test('debug network', async ({ page }) => {
+test("debug network", async ({ page }) => {
   const requests: string[] = [];
   const failures: string[] = [];
-  
-  page.on('request', (req) => {
+
+  page.on("request", (req) => {
     requests.push(`${req.method()} ${req.url()}`);
   });
-  
-  page.on('requestfailed', (req) => {
+
+  page.on("requestfailed", (req) => {
     failures.push(`${req.method()} ${req.url()} - ${req.failure()?.errorText}`);
   });
-  
-  page.on('response', (res) => {
+
+  page.on("response", (res) => {
     if (!res.ok()) {
       console.log(`HTTP ${res.status()} ${res.url()}`);
     }
   });
-  
-  await page.goto('/');
-  
-  console.log('Total requests:', requests.length);
-  console.log('Failed requests:', failures);
+
+  await page.goto("/");
+
+  console.log("Total requests:", requests.length);
+  console.log("Failed requests:", failures);
 });
 ```
 
 ### Wait for Specific Request
 
 ```typescript
-test('debug API call', async ({ page }) => {
+test("debug API call", async ({ page }) => {
   // Set up listener before action
   const responsePromise = page.waitForResponse(
-    (res) => res.url().includes('/api/data') && res.status() === 200
+    (res) => res.url().includes("/api/data") && res.status() === 200,
   );
-  
-  await page.goto('/dashboard');
-  
+
+  await page.goto("/dashboard");
+
   const response = await responsePromise;
-  
+
   // Inspect response
-  console.log('Status:', response.status());
-  console.log('Headers:', response.headers());
-  console.log('Body:', await response.json());
+  console.log("Status:", response.status());
+  console.log("Headers:", response.headers());
+  console.log("Body:", await response.json());
 });
 ```
 
@@ -357,13 +357,13 @@ test('debug API call', async ({ page }) => {
 
 ### Common Causes & Solutions
 
-| Symptom | Likely Cause | Solution |
-|---------|--------------|----------|
-| Element not found randomly | Race condition | Use `waitFor()` or web-first assertions |
-| Clicks sometimes fail | Element covered | Scroll into view, wait for overlays |
-| Assertions fail intermittently | Animations | Disable animations, use proper waits |
-| Different results in CI | Environment timing | Increase timeouts, use `networkidle` |
-| Data inconsistency | Shared test state | Isolate test data, cleanup |
+| Symptom                        | Likely Cause       | Solution                                |
+| ------------------------------ | ------------------ | --------------------------------------- |
+| Element not found randomly     | Race condition     | Use `waitFor()` or web-first assertions |
+| Clicks sometimes fail          | Element covered    | Scroll into view, wait for overlays     |
+| Assertions fail intermittently | Animations         | Disable animations, use proper waits    |
+| Different results in CI        | Environment timing | Increase timeouts, use `networkidle`    |
+| Data inconsistency             | Shared test state  | Isolate test data, cleanup              |
 
 ### Identify Flaky Tests
 
@@ -385,14 +385,14 @@ npx playwright test --max-failures=1
 await page.waitForTimeout(2000);
 
 // ✅ Good: Wait for specific condition
-await page.getByRole('button').waitFor({ state: 'visible' });
-await expect(page.getByText('Loaded')).toBeVisible();
-await page.waitForLoadState('networkidle');
+await page.getByRole("button").waitFor({ state: "visible" });
+await expect(page.getByText("Loaded")).toBeVisible();
+await page.waitForLoadState("networkidle");
 
 // ✅ Good: Retry assertion
 await expect(async () => {
-  await page.getByRole('button').click();
-  await expect(page.getByText('Success')).toBeVisible();
+  await page.getByRole("button").click();
+  await expect(page.getByText("Success")).toBeVisible();
 }).toPass({ timeout: 10000 });
 
 // ✅ Good: Disable animations
@@ -400,7 +400,7 @@ export default defineConfig({
   use: {
     // Disable CSS animations
     contextOptions: {
-      reducedMotion: 'reduce',
+      reducedMotion: "reduce",
     },
   },
 });
@@ -412,14 +412,14 @@ export default defineConfig({
 test.beforeEach(async ({ request }) => {
   // Create unique test data
   const uniqueEmail = `test-${Date.now()}@example.com`;
-  await request.post('/api/users', {
-    data: { email: uniqueEmail, name: 'Test User' },
+  await request.post("/api/users", {
+    data: { email: uniqueEmail, name: "Test User" },
   });
 });
 
 test.afterEach(async ({ request }) => {
   // Cleanup
-  await request.delete('/api/test-data/cleanup');
+  await request.delete("/api/test-data/cleanup");
 });
 ```
 
@@ -437,22 +437,22 @@ npx playwright codegen http://localhost:3000
 ### Test Locators in Console
 
 ```typescript
-test('debug locators', async ({ page }) => {
-  await page.goto('/');
-  
+test("debug locators", async ({ page }) => {
+  await page.goto("/");
+
   // Count matches
-  const count = await page.getByRole('button').count();
+  const count = await page.getByRole("button").count();
   console.log(`Found ${count} buttons`);
-  
+
   // Highlight element
-  await page.getByRole('button', { name: 'Submit' }).highlight();
-  
+  await page.getByRole("button", { name: "Submit" }).highlight();
+
   // Evaluate in browser
   const text = await page.evaluate(() => {
-    return document.querySelector('h1')?.textContent;
+    return document.querySelector("h1")?.textContent;
   });
-  console.log('H1 text:', text);
-  
+  console.log("H1 text:", text);
+
   // Pause to inspect
   await page.pause();
 });
@@ -465,16 +465,16 @@ test('debug locators', async ({ page }) => {
 
 // Solutions:
 // 1. Be more specific
-page.getByRole('button', { name: 'Submit' })
+page.getByRole("button", { name: "Submit" });
 
 // 2. Use filter
-page.getByRole('button').filter({ hasText: 'Submit' })
+page.getByRole("button").filter({ hasText: "Submit" });
 
 // 3. Use nth (with caution)
-page.getByRole('button').first()
+page.getByRole("button").first();
 
 // 4. Scope to container
-page.getByRole('dialog').getByRole('button', { name: 'OK' })
+page.getByRole("dialog").getByRole("button", { name: "OK" });
 ```
 
 ---

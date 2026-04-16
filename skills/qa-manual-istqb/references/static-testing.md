@@ -4,12 +4,12 @@ Static testing examines work products (requirements, designs, code, test cases) 
 
 ## Static vs Dynamic Testing
 
-| Aspect | Static Testing | Dynamic Testing |
-|--------|---------------|-----------------|
-| Execution | No code execution | Code is executed |
-| Timing | Early (shift-left) | After implementation |
-| Finds | Defects in documents, code structure | Failures in running software |
-| Examples | Reviews, walkthroughs, static analysis | Unit tests, integration tests, system tests |
+| Aspect    | Static Testing                         | Dynamic Testing                             |
+| --------- | -------------------------------------- | ------------------------------------------- |
+| Execution | No code execution                      | Code is executed                            |
+| Timing    | Early (shift-left)                     | After implementation                        |
+| Finds     | Defects in documents, code structure   | Failures in running software                |
+| Examples  | Reviews, walkthroughs, static analysis | Unit tests, integration tests, system tests |
 
 ## Benefits of Static Testing
 
@@ -60,13 +60,13 @@ Static testing examines work products (requirements, designs, code, test cases) 
 
 ## Review Roles
 
-| Role | Responsibility |
-|------|----------------|
-| Author | Creates the work product; addresses findings |
+| Role      | Responsibility                                      |
+| --------- | --------------------------------------------------- |
+| Author    | Creates the work product; addresses findings        |
 | Moderator | Facilitates the review; ensures process is followed |
-| Reviewer | Examines work product; identifies issues |
-| Recorder | Documents findings and decisions |
-| Manager | Allocates time and resources for reviews |
+| Reviewer  | Examines work product; identifies issues            |
+| Recorder  | Documents findings and decisions                    |
+| Manager   | Allocates time and resources for reviews            |
 
 ## Review Checklists
 
@@ -115,12 +115,12 @@ Static testing examines work products (requirements, designs, code, test cases) 
 
 Static analysis automates code inspection without execution:
 
-| Tool Type | Purpose | Examples |
-|-----------|---------|----------|
-| Linters | Code style and formatting | ESLint, Pylint, Checkstyle |
-| Type checkers | Type safety | TypeScript, mypy |
-| Security scanners | Vulnerability detection | SonarQube, Snyk, CodeQL |
-| Complexity analyzers | Code maintainability | SonarQube, Code Climate |
+| Tool Type            | Purpose                   | Examples                   |
+| -------------------- | ------------------------- | -------------------------- |
+| Linters              | Code style and formatting | ESLint, Pylint, Checkstyle |
+| Type checkers        | Type safety               | TypeScript, mypy           |
+| Security scanners    | Vulnerability detection   | SonarQube, Snyk, CodeQL    |
+| Complexity analyzers | Code maintainability      | SonarQube, Code Climate    |
 
 ## When to Use Static Testing
 
