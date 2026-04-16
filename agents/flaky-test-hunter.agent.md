@@ -324,8 +324,6 @@ await page.click("#checkout-button");
 - tests/payment.spec.ts:67 (similar pattern)
 - tests/checkout-flow.spec.ts:112 (same race condition)
 
-````
-
 ### Remediation Checklist
 ```markdown
 ## Flaky Test Remediation
@@ -340,7 +338,7 @@ await page.click("#checkout-button");
 - [ ] No shared state between tests
 - [ ] External dependencies mocked or stabilized
 - [ ] Documentation updated
-````
+```
 
 ## Handoff Triggers
 
