@@ -289,4 +289,4 @@ After completing this skill's workflow, confirm:
 - [ ] **Tests are independent** — Each test sets up and tears down its own state; no `beforeAll` with shared mutable state
 - [ ] **Error states covered** — At least one test verifies error/empty/loading states alongside happy path
 - [ ] **All tests pass** — `npx playwright test` exits with code 0
-- [ ] **No skipped tests** — `grep -r "test.skip\|test.fixme" *.spec.ts` returns no results
+- [ ] **No skipped tests** — `grep -R -E "test\.skip|test\.fixme" --include="*.spec.ts" .` returns no results
