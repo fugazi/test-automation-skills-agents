@@ -23,12 +23,12 @@ Complete ISTQB Foundation Level (CTFL) aligned workflow for QA test engineers co
 
 ## Prerequisites
 
-| Requirement | Notes |
-|-------------|-------|
-| Node.js 18+ | Required for CLI script and Playwright |
-| Playwright | `npm init playwright@latest` for automation |
+| Requirement | Notes                                           |
+| ----------- | ----------------------------------------------- |
+| Node.js 18+ | Required for CLI script and Playwright          |
+| Playwright  | `npm init playwright@latest` for automation     |
 | Text editor | For creating/editing markdown and CSV artifacts |
-| Git | Recommended for testware version control |
+| Git         | Recommended for testware version control        |
 
 ## Quick Start (choose one)
 
@@ -160,57 +160,57 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 
 ## Troubleshooting
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| Test cases lack traceability | Missing requirement IDs | Add `requirement_id` column; link to user stories/ACs |
-| Bug reports get rejected | Insufficient reproduction steps | Use minimal steps; include exact data and environment |
-| Regression suite too slow | Too many tests, no prioritization | Apply risk-based selection; tier into smoke/sanity/full |
-| Flaky automated tests | Unstable locators or timing | Use `data-testid`; avoid sleeps; use Playwright auto-waits |
-| Test estimates are wrong | Scope creep, missing risks | Add contingency; re-estimate when scope changes |
-| Reviews find no defects | Superficial review | Use checklists; allocate sufficient time; rotate reviewers |
-| Unclear test oracles | Missing expected results | Define oracles from requirements, rules, or reference systems |
+| Problem                      | Cause                             | Solution                                                      |
+| ---------------------------- | --------------------------------- | ------------------------------------------------------------- |
+| Test cases lack traceability | Missing requirement IDs           | Add `requirement_id` column; link to user stories/ACs         |
+| Bug reports get rejected     | Insufficient reproduction steps   | Use minimal steps; include exact data and environment         |
+| Regression suite too slow    | Too many tests, no prioritization | Apply risk-based selection; tier into smoke/sanity/full       |
+| Flaky automated tests        | Unstable locators or timing       | Use `data-testid`; avoid sleeps; use Playwright auto-waits    |
+| Test estimates are wrong     | Scope creep, missing risks        | Add contingency; re-estimate when scope changes               |
+| Reviews find no defects      | Superficial review                | Use checklists; allocate sufficient time; rotate reviewers    |
+| Unclear test oracles         | Missing expected results          | Define oracles from requirements, rules, or reference systems |
 
 ## Bundled Resources
 
 ### Templates (`templates/`)
 
-| Template | Purpose |
-|----------|---------|
-| `test-plan.md` | ISTQB-aligned test plan structure |
-| `test-summary-report.md` | End-of-cycle summary and sign-off |
-| `test-cases.csv` | Test case repository with traceability |
-| `test-conditions.md` | Test conditions derived from test basis |
-| `traceability-matrix.csv` | Requirements ↔ tests ↔ defects mapping |
-| `bug-report.md` | Detailed defect report |
-| `bug-log.csv` | Defect tracking log |
-| `regression-suite.md` | Suite definition and selection rules |
-| `exploratory-charter.md` | Session-based exploratory testing |
-| `playwright-spec.ts` | Playwright test scaffold |
-| `test-environment-checklist.md` | Environment readiness verification |
-| `risk-assessment-matrix.md` | Quality risk identification and prioritization |
+| Template                        | Purpose                                        |
+| ------------------------------- | ---------------------------------------------- |
+| `test-plan.md`                  | ISTQB-aligned test plan structure              |
+| `test-summary-report.md`        | End-of-cycle summary and sign-off              |
+| `test-cases.csv`                | Test case repository with traceability         |
+| `test-conditions.md`            | Test conditions derived from test basis        |
+| `traceability-matrix.csv`       | Requirements ↔ tests ↔ defects mapping         |
+| `bug-report.md`                 | Detailed defect report                         |
+| `bug-log.csv`                   | Defect tracking log                            |
+| `regression-suite.md`           | Suite definition and selection rules           |
+| `exploratory-charter.md`        | Session-based exploratory testing              |
+| `playwright-spec.ts`            | Playwright test scaffold                       |
+| `test-environment-checklist.md` | Environment readiness verification             |
+| `risk-assessment-matrix.md`     | Quality risk identification and prioritization |
 
 ### References (`references/`)
 
-| Reference | Content |
-|-----------|---------|
-| `test-design-techniques.md` | EP, BVA, decision tables, state transitions, use cases |
-| `experience-based-techniques.md` | Error guessing, checklist-based, exploratory |
-| `static-testing.md` | Reviews, walkthroughs, inspections |
-| `test-levels-types.md` | Unit, integration, system, acceptance; functional, non-functional |
-| `test-estimation.md` | Estimation techniques and factors |
-| `test-monitoring-metrics.md` | Progress tracking and quality metrics |
-| `risk-based-testing.md` | Risk identification, analysis, mitigation |
-| `istqb-glossary.md` | Key ISTQB terminology |
-| `test-process-and-deliverables.md` | Test process phases and outputs |
-| `automation-playwright-best-practices.md` | Playwright implementation guidance |
-| `regression-suite-strategy.md` | Suite management and optimization |
-| `bug-report-quality.md` | Effective defect reporting |
-| `defect-lifecycle.md` | Defect states and workflow |
+| Reference                                 | Content                                                           |
+| ----------------------------------------- | ----------------------------------------------------------------- |
+| `test-design-techniques.md`               | EP, BVA, decision tables, state transitions, use cases            |
+| `experience-based-techniques.md`          | Error guessing, checklist-based, exploratory                      |
+| `static-testing.md`                       | Reviews, walkthroughs, inspections                                |
+| `test-levels-types.md`                    | Unit, integration, system, acceptance; functional, non-functional |
+| `test-estimation.md`                      | Estimation techniques and factors                                 |
+| `test-monitoring-metrics.md`              | Progress tracking and quality metrics                             |
+| `risk-based-testing.md`                   | Risk identification, analysis, mitigation                         |
+| `istqb-glossary.md`                       | Key ISTQB terminology                                             |
+| `test-process-and-deliverables.md`        | Test process phases and outputs                                   |
+| `automation-playwright-best-practices.md` | Playwright implementation guidance                                |
+| `regression-suite-strategy.md`            | Suite management and optimization                                 |
+| `bug-report-quality.md`                   | Effective defect reporting                                        |
+| `defect-lifecycle.md`                     | Defect states and workflow                                        |
 
 ### Scripts (`scripts/`)
 
-| Script | Purpose |
-|--------|---------|
+| Script             | Purpose                                          |
+| ------------------ | ------------------------------------------------ |
 | `qa_artifacts.mjs` | CLI tool to generate QA artifacts from templates |
 
 ---
@@ -219,14 +219,14 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 
 > Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
 
-| Rationalization | Reality |
-| --------------- | ------- |
-| "ISTQB theory doesn't apply in practice" | Equivalence partitioning and boundary value analysis directly reduce test count while maintaining coverage. |
-| "We don't need test plans for small projects" | Even small projects benefit from structured testing. A lightweight test plan prevents scope creep. |
-| "Exploratory testing isn't real testing" | Exploratory testing finds bugs that scripted tests never will. It's a disciplined technique, not ad-hoc clicking. |
-| "Risk-based testing means testing less" | It means testing smarter — focusing effort where failure impact is highest, not testing everything equally. |
-| "Traceability matrices are bureaucratic overhead" | They prove coverage, support audit readiness, and reveal gaps between requirements and tests. |
-| "Manual testing is obsolete" | Manual testing catches usability, visual, and accessibility issues that automation misses entirely. |
+| Rationalization                                   | Reality                                                                                                           |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| "ISTQB theory doesn't apply in practice"          | Equivalence partitioning and boundary value analysis directly reduce test count while maintaining coverage.       |
+| "We don't need test plans for small projects"     | Even small projects benefit from structured testing. A lightweight test plan prevents scope creep.                |
+| "Exploratory testing isn't real testing"          | Exploratory testing finds bugs that scripted tests never will. It's a disciplined technique, not ad-hoc clicking. |
+| "Risk-based testing means testing less"           | It means testing smarter — focusing effort where failure impact is highest, not testing everything equally.       |
+| "Traceability matrices are bureaucratic overhead" | They prove coverage, support audit readiness, and reveal gaps between requirements and tests.                     |
+| "Manual testing is obsolete"                      | Manual testing catches usability, visual, and accessibility issues that automation misses entirely.               |
 
 ---
 
@@ -241,4 +241,3 @@ After completing this skill's workflow, confirm:
 - [ ] **Edge cases documented** — Boundary values, empty inputs, and extreme values covered
 - [ ] **Test data documented** — Specific test data values listed, not just "valid data"
 - [ ] **Traceability maintained** — Each test case links to a requirement or user story
-

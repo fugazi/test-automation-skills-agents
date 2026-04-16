@@ -60,7 +60,7 @@ skills/
 ```yaml
 ---
 name: skill-name-with-hyphens
-description: 'WHAT the skill does. Use when [specific trigger conditions]. KEYWORDS for matching.'
+description: "WHAT the skill does. Use when [specific trigger conditions]. KEYWORDS for matching."
 ---
 ```
 
@@ -507,12 +507,12 @@ Level 3: Resources
 
 ### Progressive Disclosure Anti-Patterns
 
-| Anti-Pattern                                          | Problem                                    | Fix                                    |
-| ----------------------------------------------------- | ------------------------------------------ | -------------------------------------- |
-| Including full API docs in SKILL.md                   | Burns tokens, makes skill hard to scan     | Move to `references/` and link         |
-| Loading all references upfront                        | Defeats the purpose of progressive loading | Reference only when needed in workflow |
-| No description keywords                               | Agent can't discover the skill at Level 1  | Add trigger keywords to description    |
-| Duplicating content between SKILL.md and references   | Maintenance burden, token waste            | Link, don't duplicate                  |
+| Anti-Pattern                                        | Problem                                    | Fix                                    |
+| --------------------------------------------------- | ------------------------------------------ | -------------------------------------- |
+| Including full API docs in SKILL.md                 | Burns tokens, makes skill hard to scan     | Move to `references/` and link         |
+| Loading all references upfront                      | Defeats the purpose of progressive loading | Reference only when needed in workflow |
+| No description keywords                             | Agent can't discover the skill at Level 1  | Add trigger keywords to description    |
+| Duplicating content between SKILL.md and references | Maintenance burden, token waste            | Link, don't duplicate                  |
 
 ---
 
@@ -583,6 +583,7 @@ Part of the [skill-name] skill.
 
 Instructions: Copy this template, replace [PLACEHOLDERS] with actual values,
 and remove the <!-- --> comments before finalizing.
+
 -->
 
 # [DOCUMENT TITLE]
@@ -775,11 +776,13 @@ Toolkit for implementing visual regression testing using Playwright's built-in s
    - Determine threshold sensitivity per component
 
 2. **Create baseline screenshots**
+
    ```typescript
    await expect(page).toHaveScreenshot("homepage.png");
    ```
 
 3. **Configure comparison options**
+
    ```typescript
    await expect(page).toHaveScreenshot("homepage.png", {
      maxDiffPixelRatio: 0.01,
@@ -788,6 +791,7 @@ Toolkit for implementing visual regression testing using Playwright's built-in s
    ```
 
 4. **Run and review**
+
    ```bash
    npx playwright test --update-snapshots  # First run (create baselines)
    npx playwright test                      # Subsequent runs (compare)

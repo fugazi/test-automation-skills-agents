@@ -11,13 +11,13 @@ Comprehensive guide for implementing proper synchronization in Selenium tests us
 
 ### Why Thread.sleep() is Bad
 
-| Problem | Impact |
-|---------|--------|
-| Fixed delay | Wastes time when element is ready sooner |
-| Flaky tests | Still fails if element takes longer |
-| No condition check | Just waits blindly |
-| Unpredictable | Different machines have different speeds |
-| Hard to maintain | Magic numbers everywhere |
+| Problem            | Impact                                   |
+| ------------------ | ---------------------------------------- |
+| Fixed delay        | Wastes time when element is ready sooner |
+| Flaky tests        | Still fails if element takes longer      |
+| No condition check | Just waits blindly                       |
+| Unpredictable      | Different machines have different speeds |
+| Hard to maintain   | Magic numbers everywhere                 |
 
 ```java
 // ❌ NEVER DO THIS
@@ -44,7 +44,7 @@ WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
 // With custom polling interval (default is 500ms)
 WebDriverWait wait = new WebDriverWait(
-    driver, 
+    driver,
     Duration.ofSeconds(15),      // timeout
     Duration.ofMillis(250)       // polling interval
 );
@@ -58,11 +58,11 @@ public abstract class BasePage {
     protected final WebDriverWait wait;
     protected final WebDriverWait shortWait;
     protected final WebDriverWait longWait;
-    
+
     private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(15);
     private static final Duration SHORT_TIMEOUT = Duration.ofSeconds(5);
     private static final Duration LONG_TIMEOUT = Duration.ofSeconds(30);
-    
+
     protected BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, DEFAULT_TIMEOUT);
@@ -143,7 +143,7 @@ wait.until(ExpectedConditions.elementToBeClickable(By.id("submit"))).click();
 // Wait for specific text to be present
 wait.until(
     ExpectedConditions.textToBePresentInElementLocated(
-        By.id("status"), 
+        By.id("status"),
         "Success"
     )
 );
@@ -156,7 +156,7 @@ wait.until(
 // Wait for element text to match pattern
 wait.until(
     ExpectedConditions.textMatches(
-        By.id("message"), 
+        By.id("message"),
         Pattern.compile("Order #\\d+ confirmed")
     )
 );
@@ -164,7 +164,7 @@ wait.until(
 // Wait for specific value in input
 wait.until(
     ExpectedConditions.textToBePresentInElementValue(
-        By.id("email"), 
+        By.id("email"),
         "@"
     )
 );
@@ -206,7 +206,7 @@ wait.until(
 // Wait for element selection state
 wait.until(
     ExpectedConditions.elementSelectionStateToBe(
-        By.id("remember-me"), 
+        By.id("remember-me"),
         true  // should be selected
     )
 );
@@ -217,8 +217,8 @@ wait.until(d -> d.findElement(By.id("submit")).isEnabled());
 // Wait for attribute value
 wait.until(
     ExpectedConditions.attributeToBe(
-        By.id("button"), 
-        "class", 
+        By.id("button"),
+        "class",
         "btn-success"
     )
 );
@@ -226,8 +226,8 @@ wait.until(
 // Wait for attribute to contain value
 wait.until(
     ExpectedConditions.attributeContains(
-        By.id("status"), 
-        "class", 
+        By.id("status"),
+        "class",
         "active"
     )
 );
@@ -322,7 +322,7 @@ wait.until(ExpectedConditions.not(
 
 ```java
 // Wait for specific number of elements
-wait.until(driver -> 
+wait.until(driver ->
     driver.findElements(By.cssSelector(".item")).size() >= 5
 );
 
@@ -333,7 +333,7 @@ wait.until(driver -> {
 });
 
 // Wait for JavaScript variable
-wait.until(driver -> 
+wait.until(driver ->
     ((JavascriptExecutor) driver).executeScript("return window.appReady === true")
 );
 
@@ -400,7 +400,7 @@ public class CustomExpectedConditions {
     public static ExpectedCondition<Boolean> elementStoppedMoving(WebElement element) {
         return new ExpectedCondition<>() {
             private Point lastLocation;
-            
+
             @Override
             public Boolean apply(WebDriver driver) {
                 Point currentLocation = element.getLocation();
@@ -474,7 +474,7 @@ protected void waitForModalClose() {
 ```java
 @Step("Wait for table to have data")
 protected void waitForTableData(By tableRows, int minRows) {
-    wait.until(driver -> 
+    wait.until(driver ->
         driver.findElements(tableRows).size() >= minRows
     );
 }
@@ -554,12 +554,12 @@ Wait<WebDriver> robustWait = new FluentWait<>(driver)
 
 ### Comparison
 
-| Aspect | Implicit Wait | Explicit Wait |
-|--------|---------------|---------------|
-| Scope | Global (all findElement) | Specific element/condition |
-| Flexibility | One size fits all | Customizable per situation |
-| Conditions | Only presence | Any condition |
-| Recommended | ❌ Avoid | ✅ Prefer |
+| Aspect      | Implicit Wait            | Explicit Wait              |
+| ----------- | ------------------------ | -------------------------- |
+| Scope       | Global (all findElement) | Specific element/condition |
+| Flexibility | One size fits all        | Customizable per situation |
+| Conditions  | Only presence            | Any condition              |
+| Recommended | ❌ Avoid                 | ✅ Prefer                  |
 
 ### Why Avoid Implicit Waits
 
@@ -614,20 +614,20 @@ protected String getTextOrDefault(By locator, String defaultValue) {
 
 ## Quick Reference
 
-| Need | ExpectedCondition |
-|------|-------------------|
-| Element visible | `visibilityOfElementLocated(By)` |
-| Element clickable | `elementToBeClickable(By)` |
-| Element invisible | `invisibilityOfElementLocated(By)` |
-| Element exists in DOM | `presenceOfElementLocated(By)` |
-| Text present | `textToBePresentInElementLocated(By, text)` |
-| URL contains | `urlContains(urlPart)` |
-| Title contains | `titleContains(text)` |
-| Alert present | `alertIsPresent()` |
-| Frame available | `frameToBeAvailableAndSwitchToIt(By)` |
-| Element stale | `stalenessOf(element)` |
-| Multiple windows | `numberOfWindowsToBe(count)` |
-| Attribute value | `attributeToBe(By, attr, value)` |
+| Need                  | ExpectedCondition                           |
+| --------------------- | ------------------------------------------- |
+| Element visible       | `visibilityOfElementLocated(By)`            |
+| Element clickable     | `elementToBeClickable(By)`                  |
+| Element invisible     | `invisibilityOfElementLocated(By)`          |
+| Element exists in DOM | `presenceOfElementLocated(By)`              |
+| Text present          | `textToBePresentInElementLocated(By, text)` |
+| URL contains          | `urlContains(urlPart)`                      |
+| Title contains        | `titleContains(text)`                       |
+| Alert present         | `alertIsPresent()`                          |
+| Frame available       | `frameToBeAvailableAndSwitchToIt(By)`       |
+| Element stale         | `stalenessOf(element)`                      |
+| Multiple windows      | `numberOfWindowsToBe(count)`                |
+| Attribute value       | `attributeToBe(By, attr, value)`            |
 
 ---
 

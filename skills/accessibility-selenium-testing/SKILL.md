@@ -211,14 +211,14 @@ public void verifyPageAccessibility(WebDriver driver) {
 public void verifyComponentAccessibility(WebDriver driver, String... selectors) {
     AxeBuilder builder = new AxeBuilder()
         .withTags(List.of("wcag2a", "wcag2aa"));
-    
+
     for (String selector : selectors) {
         builder.include(selector);
     }
-    
+
     Results results = builder.analyze(driver);
     logViolations(results.getViolations());
-    
+
     assertThat(results.violationFree())
         .as("Component accessibility check failed")
         .isTrue();
@@ -278,12 +278,12 @@ private void logViolations(List<Rule> violations) {
 
     log.error("✗ Found {} accessibility violations:", violations.size());
     for (Rule violation : violations) {
-        log.error("  [{}/{}] {}", 
+        log.error("  [{}/{}] {}",
             violation.getImpact().toUpperCase(),
             violation.getId(),
             violation.getDescription());
         log.error("    Help: {}", violation.getHelpUrl());
-        
+
         for (CheckedNode node : violation.getNodes()) {
             log.error("    Target: {}", String.join(", ", node.getTarget()));
             log.error("    HTML: {}", truncate(node.getHtml(), 100));
@@ -325,7 +325,7 @@ class AccessibilityTest extends BaseTest {
     @DisplayName("Login modal should be keyboard accessible")
     void loginModal_shouldBeKeyboardAccessible() {
         driver.get(ConfigReader.get("base.url"));
-        
+
         // Open modal
         driver.findElement(By.id("login-btn")).click();
         waitForVisible(By.id("login-modal"));
@@ -341,7 +341,7 @@ class AccessibilityTest extends BaseTest {
         // Test keyboard navigation
         WebElement modal = driver.findElement(By.id("login-modal"));
         WebElement firstInput = modal.findElement(By.cssSelector("input:first-of-type"));
-        
+
         assertThat(driver.switchTo().activeElement())
             .as("Focus should be inside modal")
             .isEqualTo(firstInput);
@@ -418,7 +418,7 @@ class AccessibilityTest extends BaseTest {
 ```yaml
 - name: Run Accessibility Tests
   run: mvn test -Dgroups=a11y -Dheadless=true
-  
+
 - name: Upload A11y Report
   uses: actions/upload-artifact@v3
   with:

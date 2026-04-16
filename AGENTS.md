@@ -10,6 +10,8 @@ The content is **tool-agnostic** (usable with GitHub Copilot, Claude, Cursor, Op
 agents/           # Custom AI agent definitions (*.agent.md)
 skills/           # Specialized testing skills (*/SKILL.md)
 instructions/     # Guidelines for creating agents/skills (*.instructions.md)
+docs/             # Setup guides and documentation
+references/       # Shared reference material
 ```
 
 ## Build/Lint/Test Commands
@@ -25,12 +27,12 @@ This repository has **no build system** - it is a documentation/knowledge base.
 
 ### File Naming Conventions
 
-| File Type | Pattern | Example |
-|-----------|---------|---------|
-| Agents | `lowercase-with-hyphens.agent.md` | `playwright-test-generator.agent.md` |
-| Instructions | `lowercase-with-hyphens.instructions.md` | `playwright-typescript.instructions.md` |
-| Skills | `SKILL.md` (inside skill folder) | `skills/my-skill/SKILL.md` |
-| Skill folders | `lowercase-with-hyphens` | `playwright-e2e-testing/` |
+| File Type     | Pattern                                  | Example                                 |
+| ------------- | ---------------------------------------- | --------------------------------------- |
+| Agents        | `lowercase-with-hyphens.agent.md`        | `playwright-test-generator.agent.md`    |
+| Instructions  | `lowercase-with-hyphens.instructions.md` | `playwright-typescript.instructions.md` |
+| Skills        | `SKILL.md` (inside skill folder)         | `skills/my-skill/SKILL.md`              |
+| Skill folders | `lowercase-with-hyphens`                 | `playwright-e2e-testing/`               |
 
 ### Frontmatter Requirements
 
@@ -38,12 +40,12 @@ All `.agent.md` and `SKILL.md` files **must** include YAML frontmatter:
 
 ```yaml
 ---
-description: 'Clear, single-quoted description of purpose (50-150 chars for agents)'
-name: 'Display Name'  # Optional but recommended
-tools: ['read', 'edit', 'search']  # Optional - omit for all tools
-model: 'Claude Sonnet 4.5'  # Strongly recommended
-target: 'vscode'  # Optional: 'vscode' or 'github-copilot'
-infer: true  # Optional: allow auto-selection (default: true)
+description: "Clear, single-quoted description of purpose (50-150 chars for agents)"
+name: "Display Name" # Optional but recommended
+tools: ["read", "edit", "search"] # Optional - omit for all tools
+model: "Claude Sonnet 4.5" # Strongly recommended
+target: "vscode" # Optional: 'vscode' or 'github-copilot'
+infer: true # Optional: allow auto-selection (default: true)
 ---
 ```
 
@@ -51,9 +53,9 @@ infer: true  # Optional: allow auto-selection (default: true)
 
 ```yaml
 ---
-name: skill-name  # Required: lowercase, hyphens, ≤64 chars
-description: 'WHAT it does, WHEN to use it, KEYWORDS for matching'  # Required
-license: 'Complete terms in LICENSE.txt'  # Optional
+name: skill-name # Required: lowercase, hyphens, ≤64 chars
+description: "WHAT it does, WHEN to use it, KEYWORDS for matching" # Required
+license: "Complete terms in LICENSE.txt" # Optional
 ---
 ```
 
@@ -131,9 +133,9 @@ Numbered steps for common tasks.
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| Problem | Fix |
+| Issue   | Solution |
+| ------- | -------- |
+| Problem | Fix      |
 
 ## References
 
@@ -168,6 +170,7 @@ Use `${variableName}` syntax for dynamic values in prompts:
 
 ```markdown
 ## Dynamic Parameters
+
 - **projectName**: ${projectName}
 - **basePath**: ${basePath}
 ```
@@ -193,6 +196,8 @@ Use `${variableName}` syntax for dynamic values in prompts:
 
 ## Resources
 
+- [Getting Started](./docs/getting-started.md) — Overview and quick start for all AI tools
+- [Skill Anatomy Standard](./docs/skill-anatomy.md) — How skills are structured and authored
 - [Creating Custom Agents](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents)
 - [Agent Skills Specification](https://agentskills.io/)
 - [VS Code Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills)

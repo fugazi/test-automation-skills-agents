@@ -27,4 +27,3 @@
 
 - On failures, capture screenshots/video/trace to speed triage.
 - Link failures to test case IDs and requirements (traceability).
-

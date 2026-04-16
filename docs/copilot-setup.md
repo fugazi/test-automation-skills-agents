@@ -56,12 +56,12 @@ Browse all available skills: `https://skills.sh/?q=fugazi/test-automation-skills
 
 GitHub Copilot looks for customizations in these canonical locations:
 
-| Type | Path | Format |
-|------|------|--------|
-| Agents | `.github/agents/*.agent.md` | Markdown with YAML frontmatter |
-| Instructions | `.github/instructions/*.instructions.md` | Markdown with YAML frontmatter |
-| Skills | `.github/skills/<name>/SKILL.md` | Folder-based with frontmatter |
-| Copilot Instructions | `.github/copilot-instructions.md` | Plain markdown |
+| Type                 | Path                                     | Format                         |
+| -------------------- | ---------------------------------------- | ------------------------------ |
+| Agents               | `.github/agents/*.agent.md`              | Markdown with YAML frontmatter |
+| Instructions         | `.github/instructions/*.instructions.md` | Markdown with YAML frontmatter |
+| Skills               | `.github/skills/<name>/SKILL.md`         | Folder-based with frontmatter  |
+| Copilot Instructions | `.github/copilot-instructions.md`        | Plain markdown                 |
 
 ## Activating Skills
 
@@ -109,6 +109,7 @@ Example prompts:
 If using Copilot on GitHub (agent workflows), agents under `.github/agents/` are discovered automatically.
 
 Recommended pattern:
+
 1. Use a planning agent to produce an execution plan
 2. Hand off to a specialist agent (Playwright generator/healer, flaky hunter, etc.)
 

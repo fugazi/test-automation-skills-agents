@@ -9,15 +9,15 @@ Comprehensive guide for choosing and implementing the right locator strategy in 
 
 Always prefer locators higher in this list:
 
-| Priority | Locator Type | Example | Why |
-|----------|-------------|---------|-----|
-| 1 | ID | `By.id("login-button")` | Fastest, most stable |
-| 2 | Name | `By.name("username")` | Stable, semantic |
-| 3 | Test ID | `By.cssSelector("[data-testid='submit']")` | Explicit, stable |
-| 4 | CSS Selector | `By.cssSelector("form#login input[type='email']")` | Flexible, fast |
-| 5 | Link Text | `By.linkText("Sign up")` | For anchor elements |
-| 6 | Class Name | `By.className("btn-primary")` | Can change with styling |
-| 7 | XPath | `By.xpath("//button[@aria-label='Close']")` | Use only when necessary |
+| Priority | Locator Type | Example                                            | Why                     |
+| -------- | ------------ | -------------------------------------------------- | ----------------------- |
+| 1        | ID           | `By.id("login-button")`                            | Fastest, most stable    |
+| 2        | Name         | `By.name("username")`                              | Stable, semantic        |
+| 3        | Test ID      | `By.cssSelector("[data-testid='submit']")`         | Explicit, stable        |
+| 4        | CSS Selector | `By.cssSelector("form#login input[type='email']")` | Flexible, fast          |
+| 5        | Link Text    | `By.linkText("Sign up")`                           | For anchor elements     |
+| 6        | Class Name   | `By.className("btn-primary")`                      | Can change with styling |
+| 7        | XPath        | `By.xpath("//button[@aria-label='Close']")`        | Use only when necessary |
 
 ---
 
@@ -171,11 +171,11 @@ public class LoginPage extends BasePage {
     private final By loginButton = By.id("login-button");
     private final By errorMessage = By.cssSelector("[data-testid='error-alert']");
     private final By forgotPasswordLink = By.linkText("Forgot password?");
-    
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    
+
     // Use locators in action methods
     @Step("Enter username: {username}")
     public LoginPage enterUsername(String username) {
@@ -189,22 +189,22 @@ public class LoginPage extends BasePage {
 
 ```java
 public class ProductPage extends BasePage {
-    
+
     // Dynamic locator with parameter
     private By productCard(String productId) {
         return By.cssSelector("[data-testid='product-card'][data-id='" + productId + "']");
     }
-    
+
     // Dynamic locator with String.format
     private By rowByEmail(String email) {
         return By.xpath(String.format("//tr[contains(.,'%s')]", email));
     }
-    
+
     // Dynamic locator for table cell
     private By cellInRow(int row, int col) {
         return By.cssSelector(String.format("table tbody tr:nth-child(%d) td:nth-child(%d)", row, col));
     }
-    
+
     @Step("Click product: {productId}")
     public ProductDetailPage selectProduct(String productId) {
         click(productCard(productId));
@@ -346,12 +346,12 @@ By.cssSelector(".user-actions button[data-action='delete']")
 
 ```javascript
 // CSS Selector
-document.querySelector('[data-testid="submit"]')
-document.querySelectorAll('table tbody tr')
+document.querySelector('[data-testid="submit"]');
+document.querySelectorAll("table tbody tr");
 
 // XPath
-$x("//button[text()='Submit']")
-$x("//input[@id='email']/ancestor::form")
+$x("//button[text()='Submit']");
+$x("//input[@id='email']/ancestor::form");
 ```
 
 ### Using Selenium
@@ -386,17 +386,17 @@ public void debugLocator(By locator) {
 
 ## Quick Reference
 
-| Need | Locator |
-|------|---------|
-| Button by ID | `By.id("submit-btn")` |
-| Input by name | `By.name("email")` |
-| By test ID | `By.cssSelector("[data-testid='name']")` |
-| By aria-label | `By.cssSelector("[aria-label='Close']")` |
-| By type | `By.cssSelector("input[type='password']")` |
-| Link by text | `By.linkText("Sign up")` |
-| Row in table | `By.cssSelector("table tbody tr:nth-child(2)")` |
-| By text (XPath) | `By.xpath("//button[text()='Submit']")` |
-| Parent element | `By.xpath("//input[@id='x']/parent::div")` |
+| Need            | Locator                                         |
+| --------------- | ----------------------------------------------- |
+| Button by ID    | `By.id("submit-btn")`                           |
+| Input by name   | `By.name("email")`                              |
+| By test ID      | `By.cssSelector("[data-testid='name']")`        |
+| By aria-label   | `By.cssSelector("[aria-label='Close']")`        |
+| By type         | `By.cssSelector("input[type='password']")`      |
+| Link by text    | `By.linkText("Sign up")`                        |
+| Row in table    | `By.cssSelector("table tbody tr:nth-child(2)")` |
+| By text (XPath) | `By.xpath("//button[text()='Submit']")`         |
+| Parent element  | `By.xpath("//input[@id='x']/parent::div")`      |
 
 ---
 

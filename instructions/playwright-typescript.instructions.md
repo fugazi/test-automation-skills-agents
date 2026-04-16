@@ -6,6 +6,7 @@ applyTo: '**'
 ## Test Writing Guidelines
 
 ### Code Quality Standards
+
 - **Locators**: Prioritize user-facing, role-based locators (`getByRole`, `getByLabel`, `getByText`, etc.) for resilience and accessibility. Use `test.step()` to group interactions and improve test readability and reporting.
 - **Assertions**: Use auto-retrying web-first assertions. These assertions start with the `await` keyword (e.g., `await expect(locator).toHaveText()`). Avoid `expect(locator).toBeVisible()` unless specifically testing for visibility changes.
 - **Timeouts**: Rely on Playwright's built-in auto-waiting mechanisms. Avoid hard-coded waits or increased default timeouts.
@@ -14,20 +15,21 @@ applyTo: '**'
 - **Fluent Interface**: Design Page Object methods to return this or the next Page object to allow method chaining, improving readability.
 - **Clean Code**: Follow SOLID principles. Keep tests focused on business logic and Page Objects focused on implementation details.
 
-
 ### Test Structure
+
 - **Imports**: Start with `import { test, expect } from '@playwright/test';`.
 - **Organization**: Group related tests for a feature under a `test.describe()` block.
 - **Hooks**: Use `beforeEach` for setup actions common to all tests in a `describe` block (e.g., navigating to a page).
 - **Titles**: Follow a clear naming convention, such as `Feature - Specific action or scenario`.
 
-
 ### File Organization
+
 - **Location**: Store all test files in the `tests/` directory.
 - **Naming**: Use the convention `<feature-or-page>.spec.ts` (e.g., `login.spec.ts`, `search.spec.ts`).
 - **Scope**: Aim for one test file per major application feature or page.
 
 ### Assertion Best Practices
+
 - **UI Structure**: Use `toMatchAriaSnapshot` to verify the accessibility tree structure of a component. This provides a comprehensive and accessible snapshot.
 - **Element Counts**: Use `toHaveCount` to assert the number of elements found by a locator.
 - **Text Content**: Use `toHaveText` for exact text matches and `toContainText` for partial matches.
@@ -38,25 +40,25 @@ applyTo: '**'
 ## Example Test Structure
 
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test.describe('Movie Search Feature', () => {
+test.describe("Movie Search Feature", () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the application before each test
-    await page.goto('https://debs-obrien.github.io/playwright-movies-app');
+    await page.goto("https://debs-obrien.github.io/playwright-movies-app");
   });
 
-  test('Search for a movie by title', async ({ page }) => {
-    await test.step('Activate and perform search', async () => {
-      await page.getByRole('search').click();
-      const searchInput = page.getByRole('textbox', { name: 'Search Input' });
-      await searchInput.fill('Garfield');
-      await searchInput.press('Enter');
+  test("Search for a movie by title", async ({ page }) => {
+    await test.step("Activate and perform search", async () => {
+      await page.getByRole("search").click();
+      const searchInput = page.getByRole("textbox", { name: "Search Input" });
+      await searchInput.fill("Garfield");
+      await searchInput.press("Enter");
     });
 
-    await test.step('Verify search results', async () => {
+    await test.step("Verify search results", async () => {
       // Verify the accessibility tree of the search results
-      await expect(page.getByRole('main')).toMatchAriaSnapshot(`
+      await expect(page.getByRole("main")).toMatchAriaSnapshot(`
         - main:
           - heading "Garfield" [level=1]
           - heading "search results" [level=2]
@@ -73,31 +75,32 @@ test.describe('Movie Search Feature', () => {
 ```
 
 ## Locator Strategy (Priority Order)
+
 Use locators that mirror how users interact with the page:
 
 ```typescript
 // ✅ BEST: Role-based (accessible, resilient)
-page.getByRole('button', { name: 'Submit' })
-page.getByRole('textbox', { name: 'Email' })
-page.getByRole('link', { name: 'Sign up' })
-page.getByRole('heading', { name: 'Welcome' })
+page.getByRole("button", { name: "Submit" });
+page.getByRole("textbox", { name: "Email" });
+page.getByRole("link", { name: "Sign up" });
+page.getByRole("heading", { name: "Welcome" });
 
 // ✅ GOOD: User-facing text
-page.getByLabel('Email address')
-page.getByPlaceholder('Enter your email')
-page.getByText('Welcome back')
-page.getByTitle('Profile settings')
+page.getByLabel("Email address");
+page.getByPlaceholder("Enter your email");
+page.getByText("Welcome back");
+page.getByTitle("Profile settings");
 
 // ✅ GOOD: Test IDs (stable, explicit)
-page.getByTestId('submit-button')
-page.getByTestId('user-avatar')
+page.getByTestId("submit-button");
+page.getByTestId("user-avatar");
 
 // ⚠️ AVOID: CSS selectors (brittle)
-page.locator('.btn-primary')
-page.locator('#submit')
+page.locator(".btn-primary");
+page.locator("#submit");
 
 // ❌ NEVER: XPath (extremely brittle)
-page.locator('//div[@class="container"]/button[1]')
+page.locator('//div[@class="container"]/button[1]');
 ```
 
 ---
@@ -113,6 +116,7 @@ page.locator('//div[@class="container"]/button[1]')
 ## Quality Checklist
 
 Before finalizing tests, ensure:
+
 - [ ] All locators are accessible and specific and avoid strict mode violations
 - [ ] Tests are grouped logically and follow a clear structure
 - [ ] Assertions are meaningful and reflect user expectations

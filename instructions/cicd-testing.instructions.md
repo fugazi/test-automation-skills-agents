@@ -11,12 +11,12 @@ Instructions for setting up automated test pipelines using GitHub Actions. Cover
 
 Organize tests into tiers that run from fastest/most-critical to slowest/broadest:
 
-| Tier | Scope | Duration | Trigger | Browsers |
-|------|-------|----------|---------|----------|
-| **Tier 0: Smoke** | Critical path (5-10 tests) | < 2 min | Every commit | 1 browser (chromium) |
-| **Tier 1: Sanity** | Core features (20-50 tests) | < 10 min | Every PR | 2 browsers |
-| **Tier 2: Selective** | Change-based | < 30 min | On merge | All browsers |
-| **Tier 3: Full** | Complete regression | < 60 min | Nightly / pre-release | All browsers + mobile |
+| Tier                  | Scope                       | Duration | Trigger               | Browsers              |
+| --------------------- | --------------------------- | -------- | --------------------- | --------------------- |
+| **Tier 0: Smoke**     | Critical path (5-10 tests)  | < 2 min  | Every commit          | 1 browser (chromium)  |
+| **Tier 1: Sanity**    | Core features (20-50 tests) | < 10 min | Every PR              | 2 browsers            |
+| **Tier 2: Selective** | Change-based                | < 30 min | On merge              | All browsers          |
+| **Tier 3: Full**      | Complete regression         | < 60 min | Nightly / pre-release | All browsers + mobile |
 
 ## Tagging Strategy
 
@@ -133,11 +133,11 @@ Configure reporters for CI and local environments:
 export default defineConfig({
   reporter: process.env.CI
     ? [
-        ['html', { open: 'never' }],
-        ['json', { outputFile: 'test-results/results.json' }],
-        ['github'],
+        ["html", { open: "never" }],
+        ["json", { outputFile: "test-results/results.json" }],
+        ["github"],
       ]
-    : [['list']],
+    : [["list"]],
 });
 ```
 
@@ -188,9 +188,9 @@ Configure retries and artifact capture for CI-only:
 export default defineConfig({
   retries: process.env.CI ? 2 : 0, // Retry only in CI
   use: {
-    trace: 'on-first-retry',       // Capture trace on retry
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    trace: "on-first-retry", // Capture trace on retry
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
   },
 });
 ```

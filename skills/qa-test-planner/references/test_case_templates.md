@@ -51,12 +51,13 @@ Standard templates for creating consistent, comprehensive test cases.
 
 ### Test Data
 
-| Field | Value | Notes |
-|-------|-------|-------|
+| Field     | Value   | Notes                  |
+| --------- | ------- | ---------------------- |
 | [Field 1] | [Value] | [Any special handling] |
 | [Field 2] | [Value] | [Any special handling] |
 
 **Test Account:**
+
 - Username: [test user]
 - Password: [test password]
 - Role: [user type]
@@ -73,11 +74,11 @@ Standard templates for creating consistent, comprehensive test cases.
 
 ### Edge Cases & Variations
 
-| Variation | Input | Expected Result |
-|-----------|-------|-----------------|
-| Empty input | "" | Validation error shown |
-| Max length | 256 chars | Accepted/Truncated |
-| Special chars | @#$% | Handled correctly |
+| Variation     | Input     | Expected Result        |
+| ------------- | --------- | ---------------------- |
+| Empty input   | ""        | Validation error shown |
+| Max length    | 256 chars | Accepted/Truncated     |
+| Special chars | @#$%      | Handled correctly      |
 
 ---
 
@@ -91,8 +92,8 @@ Standard templates for creating consistent, comprehensive test cases.
 ### Execution History
 
 | Date | Tester | Build | Result | Bug ID | Notes |
-|------|--------|-------|--------|--------|-------|
-| | | | | | |
+| ---- | ------ | ----- | ------ | ------ | ----- |
+|      |        |       |        |        |       |
 
 ---
 
@@ -116,9 +117,11 @@ For testing business logic and feature functionality.
 **Requirement:** REQ-XXX
 
 ### Objective
+
 Verify that [feature] behaves correctly when [scenario]
 
 ### Preconditions
+
 - User logged in as [role]
 - [Feature prerequisite]
 - Test data: [dataset]
@@ -136,11 +139,13 @@ Verify that [feature] behaves correctly when [scenario]
    **Expected:** [Success criteria]
 
 ### Boundary Tests
+
 - Minimum value: [test]
 - Maximum value: [test]
 - Null/empty: [test]
 
 ### Negative Tests
+
 - Invalid input: [test]
 - Unauthorized access: [test]
 - Missing required fields: [test]
@@ -161,9 +166,11 @@ For validating visual appearance and design compliance.
 **Breakpoints:** Desktop | Tablet | Mobile
 
 ### Objective
+
 Verify [component] matches Figma design specifications
 
 ### Preconditions
+
 - Browser: [Chrome/Firefox/Safari]
 - Screen resolution: [specified]
 - Theme: [Light/Dark]
@@ -195,6 +202,7 @@ Verify [component] matches Figma design specifications
 | Text | #XXXXXX | | [ ] |
 
 **Interactive States:**
+
 - [ ] Default state matches design
 - [ ] Hover state matches design
 - [ ] Active/pressed state matches design
@@ -204,14 +212,17 @@ Verify [component] matches Figma design specifications
 ### Responsive Checks
 
 **Desktop (1920px):**
+
 - [ ] Layout correct
 - [ ] All elements visible
 
 **Tablet (768px):**
+
 - [ ] Layout adapts correctly
 - [ ] Touch targets adequate
 
 **Mobile (375px):**
+
 - [ ] Layout stacks correctly
 - [ ] Content readable
 - [ ] Navigation accessible
@@ -232,9 +243,11 @@ For testing component interactions and data flow.
 **API Endpoint:** [endpoint if applicable]
 
 ### Objective
+
 Verify data flows correctly from [source] to [destination]
 
 ### Preconditions
+
 - [System A] running
 - [System B] running
 - Test credentials configured
@@ -256,12 +269,14 @@ Verify data flows correctly from [source] to [destination]
    **Expected:** [UI update/confirmation]
 
 ### Data Validation
-| Field | Source Value | Transformed Value | Status |
-|-------|--------------|-------------------|--------|
-| [field1] | [value] | [expected] | [ ] |
-| [field2] | [value] | [expected] | [ ] |
+
+| Field    | Source Value | Transformed Value | Status |
+| -------- | ------------ | ----------------- | ------ |
+| [field1] | [value]      | [expected]        | [ ]    |
+| [field2] | [value]      | [expected]        | [ ]    |
 
 ### Error Scenarios
+
 - [ ] Network timeout handling
 - [ ] Invalid response handling
 - [ ] Authentication failure handling
@@ -283,10 +298,13 @@ For ensuring existing functionality remains intact.
 **Last Modified:** [Date]
 
 ### Objective
+
 Verify [feature] still works correctly after recent changes
 
 ### Context
+
 Recent changes that may affect this feature:
+
 - [Change 1]
 - [Change 2]
 
@@ -298,11 +316,13 @@ Recent changes that may affect this feature:
 4. [ ] Error handling intact
 
 ### Integration Points
+
 - [ ] [Dependent feature 1] still works
 - [ ] [Dependent feature 2] still works
 - [ ] API contracts unchanged
 
 ### Performance Baseline
+
 - Expected load time: < Xs
 - Expected response time: < Xms
 ```
@@ -322,9 +342,11 @@ For validating security controls and vulnerabilities.
 **Risk Level:** Critical | High | Medium | Low
 
 ### Objective
+
 Verify [security control] prevents [vulnerability/attack]
 
 ### Preconditions
+
 - Test account with [role]
 - Security testing tools configured
 - Audit logging enabled
@@ -342,6 +364,7 @@ Verify [security control] prevents [vulnerability/attack]
    - Account: Not compromised
 
 ### Attack Vectors
+
 - [ ] SQL injection
 - [ ] XSS (stored/reflected)
 - [ ] CSRF
@@ -349,6 +372,7 @@ Verify [security control] prevents [vulnerability/attack]
 - [ ] Authorization escalation
 
 ### Compliance Check
+
 - [ ] [Regulation] requirement met
 - [ ] Audit trail complete
 - [ ] Data encrypted
@@ -368,22 +392,24 @@ For validating speed, scalability, and resource usage.
 **Baseline:** [Previous metrics]
 
 ### Objective
+
 Verify [feature] meets performance requirements
 
 ### Preconditions
+
 - Load testing tool configured
 - Baseline metrics recorded
 - Test environment isolated
 
 ### Performance Criteria
 
-| Metric | Target | Acceptable | Actual | Status |
-|--------|--------|------------|--------|--------|
-| Response time | < 200ms | < 500ms | | [ ] |
-| Throughput | > 1000 req/s | > 500 req/s | | [ ] |
-| Error rate | < 0.1% | < 1% | | [ ] |
-| CPU usage | < 70% | < 85% | | [ ] |
-| Memory usage | < 70% | < 85% | | [ ] |
+| Metric        | Target       | Acceptable  | Actual | Status |
+| ------------- | ------------ | ----------- | ------ | ------ |
+| Response time | < 200ms      | < 500ms     |        | [ ]    |
+| Throughput    | > 1000 req/s | > 500 req/s |        | [ ]    |
+| Error rate    | < 0.1%       | < 1%        |        | [ ]    |
+| CPU usage     | < 70%        | < 85%       |        | [ ]    |
+| Memory usage  | < 70%        | < 85%       |        | [ ]    |
 
 ### Load Scenarios
 
@@ -400,6 +426,7 @@ Verify [feature] meets performance requirements
    - Expected: Graceful degradation
 
 ### Results
+
 [Document actual results and comparison to baseline]
 ```
 
@@ -407,24 +434,24 @@ Verify [feature] meets performance requirements
 
 ## Quick Reference: Test Case Naming
 
-| Type | Prefix | Example |
-|------|--------|---------|
-| Functional | TC-FUNC- | TC-FUNC-001 |
-| UI/Visual | TC-UI- | TC-UI-045 |
-| Integration | TC-INT- | TC-INT-012 |
-| Regression | TC-REG- | TC-REG-089 |
-| Security | TC-SEC- | TC-SEC-005 |
+| Type        | Prefix   | Example     |
+| ----------- | -------- | ----------- |
+| Functional  | TC-FUNC- | TC-FUNC-001 |
+| UI/Visual   | TC-UI-   | TC-UI-045   |
+| Integration | TC-INT-  | TC-INT-012  |
+| Regression  | TC-REG-  | TC-REG-089  |
+| Security    | TC-SEC-  | TC-SEC-005  |
 | Performance | TC-PERF- | TC-PERF-023 |
-| API | TC-API- | TC-API-067 |
-| Smoke | SMOKE- | SMOKE-001 |
+| API         | TC-API-  | TC-API-067  |
+| Smoke       | SMOKE-   | SMOKE-001   |
 
 ---
 
 ## Priority Definitions
 
-| Priority | Description | When to Run |
-|----------|-------------|-------------|
-| P0 | Critical path, blocks release | Every build |
-| P1 | Major features, high impact | Daily/Weekly |
-| P2 | Standard features, moderate impact | Weekly/Release |
-| P3 | Minor features, low impact | Release only |
+| Priority | Description                        | When to Run    |
+| -------- | ---------------------------------- | -------------- |
+| P0       | Critical path, blocks release      | Every build    |
+| P1       | Major features, high impact        | Daily/Weekly   |
+| P2       | Standard features, moderate impact | Weekly/Release |
+| P3       | Minor features, low impact         | Release only   |

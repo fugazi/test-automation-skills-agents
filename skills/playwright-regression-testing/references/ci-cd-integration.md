@@ -8,7 +8,7 @@ Detailed reference for integrating Playwright regression tests with GitHub Actio
 
 ```typescript
 // playwright.config.ts
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   fullyParallel: true,
@@ -36,15 +36,15 @@ npx playwright test --shard=4/4
 
 ### Performance Optimization Checklist
 
-| Technique | Impact | How |
-|-----------|--------|-----|
-| Parallel workers | High | `fullyParallel: true` in config |
-| Sharding | High | `--shard=N/M` across CI machines |
-| API authentication | Medium | Skip UI login; use API tokens or `storageState` |
-| Selective test runs | High | Tag-based `--grep` with change analysis |
-| Browser reuse | Medium | `reuseExistingServer: true` for dev server |
-| Headed vs headless | Low | Always headless in CI |
-| Dependency caching | Medium | Cache `node_modules` and browser binaries in CI |
+| Technique           | Impact | How                                             |
+| ------------------- | ------ | ----------------------------------------------- |
+| Parallel workers    | High   | `fullyParallel: true` in config                 |
+| Sharding            | High   | `--shard=N/M` across CI machines                |
+| API authentication  | Medium | Skip UI login; use API tokens or `storageState` |
+| Selective test runs | High   | Tag-based `--grep` with change analysis         |
+| Browser reuse       | Medium | `reuseExistingServer: true` for dev server      |
+| Headed vs headless  | Low    | Always headless in CI                           |
+| Dependency caching  | Medium | Cache `node_modules` and browser binaries in CI |
 
 ### Storage State for Auth Reuse
 
@@ -52,15 +52,15 @@ Avoid repeating login UI in every test:
 
 ```typescript
 // auth.setup.ts — run once, save auth state
-import { test as setup } from '@playwright/test';
+import { test as setup } from "@playwright/test";
 
-setup('authenticate', async ({ page }) => {
-  await page.goto('/login');
-  await page.getByLabel('Email').fill('admin@example.com');
-  await page.getByLabel('Password').fill('password');
-  await page.getByRole('button', { name: 'Sign in' }).click();
-  await page.waitForURL('**/dashboard');
-  await page.context().storageState({ path: '.auth/user.json' });
+setup("authenticate", async ({ page }) => {
+  await page.goto("/login");
+  await page.getByLabel("Email").fill("admin@example.com");
+  await page.getByLabel("Password").fill("password");
+  await page.getByRole("button", { name: "Sign in" }).click();
+  await page.waitForURL("**/dashboard");
+  await page.context().storageState({ path: ".auth/user.json" });
 });
 ```
 
@@ -68,11 +68,11 @@ setup('authenticate', async ({ page }) => {
 // playwright.config.ts
 export default defineConfig({
   projects: [
-    { name: 'setup', testDir: './', testMatch: 'auth.setup.ts' },
+    { name: "setup", testDir: "./", testMatch: "auth.setup.ts" },
     {
-      name: 'regression',
-      dependencies: ['setup'],
-      use: { storageState: '.auth/user.json' },
+      name: "regression",
+      dependencies: ["setup"],
+      use: { storageState: ".auth/user.json" },
     },
   ],
 });
@@ -90,13 +90,13 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 2 * * *'  # Nightly full regression at 2 AM UTC
+    - cron: "0 2 * * *" # Nightly full regression at 2 AM UTC
   workflow_dispatch:
     inputs:
       suite:
-        description: 'Test suite to run'
+        description: "Test suite to run"
         required: false
-        default: 'smoke'
+        default: "smoke"
         type: choice
         options:
           - smoke
@@ -137,7 +137,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Full history for git diff
+          fetch-depth: 0 # Full history for git diff
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -183,90 +183,90 @@ jobs:
 ### Merge Reports from Shards
 
 ```yaml
-  merge-reports:
-    name: Merge Shard Reports
-    needs: regression
-    if: ${{ !cancelled() }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: regression-report-*
-          path: all-reports
-          merge-multiple: true
-      - run: npx playwright merge-reports --reporter=html all-reports
-      - uses: actions/upload-artifact@v4
-        with:
-          name: merged-regression-report
-          path: playwright-report/
-          retention-days: 14
+merge-reports:
+  name: Merge Shard Reports
+  needs: regression
+  if: ${{ !cancelled() }}
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: npm
+    - run: npm ci
+    - uses: actions/download-artifact@v4
+      with:
+        pattern: regression-report-*
+        path: all-reports
+        merge-multiple: true
+    - run: npx playwright merge-reports --reporter=html all-reports
+    - uses: actions/upload-artifact@v4
+      with:
+        name: merged-regression-report
+        path: playwright-report/
+        retention-days: 14
 ```
 
 ## Playwright Config for Regression
 
 ```typescript
 // playwright.config.ts
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 4 : undefined,
   reporter: [
-    ['html', { open: 'never' }],
-    ['json', { outputFile: 'test-results/results.json' }],
-    ...(process.env.CI ? [['github' as const]] : []),
+    ["html", { open: "never" }],
+    ["json", { outputFile: "test-results/results.json" }],
+    ...(process.env.CI ? [["github" as const]] : []),
   ],
   use: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    baseURL: process.env.BASE_URL || "http://localhost:3000",
+    trace: "on-first-retry",
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
   },
   projects: [
     // Auth setup — runs first
-    { name: 'setup', testDir: './', testMatch: 'auth.setup.ts' },
+    { name: "setup", testDir: "./", testMatch: "auth.setup.ts" },
     // Smoke — fast, critical path
     {
-      name: 'smoke',
-      dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' },
+      name: "smoke",
+      dependencies: ["setup"],
+      use: { ...devices["Desktop Chrome"], storageState: ".auth/user.json" },
       grep: /@smoke/,
     },
     // Regression — cross-browser
     {
-      name: 'chromium',
-      dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' },
+      name: "chromium",
+      dependencies: ["setup"],
+      use: { ...devices["Desktop Chrome"], storageState: ".auth/user.json" },
     },
     {
-      name: 'firefox',
-      dependencies: ['setup'],
-      use: { ...devices['Desktop Firefox'], storageState: '.auth/user.json' },
+      name: "firefox",
+      dependencies: ["setup"],
+      use: { ...devices["Desktop Firefox"], storageState: ".auth/user.json" },
     },
     {
-      name: 'webkit',
-      dependencies: ['setup'],
-      use: { ...devices['Desktop Safari'], storageState: '.auth/user.json' },
+      name: "webkit",
+      dependencies: ["setup"],
+      use: { ...devices["Desktop Safari"], storageState: ".auth/user.json" },
     },
     // Mobile regression
     {
-      name: 'mobile',
-      dependencies: ['setup'],
-      use: { ...devices['Pixel 5'], storageState: '.auth/user.json' },
+      name: "mobile",
+      dependencies: ["setup"],
+      use: { ...devices["Pixel 5"], storageState: ".auth/user.json" },
     },
   ],
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
+    command: "npm run dev",
+    url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
   },
 });
@@ -274,13 +274,13 @@ export default defineConfig({
 
 ## CLI Quick Reference
 
-| Command | Description |
-|---------|-------------|
-| `npx playwright test --grep @smoke` | Run smoke tier only |
-| `npx playwright test --grep @regression` | Run regression suite |
-| `npx playwright test --grep-invert @quarantine` | Skip quarantined tests |
-| `npx playwright test --shard=1/4` | Run shard 1 of 4 |
-| `npx playwright test --project=chromium` | Run on Chromium only |
-| `npx playwright test --reporter=html` | Generate HTML report |
-| `npx playwright test --last-failed` | Re-run only failed tests |
-| `npx playwright show-report` | Open HTML report |
+| Command                                         | Description              |
+| ----------------------------------------------- | ------------------------ |
+| `npx playwright test --grep @smoke`             | Run smoke tier only      |
+| `npx playwright test --grep @regression`        | Run regression suite     |
+| `npx playwright test --grep-invert @quarantine` | Skip quarantined tests   |
+| `npx playwright test --shard=1/4`               | Run shard 1 of 4         |
+| `npx playwright test --project=chromium`        | Run on Chromium only     |
+| `npx playwright test --reporter=html`           | Generate HTML report     |
+| `npx playwright test --last-failed`             | Re-run only failed tests |
+| `npx playwright show-report`                    | Open HTML report         |

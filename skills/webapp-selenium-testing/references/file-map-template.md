@@ -26,13 +26,13 @@ src/test/resources/
 
 ## Naming Conventions
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Page Object | `{Feature}Page.java` | `LoginPage.java`, `CartPage.java` |
-| Test Class | `{Feature}Test.java` | `LoginTest.java`, `CheckoutTest.java` |
-| Base Class | `Base{Type}.java` | `BasePage.java`, `BaseTest.java` |
-| Helper | `{Feature}Helper.java` | `ApiHelper.java`, `DateHelper.java` |
-| Data File | `{entity}.json` | `users.json`, `products.json` |
+| Type        | Pattern                | Example                               |
+| ----------- | ---------------------- | ------------------------------------- |
+| Page Object | `{Feature}Page.java`   | `LoginPage.java`, `CartPage.java`     |
+| Test Class  | `{Feature}Test.java`   | `LoginTest.java`, `CheckoutTest.java` |
+| Base Class  | `Base{Type}.java`      | `BasePage.java`, `BaseTest.java`      |
+| Helper      | `{Feature}Helper.java` | `ApiHelper.java`, `DateHelper.java`   |
+| Data File   | `{entity}.json`        | `users.json`, `products.json`         |
 
 ## BaseTest Template
 

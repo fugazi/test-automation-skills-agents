@@ -46,25 +46,25 @@ alwaysApply: false
 
 ### MDC Conversion Guide
 
-| SKILL.md Field | MDC Equivalent |
-|---------------|----------------|
-| `name` | Use as filename (e.g., `playwright-e2e-testing.mdc`) |
-| `description` | `description` in MDC frontmatter |
-| No glob equivalent | `globs` — add file patterns relevant to the skill |
+| SKILL.md Field      | MDC Equivalent                                           |
+| ------------------- | -------------------------------------------------------- |
+| `name`              | Use as filename (e.g., `playwright-e2e-testing.mdc`)     |
+| `description`       | `description` in MDC frontmatter                         |
+| No glob equivalent  | `globs` — add file patterns relevant to the skill        |
 | No apply equivalent | `alwaysApply: false` for on-demand, `true` for always-on |
 
 ## Recommended Rules
 
 Create these rule files for the best experience:
 
-| Rule File | Source Skill | Globs |
-|-----------|-------------|-------|
-| `playwright-e2e.mdc` | playwright-e2e-testing | `**/*.spec.ts`, `**/e2e/**/*.ts` |
-| `playwright-api.mdc` | api-testing | `**/api/**/*.spec.ts`, `**/tests/api/**` |
-| `selenium-java.mdc` | webapp-selenium-testing | `**/*Test.java`, `**/selenium/**/*.java` |
-| `a11y-testing.mdc` | a11y-playwright-testing | `**/*a11y*.spec.ts`, `**/*accessibility*` |
-| `regression.mdc` | playwright-regression-testing | `playwright.config.*`, `**/*.spec.ts` |
-| `test-planner.mdc` | qa-test-planner | Always apply: `false` |
+| Rule File            | Source Skill                  | Globs                                     |
+| -------------------- | ----------------------------- | ----------------------------------------- |
+| `playwright-e2e.mdc` | playwright-e2e-testing        | `**/*.spec.ts`, `**/e2e/**/*.ts`          |
+| `playwright-api.mdc` | api-testing                   | `**/api/**/*.spec.ts`, `**/tests/api/**`  |
+| `selenium-java.mdc`  | webapp-selenium-testing       | `**/*Test.java`, `**/selenium/**/*.java`  |
+| `a11y-testing.mdc`   | a11y-playwright-testing       | `**/*a11y*.spec.ts`, `**/*accessibility*` |
+| `regression.mdc`     | playwright-regression-testing | `playwright.config.*`, `**/*.spec.ts`     |
+| `test-planner.mdc`   | qa-test-planner               | Always apply: `false`                     |
 
 ## Activating Skills
 

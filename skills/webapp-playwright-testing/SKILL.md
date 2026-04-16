@@ -12,6 +12,7 @@ This skill enables comprehensive browser-based testing and debugging for web app
 ## When to Use This Skill
 
 Use this skill when you need to:
+
 - Create Playwright tests for web applications
 - Test frontend functionality in a real browser
 - Verify UI behavior and interactions
@@ -34,35 +35,36 @@ Use this skill when you need to:
 
 ### Navigation & Interaction
 
-| Tool | Purpose | Example Query |
-|------|---------|---------------|
-| `browser_navigate` | Go to a URL | "Navigate to http://localhost:3000/login" |
-| `browser_click` | Click elements | "Click the Submit button" |
-| `browser_fill_form` | Fill input fields | "Fill the email field with test@example.com" |
-| `browser_hover` | Hover over elements | "Hover over the dropdown menu" |
-| `browser_press_key` | Keyboard input | "Press Enter" |
-| `browser_select_option` | Select from dropdown | "Select 'Option 1' from the dropdown" |
+| Tool                    | Purpose              | Example Query                                |
+| ----------------------- | -------------------- | -------------------------------------------- |
+| `browser_navigate`      | Go to a URL          | "Navigate to http://localhost:3000/login"    |
+| `browser_click`         | Click elements       | "Click the Submit button"                    |
+| `browser_fill_form`     | Fill input fields    | "Fill the email field with test@example.com" |
+| `browser_hover`         | Hover over elements  | "Hover over the dropdown menu"               |
+| `browser_press_key`     | Keyboard input       | "Press Enter"                                |
+| `browser_select_option` | Select from dropdown | "Select 'Option 1' from the dropdown"        |
 
 ### Validation & Capture
 
-| Tool | Purpose | Example Query |
-|------|---------|---------------|
-| `browser_snapshot` | Get accessibility tree | "Get the accessibility snapshot" |
-| `browser_take_screenshot` | Capture visual state | "Take a screenshot" |
-| `browser_console_messages` | View browser logs | "Check for console errors" |
-| `browser_network_requests` | Monitor API calls | "Show network requests" |
+| Tool                       | Purpose                | Example Query                    |
+| -------------------------- | ---------------------- | -------------------------------- |
+| `browser_snapshot`         | Get accessibility tree | "Get the accessibility snapshot" |
+| `browser_take_screenshot`  | Capture visual state   | "Take a screenshot"              |
+| `browser_console_messages` | View browser logs      | "Check for console errors"       |
+| `browser_network_requests` | Monitor API calls      | "Show network requests"          |
 
 ### Browser Management
 
-| Tool | Purpose | Example Query |
-|------|---------|---------------|
-| `browser_resize` | Change viewport | "Resize to mobile (375x667)" |
-| `browser_tabs` | Manage browser tabs | "List open tabs" |
-| `browser_close` | Close browser | "Close the browser" |
+| Tool             | Purpose             | Example Query                |
+| ---------------- | ------------------- | ---------------------------- |
+| `browser_resize` | Change viewport     | "Resize to mobile (375x667)" |
+| `browser_tabs`   | Manage browser tabs | "List open tabs"             |
+| `browser_close`  | Close browser       | "Close the browser"          |
 
 ## Core Capabilities
 
 ### 1. Browser Automation
+
 - Navigate to URLs
 - Click buttons and links
 - Fill form fields
@@ -70,6 +72,7 @@ Use this skill when you need to:
 - Handle dialogs and alerts
 
 ### 2. Verification
+
 - Assert element presence
 - Verify text content
 - Check element visibility
@@ -77,6 +80,7 @@ Use this skill when you need to:
 - Test responsive behavior
 
 ### 3. Debugging
+
 - Capture screenshots
 - View console logs
 - Inspect network requests
@@ -85,31 +89,35 @@ Use this skill when you need to:
 ## Usage Examples
 
 ### Example 1: Basic Navigation Test
+
 ```typescript
 // Navigate to a page and verify heading
-await page.goto('http://localhost:3000');
-await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+await page.goto("http://localhost:3000");
+await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 ```
 
 ### Example 2: Form Interaction (Role-Based Locators)
+
 ```typescript
 // Fill out and submit a form using accessible locators
-await page.getByRole('textbox', { name: 'Username' }).fill('testuser');
-await page.getByRole('textbox', { name: 'Password' }).fill('password123');
-await page.getByRole('button', { name: 'Login' }).click();
+await page.getByRole("textbox", { name: "Username" }).fill("testuser");
+await page.getByRole("textbox", { name: "Password" }).fill("password123");
+await page.getByRole("button", { name: "Login" }).click();
 await expect(page).toHaveURL(/.*dashboard/);
 ```
 
 ### Example 3: Screenshot Capture
+
 ```typescript
 // Capture a full-page screenshot for debugging
-await page.screenshot({ path: 'debug.png', fullPage: true });
+await page.screenshot({ path: "debug.png", fullPage: true });
 ```
 
 ### Example 4: Accessibility Snapshot Assertion
+
 ```typescript
 // Verify page structure with aria snapshot
-await expect(page.getByRole('main')).toMatchAriaSnapshot(`
+await expect(page.getByRole("main")).toMatchAriaSnapshot(`
   - main:
     - heading "Welcome" [level=1]
     - form:
@@ -135,36 +143,43 @@ await expect(page.getByRole('main')).toMatchAriaSnapshot(`
 ## Common Patterns
 
 ### Pattern: Wait for Element (Role-Based)
+
 ```typescript
-await page.getByRole('button', { name: 'Submit' }).waitFor({ state: 'visible' });
+await page
+  .getByRole("button", { name: "Submit" })
+  .waitFor({ state: "visible" });
 ```
 
 ### Pattern: Check if Element Exists
+
 ```typescript
-const exists = await page.getByRole('alert').count() > 0;
+const exists = (await page.getByRole("alert").count()) > 0;
 ```
 
 ### Pattern: Capture Console Logs
+
 ```typescript
-page.on('console', msg => console.log(`[${msg.type()}] ${msg.text()}`));
+page.on("console", (msg) => console.log(`[${msg.type()}] ${msg.text()}`));
 ```
 
 ### Pattern: Handle Errors with Screenshot
+
 ```typescript
 try {
-  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole("button", { name: "Submit" }).click();
 } catch (error) {
-  await page.screenshot({ path: 'error.png' });
+  await page.screenshot({ path: "error.png" });
   throw error;
 }
 ```
 
 ### Pattern: Test Responsive Viewports
+
 ```typescript
 const viewports = [
-  { width: 375, height: 667, name: 'mobile' },
-  { width: 768, height: 1024, name: 'tablet' },
-  { width: 1920, height: 1080, name: 'desktop' },
+  { width: 375, height: 667, name: "mobile" },
+  { width: 768, height: 1024, name: "tablet" },
+  { width: 1920, height: 1080, name: "desktop" },
 ];
 
 for (const vp of viewports) {
@@ -180,11 +195,13 @@ for (const vp of viewports) {
 ### Workflow 1: Validate a Page with Playwright MCP
 
 1. **Navigate to the page**
+
    ```
    "Navigate to http://localhost:3000/login"
    ```
 
 2. **Get accessibility snapshot**
+
    ```
    "Get the accessibility snapshot"
    ```
@@ -193,6 +210,7 @@ for (const vp of viewports) {
    - Check for form fields, buttons, headings in the snapshot
 
 4. **Take a screenshot for documentation**
+
    ```
    "Take a screenshot"
    ```
@@ -205,16 +223,19 @@ for (const vp of viewports) {
 ### Workflow 2: Debug a Failing Test
 
 1. **Navigate to the problematic page**
+
    ```
    "Navigate to http://localhost:3000/checkout"
    ```
 
 2. **Capture initial state**
+
    ```
    "Take a screenshot"
    ```
 
 3. **Get accessibility snapshot to understand structure**
+
    ```
    "Get the accessibility snapshot"
    ```
@@ -222,6 +243,7 @@ for (const vp of viewports) {
 4. **Identify the correct locator** from the snapshot
 
 5. **Test the interaction**
+
    ```
    "Click the 'Add to Cart' button"
    ```
@@ -235,11 +257,13 @@ for (const vp of viewports) {
 ### Workflow 3: Test Responsive Design
 
 1. **Navigate to the page**
+
    ```
    "Navigate to http://localhost:3000"
    ```
 
 2. **Test mobile viewport**
+
    ```
    "Resize browser to 375x667"
    "Take a screenshot"
@@ -247,6 +271,7 @@ for (const vp of viewports) {
    ```
 
 3. **Test tablet viewport**
+
    ```
    "Resize browser to 768x1024"
    "Take a screenshot"
@@ -283,15 +308,15 @@ for (const vp of viewports) {
 
 ## Troubleshooting
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| Element not found | Wrong locator or element not rendered | Use `browser_snapshot` to verify structure |
-| Timeout waiting for element | Element hidden or slow to load | Check for overlays, increase timeout |
-| Strict mode violation | Multiple elements match locator | Add more specific filters like `{ exact: true }` |
-| Click intercepted | Another element covering target | Scroll into view or wait for overlay to close |
-| Console errors in app | JavaScript runtime errors | Use `browser_console_messages` to debug |
-| Screenshot blank | Page not fully loaded | Wait for network idle or specific element |
-| Form submission fails | Validation errors not visible | Check for error messages in snapshot |
+| Problem                     | Cause                                 | Solution                                         |
+| --------------------------- | ------------------------------------- | ------------------------------------------------ |
+| Element not found           | Wrong locator or element not rendered | Use `browser_snapshot` to verify structure       |
+| Timeout waiting for element | Element hidden or slow to load        | Check for overlays, increase timeout             |
+| Strict mode violation       | Multiple elements match locator       | Add more specific filters like `{ exact: true }` |
+| Click intercepted           | Another element covering target       | Scroll into view or wait for overlay to close    |
+| Console errors in app       | JavaScript runtime errors             | Use `browser_console_messages` to debug          |
+| Screenshot blank            | Page not fully loaded                 | Wait for network idle or specific element        |
+| Form submission fails       | Validation errors not visible         | Check for error messages in snapshot             |
 
 ---
 
@@ -299,23 +324,23 @@ for (const vp of viewports) {
 
 ```typescript
 // ✅ BEST: Role-based (accessible, resilient)
-page.getByRole('button', { name: 'Submit' })
-page.getByRole('textbox', { name: 'Email' })
-page.getByRole('link', { name: 'Sign up' })
+page.getByRole("button", { name: "Submit" });
+page.getByRole("textbox", { name: "Email" });
+page.getByRole("link", { name: "Sign up" });
 
 // ✅ GOOD: User-facing text
-page.getByLabel('Email address')
-page.getByPlaceholder('Enter your email')
-page.getByText('Welcome back')
+page.getByLabel("Email address");
+page.getByPlaceholder("Enter your email");
+page.getByText("Welcome back");
 
 // ✅ GOOD: Test IDs (stable, explicit)
-page.getByTestId('submit-button')
+page.getByTestId("submit-button");
 
 // ⚠️ AVOID: CSS selectors (brittle)
-page.locator('.btn-primary')
+page.locator(".btn-primary");
 
 // ❌ NEVER: XPath (extremely brittle)
-page.locator('//div[@class="container"]/button[1]')
+page.locator('//div[@class="container"]/button[1]');
 ```
 
 ---
@@ -334,14 +359,14 @@ page.locator('//div[@class="container"]/button[1]')
 
 > Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
 
-| Rationalization | Reality |
-| --------------- | ------- |
-| "Just click and check the result" | Proper waits, assertions, and state validation are non-negotiable. A click without verification proves nothing. |
-| "Screenshots prove it works" | Screenshots prove it rendered, not that it works. Verify behavior with assertions, not just visuals. |
-| "I don't need to check console errors" | Console errors indicate JavaScript failures invisible to UI assertions. Always inspect browser logs. |
-| "The form submitted successfully" | Verify the database/API state, not just the UI response. A success message doesn't guarantee data persistence. |
-| "Skip responsive testing, it looks fine" | Viewport-specific layout bugs are the most reported mobile issue. Test at least 3 breakpoints. |
-| "Live browser testing is slow" | Accessibility snapshots are fast, deterministic, and catch structural issues that screenshots miss. |
+| Rationalization                          | Reality                                                                                                         |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| "Just click and check the result"        | Proper waits, assertions, and state validation are non-negotiable. A click without verification proves nothing. |
+| "Screenshots prove it works"             | Screenshots prove it rendered, not that it works. Verify behavior with assertions, not just visuals.            |
+| "I don't need to check console errors"   | Console errors indicate JavaScript failures invisible to UI assertions. Always inspect browser logs.            |
+| "The form submitted successfully"        | Verify the database/API state, not just the UI response. A success message doesn't guarantee data persistence.  |
+| "Skip responsive testing, it looks fine" | Viewport-specific layout bugs are the most reported mobile issue. Test at least 3 breakpoints.                  |
+| "Live browser testing is slow"           | Accessibility snapshots are fast, deterministic, and catch structural issues that screenshots miss.             |
 
 ---
 
@@ -360,15 +385,15 @@ page.locator('//div[@class="container"]/button[1]')
 > **Security note:** `{yourApp URL}` must always be a URL you own (e.g. `http://localhost:3000`).
 > Never navigate to third-party or public websites during an AI-assisted session.
 
-| Task | Playwright MCP Query |
-|------|---------------------|
-| Open page | "Navigate to {yourApp URL}" |
-| Check structure | "Get the accessibility snapshot" |
-| Capture evidence | "Take a screenshot" |
-| Fill form | "Fill the {field} with {value}" |
-| Click element | "Click the {name} button" |
-| Check errors | "Show console messages" |
-| Test mobile | "Resize browser to 375x667" |
+| Task             | Playwright MCP Query             |
+| ---------------- | -------------------------------- |
+| Open page        | "Navigate to {yourApp URL}"      |
+| Check structure  | "Get the accessibility snapshot" |
+| Capture evidence | "Take a screenshot"              |
+| Fill form        | "Fill the {field} with {value}"  |
+| Click element    | "Click the {name} button"        |
+| Check errors     | "Show console messages"          |
+| Test mobile      | "Resize browser to 375x667"      |
 
 ---
 
@@ -383,4 +408,3 @@ After completing this skill's workflow, confirm:
 - [ ] **JavaScript rendering handled** — Tests wait for dynamic content to load before asserting
 - [ ] **Console errors checked** — No unexpected console errors during test execution
 - [ ] **All tests pass in CI** — `npx playwright test --project=chromium` passes in CI environment
-

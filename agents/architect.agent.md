@@ -63,6 +63,7 @@ Return: Summary of changes made.
 ```
 
 Example:
+
 ```
 Task: Add auth middleware that validates JWT tokens
 Files: src/middleware/auth.ts (create), src/routes/api.ts (update)
@@ -77,9 +78,10 @@ User: "Add authentication to the API and update the tests."
 **Branch:** `git checkout -b feature/add-authentication`
 
 Plan:
+
 1. Auth middleware → src/middleware/auth.ts
 2. Route integration → src/routes/
-3. Config update → src/config.ts  
+3. Config update → src/config.ts
 4. Unit tests → tests/auth.test.ts
 5. Integration tests → tests/integration/ (after 1-3)
 

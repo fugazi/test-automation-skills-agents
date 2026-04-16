@@ -39,9 +39,9 @@ See .claude/test-automation-skills-agents/CLAUDE.md for QA automation skills and
 Claude Code reads files in this order:
 
 1. **CLAUDE.md** — Project-level instructions (automatically loaded at session start)
-2. **agents/*.agent.md** — Agent personas (loaded when referenced in prompts)
-3. **skills/*/SKILL.md** — Skill workflows (loaded on demand based on task)
-4. **instructions/*.instructions.md** — Rules and conventions (loaded when relevant)
+2. **agents/\*.agent.md** — Agent personas (loaded when referenced in prompts)
+3. **skills/\*/SKILL.md** — Skill workflows (loaded on demand based on task)
+4. **instructions/\*.instructions.md** — Rules and conventions (loaded when relevant)
 
 ## Activating Skills
 

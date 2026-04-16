@@ -18,9 +18,9 @@
 
 ## Document Control
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0 | [YYYY-MM-DD] | [Name] | Initial draft |
+| Version | Date         | Author | Changes       |
+| ------- | ------------ | ------ | ------------- |
+| 1.0     | [YYYY-MM-DD] | [Name] | Initial draft |
 
 ---
 
@@ -33,6 +33,7 @@
 - [ ] [Feature 3 to be tested]
 
 **Test Types:**
+
 - Functional testing
 - UI/Visual testing
 - Integration testing
@@ -41,12 +42,14 @@
 - Security testing (if applicable)
 
 **Platforms & Environments:**
+
 - Operating Systems: [Windows, macOS, Linux]
 - Browsers: [Chrome, Firefox, Safari, Edge]
 - Devices: [Desktop, Mobile, Tablet]
 - Environments: [Dev, Staging, Production]
 
 **User Flows & Scenarios:**
+
 - [Critical user flow 1]
 - [Critical user flow 2]
 - [Edge case scenarios]
@@ -64,41 +67,45 @@
 
 ### Test Levels
 
-| Level | Description | Scope |
-|-------|-------------|-------|
-| Unit | Component-level testing | [Developer responsibility] |
-| Integration | API and component integration | [QA responsibility] |
-| System | End-to-end user flows | [QA responsibility] |
-| Acceptance | User acceptance criteria | [Stakeholder validation] |
+| Level       | Description                   | Scope                      |
+| ----------- | ----------------------------- | -------------------------- |
+| Unit        | Component-level testing       | [Developer responsibility] |
+| Integration | API and component integration | [QA responsibility]        |
+| System      | End-to-end user flows         | [QA responsibility]        |
+| Acceptance  | User acceptance criteria      | [Stakeholder validation]   |
 
 ### Test Types
 
-| Type | Focus | Tools | Owner |
-|------|-------|-------|-------|
-| Functional | Business logic | Manual + Playwright | QA Team |
-| UI/Visual | Appearance, layout | Playwright + Playwright MCP | QA Team |
-| Integration | Component interaction | Playwright | QA Team |
-| Regression | Existing functionality | Playwright suite | QA Team |
-| Performance | Speed, load handling | [Lighthouse, k6] | Performance Team |
-| Security | Vulnerabilities | [OWASP ZAP, Burp] | Security Team |
+| Type        | Focus                  | Tools                       | Owner            |
+| ----------- | ---------------------- | --------------------------- | ---------------- |
+| Functional  | Business logic         | Manual + Playwright         | QA Team          |
+| UI/Visual   | Appearance, layout     | Playwright + Playwright MCP | QA Team          |
+| Integration | Component interaction  | Playwright                  | QA Team          |
+| Regression  | Existing functionality | Playwright suite            | QA Team          |
+| Performance | Speed, load handling   | [Lighthouse, k6]            | Performance Team |
+| Security    | Vulnerabilities        | [OWASP ZAP, Burp]           | Security Team    |
 
 ### Test Approach
 
 **Black Box Testing:**
+
 - Positive testing (valid inputs)
 - Negative testing (invalid inputs)
 - Boundary value analysis
 - Equivalence partitioning
 
 **White Box Testing (if applicable):**
+
 - Code coverage analysis
 - Unit test review
 
 **Gray Box Testing:**
+
 - API testing with knowledge of endpoints
 - Database validation
 
 **Exploratory Testing:**
+
 - Time-boxed sessions
 - Charter-based exploration
 - Defect-focused sessions
@@ -115,17 +122,20 @@
 ### Software Requirements
 
 **Operating Systems:**
+
 - [ ] Windows 10/11
 - [ ] macOS 13/14
 - [ ] Ubuntu 22.04
 
 **Browsers:**
+
 - [ ] Chrome 120+
 - [ ] Firefox 121+
 - [ ] Safari 17+
 - [ ] Edge 120+
 
 **Test Tools:**
+
 - [ ] Playwright [version]
 - [ ] Node.js [version]
 - [ ] VS Code with extensions
@@ -178,13 +188,14 @@ Before testing can be considered complete:
 
 ## Risk Assessment
 
-| Risk | Probability | Impact | Mitigation Strategy | Owner |
-|------|-------------|--------|-------------------|-------|
+| Risk     | Probability     | Impact          | Mitigation Strategy  | Owner   |
+| -------- | --------------- | --------------- | -------------------- | ------- |
 | [Risk 1] | High/Medium/Low | High/Medium/Low | [Mitigation actions] | [Owner] |
 | [Risk 2] | High/Medium/Low | High/Medium/Low | [Mitigation actions] | [Owner] |
 | [Risk 3] | High/Medium/Low | High/Medium/Low | [Mitigation actions] | [Owner] |
 
 **Risk Definitions:**
+
 - **Probability:** High (>70%), Medium (30-70%), Low (<30%)
 - **Impact:** High (blocks release), Medium (workaround exists), Low (minor)
 
@@ -192,30 +203,30 @@ Before testing can be considered complete:
 
 ## Test Deliverables
 
-| Deliverable | Description | Due Date | Owner |
-|-------------|-------------|----------|-------|
-| Test Plan | This document | [Date] | [Name] |
-| Test Cases | Detailed test cases | [Date] | [Name] |
-| Test Data | Test data sets | [Date] | [Name] |
-| Automated Tests | Playwright test suite | [Date] | [Name] |
-| Test Execution Report | Results summary | [Date] | [Name] |
-| Bug Reports | Defect documentation | Ongoing | [Name] |
-| Test Summary Report | Final sign-off document | [Date] | [Name] |
+| Deliverable           | Description             | Due Date | Owner  |
+| --------------------- | ----------------------- | -------- | ------ |
+| Test Plan             | This document           | [Date]   | [Name] |
+| Test Cases            | Detailed test cases     | [Date]   | [Name] |
+| Test Data             | Test data sets          | [Date]   | [Name] |
+| Automated Tests       | Playwright test suite   | [Date]   | [Name] |
+| Test Execution Report | Results summary         | [Date]   | [Name] |
+| Bug Reports           | Defect documentation    | Ongoing  | [Name] |
+| Test Summary Report   | Final sign-off document | [Date]   | [Name] |
 
 ---
 
 ## Schedule & Milestones
 
-| Milestone | Target Date | Actual Date | Status |
-|-----------|-------------|-------------|--------|
-| Test Plan Approval | [Date] | [Date] | Pending |
-| Test Case Creation Complete | [Date] | [Date] | Pending |
-| Test Environment Ready | [Date] | [Date] | Pending |
-| Test Execution Start | [Date] | [Date] | Pending |
-| Smoke Testing Complete | [Date] | [Date] | Pending |
-| Full Testing Complete | [Date] | [Date] | Pending |
-| Regression Testing Complete | [Date] | [Date] | Pending |
-| Sign-off | [Date] | [Date] | Pending |
+| Milestone                   | Target Date | Actual Date | Status  |
+| --------------------------- | ----------- | ----------- | ------- |
+| Test Plan Approval          | [Date]      | [Date]      | Pending |
+| Test Case Creation Complete | [Date]      | [Date]      | Pending |
+| Test Environment Ready      | [Date]      | [Date]      | Pending |
+| Test Execution Start        | [Date]      | [Date]      | Pending |
+| Smoke Testing Complete      | [Date]      | [Date]      | Pending |
+| Full Testing Complete       | [Date]      | [Date]      | Pending |
+| Regression Testing Complete | [Date]      | [Date]      | Pending |
+| Sign-off                    | [Date]      | [Date]      | Pending |
 
 ---
 
@@ -223,12 +234,12 @@ Before testing can be considered complete:
 
 ### Team
 
-| Role | Name | Allocation | Responsibilities |
-|------|------|-------------|------------------|
-| QA Lead | [Name] | 100% | Test planning, coordination |
-| QA Engineer | [Name] | 100% | Test execution, automation |
-| QA Engineer | [Name] | 100% | Test execution, bug reporting |
-| [Other Role] | [Name] | [X]% | [Responsibilities] |
+| Role         | Name   | Allocation | Responsibilities              |
+| ------------ | ------ | ---------- | ----------------------------- |
+| QA Lead      | [Name] | 100%       | Test planning, coordination   |
+| QA Engineer  | [Name] | 100%       | Test execution, automation    |
+| QA Engineer  | [Name] | 100%       | Test execution, bug reporting |
+| [Other Role] | [Name] | [X]%       | [Responsibilities]            |
 
 ### Training Needs
 
@@ -239,22 +250,22 @@ Before testing can be considered complete:
 
 ## Communication Plan
 
-| Stakeholder | Communication Type | Frequency | Owner |
-|-------------|-------------------|-----------|-------|
-| [Stakeholder 1] | Daily standup | Daily | [Name] |
-| [Stakeholder 2] | Status report | Weekly | [Name] |
-| [Stakeholder 3] | Bug triage | As needed | [Name] |
+| Stakeholder     | Communication Type | Frequency | Owner  |
+| --------------- | ------------------ | --------- | ------ |
+| [Stakeholder 1] | Daily standup      | Daily     | [Name] |
+| [Stakeholder 2] | Status report      | Weekly    | [Name] |
+| [Stakeholder 3] | Bug triage         | As needed | [Name] |
 
 ---
 
 ## Approvals
 
-| Role | Name | Signature | Date |
-|------|------|-----------|------|
-| QA Lead | | | |
-| Product Manager | | | |
-| Development Lead | | | |
-| [Other Approver] | | | |
+| Role             | Name | Signature | Date |
+| ---------------- | ---- | --------- | ---- |
+| QA Lead          |      |           |      |
+| Product Manager  |      |           |      |
+| Development Lead |      |           |      |
+| [Other Approver] |      |           |      |
 
 ---
 
@@ -274,6 +285,6 @@ Before testing can be considered complete:
 
 ### Appendix C: Change History
 
-| Date | Version | Author | Description of Changes |
-|------|---------|--------|----------------------|
-| [YYYY-MM-DD] | 1.0 | [Name] | Initial version |
+| Date         | Version | Author | Description of Changes |
+| ------------ | ------- | ------ | ---------------------- |
+| [YYYY-MM-DD] | 1.0     | [Name] | Initial version        |

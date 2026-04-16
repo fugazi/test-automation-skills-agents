@@ -36,14 +36,14 @@ playwright-cli click e3
 Collect the generated code into a Playwright test:
 
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('login flow', async ({ page }) => {
+test("login flow", async ({ page }) => {
   // Generated code from playwright-cli session:
-  await page.goto('https://example.com/login');
-  await page.getByRole('textbox', { name: 'Email' }).fill('user@example.com');
-  await page.getByRole('textbox', { name: 'Password' }).fill('password123');
-  await page.getByRole('button', { name: 'Sign In' }).click();
+  await page.goto("https://example.com/login");
+  await page.getByRole("textbox", { name: "Email" }).fill("user@example.com");
+  await page.getByRole("textbox", { name: "Password" }).fill("password123");
+  await page.getByRole("button", { name: "Sign In" }).click();
 
   // Add assertions
   await expect(page).toHaveURL(/.*dashboard/);
@@ -58,10 +58,10 @@ The generated code uses role-based locators when possible, which are more resili
 
 ```typescript
 // Generated (good - semantic)
-await page.getByRole('button', { name: 'Submit' }).click();
+await page.getByRole("button", { name: "Submit" }).click();
 
 // Avoid (fragile - CSS selectors)
-await page.locator('#submit-btn').click();
+await page.locator("#submit-btn").click();
 ```
 
 ### 2. Explore Before Recording
@@ -81,8 +81,8 @@ Generated code captures actions but not assertions. Add expectations in your tes
 
 ```typescript
 // Generated action
-await page.getByRole('button', { name: 'Submit' }).click();
+await page.getByRole("button", { name: "Submit" }).click();
 
 // Manual assertion
-await expect(page.getByText('Success')).toBeVisible();
+await expect(page.getByText("Success")).toBeVisible();
 ```

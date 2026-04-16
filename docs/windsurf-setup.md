@@ -46,6 +46,7 @@ Reference the directory in your `.windsurfrules`:
 Reference the skills and instructions from: /path/to/test-automation-skills-agents/
 
 ### Key Conventions
+
 - Playwright (TypeScript) for E2E and API testing
 - Selenium + REST Assured (Java 21+) for Java-based testing
 - Custom fixtures for dependency injection
@@ -64,18 +65,18 @@ Skills activate when Windsurf detects you're working on testing tasks. For best 
 
 ### Skill-to-Prompt Mapping
 
-| Skill | Prompt Trigger |
-|-------|---------------|
-| playwright-e2e-testing | "Write Playwright E2E tests for..." |
-| api-testing | "Create API tests for..." or "Test the REST endpoint..." |
-| webapp-selenium-testing | "Write Selenium Java tests for..." |
-| a11y-playwright-testing | "Check accessibility of..." or "Run a11y audit on..." |
-| accessibility-selenium-testing | "Scan for WCAG issues using Selenium..." |
-| playwright-regression-testing | "Organize regression suite..." or "Set up test tiers..." |
-| qa-test-planner | "Use the qa-test-planner skill to create a test plan for..." |
-| qa-manual-istqb | "Create ISTQB-aligned test cases for..." |
-| playwright-cli | "Use playwright-cli to navigate to..." |
-| webapp-playwright-testing | "Open the browser and test..." |
+| Skill                          | Prompt Trigger                                               |
+| ------------------------------ | ------------------------------------------------------------ |
+| playwright-e2e-testing         | "Write Playwright E2E tests for..."                          |
+| api-testing                    | "Create API tests for..." or "Test the REST endpoint..."     |
+| webapp-selenium-testing        | "Write Selenium Java tests for..."                           |
+| a11y-playwright-testing        | "Check accessibility of..." or "Run a11y audit on..."        |
+| accessibility-selenium-testing | "Scan for WCAG issues using Selenium..."                     |
+| playwright-regression-testing  | "Organize regression suite..." or "Set up test tiers..."     |
+| qa-test-planner                | "Use the qa-test-planner skill to create a test plan for..." |
+| qa-manual-istqb                | "Create ISTQB-aligned test cases for..."                     |
+| playwright-cli                 | "Use playwright-cli to navigate to..."                       |
+| webapp-playwright-testing      | "Open the browser and test..."                               |
 
 ## Using Agents
 
@@ -116,11 +117,13 @@ Create `.windsurfrules` with project-level QA conventions:
 ## QA Automation Conventions
 
 ### Tech Stack
+
 - Framework: Playwright 1.40+
 - Language: TypeScript 5.x
 - Base URL: http://localhost:3000
 
 ### Testing Standards
+
 - Locator priority: getByRole() > getByTestId() > getByLabel() > CSS selectors
 - Use web-first assertions: await expect(locator).toBeVisible()
 - Page Object Model required for all test files
@@ -128,6 +131,7 @@ Create `.windsurfrules` with project-level QA conventions:
 - Test happy path AND error states for every feature
 
 ### File Organization
+
 - Tests: tests/
 - Page Objects: tests/pages/
 - Fixtures: tests/fixtures/

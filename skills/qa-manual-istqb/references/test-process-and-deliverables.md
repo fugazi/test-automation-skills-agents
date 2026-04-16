@@ -31,4 +31,3 @@ Use this as a checklist to ensure the “testware” is complete and auditable.
 
 - Evaluate exit criteria, summarize results, archive testware, capture lessons learned.
 - Deliverables: test summary report, residual risk statement, improvement actions.
-

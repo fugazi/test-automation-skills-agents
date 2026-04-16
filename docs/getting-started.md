@@ -4,25 +4,25 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 
 ## What's Inside
 
-| Component | Purpose | Count |
-|-----------|---------|-------|
-| **Agents** | Specialist personas for specific QA tasks | 13 |
-| **Skills** | Procedural workflows for testing domains | 10 |
-| **Instructions** | Rules, conventions, and standards | 7 |
-| **References** | Detailed technical reference material | Multiple |
-| **Templates** | Starter files for common test patterns | Multiple |
+| Component        | Purpose                                   | Count    |
+| ---------------- | ----------------------------------------- | -------- |
+| **Agents**       | Specialist personas for specific QA tasks | 13       |
+| **Skills**       | Procedural workflows for testing domains  | 10       |
+| **Instructions** | Rules, conventions, and standards         | 7        |
+| **References**   | Detailed technical reference material     | Multiple |
+| **Templates**    | Starter files for common test patterns    | Multiple |
 
 ## Quick Start
 
 ### 1. Choose Your Tool
 
-| Tool | Setup Guide |
-|------|-------------|
-| Claude Code | [docs/claude-code-setup.md](./claude-code-setup.md) |
-| Cursor | [docs/cursor-setup.md](./cursor-setup.md) |
-| GitHub Copilot | [docs/copilot-setup.md](./copilot-setup.md) |
-| Gemini CLI | [docs/gemini-cli-setup.md](./gemini-cli-setup.md) |
-| Windsurf | [docs/windsurf-setup.md](./windsurf-setup.md) |
+| Tool           | Setup Guide                                         |
+| -------------- | --------------------------------------------------- |
+| Claude Code    | [docs/claude-code-setup.md](./claude-code-setup.md) |
+| Cursor         | [docs/cursor-setup.md](./cursor-setup.md)           |
+| GitHub Copilot | [docs/copilot-setup.md](./copilot-setup.md)         |
+| Gemini CLI     | [docs/gemini-cli-setup.md](./gemini-cli-setup.md)   |
+| Windsurf       | [docs/windsurf-setup.md](./windsurf-setup.md)       |
 
 ### 2. How Skills Work
 
@@ -38,21 +38,21 @@ Skills are activated based on what you're doing:
 
 Agents are specialist personas you can invoke:
 
-| Agent | Specialty |
-|-------|-----------|
-| `playwright-test-planner` | Analyzes requirements and creates test plans |
-| `playwright-test-generator` | Generates Playwright test code from plans |
-| `playwright-test-healer` | Fixes failing or flaky tests |
-| `api-tester-specialist` | Designs and generates API test suites |
-| `selenium-test-specialist` | Generates Selenium/Java test code |
-| `selenium-test-executor` | Runs/debugs Selenium suites |
-| `flaky-test-hunter` | Identifies and fixes flaky tests |
-| `test-refactor-specialist` | Refactors test code for maintainability |
-| `qa-orchestrator` | Routes tasks to specialist agents |
-| `architect` | Architecture and delegation-focused orchestration |
-| `docs-agent` | Technical writing for test documentation |
-| `principal-software-engineer` | Architecture, quality, pragmatic trade-offs |
-| `implementation-plan` | Deterministic implementation plans |
+| Agent                         | Specialty                                         |
+| ----------------------------- | ------------------------------------------------- |
+| `playwright-test-planner`     | Analyzes requirements and creates test plans      |
+| `playwright-test-generator`   | Generates Playwright test code from plans         |
+| `playwright-test-healer`      | Fixes failing or flaky tests                      |
+| `api-tester-specialist`       | Designs and generates API test suites             |
+| `selenium-test-specialist`    | Generates Selenium/Java test code                 |
+| `selenium-test-executor`      | Runs/debugs Selenium suites                       |
+| `flaky-test-hunter`           | Identifies and fixes flaky tests                  |
+| `test-refactor-specialist`    | Refactors test code for maintainability           |
+| `qa-orchestrator`             | Routes tasks to specialist agents                 |
+| `architect`                   | Architecture and delegation-focused orchestration |
+| `docs-agent`                  | Technical writing for test documentation          |
+| `principal-software-engineer` | Architecture, quality, pragmatic trade-offs       |
+| `implementation-plan`         | Deterministic implementation plans                |
 
 ### 4. Repository Structure
 
@@ -82,10 +82,10 @@ test-automation-skills-agents/
 
 This library supports both major test automation stacks:
 
-| Stack | Tools | Languages |
-|-------|-------|-----------|
-| **Playwright** | @playwright/test | TypeScript |
-| **Selenium** | Selenium WebDriver 4 + REST Assured | Java 21+ |
+| Stack          | Tools                               | Languages  |
+| -------------- | ----------------------------------- | ---------- |
+| **Playwright** | @playwright/test                    | TypeScript |
+| **Selenium**   | Selenium WebDriver 4 + REST Assured | Java 21+   |
 
 Skills that apply to both stacks provide examples in both languages.
 

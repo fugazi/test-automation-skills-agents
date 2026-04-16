@@ -15,13 +15,13 @@ Page Object Model (POM) is a design pattern that creates an abstraction layer be
 
 ### Benefits
 
-| Benefit | Description |
-|---------|-------------|
-| Maintainability | Change locator once, not in every test |
-| Readability | Tests read like user stories |
-| Reusability | Share page logic across tests |
-| Separation | Test logic separate from implementation |
-| Scalability | Easy to add new pages/components |
+| Benefit         | Description                             |
+| --------------- | --------------------------------------- |
+| Maintainability | Change locator once, not in every test  |
+| Readability     | Tests read like user stories            |
+| Reusability     | Share page logic across tests           |
+| Separation      | Test logic separate from implementation |
+| Scalability     | Easy to add new pages/components        |
 
 ---
 
@@ -87,7 +87,7 @@ public abstract class BasePage {
     }
 
     // ============ WAIT METHODS ============
-    
+
     protected WebElement waitForVisible(By locator) {
         log.debug("Waiting for element visible: {}", locator);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -113,7 +113,7 @@ public abstract class BasePage {
     }
 
     // ============ ACTION METHODS ============
-    
+
     @Step("Click on element: {locator}")
     protected void click(By locator) {
         log.info("Clicking: {}", locator);
@@ -148,7 +148,7 @@ public abstract class BasePage {
     }
 
     // ============ GETTER METHODS ============
-    
+
     protected String getText(By locator) {
         return waitForVisible(locator).getText();
     }
@@ -172,7 +172,7 @@ public abstract class BasePage {
     }
 
     // ============ STATE METHODS ============
-    
+
     protected boolean isDisplayed(By locator) {
         try {
             return driver.findElement(locator).isDisplayed();
@@ -194,7 +194,7 @@ public abstract class BasePage {
     }
 
     // ============ UTILITY METHODS ============
-    
+
     @Step("Take screenshot: {name}")
     protected byte[] takeScreenshot(String name) {
         log.info("Taking screenshot: {}", name);
@@ -204,7 +204,7 @@ public abstract class BasePage {
     protected void scrollToElement(By locator) {
         var element = waitForVisible(locator);
         ((JavascriptExecutor) driver).executeScript(
-            "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", 
+            "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",
             element
         );
     }
@@ -233,7 +233,7 @@ import org.openqa.selenium.WebDriver;
 
 @Slf4j
 public class LoginPage extends BasePage {
-    
+
     // ============ LOCATORS ============
     private final By usernameInput = By.id("username");
     private final By passwordInput = By.id("password");
@@ -247,7 +247,7 @@ public class LoginPage extends BasePage {
     }
 
     // ============ NAVIGATION ============
-    
+
     @Step("Navigate to login page")
     public LoginPage open() {
         driver.get(ConfigReader.get("base.url") + "/login");
@@ -255,7 +255,7 @@ public class LoginPage extends BasePage {
     }
 
     // ============ ACTIONS (Fluent Interface) ============
-    
+
     @Step("Enter username: {username}")
     public LoginPage enterUsername(String username) {
         type(usernameInput, username);
@@ -282,7 +282,7 @@ public class LoginPage extends BasePage {
     }
 
     // ============ COMBINED ACTIONS ============
-    
+
     @Step("Login with username: {username}")
     public DashboardPage loginAs(String username, String password) {
         log.info("Logging in as: {}", username);
@@ -303,14 +303,14 @@ public class LoginPage extends BasePage {
     }
 
     // ============ GETTERS ============
-    
+
     @Step("Get error message text")
     public String getErrorMessage() {
         return getText(errorMessage);
     }
 
     // ============ STATE CHECKS ============
-    
+
     public boolean isErrorDisplayed() {
         return isDisplayed(errorMessage);
     }
@@ -336,7 +336,7 @@ import org.openqa.selenium.WebDriver;
 
 @Slf4j
 public class DashboardPage extends BasePage {
-    
+
     // ============ COMPONENTS ============
     @Getter
     private final HeaderComponent header;
@@ -353,7 +353,7 @@ public class DashboardPage extends BasePage {
     }
 
     // ============ NAVIGATION ============
-    
+
     @Step("Navigate to dashboard")
     public DashboardPage open() {
         driver.get(ConfigReader.get("base.url") + "/dashboard");
@@ -362,7 +362,7 @@ public class DashboardPage extends BasePage {
     }
 
     // ============ GETTERS ============
-    
+
     @Step("Get welcome message")
     public String getWelcomeMessage() {
         return getText(welcomeHeading);
@@ -379,7 +379,7 @@ public class DashboardPage extends BasePage {
     }
 
     // ============ STATE CHECKS ============
-    
+
     public boolean isLoaded() {
         return isDisplayed(welcomeHeading);
     }
@@ -403,7 +403,7 @@ import org.openqa.selenium.WebDriver;
 
 @Slf4j
 public class HeaderComponent extends BasePage {
-    
+
     private final By logo = By.cssSelector("header a[aria-label='Home']");
     private final By searchBox = By.cssSelector("input[type='search']");
     private final By userMenu = By.cssSelector("[data-testid='user-menu']");
@@ -463,7 +463,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ModalComponent extends BasePage {
-    
+
     private final By modal = By.cssSelector("[role='dialog']");
     private final By modalTitle = By.cssSelector("[role='dialog'] h2");
     private final By closeButton = By.cssSelector("[role='dialog'] button[aria-label='Close']");
@@ -552,7 +552,7 @@ public abstract class BaseTest {
     }
 
     // ============ HELPER METHODS ============
-    
+
     protected void attachScreenshot(String name) {
         try {
             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -695,7 +695,7 @@ class LoginTest extends BaseTest {
                 .as("Error message content")
                 .containsIgnoringCase(expectedError);
         });
-        
+
         attachScreenshot("login-error");
     }
 }
@@ -758,13 +758,13 @@ public void waitForPage() {
 
 ## Quick Reference
 
-| Pattern | When to Use |
-|---------|-------------|
-| `return this` | Action stays on same page |
-| `return new NextPage(driver)` | Action navigates to new page |
-| Component Object | Reusable UI part (header, modal) |
-| `@Step` | Document actions in Allure reports |
-| `SoftAssertions` | Multiple assertions in one test |
-| `waitForVisible()` | Before interacting with element |
-| `waitForInvisible()` | After dismissing modal/loader |
+| Pattern                       | When to Use                        |
+| ----------------------------- | ---------------------------------- |
+| `return this`                 | Action stays on same page          |
+| `return new NextPage(driver)` | Action navigates to new page       |
+| Component Object              | Reusable UI part (header, modal)   |
+| `@Step`                       | Document actions in Allure reports |
+| `SoftAssertions`              | Multiple assertions in one test    |
+| `waitForVisible()`            | Before interacting with element    |
+| `waitForInvisible()`          | After dismissing modal/loader      |
 ````

@@ -14,7 +14,7 @@ This reference provides reusable patterns and helper classes for implementing ac
         <artifactId>selenium</artifactId>
         <version>4.10.0</version>
     </dependency>
-    
+
     <!-- JSON processing for reports -->
     <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
@@ -370,7 +370,7 @@ public class AccessibilityHelper {
         try {
             String json = objectMapper.writerWithDefaultPrettyPrinter()
                 .writeValueAsString(results);
-            
+
             Allure.addAttachment(
                 "Axe Results",
                 "application/json",
@@ -425,7 +425,7 @@ public class AccessibilityHelper {
                 html.append("<h3>").append(violation.getId()).append(" (").append(violation.getImpact()).append(")</h3>\n");
                 html.append("<p>").append(violation.getDescription()).append("</p>\n");
                 html.append("<p><a href=\"").append(violation.getHelpUrl()).append("\" target=\"_blank\">How to fix</a></p>\n");
-                
+
                 for (CheckedNode node : violation.getNodes()) {
                     html.append("<p>Target: <code>").append(String.join(" > ", node.getTarget())).append("</code></p>\n");
                 }
@@ -461,31 +461,31 @@ public class AccessibilityHelper {
 
 ### WCAG Tags
 
-| Tag | Standard | Level |
-|-----|----------|-------|
-| `wcag2a` | WCAG 2.0 | Level A |
-| `wcag2aa` | WCAG 2.0 | Level AA |
-| `wcag2aaa` | WCAG 2.0 | Level AAA |
-| `wcag21a` | WCAG 2.1 | Level A |
-| `wcag21aa` | WCAG 2.1 | Level AA |
-| `wcag21aaa` | WCAG 2.1 | Level AAA |
-| `wcag22aa` | WCAG 2.2 | Level AA |
-| `best-practice` | Deque | Industry |
+| Tag             | Standard | Level     |
+| --------------- | -------- | --------- |
+| `wcag2a`        | WCAG 2.0 | Level A   |
+| `wcag2aa`       | WCAG 2.0 | Level AA  |
+| `wcag2aaa`      | WCAG 2.0 | Level AAA |
+| `wcag21a`       | WCAG 2.1 | Level A   |
+| `wcag21aa`      | WCAG 2.1 | Level AA  |
+| `wcag21aaa`     | WCAG 2.1 | Level AAA |
+| `wcag22aa`      | WCAG 2.2 | Level AA  |
+| `best-practice` | Deque    | Industry  |
 
 ### Common Rule IDs
 
-| Rule ID | What it checks |
-|---------|---------------|
-| `color-contrast` | Text contrast ratio |
-| `image-alt` | Images have alt text |
-| `label` | Form inputs have labels |
-| `button-name` | Buttons have accessible name |
-| `link-name` | Links have accessible name |
-| `heading-order` | Heading hierarchy |
-| `landmark-one-main` | Single main landmark |
-| `region` | Content in landmarks |
-| `aria-valid-attr` | Valid ARIA attributes |
-| `aria-roles` | Valid ARIA roles |
+| Rule ID             | What it checks               |
+| ------------------- | ---------------------------- |
+| `color-contrast`    | Text contrast ratio          |
+| `image-alt`         | Images have alt text         |
+| `label`             | Form inputs have labels      |
+| `button-name`       | Buttons have accessible name |
+| `link-name`         | Links have accessible name   |
+| `heading-order`     | Heading hierarchy            |
+| `landmark-one-main` | Single main landmark         |
+| `region`            | Content in landmarks         |
+| `aria-valid-attr`   | Valid ARIA attributes        |
+| `aria-roles`        | Valid ARIA roles             |
 
 ---
 
@@ -501,7 +501,7 @@ public class AccessibilityHelper {
 void homePage_shouldBeAccessible() {
     driver.get(baseUrl);
     waitForPageReady();
-    
+
     AccessibilityHelper.verifyPageAccessibility(driver);
 }
 ```
@@ -514,11 +514,11 @@ void homePage_shouldBeAccessible() {
 @DisplayName("Login modal should be accessible")
 void loginModal_shouldBeAccessible() {
     driver.get(baseUrl);
-    
+
     // Open modal
     driver.findElement(By.id("login-btn")).click();
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-modal")));
-    
+
     // Scan only the modal
     AccessibilityHelper.verifyComponentAccessibility(driver, "#login-modal");
 }
@@ -534,7 +534,7 @@ void loginModal_shouldBeAccessible() {
 void allPages_shouldBeAccessible(String path) {
     driver.get(baseUrl + path);
     waitForPageReady();
-    
+
     AccessibilityHelper.verifyPageAccessibility(driver);
 }
 ```
@@ -547,11 +547,11 @@ void allPages_shouldBeAccessible(String path) {
 @DisplayName("Form error state should be accessible")
 void formErrors_shouldBeAccessible() {
     driver.get(baseUrl + "/register");
-    
+
     // Submit empty form to trigger errors
     driver.findElement(By.cssSelector("button[type='submit']")).click();
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("error-message")));
-    
+
     // Verify error state accessibility
     AccessibilityHelper.verifyPageAccessibility(driver);
 }
@@ -567,7 +567,7 @@ void formErrors_shouldBeAccessible() {
 void page_shouldHaveNoCriticalViolations() {
     driver.get(baseUrl);
     waitForPageReady();
-    
+
     // Only fail on critical/serious - warn on others
     AccessibilityHelper.verifyCriticalAccessibility(driver);
 }
@@ -590,20 +590,20 @@ public class KeyboardAccessibilityHelper {
     public static void verifyKeyboardReachable(WebDriver driver, String targetSelector, int maxTabs) {
         WebElement body = driver.findElement(By.tagName("body"));
         WebElement target = driver.findElement(By.cssSelector(targetSelector));
-        
+
         // Start from body
         body.click();
-        
+
         for (int i = 0; i < maxTabs; i++) {
             body.sendKeys(Keys.TAB);
             WebElement focused = driver.switchTo().activeElement();
-            
+
             if (focused.equals(target)) {
                 log.info("Element {} reached after {} tab(s)", targetSelector, i + 1);
                 return;
             }
         }
-        
+
         throw new AssertionError("Element " + targetSelector + " not reachable via Tab within " + maxTabs + " presses");
     }
 
@@ -616,17 +616,17 @@ public class KeyboardAccessibilityHelper {
         List<WebElement> focusableElements = modal.findElements(
             By.cssSelector("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])")
         );
-        
+
         assertThat(focusableElements).as("Modal should have focusable elements").isNotEmpty();
-        
+
         // Tab through all elements to verify focus stays in modal
         WebElement firstElement = focusableElements.getFirst();
         firstElement.click();
-        
+
         for (int i = 0; i < maxTabs; i++) {
             driver.switchTo().activeElement().sendKeys(Keys.TAB);
             WebElement focused = driver.switchTo().activeElement();
-            
+
             assertThat(isDescendantOf(focused, modal))
                 .as("Focus should stay within modal after Tab #%d", i + 1)
                 .isTrue();
@@ -640,9 +640,9 @@ public class KeyboardAccessibilityHelper {
     public static void verifyEscapeCloses(WebDriver driver, String modalSelector) {
         WebElement modal = driver.findElement(By.cssSelector(modalSelector));
         assertThat(modal.isDisplayed()).as("Modal should be visible initially").isTrue();
-        
+
         modal.sendKeys(Keys.ESCAPE);
-        
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         wait.until(ExpectedConditions.invisibilityOf(modal));
     }
@@ -674,17 +674,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
-          distribution: 'temurin'
-          
+          java-version: "21"
+          distribution: "temurin"
+
       - name: Run Accessibility Tests
         run: |
           mvn test -Dgroups=a11y -Dheadless=true
-          
+
       - name: Upload A11y Report
         if: always()
         uses: actions/upload-artifact@v4

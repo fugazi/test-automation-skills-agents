@@ -425,12 +425,24 @@ test("user can login", async ({ loginPage, dashboardPage }) => {
 class OrderPage {
   constructor(private page: Page) {}
 
-  async navigateToOrders() { /* ... */ }
-  async createOrder(data: OrderData) { /* ... */ }
-  async assertOrderVisible(name: string) { /* ... */ }
-  async getOrderViaAPI(id: string) { /* ... */ }  // API call in a POM?!
-  async deleteOrder(id: string) { /* ... */ }
-  async getOrderCount() { /* ... */ }
+  async navigateToOrders() {
+    /* ... */
+  }
+  async createOrder(data: OrderData) {
+    /* ... */
+  }
+  async assertOrderVisible(name: string) {
+    /* ... */
+  }
+  async getOrderViaAPI(id: string) {
+    /* ... */
+  } // API call in a POM?!
+  async deleteOrder(id: string) {
+    /* ... */
+  }
+  async getOrderCount() {
+    /* ... */
+  }
 }
 ```
 
@@ -442,22 +454,32 @@ class OrderPage {
   constructor(private page: Page) {}
 
   // Navigation
-  async goto() { await this.page.goto('/orders'); }
+  async goto() {
+    await this.page.goto("/orders");
+  }
 
   // Interactions only
-  async createOrder(data: OrderData) { /* ... */ }
-  async deleteOrder(id: string) { /* ... */ }
+  async createOrder(data: OrderData) {
+    /* ... */
+  }
+  async deleteOrder(id: string) {
+    /* ... */
+  }
 
   // State queries (return data, don't assert)
-  async getOrderNames(): Promise<string[]> { /* ... */ }
-  async getOrderCount(): Promise<number> { /* ... */ }
+  async getOrderNames(): Promise<string[]> {
+    /* ... */
+  }
+  async getOrderCount(): Promise<number> {
+    /* ... */
+  }
 }
 
 // Assertions stay in the test or a separate assertion helper
-test('order appears after creation', async ({ orderPage }) => {
-  await orderPage.createOrder({ item: 'Widget', quantity: 2 });
+test("order appears after creation", async ({ orderPage }) => {
+  await orderPage.createOrder({ item: "Widget", quantity: 2 });
   const names = await orderPage.getOrderNames();
-  expect(names).toContain('Widget');
+  expect(names).toContain("Widget");
 });
 ```
 
@@ -543,13 +565,13 @@ export default defineConfig({
 
 **Common CI differences:**
 
-| Issue | Local | CI |
-|-------|-------|-----|
-| Fonts | System fonts | Minimal fonts (use Docker) |
-| Rendering | GPU-accelerated | Software rendering |
-| Timing | Fast | Slower (shared resources) |
-| Screen size | Variable | Fixed viewport |
-| Network | Direct | Behind proxy/NAT |
+| Issue       | Local           | CI                         |
+| ----------- | --------------- | -------------------------- |
+| Fonts       | System fonts    | Minimal fonts (use Docker) |
+| Rendering   | GPU-accelerated | Software rendering         |
+| Timing      | Fast            | Slower (shared resources)  |
+| Screen size | Variable        | Fixed viewport             |
+| Network     | Direct          | Behind proxy/NAT           |
 
 **Rule:** Always test in CI. Use Docker for consistent environments. Set `CI=true` for appropriate config overrides.
 

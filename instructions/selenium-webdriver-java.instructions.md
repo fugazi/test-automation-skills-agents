@@ -7,17 +7,17 @@ applyTo: 'src/test/java/**/*.java, src/main/java/**/pages/**/*.java, src/main/ja
 
 ## Prerequisites & Technology Stack
 
-| Component | Version | Purpose |
-|-----------|---------|---------|
-| Java | 21+ | Language runtime (Records, Pattern Matching, Virtual Threads) |
-| Selenium WebDriver | 4.x | Browser automation |
-| JUnit 5 | 5.10+ | Test framework |
-| AssertJ | 3.x | Fluent assertions with Soft Assertions |
-| Allure | 2.x | Test reporting and documentation |
-| Lombok | 1.18+ | Boilerplate reduction (@Slf4j, @Builder) |
-| JavaFaker | 2.x | Dynamic test data generation |
-| Jackson | 2.x | JSON serialization for API/DTOs |
-| HttpClient | 5.x | API interactions for test setup |
+| Component          | Version | Purpose                                                       |
+| ------------------ | ------- | ------------------------------------------------------------- |
+| Java               | 21+     | Language runtime (Records, Pattern Matching, Virtual Threads) |
+| Selenium WebDriver | 4.x     | Browser automation                                            |
+| JUnit 5            | 5.10+   | Test framework                                                |
+| AssertJ            | 3.x     | Fluent assertions with Soft Assertions                        |
+| Allure             | 2.x     | Test reporting and documentation                              |
+| Lombok             | 1.18+   | Boilerplate reduction (@Slf4j, @Builder)                      |
+| JavaFaker          | 2.x     | Dynamic test data generation                                  |
+| Jackson            | 2.x     | JSON serialization for API/DTOs                               |
+| HttpClient         | 5.x     | API interactions for test setup                               |
 
 ---
 
@@ -65,17 +65,20 @@ private final By errorMessage = By.cssSelector(".alert-danger");
 ## Code Quality Standards
 
 ### Page Object Model (POM)
+
 - Every test **must** interact with UI through Page Object classes
 - Encapsulate element locators and interaction logic within Page Objects
 - Page Objects should **never** contain assertions (except visibility checks)
 - Design methods with **Fluent Interface**: return `this` or the next `Page` object
 
 ### Explicit Waits
+
 - **Never** use `Thread.sleep()` under any circumstances
 - Use `WebDriverWait` with `ExpectedConditions` for all dynamic elements
 - Standardize timeout using `Duration.ofSeconds()` (Selenium 4 compliance)
 
 ### Clean Code Principles
+
 - Follow **SOLID** principles throughout
 - Tests focus on **business logic**, Page Objects on **implementation details**
 - Use meaningful variable names for `WebElement` instances
@@ -84,15 +87,15 @@ private final By errorMessage = By.cssSelector(".alert-danger");
 
 ## Modern Java Standards (21+)
 
-| Feature | Usage |
-|---------|-------|
-| **Records** | Immutable data carriers for test data, configuration, API responses |
-| **Streams API** | Collection processing with lambda expressions |
-| **Optional** | Handle nullable values, avoid `NullPointerException` |
-| **Pattern Matching** | Type checks with `instanceof` patterns |
-| **Sequenced Collections** | Use `.getFirst()`, `.getLast()` instead of index access |
-| **Text Blocks** | Multi-line strings for JSON payloads, SQL queries |
-| **Virtual Threads** | Parallel test execution (Project Loom) |
+| Feature                   | Usage                                                               |
+| ------------------------- | ------------------------------------------------------------------- |
+| **Records**               | Immutable data carriers for test data, configuration, API responses |
+| **Streams API**           | Collection processing with lambda expressions                       |
+| **Optional**              | Handle nullable values, avoid `NullPointerException`                |
+| **Pattern Matching**      | Type checks with `instanceof` patterns                              |
+| **Sequenced Collections** | Use `.getFirst()`, `.getLast()` instead of index access             |
+| **Text Blocks**           | Multi-line strings for JSON payloads, SQL queries                   |
+| **Virtual Threads**       | Parallel test execution (Project Loom)                              |
 
 ```java
 // Record for test data
@@ -119,30 +122,33 @@ var names = elements.stream()
 ## Test Structure (JUnit 5)
 
 ### Annotations
-| Annotation | Purpose |
-|------------|---------|
-| `@Test` | Mark test methods |
-| `@BeforeEach` | Setup before each test |
-| `@AfterEach` | Teardown after each test |
-| `@BeforeAll` / `@AfterAll` | Suite-level setup/teardown |
-| `@DisplayName` | Human-readable test description |
-| `@Tag` | Test categorization (smoke, regression) |
-| `@ParameterizedTest` | Data-driven tests |
-| `@Disabled` | Skip test with reason |
+
+| Annotation                 | Purpose                                 |
+| -------------------------- | --------------------------------------- |
+| `@Test`                    | Mark test methods                       |
+| `@BeforeEach`              | Setup before each test                  |
+| `@AfterEach`               | Teardown after each test                |
+| `@BeforeAll` / `@AfterAll` | Suite-level setup/teardown              |
+| `@DisplayName`             | Human-readable test description         |
+| `@Tag`                     | Test categorization (smoke, regression) |
+| `@ParameterizedTest`       | Data-driven tests                       |
+| `@Disabled`                | Skip test with reason                   |
 
 ### Naming Conventions
+
 - **Class**: `FeatureNameTest.java` (e.g., `LoginTest.java`)
 - **Method**: `should[ExpectedResult]When[Action]()` (e.g., `shouldShowErrorWhenInvalidCredentials()`)
 
 ### Allure Reporting Annotations
-| Annotation | Purpose |
-|------------|---------|
-| `@Epic` | High-level business capability |
-| `@Feature` | Feature under test |
-| `@Story` | User story reference |
-| `@Severity` | Test priority (BLOCKER, CRITICAL, NORMAL, MINOR, TRIVIAL) |
-| `@Description` | Detailed test description |
-| `@Step` | Action step in Page Object methods |
+
+| Annotation     | Purpose                                                   |
+| -------------- | --------------------------------------------------------- |
+| `@Epic`        | High-level business capability                            |
+| `@Feature`     | Feature under test                                        |
+| `@Story`       | User story reference                                      |
+| `@Severity`    | Test priority (BLOCKER, CRITICAL, NORMAL, MINOR, TRIVIAL) |
+| `@Description` | Detailed test description                                 |
+| `@Step`        | Action step in Page Object methods                        |
 
 ---
 
@@ -312,7 +318,7 @@ public abstract class BaseTest {
     private void captureScreenshotOnFailure(TestInfo testInfo) {
         try {
             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            Allure.addAttachment("Screenshot", "image/png", 
+            Allure.addAttachment("Screenshot", "image/png",
                 new ByteArrayInputStream(screenshot), "png");
         } catch (Exception e) {
             log.warn("Failed to capture screenshot: {}", e.getMessage());
@@ -513,7 +519,7 @@ junit.jupiter.execution.parallel.config.fixed.parallelism=4
 ```yaml
 - name: Run Selenium Tests
   run: mvn clean test -Dbrowser=chrome -Dheadless=true
-  
+
 - name: Generate Allure Report
   run: mvn allure:report
 ```
@@ -523,21 +529,24 @@ junit.jupiter.execution.parallel.config.fixed.parallelism=4
 ## Test Execution Strategy
 
 1. **Local Development**: Run with UI mode for debugging
+
    ```bash
    mvn test -Dtest=LoginTest -Dheadless=false
    ```
 
 2. **CI Pipeline**: Run headless with parallel execution
+
    ```bash
    mvn clean test -Dheadless=true -DforkCount=4
    ```
 
 3. **Smoke Tests**: Run critical path only
+
    ```bash
    mvn test -Dgroups=smoke
    ```
 
-4. **Generate Reports**: 
+4. **Generate Reports**:
    ```bash
    mvn allure:serve
    ```
@@ -546,14 +555,14 @@ junit.jupiter.execution.parallel.config.fixed.parallelism=4
 
 ## Troubleshooting
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| Element not found | Element not loaded yet | Use explicit wait with `ExpectedConditions` |
-| Stale element reference | DOM changed after locating | Re-locate element before interaction |
-| Click intercepted | Overlay or another element blocking | Scroll into view or wait for overlay to close |
-| Timeout Exception | Element never became visible | Verify locator, check for iframes |
-| Session not created | Driver/browser version mismatch | Update WebDriverManager or browser |
-| Flaky tests | Race conditions, timing issues | Add proper waits, use stable locators |
+| Problem                 | Cause                               | Solution                                      |
+| ----------------------- | ----------------------------------- | --------------------------------------------- |
+| Element not found       | Element not loaded yet              | Use explicit wait with `ExpectedConditions`   |
+| Stale element reference | DOM changed after locating          | Re-locate element before interaction          |
+| Click intercepted       | Overlay or another element blocking | Scroll into view or wait for overlay to close |
+| Timeout Exception       | Element never became visible        | Verify locator, check for iframes             |
+| Session not created     | Driver/browser version mismatch     | Update WebDriverManager or browser            |
+| Flaky tests             | Race conditions, timing issues      | Add proper waits, use stable locators         |
 
 ---
 
@@ -562,6 +571,7 @@ junit.jupiter.execution.parallel.config.fixed.parallelism=4
 Before finalizing tests, ensure:
 
 ### Core Requirements
+
 - [ ] No `Thread.sleep()` in the codebase
 - [ ] All UI interactions through Page Objects
 - [ ] Explicit waits for all dynamic elements
@@ -569,6 +579,7 @@ Before finalizing tests, ensure:
 - [ ] `@DisplayName` and `@Tag` on all test methods
 
 ### Code Quality
+
 - [ ] CamelCase naming conventions followed
 - [ ] `@Slf4j` for all logging (no `System.out.println`)
 - [ ] `@Step` in all Page Object action methods
@@ -576,11 +587,13 @@ Before finalizing tests, ensure:
 - [ ] Page Object methods return `this` or next Page
 
 ### Assertions & Data
+
 - [ ] AssertJ Soft Assertions with `.as()` messages
 - [ ] `Faker` for dynamic test data
 - [ ] `@ParameterizedTest` for data-driven tests
 
 ### Modern Java
+
 - [ ] Records for immutable data carriers
 - [ ] Streams API with `.toList()` (not `Collectors.toList()`)
 - [ ] `Optional` for nullable values
@@ -588,6 +601,7 @@ Before finalizing tests, ensure:
 - [ ] Sequenced Collections (`.getFirst()`, `.getLast()`)
 
 ### Integration
+
 - [ ] Lombok DTOs with `@Builder`, `@Getter` for API models
 - [ ] Jackson `@JsonProperty` for API response mapping
 - [ ] Allure annotations (`@Epic`, `@Feature`, `@Severity`)
