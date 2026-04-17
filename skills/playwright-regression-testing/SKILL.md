@@ -1,6 +1,6 @@
 ---
 name: playwright-regression-testing
-description: Automated regression testing strategy and best practices using Playwright with TypeScript. Use when asked to plan, organize, select, execute, or optimize regression test suites for web applications. Covers change-based and risk-based test selection, test tagging and prioritization, parallel execution, sharding, CI/CD pipeline integration with GitHub Actions, flaky test management, suite health monitoring, and regression types (corrective, progressive, selective, complete). Keywords: regression testing, test selection, smoke tests, test suite optimization, CI pipeline, flaky tests, test sharding, impact analysis, git diff.
+description: 'Automated regression testing strategy and best practices using Playwright with TypeScript. Use when asked to plan, organize, select, execute, or optimize regression test suites for web applications. Covers change-based and risk-based test selection, test tagging and prioritization, parallel execution, sharding, CI/CD pipeline integration with GitHub Actions, flaky test management, suite health monitoring, and regression types (corrective, progressive, selective, complete). Keywords: regression testing, test selection, smoke tests, test suite optimization, CI pipeline, flaky tests, test sharding, impact analysis, git diff.'
 ---
 
 # Playwright Regression Testing (TypeScript)
