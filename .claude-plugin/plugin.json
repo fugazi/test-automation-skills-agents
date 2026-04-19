@@ -1,0 +1,24 @@
+{
+  "name": "test-automation-skills-agents",
+  "description": "Tool-agnostic QA Automation library: Playwright, Selenium, API testing, accessibility (WCAG 2.1 AA), QA Planner, and ISTQB-aligned artifacts. Includes 13 specialized agents and 9 reusable skills.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Douglas Urrea Ocampo"
+  },
+  "homepage": "https://douglasfugazi.co",
+  "repository": "https://github.com/fugazi/test-automation-skills-agents",
+  "license": "MIT",
+  "keywords": [
+    "qa-automation",
+    "playwright",
+    "selenium",
+    "sdet",
+    "testing",
+    "accessibility",
+    "a11y",
+    "api-testing",
+    "istqb",
+    "agents",
+    "skills"
+  ]
+}

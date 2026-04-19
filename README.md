@@ -102,7 +102,23 @@ If you are using Claude/Cursor/OpenCode/Windsurf (or another assistant), verific
 
 Add this repo as a submodule, then **copy/sync** assets into `.github/*` as part of your internal workflow.
 
-### Option C — Install skills via skills.sh
+### Option C — Install via Claude Code Plugin Marketplace
+
+Subscribe to this repository as a plugin marketplace directly from Claude Code:
+
+```bash
+/plugin marketplace add https://raw.githubusercontent.com/fugazi/test-automation-skills-agents/main/.claude-plugin/marketplace.json
+```
+
+Then install the plugin:
+
+```bash
+/plugin install test-automation-skills-agents
+```
+
+This will make all 13 specialized QA agents and 9 reusable skills available in your Claude Code session.
+
+### Option D — Install skills via skills.sh
 
 You can install skills directly from this repository using **skills.sh**:
 
