@@ -14,7 +14,35 @@ claude --add-dir /path/to/test-automation-skills-agents
 
 Claude Code will load `CLAUDE.md` from the added directory and have access to all agents, skills, and instructions.
 
-### Option B: Copy CLAUDE.md to Your Project
+### Option B: Install via Claude Code Plugin Marketplace
+
+Subscribe to this repository as a plugin marketplace directly from Claude Code:
+
+```bash
+/plugin marketplace add fugazi/test-automation-skills-agents
+```
+
+Then install the plugin:
+
+```bash
+/plugin install qa-automation@fugazi-test-automation
+```
+
+This will make all 13 specialized QA agents and 10 reusable skills available in your Claude Code session.
+
+> **SSH errors?** The marketplace clones repos via SSH. If you don't have SSH keys set up on GitHub, either [add your SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or switch to HTTPS for fetches only:
+> ```bash
+> git config --global url."https://github.com/".insteadOf "git@github.com:"
+> ```
+
+**Local / development:**
+
+```bash
+git clone https://github.com/fugazi/test-automation-skills-agents.git
+claude --add-dir /path/to/test-automation-skills-agents
+```
+
+### Option C: Copy CLAUDE.md to Your Project
 
 Copy the repo's `CLAUDE.md` to your project root. Claude Code automatically reads it on startup.
 
@@ -22,7 +50,7 @@ Copy the repo's `CLAUDE.md` to your project root. Claude Code automatically read
 cp test-automation-skills-agents/CLAUDE.md ./CLAUDE.md
 ```
 
-### Option C: Git Submodule
+### Option D: Git Submodule
 
 ```bash
 git submodule add https://github.com/fugazi/test-automation-skills-agents.git .claude/test-automation-skills-agents
