@@ -1,6 +1,6 @@
 {
   "name": "test-automation-skills-agents",
-  "description": "Tool-agnostic QA Automation library: Playwright, Selenium, API testing, accessibility (WCAG 2.1 AA), QA Planner, and ISTQB-aligned artifacts. Includes 13 specialized agents and 9 reusable skills.",
+  "description": "Tool-agnostic QA Automation library: Playwright, Selenium, API testing, accessibility (WCAG 2.1 AA), QA Planner, and ISTQB-aligned artifacts. Includes 13 specialized agents and 10 reusable skills.",
   "version": "1.0.0",
   "author": {
     "name": "Douglas Urrea Ocampo"
