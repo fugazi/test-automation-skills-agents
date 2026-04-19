@@ -1,0 +1,33 @@
+{
+  "name": "test-automation-skills-agents",
+  "owner": {
+    "name": "Douglas Urrea Ocampo"
+  },
+  "metadata": {
+    "description": "QA Automation AI skills and agents for Claude Code — Playwright, Selenium, API, accessibility, QA Planner, and ISTQB-aligned workflows."
+  },
+  "plugins": [
+    {
+      "name": "test-automation-skills-agents",
+      "source": {
+        "source": "github",
+        "repo": "fugazi/test-automation-skills-agents"
+      },
+      "description": "QA Automation AI skills and agents for Claude Code — Playwright, Selenium, API, accessibility, QA Planner, and ISTQB-aligned workflows.",
+      "category": "testing",
+      "keywords": [
+        "qa-automation",
+        "playwright",
+        "selenium",
+        "sdet",
+        "testing",
+        "accessibility",
+        "a11y",
+        "api-testing",
+        "istqb",
+        "agents",
+        "skills"
+      ]
+    }
+  ]
+}
