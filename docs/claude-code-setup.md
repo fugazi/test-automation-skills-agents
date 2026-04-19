@@ -25,7 +25,7 @@ Subscribe to this repository as a plugin marketplace directly from Claude Code:
 Then install the plugin:
 
 ```bash
-/plugin install qa-automation@fugazi-test-automation
+/plugin install test-automation-skills-agents@fugazi-test-automation
 ```
 
 This will make all 13 specialized QA agents and 10 reusable skills available in your Claude Code session.
