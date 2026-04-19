@@ -118,11 +118,6 @@ Then install the plugin:
 
 This will make all 13 specialized QA agents and 10 reusable skills available in your Claude Code session.
 
-> **SSH errors?** The marketplace clones repos via SSH. If you don't have SSH keys set up on GitHub, either [add your SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or switch to HTTPS for fetches only:
-> ```bash
-> git config --global url."https://github.com/".insteadOf "git@github.com:"
-> ```
-
 **Local / development:**
 
 ```bash
