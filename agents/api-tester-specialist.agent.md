@@ -1,11 +1,7 @@
 ---
 name: API Tester Specialist
 description: 'Specialist in creating and executing API tests. Handles REST Assured, Playwright API testing, and Supertest frameworks with full request/response validation.'
-version: '1.0.0'
-category: 'specialized'
-model: 'Claude Opus 4.6'
 tools: ['read', 'edit', 'search', 'bash', 'playwright-test']
-
 handoffs:
   - label: Return to Orchestrator
     agent: qa-orchestrator

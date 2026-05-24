@@ -1,9 +1,6 @@
 ---
 name: Test Refactor Specialist
 description: 'Improves test code quality and maintainability. Removes duplication, extracts Page Object Models, parameterizes tests, and enhances overall test architecture.'
-version: '1.0.0'
-category: 'specialized'
-model: 'Claude Opus 4.6'
 tools: ['read', 'edit', 'search', 'bash']
 
 handoffs:

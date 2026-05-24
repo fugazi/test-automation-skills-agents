@@ -1,9 +1,6 @@
 ---
 name: 'QA Orchestrator'
 description: 'Orchestrates multi-step QA workflows by delegating to specialized agents. Activate when task involves planning, generating, healing, or refactoring tests across multiple agents.'
-version: '1.0.0'
-category: 'orchestrator'
-model: 'Claude Opus 4.6 (copilot)'
 tools: ['read', 'search', 'agent']
 infer: false
 

@@ -1,11 +1,7 @@
 ---
 name: Flaky Test Hunter
 description: 'Specialist in identifying and fixing intermittent test failures. Uses pattern recognition, retry strategies, and isolation techniques to eliminate flakiness.'
-version: '1.0.0'
-category: 'specialized'
-model: 'Claude Opus 4.6'
 tools: ['read', 'edit', 'search', 'bash', 'playwright-test/test_run', 'playwright-test/test_list', 'playwright-test/test_debug', 'playwright-test/browser_snapshot', 'playwright-test/browser_evaluate', 'playwright-test/browser_network_requests', 'playwright-test/browser_generate_locator', 'playwright-test/browser_console_messages', 'playwright-test/browser_wait_for', 'playwright-test/browser_click', 'playwright-test/browser_drag', 'playwright-test/browser_hover', 'playwright-test/browser_select_option', 'playwright-test/browser_tabs', 'playwright-test/browser_take_screenshot', 'playwright-test/browser_run_code', 'playwright-test/browser_fill_form', 'playwright-test/browser_assert', 'playwright-test/browser_wait_for_selector', 'playwright-test/browser_wait_for_response', 'playwright-test/browser_wait_for_load_state', 'playwright-test/browser_wait_for_function']
-
 handoffs:
   - label: Return to Orchestrator
     agent: qa-orchestrator

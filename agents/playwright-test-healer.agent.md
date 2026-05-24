@@ -12,7 +12,6 @@ tools:
   - playwright-test/test_debug
   - playwright-test/test_list
   - playwright-test/test_run
-model: Claude Opus 4.5 (copilot)
 mcp-servers:
   playwright-test:
     type: stdio

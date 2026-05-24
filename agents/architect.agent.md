@@ -1,7 +1,6 @@
 ---
 name: The Architect
 description: Opus plans, Codex implements, Gemini designs
-model: Claude Opus 4.6 (copilot)
 tools: ["read", "edit", "search", "agent"]
 ---
 
