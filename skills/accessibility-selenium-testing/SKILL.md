@@ -1,4 +1,3 @@
-````skill
 ---
 name: accessibility-selenium-testing
 description: Accessibility testing toolkit using Selenium WebDriver 4+ with Java 21+ and axe-core engine. Use when asked to validate WCAG 2.1/2.2 compliance, scan pages or components for a11y violations, test keyboard navigation, audit color contrast, check ARIA semantics, generate accessibility reports, filter axe rules, debug screen reader issues, or implement POUR principles (perceivable, operable, understandable, robust).
@@ -478,5 +477,3 @@ After completing this skill's workflow, confirm:
 - [ ] **Keyboard accessibility verified** — Tab navigation reaches all interactive elements
 - [ ] **Violation report saved** — Accessibility results written to JSON/HTML file
 - [ ] **Tests pass with Java 21+** — `mvn test -Dtest=*Accessibility*` passes
-
-````
