@@ -263,10 +263,3 @@ When executing multi-step workflows, create a TODO list where each step referenc
 ```
 
 This ensures traceability and allows resuming workflows if interrupted.
-
-## Related Resources
-
-- [Agent Skills Specification](https://agentskills.io/)
-- [VS Code Agent Skills Documentation](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
-- [Reference Skills Repository](https://github.com/anthropics/skills)
-- [Awesome Copilot Skills](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md)
