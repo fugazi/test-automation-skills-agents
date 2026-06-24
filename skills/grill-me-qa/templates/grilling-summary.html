@@ -1,0 +1,529 @@
+<!--
+  grill-me-qa — HTML Summary Template
+  Generated at the end of a grilling session.
+  Dark Luxury Professional style.
+  All placeholders use {{PLACEHOLDER}} syntax — the AI replaces them during generation.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSDR — {{PROJECT_NAME}} — Test Strategy Decision Record</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #080c12;
+      --bg-secondary: #0d1117;
+      --bg-card: #111821;
+      --bg-card-hover: #151d28;
+      --border-subtle: #1e2733;
+      --border-accent: #2a3545;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+      --accent-blue: #4d9fff;
+      --accent-green: #2ed47a;
+      --accent-amber: #ffb946;
+      --accent-red: #ff5c5c;
+      --accent-purple: #a07aff;
+      --accent-cyan: #22d3ee;
+      --glow-blue: rgba(77, 159, 255, 0.15);
+      --glow-green: rgba(46, 212, 122, 0.15);
+      --glow-amber: rgba(255, 185, 70, 0.12);
+      --glow-red: rgba(255, 92, 92, 0.12);
+      --glow-purple: rgba(160, 122, 255, 0.12);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 48px 32px;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 50% 0%, var(--glow-blue) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .header h1 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 8px;
+      position: relative;
+    }
+    .header .meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .header .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .header .meta-item svg { width: 14px; height: 14px; opacity: 0.6; }
+
+    /* ── Progress Bar ── */
+    .progress-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 24px 32px;
+      margin-bottom: 32px;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .progress-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .progress-stats {
+      display: flex;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    .stat-resolved { color: var(--accent-green); }
+    .stat-deferred { color: var(--accent-amber); }
+    .stat-open { color: var(--accent-red); }
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-primary);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+    }
+    .progress-fill-resolved {
+      background: linear-gradient(90deg, var(--accent-green), #1fb965);
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .progress-fill-deferred {
+      background: linear-gradient(90deg, var(--accent-amber), #e09b35);
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .progress-fill-open {
+      background: var(--border-accent);
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── Dimension Cards ── */
+    .dimensions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .dimension-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .dimension-card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+    }
+    .dimension-card.resolved { border-left: 3px solid var(--accent-green); }
+    .dimension-card.deferred { border-left: 3px solid var(--accent-amber); }
+    .dimension-card.open { border-left: 3px solid var(--accent-red); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .card-title-group { display: flex; align-items: center; gap: 12px; }
+    .card-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-primary);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+    .card-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .status-resolved { color: var(--accent-green); background: var(--glow-green); border: 1px solid rgba(46, 212, 122, 0.3); }
+    .status-deferred { color: var(--accent-amber); background: var(--glow-amber); border: 1px solid rgba(255, 185, 70, 0.3); }
+    .status-open { color: var(--accent-red); background: var(--glow-red); border: 1px solid rgba(255, 92, 92, 0.3); }
+
+    .card-summary {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      padding-left: 44px;
+    }
+
+    /* ── Decision Table ── */
+    .decisions-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .decisions-table th {
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .decisions-table td {
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+    .decisions-table td:first-child { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; }
+    .decisions-table tr:last-child td { border-bottom: none; }
+    .decision-recommended { color: var(--accent-blue); font-style: italic; }
+    .decision-chosen { color: var(--text-primary); font-weight: 500; }
+    .decision-rationale { color: var(--text-secondary); font-size: 0.82rem; }
+
+    /* ── Dimension Accent Icons ── */
+    .dim-icon { font-size: 1.2rem; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 32px;
+      margin-top: 40px;
+    }
+    .footer-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .footer-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent-blue);
+      margin-top: 12px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      body { padding: 20px 12px; }
+      .header { padding: 32px 20px; }
+      .header h1 { font-size: 1.5rem; }
+      .dimension-card { padding: 20px; }
+      .decisions-table { font-size: 0.78rem; }
+      .decisions-table th, .decisions-table td { padding: 6px 8px; }
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ════════ HEADER ════════ -->
+    <div class="header">
+      <h1>Test Strategy Decision Record</h1>
+      <p class="subtitle">{{PROJECT_NAME}}</p>
+      <div class="meta">
+        <span class="meta-item">📅 {{DATE}}</span>
+        <span class="meta-item">👥 {{PARTICIPANTS}}</span>
+        <span class="meta-item">🔥 grill-me-qa</span>
+      </div>
+    </div>
+
+    <!-- ════════ PROGRESS ════════ -->
+    <div class="progress-section">
+      <div class="progress-header">
+        <span class="progress-title">Grilling Session Progress</span>
+        <div class="progress-stats">
+          <span class="stat-resolved">✅ {{RESOLVED_COUNT}}/7 resolved</span>
+          <span class="stat-deferred">⚠️ {{DEFERRED_COUNT}} deferred</span>
+          <span class="stat-open">❌ {{OPEN_COUNT}} open</span>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill-resolved" style="width: {{RESOLVED_PERCENT}}%"></div>
+        <div class="progress-fill-deferred" style="width: {{DEFERRED_PERCENT}}%"></div>
+        <div class="progress-fill-open" style="width: {{OPEN_PERCENT}}%"></div>
+      </div>
+    </div>
+
+    <!-- ════════ DIMENSION CARDS ════════ -->
+    <div class="dimensions-grid">
+
+      <!-- D1 -->
+      <div class="dimension-card {{D1_STATUS_CLASS}}">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-number">01</span>
+            <span class="dim-icon">🎯</span>
+            <span class="card-title">Test Strategy &amp; Coverage</span>
+          </div>
+          <span class="card-status {{D1_STATUS_BADGE}}">{{D1_STATUS_TEXT}}</span>
+        </div>
+        <p class="card-summary">{{D1_SUMMARY}}</p>
+        <table class="decisions-table">
+          <thead>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <!-- D1_DECISIONS_ROWS — repeat for each decision -->
+            <tr>
+              <td>1.1</td>
+              <td><span class="decision-chosen">{{D1_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D1_REC1}}</span></td>
+              <td><span class="decision-chosen">{{D1_A1}}</span></td>
+              <td><span class="decision-rationale">{{D1_R1}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- D2 -->
+      <div class="dimension-card {{D2_STATUS_CLASS}}">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-number">02</span>
+            <span class="dim-icon">🛠️</span>
+            <span class="card-title">Framework &amp; Tooling</span>
+          </div>
+          <span class="card-status {{D2_STATUS_BADGE}}">{{D2_STATUS_TEXT}}</span>
+        </div>
+        <p class="card-summary">{{D2_SUMMARY}}</p>
+        <table class="decisions-table">
+          <thead>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2.1</td>
+              <td><span class="decision-chosen">{{D2_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D2_REC1}}</span></td>
+              <td><span class="decision-chosen">{{D2_A1}}</span></td>
+              <td><span class="decision-rationale">{{D2_R1}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- D3 -->
+      <div class="dimension-card {{D3_STATUS_CLASS}}">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-number">03</span>
+            <span class="dim-icon">🏗️</span>
+            <span class="card-title">Test Architecture</span>
+          </div>
+          <span class="card-status {{D3_STATUS_BADGE}}">{{D3_STATUS_TEXT}}</span>
+        </div>
+        <p class="card-summary">{{D3_SUMMARY}}</p>
+        <table class="decisions-table">
+          <thead>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>3.1</td>
+              <td><span class="decision-chosen">{{D3_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D3_REC1}}</span></td>
+              <td><span class="decision-chosen">{{D3_A1}}</span></td>
+              <td><span class="decision-rationale">{{D3_R1}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- D4 -->
+      <div class="dimension-card {{D4_STATUS_CLASS}}">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-number">04</span>
+            <span class="dim-icon">🤖</span>
+            <span class="card-title">AI Integration</span>
+          </div>
+          <span class="card-status {{D4_STATUS_BADGE}}">{{D4_STATUS_TEXT}}</span>
+        </div>
+        <p class="card-summary">{{D4_SUMMARY}}</p>
+        <table class="decisions-table">
+          <thead>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>4.1</td>
+              <td><span class="decision-chosen">{{D4_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D4_REC1}}</span></td>
+              <td><span class="decision-chosen">{{D4_A1}}</span></td>
+              <td><span class="decision-rationale">{{D4_R1}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- D5 -->
+      <div class="dimension-card {{D5_STATUS_CLASS}}">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-number">05</span>
+            <span class="dim-icon">🚀</span>
+            <span class="card-title">CI/CD Pipeline</span>
+          </div>
+          <span class="card-status {{D5_STATUS_BADGE}}">{{D5_STATUS_TEXT}}</span>
+        </div>
+        <p class="card-summary">{{D5_SUMMARY}}</p>
+        <table class="decisions-table">
+          <thead>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5.1</td>
+              <td><span class="decision-chosen">{{D5_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D5_REC1}}</span></td>
+              <td><span class="decision-chosen">{{D5_A1}}</span></td>
+              <td><span class="decision-rationale">{{D5_R1}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- D6 -->
+      <div class="dimension-card {{D6_STATUS_CLASS}}">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-number">06</span>
+            <span class="dim-icon">♿</span>
+            <span class="card-title">Quality Engineering</span>
+          </div>
+          <span class="card-status {{D6_STATUS_BADGE}}">{{D6_STATUS_TEXT}}</span>
+        </div>
+        <p class="card-summary">{{D6_SUMMARY}}</p>
+        <table class="decisions-table">
+          <thead>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>6.1</td>
+              <td><span class="decision-chosen">{{D6_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D6_REC1}}</span></td>
+              <td><span class="decision-chosen">{{D6_A1}}</span></td>
+              <td><span class="decision-rationale">{{D6_R1}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- D7 -->
+      <div class="dimension-card {{D7_STATUS_CLASS}}">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-number">07</span>
+            <span class="dim-icon">🔧</span>
+            <span class="card-title">Maintainability &amp; Sustainability</span>
+          </div>
+          <span class="card-status {{D7_STATUS_BADGE}}">{{D7_STATUS_TEXT}}</span>
+        </div>
+        <p class="card-summary">{{D7_SUMMARY}}</p>
+        <table class="decisions-table">
+          <thead>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>7.1</td>
+              <td><span class="decision-chosen">{{D7_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D7_REC1}}</span></td>
+              <td><span class="decision-chosen">{{D7_A1}}</span></td>
+              <td><span class="decision-rationale">{{D7_R1}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!-- /.dimensions-grid -->
+
+    <!-- ════════ FOOTER ════════ -->
+    <div class="footer">
+      <p class="footer-text">Generated by grill-me-qa skill · {{DATE}}</p>
+      <span class="footer-badge">test-automation-skills-agents</span>
+    </div>
+
+  </div>
+</body>
+</html>
