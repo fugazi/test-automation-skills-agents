@@ -47,7 +47,7 @@ This repo is a **catalog**. Choose the integration style for your tool.
 ### Integration choices
 
 - **GitHub Copilot (customizations)**: use `.github/agents`, `.github/instructions`, and `.github/skills`.
-- **Claude/Cursor/OpenCode/Windsurf/etc.**: copy the same content into the tool’s repo/workspace rules system, keeping the same structure and naming so your team shares a consistent vocabulary.
+- **Claude/Cursor/OpenCode/Windsurf/etc.**: copy the same content into the tool's repo/workspace rules system, keeping the same structure and naming so your team shares a consistent vocabulary.
 
 ### Setup guides
 
@@ -59,7 +59,7 @@ This repo is a **catalog**. Choose the integration style for your tool.
 | Gemini CLI     | [docs/gemini-cli-setup.md](./docs/gemini-cli-setup.md)   |
 | Windsurf       | [docs/windsurf-setup.md](./docs/windsurf-setup.md)       |
 
-### Option A — Copy into your target repository (most reliable)
+### Option A - Copy into your target repository (most reliable)
 
 1. Copy agents:
    - From: `agents/`
@@ -94,15 +94,15 @@ In your target repository:
 
 If you are using Claude/Cursor/OpenCode/Windsurf (or another assistant), verification is typically:
 
-1. Ensure the files are present in the tool’s configured rules/prompts scope (repo-level or workspace-level).
+1. Ensure the files are present in the tool's configured rules/prompts scope (repo-level or workspace-level).
 2. Start a new chat session so the tool reloads instructions.
-3. Ask for a response that should clearly follow a rule (e.g., “avoid `Thread.sleep()`; use explicit waits”).
+3. Ask for a response that should clearly follow a rule (e.g., "avoid `Thread.sleep()`; use explicit waits").
 
-### Option B — Git submodule (centralized updates)
+### Option B - Git submodule (centralized updates)
 
 Add this repo as a submodule, then **copy/sync** assets into `.github/*` as part of your internal workflow.
 
-### Option C — Install via Claude Code Plugin Marketplace
+### Option C - Install via Claude Code Plugin Marketplace
 
 Subscribe to this repository as a plugin marketplace directly from Claude Code:
 
@@ -125,7 +125,7 @@ git clone https://github.com/fugazi/test-automation-skills-agents.git
 claude --plugin-dir /path/to/test-automation-skills-agents
 ```
 
-### Option D — Install skills via skills.sh
+### Option D - Install skills via skills.sh
 
 You can install skills directly from this repository using **skills.sh**:
 
@@ -173,19 +173,23 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill p
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill api-testing
 ```
 
+```bash
+npx skills add https://github.com/fugazi/test-automation-skills-agents --skill grill-me-qa
+```
+
 ---
 
-> Note: Copilot’s discovery typically looks at canonical locations like `.github/agents` and `.github/skills`. Keeping this repo as a submodule is fine, but you will generally still want a sync step into `.github/*`.
+> Note: Copilot's discovery typically looks at canonical locations like `.github/agents` and `.github/skills`. Keeping this repo as a submodule is fine, but you will generally still want a sync step into `.github/*`.
 
 > Packaging note: the current folder layout and `frontmatter` conventions are optimized for `GitHub Copilot` customizations.
-> If you use another tool, you can still reuse the same content by mapping it to that tool’s
+> If you use another tool, you can still reuse the same content by mapping it to that tool's
 > equivalent mechanisms (rules files, system prompts, playbooks, templates).
 
 ---
 
 ## Core concepts
 
-### 1) Agents: “who does the work and how”
+### 1) Agents: "who does the work and how"
 
 Agents define:
 
@@ -205,7 +209,7 @@ Tool-agnostic mapping:
 - **Copilot**: custom agent file under `.github/agents/`
 - **Other tools**: use the agent body as a dedicated system prompt / mode / persona, and keep the same boundaries
 
-### 2) Instructions: “the operating system”
+### 2) Instructions: "the operating system"
 
 Instructions are cross-cutting rules that keep outputs consistent:
 
@@ -222,7 +226,7 @@ In practice:
 
 Tool-agnostic mapping:
 
-- Put the instruction content into your tool’s repo-level rules (often a single “rules” file), or keep them split by domain (Playwright, Selenium, a11y) like this repo does.
+- Put the instruction content into your tool's repo-level rules (often a single "rules" file), or keep them split by domain (Playwright, Selenium, a11y) like this repo does.
 - If your tool supports file globs/scopes, mirror the intent (e.g., Playwright rules apply to `**/*.spec.ts`).
 
 ## Compatibility notes (VS Code vs GitHub)
@@ -243,14 +247,14 @@ When in doubt, keep the frontmatter minimal and portable:
 
 ## Tool-agnostic usage (Claude/Cursor/OpenCode/Windsurf)
 
-Use this repo as a shared “QA automation brain” for your team:
+Use this repo as a shared "QA automation brain" for your team:
 
 1. Keep this repository as the source of truth.
 2. Sync/copy its content into whichever format your AI tool supports.
 3. Keep the same names so prompts remain consistent across tools:
-   - “Use the Flaky Test Hunter agent.”
-   - “Follow the Playwright TypeScript instructions.”
-   - “Apply the playwright-e2e-testing skill playbook.”
+   - "Use the Flaky Test Hunter agent."
+   - "Follow the Playwright TypeScript instructions."
+   - "Apply the playwright-e2e-testing skill playbook."
 
 Copilot-specific parts are mainly:
 
@@ -259,7 +263,7 @@ Copilot-specific parts are mainly:
 
 The testing guidance itself (locator strategies, waits, POM patterns, a11y workflows, ISTQB artifacts) is portable.
 
-### 3) Skills: “reusable playbooks + resources”
+### 3) Skills: "reusable playbooks + resources"
 
 Skills are folder-based capabilities that Copilot can load on-demand.
 
@@ -286,13 +290,13 @@ Key characteristics (by design):
 
 Prompt examples:
 
-- “Use Flaky Test Hunter: investigate why `checkout.spec.ts` fails intermittently in CI and propose fixes.”
-- “As API Tester Specialist: create negative tests for `/v1/orders` covering auth failures and schema validation.”
-- “As Selenium Test Specialist: generate POM + JUnit 5 tests for login + forgot password.”
+- "Use Flaky Test Hunter: investigate why `checkout.spec.ts` fails intermittently in CI and propose fixes."
+- "As API Tester Specialist: create negative tests for `/v1/orders` covering auth failures and schema validation."
+- "As Selenium Test Specialist: generate POM + JUnit 5 tests for login + forgot password."
 
 ### In GitHub (Copilot Coding Agent)
 
-If you’re using Copilot on GitHub (agent workflows), keep the agents under `.github/agents/`.
+If you're using Copilot on GitHub (agent workflows), keep the agents under `.github/agents/`.
 
 Recommended pattern:
 
@@ -337,29 +341,30 @@ Examples:
 
 ## How to use skills (when they help most)
 
-Skills are best when the team repeats the same “playbook” frequently.
+Skills are best when the team repeats the same "playbook" frequently.
 
 Typical triggers:
 
-- “Write Playwright E2E tests with POM and stable locators” → `playwright-e2e-testing`
-- “Run axe-core checks, keyboard navigation, WCAG 2.1 AA” → `a11y-playwright-testing` or `accessibility-selenium-testing`
-- “Plan, organize, or optimize regression test suites” → `playwright-regression-testing`
-- “Generate ISTQB-aligned artifacts: test plan / bug report / traceability” → `qa-manual-istqb`
-- “Browser-based exploration and debugging” → `webapp-playwright-testing`
+- "Write Playwright E2E tests with POM and stable locators" → `playwright-e2e-testing`
+- "Run axe-core checks, keyboard navigation, WCAG 2.1 AA" → `a11y-playwright-testing` or `accessibility-selenium-testing`
+- "Plan, organize, or optimize regression test suites" → `playwright-regression-testing`
+- "Generate ISTQB-aligned artifacts: test plan / bug report / traceability" → `qa-manual-istqb`
+- "Browser-based exploration and debugging" → `webapp-playwright-testing`
 
 ### Skills catalog (this repo)
 
 | Skill                            | Best for                                                     | Typical prompts                                                                          |
 | -------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `playwright-e2e-testing`         | Playwright TypeScript E2E + API-in-test patterns             | “Write Playwright tests for checkout with POM and stable locators.”                      |
-| `webapp-playwright-testing`      | Live browser interaction + debugging via Playwright MCP      | “Navigate to /login, fill the form, and verify validation errors.”                       |
-| `a11y-playwright-testing`        | WCAG 2.1 AA checks using Playwright + axe-core               | “Add automated a11y scans for auth pages and keyboard nav tests.”                        |
-| `webapp-selenium-testing`        | Selenium Java automation patterns                            | “Create Selenium POM + JUnit 5 tests for login and profile update.”                      |
-| `accessibility-selenium-testing` | A11y scanning with Selenium + axe-core                       | “Scan key pages for WCAG issues and generate an Allure-friendly report.”                 |
-| `playwright-regression-testing`  | Regression strategy + test selection + CI/CD optimization    | “Organize tests into tiers (smoke, selective, full) and set up GitHub Actions pipeline.” |
-| `qa-manual-istqb`                | ISTQB-aligned artifacts + test design techniques             | “Create a risk-based regression suite and a traceability matrix.”                        |
-| `qa-test-planner`                | Test plans + test cases + bug reports + Playwright artifacts | “Use the skill qa-test-planner to create a test plan for payments.”                      |
-| `api-testing`                    | REST/GraphQL testing with Playwright and REST Assured        | “Create API tests for user endpoints with schema validation.”                            |
+| `playwright-e2e-testing`         | Playwright TypeScript E2E + API-in-test patterns             | "Write Playwright tests for checkout with POM and stable locators."                      |
+| `webapp-playwright-testing`      | Live browser interaction + debugging via Playwright MCP      | "Navigate to /login, fill the form, and verify validation errors."                       |
+| `a11y-playwright-testing`        | WCAG 2.1 AA checks using Playwright + axe-core               | "Add automated a11y scans for auth pages and keyboard nav tests."                        |
+| `webapp-selenium-testing`        | Selenium Java automation patterns                            | "Create Selenium POM + JUnit 5 tests for login and profile update."                      |
+| `accessibility-selenium-testing` | A11y scanning with Selenium + axe-core                       | "Scan key pages for WCAG issues and generate an Allure-friendly report."                 |
+| `playwright-regression-testing`  | Regression strategy + test selection + CI/CD optimization    | "Organize tests into tiers (smoke, selective, full) and set up GitHub Actions pipeline." |
+| `qa-manual-istqb`                | ISTQB-aligned artifacts + test design techniques             | "Create a risk-based regression suite and a traceability matrix."                        |
+| `qa-test-planner`                | Test plans + test cases + bug reports + Playwright artifacts | "Use the skill qa-test-planner to create a test plan for payments."                      |
+| `api-testing`                    | REST/GraphQL testing with Playwright and REST Assured        | "Create API tests for user endpoints with schema validation."                            |
+| `grill-me-qa`                    | Relentless interview to stress-test QA plans & strategies    | "Grill me on our Playwright migration strategy before we start building."               |
 
 > Note: `qa-test-planner` is intentionally strict: it is designed to trigger only when you call it by name.
 
@@ -375,25 +380,25 @@ To improve activation:
 
 If a skill still does not activate automatically:
 
-- Explicitly reference it in your prompt (e.g., “use the skill playwright-e2e-testing”).
+- Explicitly reference it in your prompt (e.g., "use the skill playwright-e2e-testing").
 - Copy the skill folder into `.github/skills/` (not just `skills/`) in your target repo.
 
 ## Suggested end-to-end workflows
 
-### Workflow 1 — From requirements to tests (Playwright)
+### Workflow 1 - From requirements to tests (Playwright)
 
 1. Use `qa-manual-istqb` skill to draft test conditions and test cases.
 2. Use Playwright Test Planner agent to create an E2E plan.
 3. Use Playwright Test Generator agent to generate tests from the plan.
 4. Use Playwright E2E Testing skill as the best-practices reference during implementation.
 
-### Workflow 2 — Stabilize a flaky suite
+### Workflow 2 - Stabilize a flaky suite
 
 1. Use Flaky Test Hunter agent to identify patterns and root causes.
 2. Apply changes (wait strategy, locators, isolation, data seeding).
 3. Use Playwright Test Healer agent to validate and repair remaining failures.
 
-### Workflow 3 — Accessibility regression prevention
+### Workflow 3 - Accessibility regression prevention
 
 1. Pick the stack:
    - Playwright + axe-core: `a11y-playwright-testing`
@@ -401,19 +406,19 @@ If a skill still does not activate automatically:
 2. Add a11y checks to critical flows (auth, checkout, forms, modals).
 3. Fail CI on WCAG 2.1 AA violations (with triage exceptions documented).
 
-### Workflow 4 — Regression testing strategy
+### Workflow 4 - Regression testing strategy
 
 1. Use `playwright-regression-testing` skill to design your regression approach.
 2. Organize tests into tiers:
-   - Tier 0: Smoke (< 2 min) — critical path, every commit
-   - Tier 1: Sanity (< 10 min) — core features, every PR
-   - Tier 2: Selective (< 30 min) — change-based, on merge
-   - Tier 3: Full (< 60 min) — complete regression, nightly/pre-release
+   - Tier 0: Smoke (< 2 min) - critical path, every commit
+   - Tier 1: Sanity (< 10 min) - core features, every PR
+   - Tier 2: Selective (< 30 min) - change-based, on merge
+   - Tier 3: Full (< 60 min) - complete regression, nightly/pre-release
 3. Implement test selection strategies (change-based, risk-based, time-budget).
 4. Set up CI/CD pipeline with GitHub Actions (smoke → selective → full).
 5. Add flaky test management (retry policies, quarantine, suite health metrics).
 
-### Workflow 5 — API contract validation
+### Workflow 5 - API contract validation
 
 1. Use API Tester Specialist agent.
 2. Cover:
@@ -424,7 +429,7 @@ If a skill still does not activate automatically:
    - Pagination/sorting/filtering edge cases
 3. Use `api-testing` skill for schema validation patterns (Zod, JSON Schema) and contract testing.
 
-### Workflow 6 — CI/CD pipeline setup
+### Workflow 6 - CI/CD pipeline setup
 
 1. Use `cicd-testing` instruction for pipeline configuration guidance.
 2. Set up tiered GitHub Actions workflows:
@@ -468,7 +473,7 @@ If a skill still does not activate automatically:
 | ---------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Agent not visible in selector      | Wrong folder path                                         | Ensure `.github/agents/*.agent.md` in target repo                         |
 | Skill never triggers               | Description too vague or folder not in canonical location | Improve `description` and ensure `.github/skills/<skill>/SKILL.md`        |
-| `qa-test-planner` doesn’t activate | Designed to be explicit-only                              | Mention it by name: “use the skill qa-test-planner …”                     |
+| `qa-test-planner` doesn't activate | Designed to be explicit-only                              | Mention it by name: "use the skill qa-test-planner ..."                     |
 | Generated tests are unstable       | Locator/wait anti-patterns                                | Follow the locator priority + web-first assertions from Playwright skills |
 | Selenium tests flaky               | `Thread.sleep()` or missing explicit waits                | Use `WebDriverWait` patterns from Selenium instructions/skills            |
 
