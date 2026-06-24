@@ -21,13 +21,13 @@
 
 | Dimension | Status | Key Decision |
 |-----------|--------|--------------|
-| 1. Test Strategy & Coverage | {{STATUS}} | {{SUMMARY}} |
-| 2. Framework & Tooling | {{STATUS}} | {{SUMMARY}} |
-| 3. Test Architecture | {{STATUS}} | {{SUMMARY}} |
-| 4. AI Integration | {{STATUS}} | {{SUMMARY}} |
-| 5. CI/CD Pipeline | {{STATUS}} | {{SUMMARY}} |
-| 6. Quality Engineering | {{STATUS}} | {{SUMMARY}} |
-| 7. Maintainability | {{STATUS}} | {{SUMMARY}} |
+| 1. Test Strategy & Coverage | {{D1_STATUS}} | {{D1_SUMMARY}} |
+| 2. Framework & Tooling | {{D2_STATUS}} | {{D2_SUMMARY}} |
+| 3. Test Architecture | {{D3_STATUS}} | {{D3_SUMMARY}} |
+| 4. AI Integration | {{D4_STATUS}} | {{D4_SUMMARY}} |
+| 5. CI/CD Pipeline | {{D5_STATUS}} | {{D5_SUMMARY}} |
+| 6. Quality Engineering | {{D6_STATUS}} | {{D6_SUMMARY}} |
+| 7. Maintainability | {{D7_STATUS}} | {{D7_SUMMARY}} |
 
 ---
 

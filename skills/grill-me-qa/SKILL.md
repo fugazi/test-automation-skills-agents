@@ -1,6 +1,6 @@
 ---
 name: grill-me-qa
-description: A relentless interview to stress-test QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any 'grill' trigger phrases. Covers test strategy, framework selection, AI integration, CI/CD, maintainability, and quality engineering.
+description: "A relentless interview to stress-test QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any 'grill' trigger phrases. Covers test strategy, framework selection, AI integration, CI/CD, maintainability, and quality engineering."
 ---
 
 # Grill Me QA

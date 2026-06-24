@@ -326,25 +326,26 @@
     <div class="dimensions-grid">
 
       <!-- D1 -->
-      <div class="dimension-card resolved">
+      <div class="dimension-card {{D1_STATUS_CLASS}}">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-number">01</span>
             <span class="dim-icon">🎯</span>
             <span class="card-title">Test Strategy &amp; Coverage</span>
           </div>
-          <span class="card-status status-resolved">✅ Resolved</span>
+          <span class="card-status {{D1_STATUS_BADGE}}">{{D1_STATUS_TEXT}}</span>
         </div>
         <p class="card-summary">{{D1_SUMMARY}}</p>
         <table class="decisions-table">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
           </thead>
           <tbody>
             <!-- D1_DECISIONS_ROWS — repeat for each decision -->
             <tr>
               <td>1.1</td>
               <td><span class="decision-chosen">{{D1_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D1_REC1}}</span></td>
               <td><span class="decision-chosen">{{D1_A1}}</span></td>
               <td><span class="decision-rationale">{{D1_R1}}</span></td>
             </tr>
@@ -353,24 +354,25 @@
       </div>
 
       <!-- D2 -->
-      <div class="dimension-card resolved">
+      <div class="dimension-card {{D2_STATUS_CLASS}}">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-number">02</span>
             <span class="dim-icon">🛠️</span>
             <span class="card-title">Framework &amp; Tooling</span>
           </div>
-          <span class="card-status status-resolved">✅ Resolved</span>
+          <span class="card-status {{D2_STATUS_BADGE}}">{{D2_STATUS_TEXT}}</span>
         </div>
         <p class="card-summary">{{D2_SUMMARY}}</p>
         <table class="decisions-table">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
           </thead>
           <tbody>
             <tr>
               <td>2.1</td>
               <td><span class="decision-chosen">{{D2_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D2_REC1}}</span></td>
               <td><span class="decision-chosen">{{D2_A1}}</span></td>
               <td><span class="decision-rationale">{{D2_R1}}</span></td>
             </tr>
@@ -379,24 +381,25 @@
       </div>
 
       <!-- D3 -->
-      <div class="dimension-card resolved">
+      <div class="dimension-card {{D3_STATUS_CLASS}}">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-number">03</span>
             <span class="dim-icon">🏗️</span>
             <span class="card-title">Test Architecture</span>
           </div>
-          <span class="card-status status-resolved">✅ Resolved</span>
+          <span class="card-status {{D3_STATUS_BADGE}}">{{D3_STATUS_TEXT}}</span>
         </div>
         <p class="card-summary">{{D3_SUMMARY}}</p>
         <table class="decisions-table">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
           </thead>
           <tbody>
             <tr>
               <td>3.1</td>
               <td><span class="decision-chosen">{{D3_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D3_REC1}}</span></td>
               <td><span class="decision-chosen">{{D3_A1}}</span></td>
               <td><span class="decision-rationale">{{D3_R1}}</span></td>
             </tr>
@@ -405,24 +408,25 @@
       </div>
 
       <!-- D4 -->
-      <div class="dimension-card resolved">
+      <div class="dimension-card {{D4_STATUS_CLASS}}">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-number">04</span>
             <span class="dim-icon">🤖</span>
             <span class="card-title">AI Integration</span>
           </div>
-          <span class="card-status status-resolved">✅ Resolved</span>
+          <span class="card-status {{D4_STATUS_BADGE}}">{{D4_STATUS_TEXT}}</span>
         </div>
         <p class="card-summary">{{D4_SUMMARY}}</p>
         <table class="decisions-table">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
           </thead>
           <tbody>
             <tr>
               <td>4.1</td>
               <td><span class="decision-chosen">{{D4_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D4_REC1}}</span></td>
               <td><span class="decision-chosen">{{D4_A1}}</span></td>
               <td><span class="decision-rationale">{{D4_R1}}</span></td>
             </tr>
@@ -431,24 +435,25 @@
       </div>
 
       <!-- D5 -->
-      <div class="dimension-card resolved">
+      <div class="dimension-card {{D5_STATUS_CLASS}}">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-number">05</span>
             <span class="dim-icon">🚀</span>
             <span class="card-title">CI/CD Pipeline</span>
           </div>
-          <span class="card-status status-resolved">✅ Resolved</span>
+          <span class="card-status {{D5_STATUS_BADGE}}">{{D5_STATUS_TEXT}}</span>
         </div>
         <p class="card-summary">{{D5_SUMMARY}}</p>
         <table class="decisions-table">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
           </thead>
           <tbody>
             <tr>
               <td>5.1</td>
               <td><span class="decision-chosen">{{D5_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D5_REC1}}</span></td>
               <td><span class="decision-chosen">{{D5_A1}}</span></td>
               <td><span class="decision-rationale">{{D5_R1}}</span></td>
             </tr>
@@ -457,24 +462,25 @@
       </div>
 
       <!-- D6 -->
-      <div class="dimension-card resolved">
+      <div class="dimension-card {{D6_STATUS_CLASS}}">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-number">06</span>
             <span class="dim-icon">♿</span>
             <span class="card-title">Quality Engineering</span>
           </div>
-          <span class="card-status status-resolved">✅ Resolved</span>
+          <span class="card-status {{D6_STATUS_BADGE}}">{{D6_STATUS_TEXT}}</span>
         </div>
         <p class="card-summary">{{D6_SUMMARY}}</p>
         <table class="decisions-table">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
           </thead>
           <tbody>
             <tr>
               <td>6.1</td>
               <td><span class="decision-chosen">{{D6_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D6_REC1}}</span></td>
               <td><span class="decision-chosen">{{D6_A1}}</span></td>
               <td><span class="decision-rationale">{{D6_R1}}</span></td>
             </tr>
@@ -483,24 +489,25 @@
       </div>
 
       <!-- D7 -->
-      <div class="dimension-card resolved">
+      <div class="dimension-card {{D7_STATUS_CLASS}}">
         <div class="card-header">
           <div class="card-title-group">
             <span class="card-number">07</span>
             <span class="dim-icon">🔧</span>
             <span class="card-title">Maintainability &amp; Sustainability</span>
           </div>
-          <span class="card-status status-resolved">✅ Resolved</span>
+          <span class="card-status {{D7_STATUS_BADGE}}">{{D7_STATUS_TEXT}}</span>
         </div>
         <p class="card-summary">{{D7_SUMMARY}}</p>
         <table class="decisions-table">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
           </thead>
           <tbody>
             <tr>
               <td>7.1</td>
               <td><span class="decision-chosen">{{D7_Q1}}</span></td>
+              <td><span class="decision-recommended">{{D7_REC1}}</span></td>
               <td><span class="decision-chosen">{{D7_A1}}</span></td>
               <td><span class="decision-rationale">{{D7_R1}}</span></td>
             </tr>
