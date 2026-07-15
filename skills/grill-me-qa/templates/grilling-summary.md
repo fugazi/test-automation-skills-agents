@@ -4,6 +4,8 @@
   This template is generated at the end of a grill-me-qa session.
   The AI fills in all sections based on the grilling conversation.
   Copy this file into your project's docs/ folder for traceability.
+  NOTE: The decision tables below are dynamic — rows repeat per decision
+  captured during the session. Add or remove rows to match the actual count.
 -->
 
 # TSDR: {{PROJECT_NAME}}
@@ -17,7 +19,7 @@
 
 ## Executive Summary
 
-**Overall Status:** {{RESOLVED_COUNT}}/7 dimensions resolved · {{DEFERRED_COUNT}} deferred · {{OPEN_COUNT}} open
+**Overall Status:** {{RESOLVED_COUNT}}/5 dimensions resolved · {{DEFERRED_COUNT}} deferred · {{OPEN_COUNT}} open
 
 | Dimension | Status | Key Decision |
 |-----------|--------|--------------|
@@ -26,8 +28,6 @@
 | 3. Test Architecture | {{D3_STATUS}} | {{D3_SUMMARY}} |
 | 4. AI Integration | {{D4_STATUS}} | {{D4_SUMMARY}} |
 | 5. CI/CD Pipeline | {{D5_STATUS}} | {{D5_SUMMARY}} |
-| 6. Quality Engineering | {{D6_STATUS}} | {{D6_SUMMARY}} |
-| 7. Maintainability | {{D7_STATUS}} | {{D7_SUMMARY}} |
 
 ---
 
@@ -36,6 +36,8 @@
 **Status:** ✅ Resolved / ⚠️ Deferred / ❌ Open
 
 ### Decisions
+
+<!-- Rows are dynamic — repeat one row per decision captured (e.g., 1.1, 1.2, 1.3 ...). -->
 
 | # | Question | Recommended | Chosen | Rationale |
 |---|----------|-------------|--------|-----------|
@@ -54,6 +56,8 @@
 
 ### Decisions
 
+<!-- Rows are dynamic — repeat one row per decision captured. -->
+
 | # | Question | Recommended | Chosen | Rationale |
 |---|----------|-------------|--------|-----------|
 | 2.1 | {{QUESTION}} | {{RECOMMENDED}} | {{CHOSEN}} | {{RATIONALE}} |
@@ -66,6 +70,8 @@
 
 ### Decisions
 
+<!-- Rows are dynamic — repeat one row per decision captured. -->
+
 | # | Question | Recommended | Chosen | Rationale |
 |---|----------|-------------|--------|-----------|
 | 3.1 | {{QUESTION}} | {{RECOMMENDED}} | {{CHOSEN}} | {{RATIONALE}} |
@@ -77,6 +83,9 @@
 **Status:** {{STATUS}}
 
 ### Decisions
+
+<!-- Rows are dynamic — repeat one row per decision captured. If AI is not used,
+this dimension is Resolved/Not Applicable with a one-line note instead of a table. -->
 
 | # | Question | Recommended | Chosen | Rationale |
 |---|----------|-------------|--------|-----------|
@@ -98,6 +107,8 @@
 
 ### Decisions
 
+<!-- Rows are dynamic — repeat one row per decision captured. -->
+
 | # | Question | Recommended | Chosen | Rationale |
 |---|----------|-------------|--------|-----------|
 | 5.1 | {{QUESTION}} | {{RECOMMENDED}} | {{CHOSEN}} | {{RATIONALE}} |
@@ -112,31 +123,9 @@
 
 ---
 
-## Dimension 6: Quality Engineering
-
-**Status:** {{STATUS}}
-
-### Decisions
-
-| # | Question | Recommended | Chosen | Rationale |
-|---|----------|-------------|--------|-----------|
-| 6.1 | {{QUESTION}} | {{RECOMMENDED}} | {{CHOSEN}} | {{RATIONALE}} |
-
----
-
-## Dimension 7: Maintainability & Sustainability
-
-**Status:** {{STATUS}}
-
-### Decisions
-
-| # | Question | Recommended | Chosen | Rationale |
-|---|----------|-------------|--------|-----------|
-| 7.1 | {{QUESTION}} | {{RECOMMENDED}} | {{CHOSEN}} | {{RATIONALE}} |
-
----
-
 ## Outstanding Items
+
+<!-- Rows are dynamic — repeat one row per outstanding item. -->
 
 | # | Item | Dimension | Owner | Due |
 |---|------|-----------|-------|-----|

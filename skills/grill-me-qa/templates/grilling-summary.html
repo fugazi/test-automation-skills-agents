@@ -305,12 +305,14 @@
       </div>
     </div>
 
-    <!-- ════════ PROGRESS ════════ -->
+    <!-- ════════ PROGRESS ════════
+         Percentages: RESOLVED_PERCENT = RESOLVED_COUNT/5*100 (same for DEFERRED, OPEN).
+         The three percentages must sum to 100. Out of 5 dimensions. -->
     <div class="progress-section">
       <div class="progress-header">
         <span class="progress-title">Grilling Session Progress</span>
         <div class="progress-stats">
-          <span class="stat-resolved">✅ {{RESOLVED_COUNT}}/7 resolved</span>
+          <span class="stat-resolved">✅ {{RESOLVED_COUNT}}/5 resolved</span>
           <span class="stat-deferred">⚠️ {{DEFERRED_COUNT}} deferred</span>
           <span class="stat-open">❌ {{OPEN_COUNT}} open</span>
         </div>
@@ -351,6 +353,8 @@
             </tr>
           </tbody>
         </table>
+        <!-- D1_DEFERRED — optional; render only when this dimension has deferred items -->
+        <p class="decision-rationale" style="margin-top: 12px;"><strong>Deferred:</strong> {{D1_DEFERRED}} — <em>Impact:</em> {{D1_DEFERRED_IMPACT}}</p>
       </div>
 
       <!-- D2 -->
@@ -432,6 +436,24 @@
             </tr>
           </tbody>
         </table>
+        <!-- D4_AI_TIERS — shown when AI is in use; omit entirely if D4 is Resolved/Not Applicable -->
+        <table class="decisions-table" style="margin-top: 16px;">
+          <thead>
+            <tr><th>Workflow</th><th>Tier</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="decision-chosen">{{D4_TIER1_WORKFLOW}}</span></td>
+              <td>{{D4_TIER1_LEVEL}}</td>
+              <td><span class="decision-rationale">{{D4_TIER1_NOTES}}</span></td>
+            </tr>
+            <tr>
+              <td><span class="decision-chosen">{{D4_TIER2_WORKFLOW}}</span></td>
+              <td>{{D4_TIER2_LEVEL}}</td>
+              <td><span class="decision-rationale">{{D4_TIER2_NOTES}}</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- D5 -->
@@ -459,64 +481,75 @@
             </tr>
           </tbody>
         </table>
-      </div>
-
-      <!-- D6 -->
-      <div class="dimension-card {{D6_STATUS_CLASS}}">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-number">06</span>
-            <span class="dim-icon">♿</span>
-            <span class="card-title">Quality Engineering</span>
-          </div>
-          <span class="card-status {{D6_STATUS_BADGE}}">{{D6_STATUS_TEXT}}</span>
-        </div>
-        <p class="card-summary">{{D6_SUMMARY}}</p>
-        <table class="decisions-table">
+        <!-- D5_PIPELINE_STAGES — repeat one row per pipeline stage -->
+        <table class="decisions-table" style="margin-top: 16px;">
           <thead>
-            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
+            <tr><th>Stage</th><th>Tests</th><th>Budget</th><th>Gate</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td>6.1</td>
-              <td><span class="decision-chosen">{{D6_Q1}}</span></td>
-              <td><span class="decision-recommended">{{D6_REC1}}</span></td>
-              <td><span class="decision-chosen">{{D6_A1}}</span></td>
-              <td><span class="decision-rationale">{{D6_R1}}</span></td>
+              <td><span class="decision-chosen">PR</span></td>
+              <td>{{D5_PR_TESTS}}</td>
+              <td>{{D5_PR_BUDGET}}</td>
+              <td><span class="decision-rationale">{{D5_PR_GATE}}</span></td>
+            </tr>
+            <tr>
+              <td><span class="decision-chosen">Merge</span></td>
+              <td>{{D5_MERGE_TESTS}}</td>
+              <td>{{D5_MERGE_BUDGET}}</td>
+              <td><span class="decision-rationale">{{D5_MERGE_GATE}}</span></td>
+            </tr>
+            <tr>
+              <td><span class="decision-chosen">Nightly</span></td>
+              <td>{{D5_NIGHTLY_TESTS}}</td>
+              <td>{{D5_NIGHTLY_BUDGET}}</td>
+              <td><span class="decision-rationale">{{D5_NIGHTLY_GATE}}</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <!-- D7 -->
-      <div class="dimension-card {{D7_STATUS_CLASS}}">
-        <div class="card-header">
-          <div class="card-title-group">
-            <span class="card-number">07</span>
-            <span class="dim-icon">🔧</span>
-            <span class="card-title">Maintainability &amp; Sustainability</span>
-          </div>
-          <span class="card-status {{D7_STATUS_BADGE}}">{{D7_STATUS_TEXT}}</span>
-        </div>
-        <p class="card-summary">{{D7_SUMMARY}}</p>
-        <table class="decisions-table">
-          <thead>
-            <tr><th>#</th><th>Decision</th><th>Recommended</th><th>Chosen</th><th>Rationale</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>7.1</td>
-              <td><span class="decision-chosen">{{D7_Q1}}</span></td>
-              <td><span class="decision-recommended">{{D7_REC1}}</span></td>
-              <td><span class="decision-chosen">{{D7_A1}}</span></td>
-              <td><span class="decision-rationale">{{D7_R1}}</span></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
     </div>
     <!-- /.dimensions-grid -->
+
+    <!-- ════════ OUTSTANDING ITEMS ════════ -->
+    <div class="progress-section" style="margin-top: 32px;">
+      <div class="progress-header">
+        <span class="progress-title">Outstanding Items</span>
+      </div>
+      <!-- OUTSTANDING_ROWS — repeat one row per item -->
+      <table class="decisions-table">
+        <thead>
+          <tr><th>#</th><th>Item</th><th>Dimension</th><th>Owner</th><th>Due</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><span class="decision-chosen">{{OI_ITEM}}</span></td>
+            <td>{{OI_DIM}}</td>
+            <td>{{OI_OWNER}}</td>
+            <td><span class="decision-rationale">{{OI_DUE}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ════════ FOLLOW-UP ACTIONS ════════ -->
+    <div class="progress-section" style="margin-top: 32px;">
+      <div class="progress-header">
+        <span class="progress-title">Follow-Up Actions</span>
+      </div>
+      <!-- FOLLOWUP_ROWS — repeat one item per action -->
+      <ul style="list-style: none; padding: 0; margin: 8px 0 0;">
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 0.9rem;">
+          <span style="color: var(--accent-blue); margin-right: 8px;">☐</span>{{FU_ACTION_1}}
+        </li>
+        <li style="padding: 8px 0; color: var(--text-secondary); font-size: 0.9rem;">
+          <span style="color: var(--accent-blue); margin-right: 8px;">☐</span>{{FU_ACTION_2}}
+        </li>
+      </ul>
+    </div>
 
     <!-- ════════ FOOTER ════════ -->
     <div class="footer">

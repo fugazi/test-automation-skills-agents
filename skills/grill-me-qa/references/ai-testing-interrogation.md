@@ -2,9 +2,17 @@
 
 When the grilling touches Dimension 4 (AI Integration), apply heightened scrutiny. AI in testing is powerful but introduces non-determinism, trust issues, and maintenance burdens that must be explicitly addressed.
 
+> **Gate question (required first):** *"Are you using or planning to use AI tools for testing?"*
+>
+> - If **NO**: this dimension is **Resolved / Not Applicable**. Confirm with 1-2 quick validation questions (e.g., *"Is there a documented reason AI is excluded?"*, *"Is there a plan to revisit this in the next 6 months?"*), mark the dimension resolved, and move on. Do **not** spend the question budget here.
+> - If **YES**: work through the **Core questions** below (4.1–4.4). The **Deep-dive** sections (4.5–4.7) are optional — use them only if a core answer surfaces a real risk or the user is operating AI tooling at scale.
+> - If **AMBIGUOUS** ("evaluating", "partially", "ad-hoc", "developers use Copilot but nothing is automated"): treat as **YES** and work through 4.1–4.4 focused on the *actual current* usage. "Evaluated and decided against" → treat as **NO**, log the rationale.
+
+**Core vs. deep-dive:** Questions 4.1–4.4 are the core interrogation — every team using AI in testing should resolve them. Questions 4.5–4.7 are for teams with a mature or high-volume AI practice. Skip them unless the core answers point to a gap.
+
 ---
 
-## 4.1 Where does AI enter the testing workflow?
+## 4.1 Where does AI enter the testing workflow? *(core)*
 
 ### Interrogation points
 
@@ -29,7 +37,7 @@ Never deploy AI-based test selection without a safety net (random sampling of no
 
 ---
 
-## 4.2 How are AI-generated tests validated for correctness?
+## 4.2 How are AI-generated tests validated for correctness? *(core)*
 
 ### Interrogation points
 
@@ -52,7 +60,7 @@ AI-generated tests that fail any gate are rejected, not patched. Re-prompt and r
 
 ---
 
-## 4.3 What is the human-in-the-loop boundary?
+## 4.3 What is the human-in-the-loop boundary? *(core)*
 
 ### Interrogation points
 
@@ -79,7 +87,7 @@ Maintain a complete audit log: every AI action records what was done, what promp
 
 ---
 
-## 4.4 How are hallucinations and non-deterministic outputs mitigated?
+## 4.4 How are hallucinations and non-deterministic outputs mitigated? *(core)*
 
 ### Interrogation points
 
@@ -97,7 +105,7 @@ Maintain a complete audit log: every AI action records what was done, what promp
 
 ---
 
-## 4.5 What is the cost/token budget for AI-assisted testing?
+## 4.5 What is the cost/token budget for AI-assisted testing? *(deep dive — optional)*
 
 ### Interrogation points
 
@@ -117,7 +125,7 @@ Maintain a complete audit log: every AI action records what was done, what promp
 
 ---
 
-## 4.6 What AI tools are selected and why?
+## 4.6 What AI tools are selected and why? *(deep dive — optional)*
 
 ### Interrogation points
 
@@ -143,7 +151,7 @@ Prefer tools that integrate with the existing IDE and CI pipeline over standalon
 
 ---
 
-## 4.7 Ownership: Who owns the test — the human or the AI tool?
+## 4.7 Ownership: Who owns the test — the human or the AI tool? *(deep dive — optional)*
 
 ### Interrogation points
 
