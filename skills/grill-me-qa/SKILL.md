@@ -98,7 +98,7 @@ The whole session should stay within **10-15 questions**. A grilling that drags 
 Accounting rules, so the budget actually holds:
 
 - **Phase 1 (Context Discovery) is free** — role, team size, greenfield/legacy, and constraint questions do not count toward the 10-15.
-- **2-3 core questions per dimension, with Dimension 4 (AI) carrying up to 4** (ceiling = 3+3+3+4+3 = 16). Aim for 2 per dimension unless the dimension is high-risk for this project; in practice the D4 gate usually trims Dimension 4 to ≤2.
+- **2-3 core questions per dimension, with Dimension 4 (AI) and Dimension 5 carrying up to 4** (ceiling = 3+3+3+4+4 = 17). Aim for 2 per dimension unless the dimension is high-risk for this project; in practice the D4 gate usually trims Dimension 4 to ≤2.
 - **Dimension 4 (AI) gate validation questions count against the budget** (at most 2 when AI is a quick-exit).
 - **Deep-dives are a trade-off, not an addition:** if a dimension runs its full core set, deep-dives are forbidden there unless you cut another dimension down. Treat the 15 ceiling as the target — 16 is only reached when Dimension 4 runs its full core.
 - Depth matters more than coverage — a few sharp questions resolve more than a long checklist of generic ones.
