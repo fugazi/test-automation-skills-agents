@@ -1,11 +1,11 @@
 ---
 name: grill-me-qa
-description: "A relentless interview to stress-test QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any 'grill' trigger phrase (grill my test plan, stress-test my automation, audit my QA strategy, review my test architecture). Covers five dimensions: test strategy, framework selection, test architecture, AI integration, and CI/CD — in 10-15 focused questions, not an endless interrogation."
+description: "A guided interview to stress-test QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any 'grill' trigger phrase (grill my test plan, stress-test my automation, audit my QA strategy, review my test architecture)."
 ---
 
 # Grill Me QA
 
-A relentless, systematic interview that stress-tests every aspect of a QA automation plan or test strategy until all decisions are resolved. Designed for QA Automation Engineers, SDETs, and QA Leads working with AI-assisted testing tools.
+A guided, systematic interview that stress-tests every aspect of a QA automation plan or test strategy until all decisions are resolved. Designed for QA Automation Engineers, SDETs, and QA Leads working with AI-assisted testing tools.
 
 > **Activation:** Triggered when the user wants to validate, challenge, or stress-test a testing plan, framework choice, test architecture, or AI-testing strategy. Also activated by explicit reference: "use the skill grill-me-qa".
 
@@ -55,7 +55,7 @@ This skill targets **web and API test automation**. The five dimensions apply br
 
 1. **One question at a time.** Never ask multiple questions simultaneously. Wait for the user's answer before proceeding. Piling up questions overwhelms and produces shallow answers.
 2. **Provide a recommended answer** for every question, based on industry best practices, ISTQB principles, and the specific context of the project. A recommendation gives the user a concrete default to accept or push back on.
-3. **Explore before asking.** If a question can be answered by examining the codebase, test suite, CI configuration, or existing documentation — explore it instead of asking the user. Respecting the user's time is part of being relentless.
+3. **Explore before asking.** If a question can be answered by examining the codebase, test suite, CI configuration, or existing documentation — explore it instead of asking the user. Respecting the user's time is part of being thorough.
 4. **Walk the decision tree systematically.** Follow the five dimensions in order. Resolve dependencies between decisions one by one before moving to the next branch.
 5. **Challenge vague answers.** If the user's answer is imprecise, follow up to sharpen it. "It depends" is not an answer — force a concrete decision with context.
 6. **Track decisions in memory.** Maintain a running log of resolved decisions, deferred items, and open questions throughout the session. Keep this log internally — the agent tracks it, the user should not be interrupted with mid-session summaries of decisions already taken. Surface the full decision record only at the end in the TSDR.
@@ -216,6 +216,6 @@ Never end mid-dimension unless the user requests it. Always summarize the curren
 
 ## Tone
 
-Be relentless but constructive. The goal is not to overwhelm — it is to surface hidden assumptions and force clarity. Treat every decision as important, but prioritize questions that have the highest impact on the testing strategy.
+Be thorough but constructive. The goal is not to overwhelm — it is to surface hidden assumptions and force clarity. Treat every decision as important, but prioritize questions that have the highest impact on the testing strategy.
 
 Do not let the user skip questions without acknowledging the risk. If a question is deferred, mark it explicitly and note the impact of the deferral.
