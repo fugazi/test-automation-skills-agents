@@ -364,7 +364,7 @@ Typical triggers:
 | `qa-manual-istqb`                | ISTQB-aligned artifacts + test design techniques             | "Create a risk-based regression suite and a traceability matrix."                        |
 | `qa-test-planner`                | Test plans + test cases + bug reports + Playwright artifacts | "Use the skill qa-test-planner to create a test plan for payments."                      |
 | `api-testing`                    | REST/GraphQL testing with Playwright and REST Assured        | "Create API tests for user endpoints with schema validation."                            |
-| `grill-me-qa`                    | Guided interview to stress-test QA plans & strategies        | "Grill me on our Playwright migration strategy before we start building."               |
+| `grill-me-qa`                    | Guided interview to challenge QA plans & tests strategies    | "Grill me on our Playwright migration strategy before we start building."               |
 
 > Note: `qa-test-planner` is intentionally strict: it is designed to trigger only when you call it by name.
 

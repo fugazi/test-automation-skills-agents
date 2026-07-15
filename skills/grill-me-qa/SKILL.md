@@ -1,13 +1,13 @@
 ---
 name: grill-me-qa
-description: "A guided interview to stress-test QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any 'grill' trigger phrase (grill my test plan, stress-test my automation, audit my QA strategy, review my test architecture)."
+description: "A guided interview to challenge and validate QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any 'grill' trigger phrase (grill my test plan, audit my QA automation framework, challenge my QA strategy, review my test architecture)."
 ---
 
 # Grill Me QA
 
-A guided, systematic interview that stress-tests every aspect of a QA automation plan or test strategy until all decisions are resolved. Designed for QA Automation Engineers, SDETs, and QA Leads working with AI-assisted testing tools.
+A guided, systematic interview that challenges every aspect of a QA automation plan or test strategy until all decisions are resolved. Designed for QA Automation Engineers, SDETs, and QA Leads working with AI-assisted testing tools.
 
-> **Activation:** Triggered when the user wants to validate, challenge, or stress-test a testing plan, framework choice, test architecture, or AI-testing strategy. Also activated by explicit reference: "use the skill grill-me-qa".
+> **Activation:** Triggered when the user wants to validate, challenge, or stress-test a testing plan, test strategy, framework choice, test architecture, or AI-testing strategy. Also activated by explicit reference: "use the skill grill-me-qa".
 
 ## When to Use This Skill
 
@@ -23,14 +23,15 @@ A guided, systematic interview that stress-tests every aspect of a QA automation
 
 The skill activates on explicit requests and on implicit intent. Treat these as activation signals in both English and Spanish:
 
-- "grill my test plan", "stress-test my automation", "audit my QA strategy"
+- "grill my test plan", "audit my QA automation framework", "challenge my QA strategy"
 - "challenge my testing decisions", "review my test architecture"
 - "should I use Playwright or Cypress?", "how should I structure my tests?"
 - "my tests are flaky, help me figure out why"
 - "migrate from Selenium to Playwright", "is my test pyramid healthy?"
 - "how do I set up quality gates?", "why is my test suite so slow?"
 - "revisa mi estrategia de pruebas", "audita mi plan de QA"
-- "pon a prueba mi framework de automatización"
+- "audita mi framework de automatización", "pon a prueba mi framework de automatización"
+- "mis tests son flaky", "revisa mi arquitectura de pruebas"
 
 ## When NOT to Use This Skill
 
