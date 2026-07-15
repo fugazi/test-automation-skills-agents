@@ -2,7 +2,7 @@
 
 This reference contains the complete interrogation tree for all five dimensions. During a grilling session, work through each dimension in order. Within each dimension, resolve dependencies top-to-bottom unless the user redirects.
 
-**Selection rule:** Each dimension lists 2-3 core questions plus 1-2 optional deep-dive bullets. Select the core questions based on the Phase 1 profile (SDET / QA Lead / Individual) and the codebase explored. A deep-dive is allowed only when its dimension is using fewer than 3 core questions, or another dimension was cut to 2 — the 15-question session ceiling is hard.
+**Selection rule:** Select the core questions based on the Phase 1 profile (SDET / QA Lead / Individual) and the codebase explored. A deep-dive is allowed only when its dimension is using fewer than 3 core questions, or another dimension was cut to 2 — the 15-question session ceiling is hard.
 
 **Adaptive answers:** Every recommended answer is tailored by profile. Treat these as defaults — adjust to the project's specifics, but keep the per-profile emphasis.
 
