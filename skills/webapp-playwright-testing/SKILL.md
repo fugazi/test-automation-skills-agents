@@ -1,6 +1,6 @@
 ---
 name: webapp-playwright-testing
-description: Browser automation toolkit using Playwright MCP for testing web applications. Use when asked to navigate pages, click elements, fill forms, take screenshots, verify UI components, check console logs, debug frontend issues, or validate responsive design. Supports live browser interaction and accessibility snapshots.
+description: 'Browser automation toolkit using Playwright MCP for testing web applications. Use when asked to navigate pages, click elements, fill forms, take screenshots, verify UI components, check console logs, debug frontend issues, or validate responsive design. Supports live browser interaction and accessibility snapshots.'
 ---
 
 # Web Application Testing

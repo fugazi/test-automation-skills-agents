@@ -1,6 +1,6 @@
 ---
 name: qa-manual-istqb
-description: ISTQB Foundation Level (CTFL) aligned QA toolkit for manual and automated testing. Use when asked to create test plans, test strategies, test conditions, test cases, bug reports, defect logs, regression suites, traceability matrices, or exploratory charters. Supports risk-based testing, test design techniques (equivalence partitioning, boundary value analysis, decision tables, state transitions), test estimation, static testing reviews, and test process management. Includes Playwright automation guidance for test implementation.
+description: 'ISTQB Foundation Level (CTFL) aligned QA toolkit for manual and automated testing. Use when asked to create test plans, test strategies, test conditions, test cases, bug reports, defect logs, regression suites, traceability matrices, or exploratory charters. Supports risk-based testing, test design techniques (equivalence partitioning, boundary value analysis, decision tables, state transitions), test estimation, static testing reviews, and test process management. Includes Playwright automation guidance for test implementation.'
 ---
 
 # ISTQB Manual & Automation QA Toolkit

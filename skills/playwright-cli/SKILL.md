@@ -1,7 +1,7 @@
 ---
 name: playwright-cli
-description: Automate browser interactions, test web pages and work with Playwright tests.
-allowed-tools: Bash(playwright-cli:*) Bash(npx:*) Bash(npm:*)
+description: 'Drive a live browser from the CLI via the playwright-cli command to navigate, interact, snapshot, and capture evidence. Use when asked to run ad-hoc browser commands, inspect a page, take screenshots, capture traces/videos, mock network requests, manage sessions, or debug a site interactively (as opposed to authoring @playwright/test spec files). Keywords: playwright-cli, browser automation, live session, snapshot, console, tracing, npx playwright cli.'
+license: 'Complete terms in LICENSE.txt'
 ---
 
 # Browser Automation with playwright-cli

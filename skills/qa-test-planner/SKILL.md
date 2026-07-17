@@ -1,6 +1,7 @@
 ---
 name: qa-test-planner
-description: Comprehensive QA toolkit for creating test plans, manual test cases, automated Playwright tests, regression suites, and bug reports. Uses safe, non-executable templates following skill best practices. Ideal for QA Automation engineers.
+description: 'Generate ready-to-fill QA deliverables from markdown templates: test plans, manual test cases, automated Playwright specs, regression suites, and bug reports. Use when asked to draft or fill any of these artifacts from requirements or user stories. Keywords: test plan, test case, bug report, regression suite, playwright spec, test strategy, test design, template.'
+license: 'Complete terms in LICENSE.txt'
 ---
 
 # QA Test Planner
@@ -192,69 +193,6 @@ QA Deliverable Ready
 6. Include impact; set severity and priority consistently
 7. Attach evidence (screenshots, console logs, network traces, Playwright trace)
 8. Track lifecycle: triage notes, owner, fix version, verification steps
-
-**Template:** [`templates/bug-report.md`](templates/bug-report.md)
-
----
-
-## Core Deliverables
-
-### 1. Test Plans
-
-- Test scope and objectives
-- Testing approach and strategy
-- Environment requirements
-- Entry/exit criteria
-- Risk assessment
-- Timeline and milestones
-
-**Template:** [`templates/test-plan.md`](templates/test-plan.md)
-
-### 2. Manual Test Cases
-
-- Step-by-step instructions
-- Expected vs actual results
-- Preconditions and setup
-- Test data requirements (use placeholders)
-- Priority and severity
-
-**Templates:**
-
-- [`templates/test-case.md`](templates/test-case.md) - Individual test case
-
-### 3. Regression Suites
-
-- Smoke tests (15-30 min) - P0 tests only
-- Full regression (2-4 hours) - P0, P1, P2 tests
-- Targeted regression (30-60 min) - Tests for specific feature
-- Execution order by priority (P0 first, then P1, then P2)
-
-**Template:** Use individual `test-case.md` templates grouped by priority
-
-### 4. Automated Playwright Tests
-
-- Role-based locator strategies
-- Web-first assertions
-- Page Object Model structure
-- test.step() grouping for readability
-- Screenshot capture on failure
-
-**Template:** [`templates/playwright-test.md`](templates/playwright-test.md)
-
-### 5. Browser Validation (via Playwright MCP)
-
-- Live UI element verification
-- Screenshot capture for evidence
-- Console log inspection
-- Form interaction testing
-- Responsive viewport validation
-
-### 6. Bug Reports
-
-- Clear reproduction steps
-- Environment details
-- Evidence (screenshots, logs)
-- Severity and priority
 
 **Template:** [`templates/bug-report.md`](templates/bug-report.md)
 
@@ -460,76 +398,31 @@ The AI will:
 
 ---
 
-## Best Practices
+## Best Practices (avoids the anti-patterns above)
 
 ### Test Case Writing
 
-**DO:**
-
-- Be specific and unambiguous
-- Include expected results for each step
-- Test one thing per test case
-- Use consistent naming conventions
-- Keep test cases maintainable
-
-**DON'T:**
-
-- Assume knowledge
-- Make test cases too long
-- Skip preconditions
-- Forget edge cases
-- Leave expected results vague
+- Be specific and unambiguous; include expected results for each step
+- Test one thing per case; document all preconditions and test data
+- Include edge cases and boundary values; use consistent naming
 
 ### Bug Reporting
 
-**DO:**
-
-- Provide clear reproduction steps
-- Include screenshots/videos
-- Specify exact environment details
-- Describe impact on users
-- Link to Figma for UI bugs
-
-**DON'T:**
-
-- Report without reproduction steps
-- Use vague descriptions
-- Skip environment details
-- Forget to assign priority
-- Duplicate existing bugs
+- Provide minimal, exact reproduction steps; specify environment details
+- Include screenshots/videos and describe user and business impact
+- Set severity/priority; avoid duplicates with clear, specific titles
 
 ### Regression Testing
 
-**DO:**
+- Automate repetitive tests; prioritize critical paths
+- Run smoke tests frequently; review and prune the suite regularly
+- Tag consistently; never ignore failed regression tests
 
-- Automate repetitive tests when possible
-- Maintain regression suite regularly
-- Prioritize critical paths
-- Run smoke tests frequently
-- Update suite after each release
+### Security
 
-**DON'T:**
-
-- Skip regression before releases
-- Let suite become outdated
-- Test everything every time
-- Ignore failed regression tests
-
-### Security Best Practices
-
-**DO:**
-
-- Use environment variables for credentials
-- Use test accounts provisioned for testing
-- Validate URLs before navigating
-- Report suspicious content
-
-**DON'T:**
-
-- Embed real credentials in code
-- Navigate to untrusted URLs
-- Execute arbitrary JavaScript from user input
-- Commit secrets to version control
+- Use environment variables for credentials; never commit secrets
+- Validate URLs before navigating; report suspicious content
+- Never execute arbitrary JavaScript from user input
 
 ---
 

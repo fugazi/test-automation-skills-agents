@@ -1,6 +1,6 @@
 ---
 name: grill-me-qa
-description: "A guided interview to challenge and validate QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any 'grill' trigger phrase (grill my test plan, audit my QA automation framework, challenge my QA strategy, review my test architecture)."
+description: 'A guided interview to challenge and validate QA automation plans, test strategies, and framework designs before implementation. Use when the user wants to validate a test architecture, challenge a testing decision, prepare an AI-assisted testing rollout, or uses any "grill" trigger phrase (grill my test plan, audit my QA automation framework, challenge my QA strategy, review my test architecture).'
 ---
 
 # Grill Me QA
