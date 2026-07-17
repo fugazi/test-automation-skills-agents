@@ -1,6 +1,6 @@
 ---
 name: playwright-e2e-testing
-description: End-to-end, API, and responsive testing for web applications using Playwright with TypeScript. Use when asked to write, run, debug, or maintain Playwright (@playwright/test) TypeScript tests for UI behavior, form submissions, user flows, API validation, responsive design, or visual regression. Covers browser automation, network interception, mocking, Page Object Model, fixtures, and parallel execution.
+description: 'End-to-end, API, and responsive testing for web applications using Playwright with TypeScript. Use when asked to write, run, debug, or maintain Playwright (@playwright/test) TypeScript tests for UI behavior, form submissions, user flows, API validation, responsive design, or visual regression. Covers browser automation, network interception, mocking, Page Object Model, fixtures, and parallel execution.'
 ---
 
 # Playwright E2E Testing (TypeScript)
