@@ -8,7 +8,7 @@ handoffs:
     prompt: 'Flaky test investigation completed, returning to orchestrator with findings and fixes.'
     send: false
   - label: Request Refactor
-    agent: test-refactor
+    agent: test-refactor-specialist
     prompt: 'Flaky tests identified require structural refactoring. Please assist with test architecture improvements.'
     send: false
 

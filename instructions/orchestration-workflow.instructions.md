@@ -1,6 +1,6 @@
 ---
-description: "The 8-step Test Orchestration Pattern workflow for AI-driven test automation. Defines Initialize, Explore, Plan, Generate, Implement, Review, Refactor, and Run Tests phases."
-applyTo: "**/*.agent.md"
+description: 'The 8-step Test Orchestration Pattern workflow for AI-driven test automation. Defines Initialize, Explore, Plan, Generate, Implement, Review, Refactor, and Run Tests phases.'
+applyTo: '**/*.agent.md'
 ---
 
 # Test Orchestration Pattern — 8-Step Workflow

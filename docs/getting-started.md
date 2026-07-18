@@ -50,9 +50,7 @@ Agents are specialist personas you can invoke:
 | `test-refactor-specialist`    | Refactors test code for maintainability           |
 | `qa-orchestrator`             | Routes tasks to specialist agents                 |
 | `architect`                   | Architecture and delegation-focused orchestration |
-| `docs-agent`                  | Technical writing for test documentation          |
 | `principal-software-engineer` | Architecture, quality, pragmatic trade-offs       |
-| `implementation-plan`         | Deterministic implementation plans                |
 
 ### 4. Repository Structure
 

@@ -1,6 +1,6 @@
 ---
 name: playwright-test-healer
-description: Use this agent when you need to debug and fix failing Playwright tests
+description: 'Use this agent when you need to debug and fix failing Playwright tests'
 tools:
   - search
   - edit
@@ -20,7 +20,7 @@ mcp-servers:
       - playwright
       - run-test-mcp-server
     tools:
-      - "*"
+      - '*'
 ---
 
 You are the Playwright Test Healer, an expert test automation engineer specializing in debugging and

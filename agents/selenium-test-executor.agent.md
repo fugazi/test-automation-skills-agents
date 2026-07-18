@@ -1,6 +1,6 @@
 ---
 name: Selenium Test Executor
-description: Specialized agent for executing Selenium WebDriver tests with comprehensive analysis, debugging capabilities, and intelligent failure resolution. Expert at running tests, analyzing failures, generating reports, and providing  actionable insights for test improvement.
+description: 'Specialized agent for executing Selenium WebDriver tests with comprehensive analysis, debugging capabilities, and intelligent failure resolution. Expert at running tests, analyzing failures, generating reports, and providing  actionable insights for test improvement.'
 tools: ['Bash', 'Read', 'Edit', 'Write', 'Grep', 'Glob', 'Task', 'AskUserQuestion', 'changes', 'search/codebase', 'edit/editFiles', 'extensions', 'web/fetch', 'findTestFiles', 'githubRepo', 'new', 'openSimpleBrowser', 'problems', 'runCommands', 'runTasks', 'runTests', 'search', 'search/searchResults', 'runCommands/terminalLastCommand', 'runCommands/terminalSelection', 'testFailure', 'usages', 'vscodeAPI', 'github', 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'show_content', 'open_file', 'list_dir', 'read_file', 'file_search', 'grep_search', 'validate_cves', 'run_subagent', 'playwright/browser_close', 'playwright/browser_resize', 'playwright/browser_console_messages', 'playwright/browser_handle_dialog', 'playwright/browser_evaluate', 'playwright/browser_file_upload', 'playwright/browser_fill_form', 'playwright/browser_install', 'playwright/browser_press_key', 'playwright/browser_type', 'playwright/browser_navigate', 'playwright/browser_navigate_back', 'playwright/browser_network_requests', 'playwright/browser_run_code', 'playwright/browser_take_screenshot', 'playwright/browser_snapshot', 'playwright/browser_click', 'playwright/browser_drag', 'playwright/browser_hover', 'playwright/browser_select_option', 'playwright/browser_tabs', 'playwright/browser_wait_for', 'context7/resolve-library-id', 'context7/query-docs', 'firecrawl/firecrawl-mcp-server/firecrawl_scrape', 'firecrawl/firecrawl-mcp-server/firecrawl_map', 'firecrawl/firecrawl-mcp-server/firecrawl_search', 'firecrawl/firecrawl-mcp-server/firecrawl_crawl', 'firecrawl/firecrawl-mcp-server/firecrawl_check_crawl_status', 'firecrawl/firecrawl-mcp-server/firecrawl_extract', 'firecrawl/firecrawl-mcp-server/firecrawl_agent', 'firecrawl/firecrawl-mcp-server/firecrawl_agent_status']
 ---
 
@@ -88,7 +88,7 @@ Step 4: Solution Formulation
 
 ```javascript
 // Navigate to page and inspect elements
-await page.goto("https://music-tech-shop.vercel.app/products");
+await page.goto("${BASE_URL}/products");
 const snapshot = await page.snapshot();
 // Analyze DOM structure, find locators, test interactions
 ```
@@ -97,7 +97,7 @@ const snapshot = await page.snapshot();
 
 ```json
 {
-  "url": "https://music-tech-shop.vercel.app/products",
+  "url": "${BASE_URL}/products",
   "formats": ["markdown"],
   "actions": [{ "type": "click", "selector": "[data-testid='add-to-cart']" }]
 }
@@ -421,7 +421,7 @@ log.debug("Element present: {}", isDisplayed(locator));
 
 ```javascript
 // Navigate to failure point
-await page.goto("https://music-tech-shop.vercel.app/products/1");
+await page.goto("${BASE_URL}/products/1");
 
 // Check if element exists
 const element = await page.$('[data-testid="add-to-cart"]');
@@ -438,7 +438,7 @@ if (element) {
 
 ```json
 {
-  "url": "https://music-tech-shop.vercel.app/products/1",
+  "url": "${BASE_URL}/products/1",
   "formats": ["markdown"]
 }
 ```
@@ -658,7 +658,7 @@ time mvn clean test -Dbrowser=chrome
 
 ```javascript
 // Navigate and inspect
-await page.navigate("https://music-tech-shop.vercel.app/products");
+await page.navigate("${BASE_URL}/products");
 
 // Get accessibility tree
 const snapshot = await page.snapshot();
@@ -677,7 +677,7 @@ await page.waitForNavigation();
 
 ```json
 {
-  "url": "https://music-tech-shop.vercel.app",
+  "url": "${BASE_URL}",
   "formats": ["markdown", "html"],
   "onlyMainContent": true,
   "waitFor": 2000

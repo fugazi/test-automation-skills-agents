@@ -7,10 +7,6 @@ handoffs:
     agent: qa-orchestrator
     prompt: 'API testing task completed, returning to orchestrator with results.'
     send: false
-  - label: Analyze Coverage
-    agent: test-coverage-analyst
-    prompt: 'API tests created. Please analyze coverage for the endpoints tested.'
-    send: false
 
 capabilities:
   - 'Create API tests for REST endpoints'
