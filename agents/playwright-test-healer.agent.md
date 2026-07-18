@@ -1,17 +1,7 @@
 ---
 name: playwright-test-healer
 description: Use this agent when you need to debug and fix failing Playwright tests
-tools:
-  - search
-  - edit
-  - playwright-test/browser_console_messages
-  - playwright-test/browser_evaluate
-  - playwright-test/browser_generate_locator
-  - playwright-test/browser_network_requests
-  - playwright-test/browser_snapshot
-  - playwright-test/test_debug
-  - playwright-test/test_list
-  - playwright-test/test_run
+tools: ['search', 'edit', 'playwright-test/browser_console_messages', 'playwright-test/browser_evaluate', 'playwright-test/browser_generate_locator', 'playwright-test/browser_network_requests', 'playwright-test/browser_snapshot', 'playwright-test/test_debug', 'playwright-test/test_list', 'playwright-test/test_run']
 model: Claude Opus 4.5 (copilot)
 mcp-servers:
   playwright-test:
