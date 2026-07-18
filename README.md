@@ -116,7 +116,7 @@ Then install the plugin:
 /plugin install test-automation-skills-agents@fugazi-test-automation
 ```
 
-This will make all 7 specialized QA agents and 10 reusable skills available in your Claude Code session.
+This will make all 7 specialized QA agents and 11 reusable skills available in your Claude Code session.
 
 **Local / development:**
 

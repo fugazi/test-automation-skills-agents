@@ -28,7 +28,7 @@ Then install the plugin:
 /plugin install test-automation-skills-agents@fugazi-test-automation
 ```
 
-This will make all 13 specialized QA agents and 10 reusable skills available in your Claude Code session.
+This will make all 7 specialized QA agents and 11 reusable skills available in your Claude Code session.
 
 > **SSH errors?** The marketplace clones repos via SSH. If you don't have SSH keys set up on GitHub, either [add your SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or switch to HTTPS for fetches only:
 > ```bash
