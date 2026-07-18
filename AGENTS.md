@@ -37,7 +37,7 @@ Required fields:
 
 ```yaml
 ---
-description: "Clear description of purpose (50-150 chars)"
+description: 'Clear description of purpose (50-150 chars)'
 ---
 ```
 
@@ -45,14 +45,14 @@ Optional fields:
 
 ```yaml
 ---
-name: "Display Name" # Defaults to filename
-tools: ["read", "edit", "search"] # Omit for all tools
-target: "vscode" # 'vscode' or 'github-copilot'
+name: 'Display Name' # Defaults to filename
+tools: ['read', 'edit', 'search'] # Omit for all tools
+target: 'vscode' # 'vscode' or 'github-copilot'
 infer: true # Auto-selection (default: true)
 handoffs: # VS Code 1.106+ only
   - label: Next Step
     agent: target-agent
-    prompt: "Continue with..."
+    prompt: 'Continue with...'
     send: false
 ---
 ```
@@ -66,7 +66,7 @@ Required fields:
 ```yaml
 ---
 name: skill-name # Lowercase, hyphens, ≤64 chars
-description: "WHAT it does, WHEN to use it, KEYWORDS for matching"
+description: 'WHAT it does, WHEN to use it, KEYWORDS for matching'
 ---
 ```
 
@@ -76,7 +76,7 @@ Optional field:
 
 ```yaml
 ---
-license: "Complete terms in LICENSE.txt" # Or SPDX identifier
+license: 'Complete terms in LICENSE.txt' # Or SPDX identifier
 ---
 ```
 
@@ -84,7 +84,7 @@ license: "Complete terms in LICENSE.txt" # Or SPDX identifier
 
 - **Line length**: Under 120 characters where practical
 - **Indentation**: 2 spaces for YAML and Markdown lists
-- **Quotes**: Use **double quotes** for YAML string values
+- **Quotes**: Use **single quotes** for YAML string values
 - **Frontmatter markers**: Triple-dash `---` at start and end
 - **Markdown headers**: `#` for title, `##` for sections, `###` for subsections
 - **Bullet lists**: `-` (hyphen) with space after
