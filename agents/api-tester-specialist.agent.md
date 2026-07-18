@@ -7,10 +7,6 @@ handoffs:
     agent: qa-orchestrator
     prompt: 'API testing task completed, returning to orchestrator with results.'
     send: false
-  - label: Analyze Coverage
-    agent: test-coverage-analyst
-    prompt: 'API tests created. Please analyze coverage for the endpoints tested.'
-    send: false
 
 capabilities:
   - 'Create API tests for REST endpoints'
@@ -294,12 +290,6 @@ test.describe("Users API", () => {
 - When API testing is complete
 - When API documentation is insufficient and requires user input
 - When framework selection is ambiguous
-
-### Handoff to Test Coverage Analyst
-
-- After initial API tests are created
-- To measure coverage of API endpoints
-- To identify untested scenarios
 
 ## Example Interactions
 

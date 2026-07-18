@@ -1,6 +1,6 @@
 ---
-description: "CI/CD test pipeline configuration for automated testing. Defines GitHub Actions workflows, test tiers, parallel execution, reporting, and deployment gates. Apply when creating or modifying CI/CD pipeline files for test automation."
-applyTo: "**/.github/workflows/*.yml, **/.github/workflows/*.yaml, **/Jenkinsfile, **/.gitlab-ci.yml"
+description: 'CI/CD test pipeline configuration for automated testing. Defines GitHub Actions workflows, test tiers, parallel execution, reporting, and deployment gates. Apply when creating or modifying CI/CD pipeline files for test automation.'
+applyTo: '**/.github/workflows/*.yml, **/.github/workflows/*.yaml, **/Jenkinsfile, **/.gitlab-ci.yml'
 ---
 
 # CI/CD Test Pipeline Configuration

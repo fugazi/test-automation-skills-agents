@@ -8,7 +8,7 @@ handoffs:
     prompt: 'Flaky test investigation completed, returning to orchestrator with findings and fixes.'
     send: false
   - label: Request Refactor
-    agent: test-refactor
+    agent: test-refactor-specialist
     prompt: 'Flaky tests identified require structural refactoring. Please assist with test architecture improvements.'
     send: false
 
@@ -368,7 +368,7 @@ await page.click("#checkout-button");
 - When root cause requires application changes
 - When infrastructure/configuration changes are needed
 
-### Handoff to Test Refactor
+### Handoff to Test Refactor Specialist
 
 - When flakiness is caused by poor test structure
 - When test suite architecture needs redesign
