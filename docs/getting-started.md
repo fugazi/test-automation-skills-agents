@@ -56,7 +56,7 @@ Agents are specialist personas you can invoke:
 
 ```
 test-automation-skills-agents/
-├── agents/           # 11 specialist personas (.agent.md)
+├── agents/           # 7 specialist + orchestrator personas (.agent.md)
 ├── skills/           # 10 procedural workflows (SKILL.md per directory)
 │   ├── playwright-e2e-testing/
 │   ├── webapp-playwright-testing/
