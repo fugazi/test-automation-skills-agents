@@ -94,7 +94,7 @@ cp test-automation-skills-agents/agents/*.agent.md .cursor/rules/agents/
 Then reference agents in your Cursor chat:
 
 ```
-"Read .cursor/rules/agents/flaky-test-hunter.agent.md and use that persona to investigate this flaky test"
+"Read .cursor/rules/agents/playwright-test-healer.agent.md and use that persona to investigate this flaky test"
 "Following .cursor/rules/agents/api-tester-specialist.agent.md, create tests for the payments API"
 ```
 

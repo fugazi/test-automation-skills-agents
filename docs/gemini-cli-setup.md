@@ -101,7 +101,7 @@ Reference agent files in your Gemini session:
 Or paste agent content directly:
 
 ```
-"Act as the Flaky Test Hunter agent defined in agents/flaky-test-hunter.agent.md. Investigate why this test fails intermittently:
+"Act as the Playwright Test Healer agent defined in agents/playwright-test-healer.agent.md. Investigate why this test fails intermittently:
 
 [Test code or error output]"
 ```
@@ -115,7 +115,7 @@ Or paste agent content directly:
 | Playwright Test Healer    | "Use the playwright-test-healer agent to fix this failing test..."            |
 | API Tester Specialist     | "Use the api-tester-specialist agent to design API tests for..."              |
 | Selenium Test Specialist  | "Use the selenium-test-specialist agent to create Java tests for..."          |
-| Flaky Test Hunter         | "Use the flaky-test-hunter agent to investigate this flaky test..."           |
+| Flaky Test Hunter         | "Use the playwright-test-healer agent to investigate this flaky test..."       |
 | Test Refactor Specialist  | "Use the test-refactor-specialist agent to refactor this test suite..."       |
 
 ## Customization
@@ -144,7 +144,7 @@ Tailor the configuration to your project:
 ### Agent Preferences
 
 - Default agent: playwright-test-generator
-- For flaky tests: flaky-test-hunter
+- For flaky tests: playwright-test-healer
 - For API work: api-tester-specialist
 ```
 

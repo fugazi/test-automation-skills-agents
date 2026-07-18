@@ -83,7 +83,7 @@ Skills activate when Windsurf detects you're working on testing tasks. For best 
 Paste agent content into your Windsurf chat or reference the files directly:
 
 ```
-"Read agents/flaky-test-hunter.agent.md and follow its approach to investigate this flaky test"
+"Read agents/playwright-test-healer.agent.md and follow its approach to investigate this flaky test"
 ```
 
 ```
