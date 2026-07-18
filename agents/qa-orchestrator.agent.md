@@ -18,7 +18,7 @@ handoffs:
     prompt: 'Debug and fix the failing tests.'
     send: false
   - label: Hunt Flaky Tests
-    agent: flaky-test-hunter
+    agent: playwright-test-healer
     prompt: 'Investigate and stabilize flaky tests.'
     send: false
   - label: Refactor Tests
@@ -75,10 +75,10 @@ These rules are NON-NEGOTIABLE for all agents under your orchestration:
 | ------------------- | ---------------------------------------------------------------------------- |
 | New E2E tests       | playwright-test-planner → playwright-test-generator → playwright-test-healer |
 | Fix failing tests   | playwright-test-healer (standalone)                                          |
-| Flaky investigation | flaky-test-hunter → test-refactor-specialist → playwright-test-healer        |
-| API test creation   | api-tester-specialist                                                        |
-| Selenium tests      | selenium-test-specialist → selenium-test-executor                            |
-| Refactoring         | test-refactor-specialist → playwright-test-healer                            |
+| Flaky investigation | playwright-test-healer → test-refactor-specialist                    |
+| API test creation   | api-tester-specialist                                                |
+| Selenium tests      | selenium-test-specialist                                              |
+| Refactoring         | test-refactor-specialist → playwright-test-healer                    |
 
 ## Context Passing
 

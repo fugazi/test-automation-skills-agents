@@ -6,8 +6,8 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 
 | Component        | Purpose                                   | Count    |
 | ---------------- | ----------------------------------------- | -------- |
-| **Agents**       | Specialist personas for specific QA tasks | 11       |
-| **Skills**       | Procedural workflows for testing domains  | 10       |
+| **Agents**       | Specialist personas for specific QA tasks | 7        |
+| **Skills**       | Procedural workflows for testing domains  | 11       |
 | **Instructions** | Rules, conventions, and standards         | 7        |
 | **References**   | Detailed technical reference material     | Multiple |
 | **Templates**    | Starter files for common test patterns    | Multiple |
@@ -45,19 +45,15 @@ Agents are specialist personas you can invoke:
 | `playwright-test-healer`      | Fixes failing or flaky tests                      |
 | `api-tester-specialist`       | Designs and generates API test suites             |
 | `selenium-test-specialist`    | Generates Selenium/Java test code                 |
-| `selenium-test-executor`      | Runs/debugs Selenium suites                       |
-| `flaky-test-hunter`           | Identifies and fixes flaky tests                  |
 | `test-refactor-specialist`    | Refactors test code for maintainability           |
 | `qa-orchestrator`             | Routes tasks to specialist agents                 |
-| `architect`                   | Architecture and delegation-focused orchestration |
-| `principal-software-engineer` | Architecture, quality, pragmatic trade-offs       |
 
 ### 4. Repository Structure
 
 ```
 test-automation-skills-agents/
-├── agents/           # 7 specialist + orchestrator personas (.agent.md)
-├── skills/           # 10 procedural workflows (SKILL.md per directory)
+├── agents/           # 7 agents (.agent.md)
+├── skills/           # 11 procedural workflows (SKILL.md per directory)
 │   ├── playwright-e2e-testing/
 │   ├── webapp-playwright-testing/
 │   ├── webapp-selenium-testing/

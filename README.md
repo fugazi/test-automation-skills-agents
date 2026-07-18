@@ -300,28 +300,20 @@ If you're using Copilot on GitHub (agent workflows), keep the agents under `.git
 
 Recommended pattern:
 
-- Use a planning agent (e.g., implementation plan) to produce an execution plan
-- Hand off to a specialist agent (Playwright generator/healer, flaky hunter, etc.)
+- Use the QA Orchestrator to plan and delegate work
+- The orchestrator routes tasks to specialist agents (Playwright planner/generator/healer, API tester, etc.)
 
 ## What agents exist in this repo
 
-This repo currently includes the following agents (see `agents/`):
+This repo currently includes **7 agents** (see `agents/`):
 
 - **QA Orchestrator**: routes test tasks to specialist agents, enforces Test Constitution
-- **Architect**: orchestrator-style agent (delegation-focused)
-- **API Tester Specialist**: API test creation (REST Assured / Playwright API / Supertest), auth, contracts, schemas
-- **Flaky Test Hunter**: identifies root causes of flaky tests, applies stabilization strategies
 - **Playwright Test Planner**: explores an app and produces a structured test plan
 - **Playwright Test Generator**: generates Playwright tests from a plan using Playwright MCP
 - **Playwright Test Healer**: runs/debugs failing Playwright tests and fixes them iteratively
+- **API Tester Specialist**: API test creation (REST Assured / Playwright API / Supertest), auth, contracts, schemas
 - **Selenium Test Specialist**: writes maintainable Selenium Java tests (POM, explicit waits, JUnit5, AssertJ)
-- **Selenium Test Executor**: runs/debugs Selenium suites and provides actionable failure analysis
 - **Test Refactor Specialist**: refactors test suites (DRY, POM extraction, parameterization)
-- **Docs Agent**: technical writer focused on docs output (note: its default paths reference a typical app repo)
-- **Implementation Plan Generation Mode**: produces deterministic implementation plans (no code changes)
-- **Principal Software Engineer**: principal-level guidance (architecture, quality, pragmatic trade-offs)
-
-> Note: Some agents are intended for orchestration or cross-repo workflows. Use the specialists for daily QA tasks.
 
 ## How to use instructions (when and why)
 
