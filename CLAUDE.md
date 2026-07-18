@@ -23,7 +23,7 @@ Skills use three-level loading: Discovery (`name` + `description`) → Instructi
 Agents can invoke sub-agents using the `agent` tool. The orchestrator must include all tools that sub-agents need. See `instructions/agents.instructions.md`.
 
 **3. Handoffs (VS Code only)**
-Agents can define `handoffs` in frontmatter for guided sequential workflows. Each handoff requires: `label`, `agent`, `prompt`, and optional `send: true`.
+Agents can define `handoffs` in frontmatter for guided sequential workflows. Each handoff requires `label` and `agent`, while `prompt` and `send` are optional.
 
 **4. Test Orchestration Workflow (TOP)**
 8-step workflow: Initialize → Explore → Plan → Generate → Implement → Review → Refactor → Run Tests. See `instructions/orchestration-workflow.instructions.md`.

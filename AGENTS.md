@@ -50,8 +50,8 @@ tools: ['read', 'edit', 'search'] # Omit for all tools
 target: 'vscode' # 'vscode' or 'github-copilot'
 infer: true # Auto-selection (default: true)
 handoffs: # VS Code 1.106+ only
-  - label: Next Step
-    agent: target-agent
+  - label: 'Next Step'
+    agent: 'target-agent'
     prompt: 'Continue with...'
     send: false
 ---
@@ -65,7 +65,7 @@ Required fields:
 
 ```yaml
 ---
-name: skill-name # Lowercase, hyphens, ≤64 chars
+name: 'skill-name' # Lowercase, hyphens, ≤64 chars
 description: 'WHAT it does, WHEN to use it, KEYWORDS for matching'
 ---
 ```
