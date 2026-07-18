@@ -1,6 +1,6 @@
 ---
 name: playwright-test-generator
-description: 'Use this agent when you need to create automated browser tests using Playwright Test. It generates tests based on provided test plans and user interaction steps.'
+description: 'Generates Playwright tests from test plans by recording real interactions. Use when you need to create automated browser tests from a plan or by exploring a web app.'
 tools:
   - search
   - playwright-test/browser_click

@@ -129,7 +129,7 @@ Every agent that generates, modifies, or verifies test code should follow this w
 3. Fix issues iteratively (return to Step 4 if generation is wrong, Step 5 if infrastructure is missing)
 4. Repeat until all generated tests pass consistently
 
-**Agent/Skill:** `playwright-test-healer`, `selenium-test-executor`
+**Agent/Skill:** `playwright-test-healer`, `selenium-test-specialist`
 
 ## Step States
 

@@ -99,7 +99,7 @@ Reference agents by name in your prompt:
 ```
 You: "Use the playwright-test-planner to create a test plan for the checkout flow"
 You: "Have the api-tester-specialist design tests for the /orders endpoint"
-You: "Ask the flaky-test-hunter to analyze this failing test"
+You: "Ask the playwright-test-healer to analyze this failing test"
 You: "Use the selenium-test-specialist to create Java tests for the profile page"
 ```
 
@@ -127,7 +127,7 @@ Include schema validation, auth testing, and error states.
 Example `.claude/commands/fix-flaky.md`:
 
 ```markdown
-Use the flaky-test-hunter agent to investigate and fix this flaky test: $ARGUMENTS
+Use the playwright-test-healer agent to investigate and fix this flaky test: $ARGUMENTS
 ```
 
 Then invoke them in Claude Code:
