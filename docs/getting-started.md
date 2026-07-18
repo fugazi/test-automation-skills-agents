@@ -6,7 +6,7 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 
 | Component        | Purpose                                   | Count    |
 | ---------------- | ----------------------------------------- | -------- |
-| **Agents**       | Specialist personas for specific QA tasks | 13       |
+| **Agents**       | Specialist personas for specific QA tasks | 11       |
 | **Skills**       | Procedural workflows for testing domains  | 10       |
 | **Instructions** | Rules, conventions, and standards         | 7        |
 | **References**   | Detailed technical reference material     | Multiple |
@@ -56,7 +56,7 @@ Agents are specialist personas you can invoke:
 
 ```
 test-automation-skills-agents/
-├── agents/           # 13 specialist personas (.agent.md)
+├── agents/           # 11 specialist personas (.agent.md)
 ├── skills/           # 10 procedural workflows (SKILL.md per directory)
 │   ├── playwright-e2e-testing/
 │   ├── webapp-playwright-testing/

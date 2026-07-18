@@ -368,7 +368,7 @@ await page.click("#checkout-button");
 - When root cause requires application changes
 - When infrastructure/configuration changes are needed
 
-### Handoff to Test Refactor
+### Handoff to Test Refactor Specialist
 
 - When flakiness is caused by poor test structure
 - When test suite architecture needs redesign
