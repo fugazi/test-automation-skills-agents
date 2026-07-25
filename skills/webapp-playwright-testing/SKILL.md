@@ -29,35 +29,11 @@ Use this skill when you need to:
 
 ---
 
-## Playwright MCP Tools Reference
+## MCP Tools (Quick Reference)
 
-### Navigation & Interaction
+Key tools: `browser_navigate`, `browser_click`, `browser_fill_form`, `browser_hover`, `browser_press_key`, `browser_select_option`, `browser_snapshot`, `browser_take_screenshot`, `browser_console_messages`, `browser_network_requests`, `browser_resize`, `browser_tabs`, `browser_close`.
 
-| Tool                    | Purpose              | Example Query                                |
-| ----------------------- | -------------------- | -------------------------------------------- |
-| `browser_navigate`      | Go to a URL          | "Navigate to http://localhost:3000/login"    |
-| `browser_click`         | Click elements       | "Click the Submit button"                    |
-| `browser_fill_form`     | Fill input fields    | "Fill the email field with test@example.com" |
-| `browser_hover`         | Hover over elements  | "Hover over the dropdown menu"               |
-| `browser_press_key`     | Keyboard input       | "Press Enter"                                |
-| `browser_select_option` | Select from dropdown | "Select 'Option 1' from the dropdown"        |
-
-### Validation & Capture
-
-| Tool                       | Purpose                | Example Query                    |
-| -------------------------- | ---------------------- | -------------------------------- |
-| `browser_snapshot`         | Get accessibility tree | "Get the accessibility snapshot" |
-| `browser_take_screenshot`  | Capture visual state   | "Take a screenshot"              |
-| `browser_console_messages` | View browser logs      | "Check for console errors"       |
-| `browser_network_requests` | Monitor API calls      | "Show network requests"          |
-
-### Browser Management
-
-| Tool             | Purpose             | Example Query                |
-| ---------------- | ------------------- | ---------------------------- |
-| `browser_resize` | Change viewport     | "Resize to mobile (375x667)" |
-| `browser_tabs`   | Manage browser tabs | "List open tabs"             |
-| `browser_close`  | Close browser       | "Close the browser"          |
+> Full MCP tool catalog: [Playwright MCP docs](https://github.com/microsoft/playwright-mcp)
 
 ## Usage Examples
 
