@@ -1,6 +1,6 @@
 ---
 name: qa-manual-istqb
-description: 'ISTQB Foundation Level (CTFL) aligned QA toolkit for manual and automated testing. Use when asked to create test plans, test strategies, test conditions, test cases, bug reports, defect logs, regression suites, traceability matrices, or exploratory charters. Supports risk-based testing, test design techniques (equivalence partitioning, boundary value analysis, decision tables, state transitions), test estimation, static testing reviews, and test process management. Includes Playwright automation guidance for test implementation.'
+description: 'ISTQB Foundation Level (CTFL) toolkit for creating test plans, test cases, bug reports, regression suites, traceability matrices, and exploratory charters from requirements. Covers risk-based testing, EP/BVA, decision tables, state transitions, test estimation, and static testing. Use when asked for ISTQB-aligned QA artifacts.'
 ---
 
 # ISTQB Manual & Automation QA Toolkit
@@ -215,29 +215,11 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 
 ---
 
-## Common Rationalizations
-
-> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
-
-| Rationalization                                   | Reality                                                                                                           |
-| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| "ISTQB theory doesn't apply in practice"          | Equivalence partitioning and boundary value analysis directly reduce test count while maintaining coverage.       |
-| "We don't need test plans for small projects"     | Even small projects benefit from structured testing. A lightweight test plan prevents scope creep.                |
-| "Exploratory testing isn't real testing"          | Exploratory testing finds bugs that scripted tests never will. It's a disciplined technique, not ad-hoc clicking. |
-| "Risk-based testing means testing less"           | It means testing smarter — focusing effort where failure impact is highest, not testing everything equally.       |
-| "Traceability matrices are bureaucratic overhead" | They prove coverage, support audit readiness, and reveal gaps between requirements and tests.                     |
-| "Manual testing is obsolete"                      | Manual testing catches usability, visual, and accessibility issues that automation misses entirely.               |
 
 ---
 
 ## Verification
 
-After completing this skill's workflow, confirm:
-
-- [ ] **Test cases follow ISTQB structure** — Each case has: ID, description, preconditions, steps, expected result, actual result
+- [ ] **Test cases follow ISTQB structure** — Each case has: ID, description, preconditions, steps, expected result (actual result populated after execution)
 - [ ] **Coverage matrix maintained** — Requirements mapped to test cases; no uncovered requirements
-- [ ] **Priority levels assigned** — Each test case has a priority (Critical, High, Medium, Low)
-- [ ] **Positive and negative scenarios** — Both valid and invalid inputs tested
-- [ ] **Edge cases documented** — Boundary values, empty inputs, and extreme values covered
-- [ ] **Test data documented** — Specific test data values listed, not just "valid data"
 - [ ] **Traceability maintained** — Each test case links to a requirement or user story

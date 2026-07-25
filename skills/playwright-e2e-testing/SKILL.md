@@ -250,20 +250,6 @@ export default defineConfig({
 
 ---
 
-## Common Rationalizations
-
-> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
-
-| Rationalization                     | Reality                                                                                                      |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| "I'll add assertions later"         | A test without assertions is a script, not a test. Add meaningful assertions now — later never comes.        |
-| "This selector is stable enough"    | CSS selectors break on refactor. Use `data-testid` or role-based locators for stability.                     |
-| "The test passes on my machine"     | Local passes don't guarantee CI passes. Always validate in the target environment.                           |
-| "Skip the edge cases for now"       | Edge cases are where production bugs live. Test them first, not last.                                        |
-| "Visual tests aren't needed"        | Visual regression catches CSS/layout bugs that functional assertions miss entirely.                          |
-| "This API won't change"             | APIs evolve constantly. Contract tests prevent silent downstream failures.                                   |
-| "One browser is enough"             | Cross-browser issues are real and common. Test at least Chromium and Firefox.                                |
-| "`networkidle` is fine for waiting" | `networkidle` is deprecated and unreliable. Wait for specific conditions (elements, responses, URL changes). |
 
 ---
 
@@ -280,13 +266,7 @@ export default defineConfig({
 
 ## Verification
 
-After completing this skill's workflow, confirm:
-
-- [ ] **Test file follows naming convention** — File named `*.spec.ts` in the appropriate directory
 - [ ] **Uses custom fixture injection** — No `new PageObject()` calls in spec files; all POMs injected via fixtures
 - [ ] **Locators use recommended strategies** — All locators use `getByRole()`, `getByTestId()`, or `getByText()`; no CSS selectors for interactive elements
-- [ ] **Auto-waiting patterns used** — No `page.waitForTimeout()` or `sleep()` calls; all waits use `waitForSelector()`, `waitForURL()`, or built-in auto-waiting
 - [ ] **Tests are independent** — Each test sets up and tears down its own state; no `beforeAll` with shared mutable state
 - [ ] **Error states covered** — At least one test verifies error/empty/loading states alongside happy path
-- [ ] **All tests pass** — `npx playwright test` exits with code 0
-- [ ] **No skipped tests** — `grep -R -E "test\.skip|test\.fixme" --include="*.spec.ts" .` returns no results

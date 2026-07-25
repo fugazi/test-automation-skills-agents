@@ -220,18 +220,6 @@ assertThat(errorMessage.isDisplayed())
 
 ---
 
-## Common Rationalizations
-
-> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
-
-| Rationalization                                  | Reality                                                                                                              |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| "Selenium is outdated, use Playwright"           | Selenium has the largest ecosystem, broadest language support, and runs everywhere. It's not outdated — it's proven. |
-| "`Thread.sleep` is fine for waits"               | `WebDriverWait` with `ExpectedConditions` is faster, more reliable, and doesn't waste CI time.                       |
-| "Page Object Model is overkill"                  | Without POM, test maintenance cost grows quadratically as the suite scales.                                          |
-| "We don't need cross-browser testing"            | Cross-browser issues account for ~30% of frontend bugs. Test at least Chrome and Firefox.                            |
-| "Screenshot on failure is enough debugging info" | Combine screenshots with HTML source, console logs, and network logs for effective triage.                           |
-| "JUnit 5 extensions aren't needed"               | Extensions handle lifecycle, dependency injection, and parallel execution cleanly. Use them.                         |
 
 ---
 
@@ -245,27 +233,8 @@ assertThat(errorMessage.isDisplayed())
 
 ---
 
-## Quick Reference
-
-| Task             | Pattern                                                           |
-| ---------------- | ----------------------------------------------------------------- |
-| Find by ID       | `By.id("elementId")`                                              |
-| Find by test ID  | `By.cssSelector("[data-testid='name']")`                          |
-| Wait for visible | `wait.until(ExpectedConditions.visibilityOfElementLocated(by))`   |
-| Click safely     | `wait.until(ExpectedConditions.elementToBeClickable(by)).click()` |
-| Assert title     | `assertThat(driver.getTitle()).contains("Expected")`              |
-| Take screenshot  | `((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE)`     |
-
----
-
 ## Verification
 
-After completing this skill's workflow, confirm:
-
-- [ ] **Page Object pattern followed** — Each page has a corresponding Java class with `@FindBy` annotations
-- [ ] **WebDriverManager used** — No manual driver setup; browser initialization uses WebDriverManager
-- [ ] **Explicit waits only** — No `Thread.sleep()` calls; all waits use `WebDriverWait` with ExpectedConditions
-- [ ] **Tests use AssertJ** — All assertions use `assertThat()` from AssertJ, not JUnit Assert
-- [ ] **Test data externalized** — No hard-coded test data in test methods; values come from test data providers or config files
+- [ ] **Page Object pattern followed** — Each page has a corresponding Java class with locators
+- [ ] **Explicit waits only** — All waits use `WebDriverWait` with ExpectedConditions
 - [ ] **Browser cleanup guaranteed** — `@AfterEach` or `@AfterAll` includes `driver.quit()` in try-finally block
-- [ ] **All tests pass** — `mvn test` or `gradle test` exits with BUILD SUCCESS
