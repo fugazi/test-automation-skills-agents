@@ -34,7 +34,9 @@ This repository is designed to be **copied/embedded into real testing projects**
 agents/           # Custom agent definitions (*.agent.md)
 instructions/     # Authoring & operational guidelines (*.instructions.md)
 skills/           # Reusable capabilities (skills/*/SKILL.md + resources)
-docs/             # Setup guides and documentation
+docs/             # Setup guides, standards, and documentation
+├── references/   # Extracted reference material (section details, examples)
+└── enhancements/ # Enhancement plans (CE audit, future improvements)
 references/       # Shared reference material (anti-patterns, patterns)
 AGENTS.md         # House style, file standards, frontmatter rules
 CLAUDE.md         # Additional guidance (legacy + architecture notes)

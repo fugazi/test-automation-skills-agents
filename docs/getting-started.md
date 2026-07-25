@@ -66,7 +66,9 @@ test-automation-skills-agents/
 │   └── api-testing/
 ├── instructions/     # 7 rules and conventions (.instructions.md)
 ├── references/       # Detailed technical material
-├── docs/             # Documentation and guides
+├── docs/             # Documentation, guides, and standards
+│   ├── references/   # Extracted reference material (section details, examples)
+│   └── enhancements/ # Enhancement plans (CE audit, future improvements)
 ├── AGENTS.md         # Agent registry and standards
 ├── CLAUDE.md         # Claude Code integration
 └── README.md         # Repository overview
