@@ -61,44 +61,7 @@ Use this skill when you need to:
 
 ## Usage Examples
 
-### Example 1: Basic Navigation Test
-
-```typescript
-// Navigate to a page and verify heading
-await page.goto("http://localhost:3000");
-await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-```
-
-### Example 2: Form Interaction (Role-Based Locators)
-
-```typescript
-// Fill out and submit a form using accessible locators
-await page.getByRole("textbox", { name: "Username" }).fill("testuser");
-await page.getByRole("textbox", { name: "Password" }).fill("password123");
-await page.getByRole("button", { name: "Login" }).click();
-await expect(page).toHaveURL(/.*dashboard/);
-```
-
-### Example 3: Screenshot Capture
-
-```typescript
-// Capture a full-page screenshot for debugging
-await page.screenshot({ path: "debug.png", fullPage: true });
-```
-
-### Example 4: Accessibility Snapshot Assertion
-
-```typescript
-// Verify page structure with aria snapshot
-await expect(page.getByRole("main")).toMatchAriaSnapshot(`
-  - main:
-    - heading "Welcome" [level=1]
-    - form:
-      - textbox "Email"
-      - textbox "Password"
-      - button "Login"
-`);
-```
+See [`references/usage-examples.md`](references/usage-examples.md) for navigation, form interaction, and network interception examples.
 
 ## Security Guideline
 
@@ -274,15 +237,12 @@ for (const vp of viewports) {
 
 ## Troubleshooting
 
-| Problem                     | Cause                                 | Solution                                         |
-| --------------------------- | ------------------------------------- | ------------------------------------------------ |
-| Element not found           | Wrong locator or element not rendered | Use `browser_snapshot` to verify structure       |
-| Timeout waiting for element | Element hidden or slow to load        | Check for overlays, increase timeout             |
-| Strict mode violation       | Multiple elements match locator       | Add more specific filters like `{ exact: true }` |
-| Click intercepted           | Another element covering target       | Scroll into view or wait for overlay to close    |
-| Console errors in app       | JavaScript runtime errors             | Use `browser_console_messages` to debug          |
-| Screenshot blank            | Page not fully loaded                 | Wait for network idle or specific element        |
-| Form submission fails       | Validation errors not visible         | Check for error messages in snapshot             |
+| Problem                     | Solution                                         |
+| --------------------------- | ------------------------------------------------ |
+| Element not found           | Use `browser_snapshot` to verify structure       |
+| Strict mode violation       | Add more specific filters like `{ exact: true }` |
+| Click intercepted           | Scroll into view or wait for overlay to close    |
+| Screenshot blank            | Wait for specific element, not network idle      |
 
 ---
 
@@ -321,8 +281,6 @@ page.locator('//div[@class="container"]/button[1]');
 
 ---
 
----
-
 ## References
 
 - [Locator Strategies Guide](references/locator_strategies.md) - Detailed locator patterns and best practices
@@ -330,8 +288,6 @@ page.locator('//div[@class="container"]/button[1]');
 - [Page Object Model Guide](references/page_object_model.md) - POM implementation and best practices
 - [API Testing Guide](references/api_testing.md) - API testing, mocking, and request interception
 - [Test Helper Utilities](scripts/test-helper.js) - JavaScript helper functions
-
----
 
 ---
 
