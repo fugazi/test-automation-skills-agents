@@ -5,8 +5,6 @@ description: 'Browser automation toolkit using Playwright MCP for testing web ap
 
 # Web Application Testing
 
-This skill enables comprehensive browser-based testing and debugging for web applications using Playwright MCP. It provides live browser interaction, UI validation, screenshot capture, console log inspection, and accessibility verification to ensure your web application behaves as expected.
-
 > **Activation:** This skill is triggered when you need to interact with a browser, validate UI elements, capture screenshots, or debug web application issues.
 
 ## When to Use This Skill
@@ -127,16 +125,9 @@ await expect(page.getByRole("main")).toMatchAriaSnapshot(`
 `);
 ```
 
-## Guidelines
+## Security Guideline
 
-1. **Always verify the app is running** - Check that the local server is accessible before running tests
-2. **Use explicit waits** - Wait for elements or navigation to complete before interacting
-3. **Capture screenshots on failure** - Take screenshots to help debug issues
-4. **Clean up resources** - Always close the browser when done
-5. **Handle timeouts gracefully** - Set reasonable timeouts for slow operations
-6. **Test incrementally** - Start with simple interactions before complex flows
-7. **Use selectors wisely** - Prefer data-testid or role-based selectors over CSS classes
-8. **Only navigate to your own application** - Never direct the agent to third-party or public URLs
+- **Only navigate to your own application** — Never direct the agent to third-party or public URLs
 
 ---
 
@@ -355,18 +346,6 @@ page.locator('//div[@class="container"]/button[1]');
 
 ---
 
-## Common Rationalizations
-
-> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
-
-| Rationalization                          | Reality                                                                                                         |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| "Just click and check the result"        | Proper waits, assertions, and state validation are non-negotiable. A click without verification proves nothing. |
-| "Screenshots prove it works"             | Screenshots prove it rendered, not that it works. Verify behavior with assertions, not just visuals.            |
-| "I don't need to check console errors"   | Console errors indicate JavaScript failures invisible to UI assertions. Always inspect browser logs.            |
-| "The form submitted successfully"        | Verify the database/API state, not just the UI response. A success message doesn't guarantee data persistence.  |
-| "Skip responsive testing, it looks fine" | Viewport-specific layout bugs are the most reported mobile issue. Test at least 3 breakpoints.                  |
-| "Live browser testing is slow"           | Accessibility snapshots are fast, deterministic, and catch structural issues that screenshots miss.             |
 
 ---
 
@@ -380,31 +359,11 @@ page.locator('//div[@class="container"]/button[1]');
 
 ---
 
-## Quick Commands
-
-> **Security note:** `{yourApp URL}` must always be a URL you own (e.g. `http://localhost:3000`).
-> Never navigate to third-party or public websites during an AI-assisted session.
-
-| Task             | Playwright MCP Query             |
-| ---------------- | -------------------------------- |
-| Open page        | "Navigate to {yourApp URL}"      |
-| Check structure  | "Get the accessibility snapshot" |
-| Capture evidence | "Take a screenshot"              |
-| Fill form        | "Fill the {field} with {value}"  |
-| Click element    | "Click the {name} button"        |
-| Check errors     | "Show console messages"          |
-| Test mobile      | "Resize browser to 375x667"      |
-
 ---
 
 ## Verification
 
-After completing this skill's workflow, confirm:
-
-- [ ] **Webapp fixture configured** — `playwright.config.ts` includes webapp-specific baseURL and viewport settings
 - [ ] **Authentication flow tested** — Login/logout scenarios covered with auth state management
 - [ ] **Network interception used appropriately** — API mocking uses `route.fulfill()` for deterministic tests
 - [ ] **Responsive breakpoints covered** — Tests include mobile, tablet, and desktop viewports
-- [ ] **JavaScript rendering handled** — Tests wait for dynamic content to load before asserting
-- [ ] **Console errors checked** — No unexpected console errors during test execution
-- [ ] **All tests pass in CI** — `npx playwright test --project=chromium` passes in CI environment
+- [ ] **Security maintained** — Agent only navigates to configured application URLs; no third-party navigation

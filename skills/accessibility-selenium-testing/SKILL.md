@@ -33,16 +33,7 @@ This skill enables automated accessibility analysis within the Selenium WebDrive
 
 ---
 
-## WCAG Compliance Levels
-
-| Level | Requirement | Legal Status | Axe Tags |
-|-------|-------------|--------------|----------|
-| **Level A** | Basic accessibility (must have) | Minimum legal requirement | `wcag2a`, `wcag21a` |
-| **Level AA** | Intermediate (should have) | Legal requirement in most jurisdictions | `wcag2aa`, `wcag21aa` |
-| **Level AAA** | Advanced (nice to have) | Not typically required | `wcag2aaa`, `wcag21aaa` |
-| **Best Practice** | Industry recommendations | Not WCAG but improves UX | `best-practice` |
-
----
+> **Target:** WCAG 2.1 AA (`wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`). See [WCAG 2.1 spec](https://www.w3.org/TR/WCAG21/).
 
 ## Axe-Core Tools Reference
 
@@ -76,38 +67,6 @@ This skill enables automated accessibility analysis within the Selenium WebDrive
 | **Serious** | Significant barrier | Always fail build |
 | **Moderate** | Some difficulty | Warn or fail |
 | **Minor** | Inconvenience | Log for review |
-
----
-
-## Core Capabilities
-
-### 1. Axe Builder Analysis
-- **Full Page Scan**: `new AxeBuilder().analyze(driver)`
-- **Component Scan**: `new AxeBuilder().include("#my-component").analyze(driver)`
-- **Rule Configuration**: `.withTags(List.of("wcag2a", "wcag2aa"))`
-- **Exclusions**: `.exclude(".legacy-footer")` (use carefully, document reason)
-
-### 2. Validation & Assertion
-- Analyze `Results.getViolations()` - should be empty
-- Filter by impact level (Critical, Serious, Moderate, Minor)
-- Use AssertJ Soft Assertions to report all violations before failing
-
-### 3. Reporting
-- Log: Rule ID + Help URL + Selector for each violation
-- Serialize `Results` to JSON for dashboards
-- Attach to Allure reports
-
----
-
-## Your Role
-
-As an Accessibility Automation Specialist:
-
-1. **Integration**: Configure axe-core with Selenium WebDriver
-2. **Configuration**: Set up `AxeBuilder` with appropriate WCAG tags
-3. **Analysis**: Parse results to identify violations by impact
-4. **Assertion**: Fail on Critical/Serious, warn on Moderate/Minor
-5. **Reporting**: Log Help URLs and selectors for remediation
 
 ---
 
@@ -367,29 +326,6 @@ class AccessibilityTest extends BaseTest {
 
 ---
 
-## Best Practices Checklist
-
-✅ **Wait for page ready** - Ensure DOM is stable before axe analysis
-✅ **Scan unique states** - Test modal open, form error, empty state separately
-✅ **Zero tolerance for Critical/Serious** - Always fail CI on these
-✅ **Use specific tags** - Define `wcag2aa` vs `best-practice` to reduce noise
-✅ **Log Help URLs** - Developers need the link to fix issues
-✅ **Document exclusions** - Every `.exclude()` needs a JIRA ticket
-✅ **Test keyboard navigation** - Tab order, focus traps, Escape key
-✅ **Attach JSON reports** - Enable tracking violations over time
-✅ **Combine with manual audit** - Axe catches ~30-50% of issues
-
----
-
-## Guardrails (Important Limitations)
-
-⚠️ **Automated tooling cannot prove full WCAG conformance** - only the presence of certain issues
-⚠️ **Use automation to prevent regressions** - use manual audits for complete coverage
-⚠️ **Prefer native HTML semantics** - use ARIA only when required
-⚠️ **Never disable rules globally** - scope exceptions narrowly with documentation
-
----
-
 ## Triage by POUR Principles
 
 | Principle | Focus Areas | Common Violations |
@@ -427,21 +363,6 @@ class AccessibilityTest extends BaseTest {
 
 ---
 
-## Common Rationalizations
-
-> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
-
-| Rationalization | Reality |
-| --------------- | ------- |
-| "Selenium isn't good for a11y testing" | axe-core + Selenium is battle-tested, CI-ready, and covers WCAG violations programmatically. |
-| "We can just run a scan at the end" | Shift-left: catch violations as code is written. Late scans mean expensive fixes. |
-| "The framework handles accessibility" | No framework auto-generates proper ARIA roles, labels, or keyboard interactions. |
-| "We only need to test the homepage" | Every page a user visits must be accessible. Start with high-risk pages, expand coverage. |
-| "Skip the contrast checks, designers fix that" | Automated contrast checks take seconds and prevent lawsuits. They are tests, not design reviews. |
-| "Our users don't have disabilities" | ~15% of the global population has some form of disability. Accessibility is for everyone. |
-
----
-
 ## References
 
 - [Axe Patterns Guide](references/axe_patterns.md) - AxeBuilder patterns and helpers
@@ -452,28 +373,8 @@ class AccessibilityTest extends BaseTest {
 
 ---
 
-## Quick Reference
-
-| Task | Code Pattern |
-|------|--------------|
-| Full page scan | `new AxeBuilder().withTags(List.of("wcag2aa")).analyze(driver)` |
-| Component scan | `new AxeBuilder().include("#selector").analyze(driver)` |
-| Exclude element | `new AxeBuilder().exclude(".ignore").analyze(driver)` |
-| Check violations | `results.getViolations().isEmpty()` |
-| Filter critical | `.filter(v -> v.getImpact().equals("critical"))` |
-| Get help URL | `violation.getHelpUrl()` |
-| Tab navigation | `element.sendKeys(Keys.TAB)` |
-| Get focused element | `driver.switchTo().activeElement()` |
-
----
-
 ## Verification
 
-After completing this skill's workflow, confirm:
-
-- [ ] **Axe WebDriver audit passes** — `AxeBuilder.analyze(driver)` returns zero violations
-- [ ] **WCAG 2.1 AA compliance** — All rules for AA level pass
-- [ ] **ARIA labels present** — All interactive elements have accessible names
+- [ ] **Axe WebDriver audit passes** — `AxeBuilder.analyze(driver)` returns zero critical violations
 - [ ] **Keyboard accessibility verified** — Tab navigation reaches all interactive elements
-- [ ] **Violation report saved** — Accessibility results written to JSON/HTML file
-- [ ] **Tests pass with Java 21+** — `mvn test -Dtest=*Accessibility*` passes
+- [ ] **WCAG 2.1 AA compliance** — All rules for AA level pass

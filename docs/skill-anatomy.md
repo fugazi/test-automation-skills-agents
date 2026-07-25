@@ -96,31 +96,33 @@ description: "Playwright testing skill"
 
 ---
 
+## Core CE Principle
+
+The model's judgment replaces structural compliance. Before adding a section, ask: *"Would removing it change what the model does?"* If not, remove it.
+
 ## Required Sections
 
-Every `SKILL.md` MUST include these sections in order:
+Every `SKILL.md` MUST include these sections:
 
-```
-# Skill Title
+1. **`## When to Use`** — Critical for skill discovery and activation
+2. **`## Core Process`** (or Workflow/Steps) — The heart of the skill
+3. **`## References`** — Links to supporting files (progressive disclosure)
 
-## Overview
-## When to Use
-## [Core Process / Workflow / Steps]
-## Common Rationalizations
-## Red Flags
-## Verification
-```
+### Optional Sections (include only if they change agent behavior)
 
-### Optional Sections (include when relevant)
-
+- `## Overview` — 1-2 sentence summary (often redundant with description)
 - `## Prerequisites` — Required tools, dependencies, environment setup
-- `## Configuration` — Configuration patterns and examples
-- `## Troubleshooting` — Table of common problems and solutions
-- `## CLI Quick Reference` — Command table for common operations
-- `## References` — Links to supporting files
 - `## Security Considerations` — When skill handles credentials, URLs, or sensitive data
-- `## Anti-Patterns` — Table of things to avoid with explanations
-- `## Examples` — Collapsible examples (use `<details>` to save tokens)
+- `## Anti-Patterns` / `## Red Flags` — Only with genuine non-inferable content
+- `## Verification` — Compact checklist (3-5 non-inferable items max)
+- `## Troubleshooting` — Common problems specific to this skill's domain
+- `## CLI Quick Reference` — Command table for common operations
+- `## Configuration` — Configuration patterns and examples
+
+### Sections NOT Recommended
+
+- `## Common Rationalizations` — **Removed.** This pattern anticipates model excuses (micro-management). Anthropic eliminated it from Claude Code with no eval loss. If documenting a *real observed* model failure, use a 1-line affirmative principle instead.
+- `<details>` tags — **Cosmetic only.** Content inside `<details>` still consumes tokens. Use for human readability, not token savings. To reduce tokens, move content to `references/`.
 
 ---
 
@@ -595,45 +597,6 @@ and remove the <!-- --> comments before finalizing.
 
 ---
 
-## Anti-Rationalization Patterns
-
-The `Common Rationalizations` section is the signature feature of well-crafted skills. This section documents the excuses agents make to skip important steps, paired with factual rebuttals.
-
-### Why This Matters
-
-AI agents are prone to:
-
-1. **Shortcut-seeking:** "This is simple enough to skip the full process"
-2. **Over-optimism:** "I'll add tests later"
-3. **Pattern-matching to simplicity:** "I've seen similar code, I know what to do"
-4. **Avoiding tedious steps:** "The manual verification isn't necessary"
-
-The rationalizations table pre-empts these behaviors by providing the agent with built-in counter-arguments.
-
-### Pattern for Writing Rationalizations
-
-For each skip-worthy step in your Core Process, ask:
-
-1. **What excuse would an agent use to skip this step?** → That's the `Rationalization`
-2. **What factually goes wrong when this step is skipped?** → That's the `Reality`
-
-### QA-Specific Rationalizations
-
-Include these QA-specific entries where applicable:
-
-| Rationalization                                                | Reality                                                                                                                     |
-| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| "I'll test just the happy path, edge cases can wait"           | Edge cases are where 60% of production bugs originate. Test boundary values, empty inputs, and error states from the start. |
-| "The test passes locally, CI must be flaky"                    | CI failures often reveal real environmental issues (timing, rendering, dependencies). Investigate before dismissing.        |
-| "This selector is stable enough"                               | Selectors based on CSS classes or XPath break on the next UI redesign. Use role-based locators or `data-testid` attributes. |
-| "I don't need to test this in multiple browsers"               | Cross-browser differences account for 15-20% of UI bugs. At minimum, test Chromium + Firefox.                               |
-| "Manual testing covered this, no need to automate"             | Manual testing doesn't scale and isn't repeatable. Automate regression-critical paths.                                      |
-| "The API response looks right, no need to validate the schema" | Without schema validation, implicit breaking changes pass silently. Validate response structure, not just values.           |
-| "I'll skip the wait strategy, the element loads fast enough"   | "Fast enough" is not a synchronization strategy. Use explicit waits / web-first assertions for deterministic behavior.      |
-| "Page Object Model is overkill for this test"                  | Tests without POM become unmaintainable after 20+ test cases. Even simple pages benefit from encapsulated locators.         |
-
----
-
 ## Cross-Skill References
 
 Reference other skills by name using inline code format:
@@ -676,163 +639,29 @@ For test planning, activate the `qa-test-planner` skill.
 
 ## Verification Checklist
 
-Use this checklist when reviewing a new or modified skill:
+Use this checklist when reviewing a skill:
 
-### Frontmatter
-
-- [ ] `name` is lowercase, hyphen-separated, matches directory name, ≤64 chars
-- [ ] `description` states WHAT, WHEN, and KEYWORDS
-- [ ] `description` is single-quoted and ≤1024 characters
-- [ ] No process steps in description
-
-### Required Sections
-
-- [ ] Overview: 1-2 sentences, no process steps
-- [ ] When to Use: includes positive triggers AND negative exclusions
-- [ ] Core Process: specific, actionable steps with code examples
-- [ ] Common Rationalizations: table with ≥3 entries
-- [ ] Red Flags: bullet list with ≥3 entries
-- [ ] Verification: checklist with ≥5 verifiable items
-
-### Structure
-
-- [ ] Sections in required order
-- [ ] SKILL.md body ≤500 lines (split to references/ if larger)
-- [ ] No duplicate content across skills
-- [ ] Cross-references use skill name, not file path
-
-### Supporting Files
-
-- [ ] `references/` exists only if referenced from SKILL.md
-- [ ] `templates/` uses clear placeholders
-- [ ] `scripts/` are executable and documented
-- [ ] `assets/` for static files only (no templates here)
-- [ ] Each reference file ≤300 lines and covers one topic
-
-### Dual-Stack Compliance (when applicable)
-
-- [ ] Framework-specific code clearly separated
-- [ ] No mixed TypeScript/Java code blocks
-- [ ] Locator priority tables included per framework
-- [ ] Scope classification matches naming convention
-
-### Quality
-
-- [ ] No hardcoded credentials or secrets
-- [ ] Relative paths for all resource references
-- [ ] No absolute paths
-- [ ] All links resolve correctly
-- [ ] Markdown is valid (headers, tables, code blocks)
+- [ ] `name` is lowercase-hyphenated, matches directory, ≤64 chars
+- [ ] `description` follows WHAT+WHEN+KEYWORDS (≤450 chars ideal)
+- [ ] SKILL.md ≤ 500 lines (this standard included)
+- [ ] References ≤ 300 lines each, one topic per file
+- [ ] No duplicated sections (one concept = one source)
+- [ ] No "Common Rationalizations" (use affirmative principles instead)
+- [ ] Code examples ≤ 15 lines inline (longer → `references/`)
+- [ ] Skills are self-contained (no cross-skill runtime dependencies)
+- [ ] File naming: lowercase-hyphens (not snake_case)
+- [ ] Progressive disclosure: 3 levels (discovery → instructions → resources)
+- [ ] No persona framing or motivational filler
+- [ ] Security rules are explicit and non-inferable
+- [ ] `<details>` noted as cosmetic (tokens still consumed)
+- [ ] References have back-links for files >100 lines
+- [ ] Templates clearly marked as starter code
 
 ---
 
 ## Examples
 
-### Minimal Skill Structure
-
-```
-skills/playwright-visual-testing/
-├── SKILL.md
-├── LICENSE.txt
-├── references/
-│   ├── masking-strategies.md
-│   └── threshold-configuration.md
-└── templates/
-    └── visual-test-template.ts
-```
-
-### Minimal SKILL.md
-
-````markdown
----
-name: playwright-visual-testing
-description: 'Visual regression testing with screenshot comparison. Use when asked to implement, update, or debug visual regression tests with Playwright\'s toHaveScreenshot(), configure thresholds, mask dynamic content, or manage baseline images. Covers snapshot comparison, CI baselines, and diff analysis.'
----
-
-# Playwright Visual Regression Testing
-
-## Overview
-
-Toolkit for implementing visual regression testing using Playwright's built-in screenshot comparison. Ensures UI consistency across changes with configurable thresholds and masking.
-
-## When to Use
-
-- Implement visual regression tests with `toHaveScreenshot()`
-- Configure comparison thresholds and maxDiffPixelRatio
-- Mask dynamic content (timestamps, ads, avatars) in screenshots
-- Debug screenshot diff failures
-- Manage baseline images across CI environments
-
-**NOT for:**
-
-- Pixel-perfect design QA (use dedicated design review tools)
-- Accessibility testing (use the `a11y-playwright-testing` skill)
-
-## Core Process
-
-1. **Identify visual regression scope**
-   - List pages/components that need visual testing
-   - Identify dynamic content that must be masked
-   - Determine threshold sensitivity per component
-
-2. **Create baseline screenshots**
-
-   ```typescript
-   await expect(page).toHaveScreenshot("homepage.png");
-   ```
-
-3. **Configure comparison options**
-
-   ```typescript
-   await expect(page).toHaveScreenshot("homepage.png", {
-     maxDiffPixelRatio: 0.01,
-     mask: [page.locator(".dynamic-content")],
-   });
-   ```
-
-4. **Run and review**
-
-   ```bash
-   npx playwright test --update-snapshots  # First run (create baselines)
-   npx playwright test                      # Subsequent runs (compare)
-   ```
-
-5. **Handle failures**
-   - Review diff images in HTML report
-   - If intentional change: update baseline with `--update-snapshots`
-   - If regression: fix the UI change and re-run
-
-## Common Rationalizations
-
-| Rationalization                                       | Reality                                                                                                                                                         |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| "Visual tests are too flaky to be useful"             | Flakiness comes from unmasked dynamic content and missing thresholds. Configure properly and visual tests become one of the most reliable regression detectors. |
-| "I'll update the baseline without reviewing the diff" | Blind baseline updates defeat the purpose of visual testing. Always review the diff image before accepting changes.                                             |
-| "One global threshold is enough for all pages"        | Different pages have different complexity. A 1% threshold may be fine for a static landing page but too loose for a data dashboard.                             |
-
-## Red Flags
-
-- Baseline images updated without reviewing diff output
-- No masking for dynamic content (dates, ads, user-specific data)
-- Visual tests disabled in CI pipeline
-- Using full-page screenshots for components (use `.toHaveScreenshot()` on specific locators)
-- Threshold set to 0 (any pixel change fails — too brittle for CI)
-
-## Verification
-
-- [ ] Baseline screenshots exist for all pages/components under test
-- [ ] Dynamic content is masked with `mask` option
-- [ ] Threshold configured appropriately per component complexity
-- [ ] Visual tests run in CI alongside functional tests
-- [ ] Diff images reviewed before baseline updates
-- [ ] Test report includes comparison images for all failures
-
-## References
-
-- [Masking Strategies](./references/masking-strategies.md)
-- [Threshold Configuration](./references/threshold-configuration.md)
-- [Visual Test Template](./templates/visual-test-template.ts)
-````
+See [`references/example-skill-template.md`](references/example-skill-template.md) for a complete minimal skill structure and full SKILL.md example.
 
 ---
 

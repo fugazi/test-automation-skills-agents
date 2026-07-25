@@ -205,16 +205,6 @@ When creating new agents or skills:
 - [ ] Skill body under 500 lines (split large content into `references/`)
 - [ ] Orchestrator tool permissions cover all sub-agent needs
 
-## Common Mistakes to Avoid
-
-- Missing or unquoted `description` field in frontmatter
-- Vague descriptions that won't trigger skill activation
-- Invalid YAML syntax (check indentation)
-- Absolute paths in resource references
-- Hardcoded credentials or secrets
-- Excessive tool access without justification
-- Forgetting that orchestrator tool permissions limit sub-agents
-
 ## Reference Documentation
 
 - [Getting Started](./docs/getting-started.md) — Overview and quick start for all AI tools

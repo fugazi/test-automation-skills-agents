@@ -90,45 +90,6 @@ Use this skill when you need to:
 
 ---
 
-## How It Works
-
-```
-Your Request
-    │
-    ▼
-┌─────────────────────────────────────────────────────┐
-│ 1. ANALYZE                                        │
-│    • Parse feature/requirement                      │
-│    • Identify test types needed (manual/automated)  │
-│    • Determine scope and priorities                 │
-├─────────────────────────────────────────────────────┤
-│ 2. SELECT TEMPLATE                                │
-│    • Choose appropriate template from assets/        │
-│    • Review template structure and sections         │
-│    • Identify placeholders to fill                 │
-├─────────────────────────────────────────────────────┤
-│ 3. CUSTOMIZE                                      │
-│    • Fill in placeholders with project details      │
-│    • Add specific test steps and scenarios         │
-│    • Apply Playwright best practices               │
-├─────────────────────────────────────────────────────┤
-│ 4. EXECUTE (with Playwright MCP)                 │
-│    • Navigate and interact with browser             │
-│    • Capture screenshots and evidence               │
-│    • Validate UI elements and behavior              │
-├─────────────────────────────────────────────────────┤
-│ 5. VALIDATE                                       │
-│    • Check completeness                             │
-│    • Verify traceability                            │
-│    • Ensure actionable steps                        │
-└─────────────────────────────────────────────────────┘
-    │
-    ▼
-QA Deliverable Ready
-```
-
----
-
 ## Workflows
 
 ### 1) Create a Test Plan
@@ -236,52 +197,20 @@ All user inputs should be:
 
 ---
 
-## Anti-Patterns
+## Quality & Anti-Patterns
 
-| Avoid                 | Why                     | Instead                                   |
-| --------------------- | ----------------------- | ----------------------------------------- |
-| Vague test steps      | Can't reproduce         | Specific actions + expected results       |
-| Missing preconditions | Tests fail unexpectedly | Document all setup requirements           |
-| No test data          | Tester blocked          | Provide sample data or generation         |
-| Generic bug titles    | Hard to track           | Specific: "[Feature] issue when [action]" |
-| Skip edge cases       | Miss critical bugs      | Include boundary values, nulls            |
-| Embedding credentials | Security risk           | Use environment variables                 |
+| Avoid | Instead |
+| --- | --- |
+| Vague test steps; missing preconditions | Specific actions + expected results; document all setup requirements |
+| Generic bug titles | Specific: "[Feature] issue when [action]" |
+| Skip edge cases | Include boundary values, nulls, empty inputs |
+| Embed credentials | Use environment variables (`${TEST_USER_EMAIL}`) |
+| Hardcoded test data | Provide sample data or generation (Faker.js) |
 
----
-
-## Verification Checklist
-
-**Test Plan:**
-
-- [ ] Scope clearly defined (in/out)
-- [ ] Entry/exit criteria specified
-- [ ] Risks identified with mitigations
-- [ ] Timeline realistic
-
-**Test Cases:**
-
-- [ ] Each step has expected result
-- [ ] Preconditions documented
-- [ ] Test data uses placeholders (no hardcoded credentials)
-- [ ] Priority assigned
-
-**Automated Tests:**
-
-- [ ] Role-based locators used
-- [ ] Web-first assertions implemented
-- [ ] Page Object Model applied
-- [ ] test.step() grouping for clarity
-- [ ] Error handling and screenshots
-- [ ] Credentials loaded from environment variables
-
-**Bug Reports:**
-
-- [ ] Reproducible steps
-- [ ] Environment documented
-- [ ] Screenshots/evidence attached
-- [ ] Severity/priority set
-
----
+**Test plan** must include scope, approach, risks, environments, entry/exit criteria, deliverables, and metrics.
+**Test cases** must be traceable, atomic, deterministic, with clear oracles and data.
+**Automation** must use stable locators (`getByTestId`), minimal flake, independent tests, clear assertions.
+**Regression** must be risk-based, tagged, and curated with clear add/remove rules.
 
 ## Templates
 
@@ -398,44 +327,6 @@ The AI will:
 
 ---
 
-## Best Practices (avoids the anti-patterns above)
-
-### Test Case Writing
-
-- Be specific and unambiguous; include expected results for each step
-- Test one thing per case; document all preconditions and test data
-- Include edge cases and boundary values; use consistent naming
-
-### Bug Reporting
-
-- Provide minimal, exact reproduction steps; specify environment details
-- Include screenshots/videos and describe user and business impact
-- Set severity/priority; avoid duplicates with clear, specific titles
-
-### Regression Testing
-
-- Automate repetitive tests; prioritize critical paths
-- Run smoke tests frequently; review and prune the suite regularly
-- Tag consistently; never ignore failed regression tests
-
-### Security
-
-- Use environment variables for credentials; never commit secrets
-- Validate URLs before navigating; report suspicious content
-- Never execute arbitrary JavaScript from user input
-
----
-
-## Quality Gates (Self-Check)
-
-- **Test plan** includes scope, approach, risks, environments, entry/exit criteria, deliverables, and metrics
-- **Test cases** are traceable, atomic, deterministic, and include clear oracles and data
-- **Automation** is maintainable (stable locators, minimal flake, independent tests, clear assertions)
-- **Regression** is risk-based, tagged, and curated with clear add/remove rules
-- **Bug reports** are reproducible, actionable, and contain evidence + environment + impact
-
----
-
 ## Troubleshooting
 
 | Problem                      | Cause                             | Solution                                                   |
@@ -448,18 +339,6 @@ The AI will:
 
 ---
 
-## Common Rationalizations
-
-> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
-
-| Rationalization                         | Reality                                                                                                     |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| "Test plans are documentation theater"  | A good test plan prevents scope creep, missed scenarios, and misaligned expectations before testing begins. |
-| "We can figure out test cases as we go" | Ad-hoc testing leaves gaps. Structured test cases ensure systematic coverage and traceability.              |
-| "Bug reports can be informal"           | Reproducible bug reports with exact steps save hours of back-and-forth between tester and developer.        |
-| "Estimation is just guessing"           | Test estimation techniques (function point analysis, Delphi method) improve accuracy and credibility.       |
-| "Regression suites maintain themselves" | Without curation, suites grow bloated and slow. Regular review and pruning are mandatory.                   |
-| "Templates slow us down"                | Templates ensure nothing is forgotten and standardize quality across the team.                              |
 
 ---
 
@@ -471,12 +350,7 @@ The AI will:
 
 ## Verification
 
-After completing this skill's workflow, confirm:
-
-- [ ] **Test strategy document created** — Covers scope, approach, resources, schedule, and risks
-- [ ] **Test levels defined** — Unit, integration, E2E, and acceptance levels with criteria
-- [ ] **Entry/exit criteria documented** — Clear definition of when testing starts and ends
-- [ ] **Risk-based prioritization** — Tests prioritized by impact x likelihood
-- [ ] **Environment requirements listed** — Hardware, software, data, and network requirements
-- [ ] **Defect management process defined** — How bugs are reported, tracked, and resolved
-- [ ] **Stakeholder sign-off** — Test plan reviewed and approved by relevant stakeholders
+- [ ] **Test strategy covers scope, approach, risks, entry/exit criteria** — With mitigation actions for each risk
+- [ ] **Test cases are traceable and atomic** — Each links to a requirement; one thing per case
+- [ ] **Credentials use environment variables** — No hardcoded secrets in test cases or code
+- [ ] **Regression suite is risk-based and tagged** — Smoke/sanity/full tiers with clear selection rules

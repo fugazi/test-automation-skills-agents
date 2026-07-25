@@ -194,22 +194,9 @@ test("skip link moves focus to main content", async ({ page }) => {
 
 ---
 
-## Axe-Core Tags Reference
+## Axe-Core Tags
 
-| Tag             | WCAG Level   | Use Case                   |
-| --------------- | ------------ | -------------------------- |
-| `wcag2a`        | Level A      | Minimum compliance         |
-| `wcag2aa`       | Level AA     | **Standard target**        |
-| `wcag2aaa`      | Level AAA    | Enhanced (rarely full)     |
-| `wcag21a`       | 2.1 Level A  | WCAG 2.1 specific A        |
-| `wcag21aa`      | 2.1 Level AA | **WCAG 2.1 standard**      |
-| `best-practice` | Beyond WCAG  | Additional recommendations |
-
-### Default Tags (WCAG 2.1 AA)
-
-```typescript
-const WCAG21AA_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"];
-```
+Default: `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa` (WCAG 2.1 AA). Use `best-practice` for additional checks. See [`references/axe-tags-reference.md`](references/axe-tags-reference.md) for full tag list.
 
 ---
 
@@ -260,18 +247,6 @@ new AxeBuilder({ page })
 
 ---
 
-## Common Rationalizations
-
-> Common shortcuts and "good enough" excuses that erode test quality — and the reality behind each.
-
-| Rationalization                                 | Reality                                                                                                    |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| "Accessibility can be tested manually later"    | Automated a11y catches 30-57% of issues instantly. Write a11y tests now, not after release.                |
-| "axe-core catches everything"                   | axe covers ~30-50% of WCAG criteria. Manual review and keyboard testing are still required.                |
-| "Color contrast is a design concern"            | It's a legal requirement under WCAG 2.1 AA 1.4.3. Automated contrast checks take zero effort.              |
-| "Keyboard navigation tests are optional"        | Keyboard-only users represent ~10% of your audience. Tab order and focus traps are testable.               |
-| "Screen reader testing is too hard to automate" | ARIA role and label validation via Playwright catches most structural issues without a real screen reader. |
-| "A11y only matters for public-sector sites"     | ADA lawsuits target e-commerce, SaaS, and private companies. Non-compliance is expensive.                  |
 
 ---
 
@@ -296,12 +271,6 @@ new AxeBuilder({ page })
 
 ## Verification
 
-After completing this skill's workflow, confirm:
-
-- [ ] **axe-core audit passes** — `AxeBuilder.analyze()` returns zero violations
+- [ ] **axe-core audit passes** — `AxeBuilder.analyze()` returns zero critical violations
 - [ ] **Keyboard navigation tested** — All interactive elements reachable via Tab; focus order is logical
-- [ ] **ARIA attributes valid** — No duplicate IDs, no missing labels, roles match element types
 - [ ] **Color contrast sufficient** — WCAG 2.1 AA minimum contrast ratios met (4.5:1 normal text, 3:1 large text)
-- [ ] **Screen reader compatible** — All images have alt text; form inputs have labels; landmarks present
-- [ ] **Accessibility scan integrated in CI** — Accessibility tests run as part of the standard CI pipeline
-- [ ] **Violation report generated** — Axe results saved to file for review and tracking
