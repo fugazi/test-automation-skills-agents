@@ -59,31 +59,6 @@ Use this skill when you need to:
 | `browser_tabs`   | Manage browser tabs | "List open tabs"             |
 | `browser_close`  | Close browser       | "Close the browser"          |
 
-## Core Capabilities
-
-### 1. Browser Automation
-
-- Navigate to URLs
-- Click buttons and links
-- Fill form fields
-- Select dropdowns
-- Handle dialogs and alerts
-
-### 2. Verification
-
-- Assert element presence
-- Verify text content
-- Check element visibility
-- Validate URLs
-- Test responsive behavior
-
-### 3. Debugging
-
-- Capture screenshots
-- View console logs
-- Inspect network requests
-- Debug failed tests
-
 ## Usage Examples
 
 ### Example 1: Basic Navigation Test
@@ -345,7 +320,6 @@ page.locator('//div[@class="container"]/button[1]');
 - Heavy animations may require disabling for stable tests
 
 ---
-
 
 ---
 

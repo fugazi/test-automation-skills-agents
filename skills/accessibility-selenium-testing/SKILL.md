@@ -366,6 +366,7 @@ class AccessibilityTest extends BaseTest {
 ## References
 
 - [Axe Patterns Guide](references/axe_patterns.md) - AxeBuilder patterns and helpers
+- [Axe-Core API Reference](references/axe-api-reference.md) - Full AxeBuilder config, Results object, and impact levels
 - [WCAG 2.1 AA Checklist](references/wcag21aa-checklist.md) - Manual audit checklist
 - [Deque Axe Rules](https://dequeuniversity.com/rules/axe/4.10) - Rule descriptions
 - [W3C WCAG 2.1](https://www.w3.org/TR/WCAG21/) - Official specification
