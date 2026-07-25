@@ -220,6 +220,6 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 
 ## Verification
 
-- [ ] **Test cases follow ISTQB structure** — Each case has: ID, description, preconditions, steps, expected result, actual result
+- [ ] **Test cases follow ISTQB structure** — Each case has: ID, description, preconditions, steps, expected result (actual result populated after execution)
 - [ ] **Coverage matrix maintained** — Requirements mapped to test cases; no uncovered requirements
 - [ ] **Traceability maintained** — Each test case links to a requirement or user story

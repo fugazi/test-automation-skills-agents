@@ -18,7 +18,7 @@ skills/playwright-visual-testing/
 ````markdown
 ---
 name: playwright-visual-testing
-description: 'Visual regression testing with screenshot comparison. Use when asked to implement, update, or debug visual regression tests with Playwright\'s toHaveScreenshot(), configure thresholds, mask dynamic content, or manage baseline images. Covers snapshot comparison, CI baselines, and diff analysis.'
+description: 'Visual regression testing with screenshot comparison. Use when asked to implement, update, or debug visual regression tests with Playwrights toHaveScreenshot(), configure thresholds, mask dynamic content, or manage baseline images. Covers snapshot comparison, CI baselines, and diff analysis.'
 ---
 
 # Playwright Visual Regression Testing
@@ -92,9 +92,8 @@ Toolkit for implementing visual regression testing using Playwright's built-in s
 
 ## Verification
 
-- [ ] Baseline screenshots exist for all pages/components under test
+- [ ] Baseline and threshold configured for all pages/components under test
 - [ ] Dynamic content is masked with `mask` option
-- [ ] Threshold configured appropriately per component complexity
 - [ ] Visual tests run in CI alongside functional tests
 - [ ] Diff images reviewed before baseline updates
 - [ ] Test report includes comparison images for all failures
