@@ -1,18 +1,18 @@
 ---
 name: playwright-e2e-testing
-description: 'End-to-end, API, and responsive testing for web applications using Playwright with TypeScript. Use when asked to write, run, debug, or maintain Playwright (@playwright/test) TypeScript tests for UI behavior, form submissions, user flows, API validation, responsive design, or visual regression. Covers browser automation, network interception, mocking, Page Object Model, fixtures, and parallel execution.'
+description: 'Author and maintain versioned Playwright (@playwright/test) TypeScript UI specs for browser user flows. Use when asked to create, run, debug, or refactor E2E tests, form/navigation/auth flows, responsive checks, UI mocking, fixtures, Page Objects, or visual comparisons. Use api-testing for standalone REST/GraphQL contracts and playwright-cli for live browser sessions. Keywords: E2E spec, Playwright test, POM, fixtures, UI regression.'
 ---
 
 # Playwright E2E Testing (TypeScript)
 
-Comprehensive toolkit for end-to-end testing of web applications using Playwright with TypeScript. Enables robust UI testing, API validation, and responsive design verification following best practices.
+Comprehensive toolkit for end-to-end testing of web applications using Playwright with TypeScript. Enables robust UI testing, UI-dependent API setup, and responsive design verification following best practices.
 
-> **Activation:** This skill is triggered when working with Playwright tests, browser automation, E2E testing, API testing with Playwright, or test infrastructure setup.
+> **Activation:** This skill is triggered when authoring or maintaining versioned Playwright UI specs and their test infrastructure.
 
 ## When to Use This Skill
 
 - **Write E2E tests** for user flows, forms, navigation, and authentication
-- **API testing** via `request` fixture or network interception during UI tests
+- **UI-dependent API setup** via the `request` fixture or network interception
 - **Responsive testing** across mobile, tablet, and desktop viewports
 - **Debug flaky tests** using traces, screenshots, videos, and Playwright Inspector
 - **Setup test infrastructure** with Page Object Model and fixtures

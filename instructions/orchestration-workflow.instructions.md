@@ -37,7 +37,7 @@ Every agent that generates, modifies, or verifies test code should follow this w
 3. Map the page and component structure
 4. Record the accessibility tree for locator discovery
 
-**Agent/Skill:** `playwright-test-planner`, skill `webapp-playwright-testing`
+**Agent/Skill:** `playwright-test-planner`, skill `playwright-cli`
 
 ## Step 3: Plan
 
@@ -52,7 +52,7 @@ Every agent that generates, modifies, or verifies test code should follow this w
 3. Create a structured test plan document with scenario descriptions
 4. Map scenarios to pages and components
 
-**Agent/Skill:** `playwright-test-planner`, skill `qa-test-planner`
+**Agent/Skill:** `playwright-test-planner`, skill `qa-manual-istqb`
 
 ## Step 4: Generate
 

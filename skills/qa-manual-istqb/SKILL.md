@@ -1,15 +1,16 @@
 ---
 name: qa-manual-istqb
-description: 'ISTQB Foundation Level (CTFL) toolkit for creating test plans, test cases, bug reports, regression suites, traceability matrices, and exploratory charters from requirements. Covers risk-based testing, EP/BVA, decision tables, state transitions, test estimation, and static testing. Use when asked for ISTQB-aligned QA artifacts.'
+description: 'Create QA artifacts from requirements: test plans, test conditions/cases, bug reports, regression suites, traceability, and exploratory charters. Use for test planning, test design, defects, coverage, or QA deliverables. Applies ISTQB risk-based techniques and loads templates only when needed. Keywords: test plan, test case, bug report, traceability, regression suite, QA artifact.'
 ---
 
-# ISTQB Manual & Automation QA Toolkit
+# QA Test Design & ISTQB Artifacts
 
 Complete ISTQB Foundation Level (CTFL) aligned workflow for QA test engineers covering:
 **Test Planning → Test Analysis → Test Design → Test Implementation → Test Execution → Test Completion**
 
 ## When to Use This Skill
 
+- Drafting ready-to-fill QA deliverables from requirements, user stories, or acceptance criteria
 - Creating or reviewing **test plans** and **test strategies**
 - Generating **test conditions** and **test cases** from requirements
 - Applying **test design techniques** (EP, BVA, decision tables, state transitions, use cases)
@@ -19,7 +20,7 @@ Complete ISTQB Foundation Level (CTFL) aligned workflow for QA test engineers co
 - Conducting **exploratory testing** sessions with charters
 - Estimating test effort using ISTQB techniques
 - Reviewing testware through **static testing** practices
-- Implementing automation with **Playwright** (TypeScript)
+- Selecting automation candidates and preparing traceable Playwright scaffolds
 
 ## Prerequisites
 
@@ -88,16 +89,11 @@ Use: `templates/test-plan.md` (detailed sections + checklists).
 
 Use: `templates/test-cases.csv`.
 
-### 3) Implement automation test scripts (Playwright-first)
+### 3) Prepare automation candidates and Playwright scaffolds
 
-1. Keep tests readable and aligned with test cases (include test case IDs in titles).
-2. Prefer stable locators (e.g., `getByTestId`) over brittle selectors.
-3. Avoid arbitrary sleeps; rely on Playwright auto-waits and explicit assertions.
-4. Make tests independent (setup preconditions explicitly; avoid order dependencies).
-5. Use tagging in test titles (e.g., `@smoke`, `@regression`) so suites are runnable via `--grep`.
-6. Capture artifacts for triage (screenshots/video/trace) when debugging failures.
-
-Use: `templates/playwright-spec.ts` and `references/automation-playwright-best-practices.md`.
+1. Select candidates using stability, value, and risk criteria (see `references/automation-playwright-best-practices.md`).
+2. Create a traceable scaffold from `templates/playwright-spec.ts`, including the test case ID and suite tags.
+3. Use `playwright-e2e-testing` to implement and maintain the versioned UI spec, fixtures, and test infrastructure.
 
 ### 4) Build and maintain regression suites
 

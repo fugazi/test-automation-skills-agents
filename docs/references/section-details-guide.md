@@ -149,7 +149,7 @@ Reference other skills by name using inline code format:
 Follow the `playwright-e2e-testing` skill for writing Playwright tests.
 For Selenium patterns, use the `webapp-selenium-testing` skill.
 If the build breaks, use the `playwright-regression-testing` skill for diagnosis.
-For test planning, activate the `qa-test-planner` skill.
+For test planning and QA deliverables, activate the `qa-manual-istqb` skill.
 ```
 
 ### Cross-Reference Rules
@@ -264,4 +264,3 @@ Links to related instructions, skills, or agents.
 | `a11y.instructions.md`                    | Accessibility testing standards          |
 
 ---
-

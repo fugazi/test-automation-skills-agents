@@ -73,10 +73,8 @@ Skills activate when Windsurf detects you're working on testing tasks. For best 
 | a11y-playwright-testing        | "Check accessibility of..." or "Run a11y audit on..."        |
 | accessibility-selenium-testing | "Scan for WCAG issues using Selenium..."                     |
 | playwright-regression-testing  | "Organize regression suite..." or "Set up test tiers..."     |
-| qa-test-planner                | "Use the qa-test-planner skill to create a test plan for..." |
-| qa-manual-istqb                | "Create ISTQB-aligned test cases for..."                     |
+| qa-manual-istqb                | "Create a test plan, cases, or bug report for..."            |
 | playwright-cli                 | "Use playwright-cli to navigate to..."                       |
-| webapp-playwright-testing      | "Open the browser and test..."                               |
 
 ## Using Agents
 

@@ -78,14 +78,6 @@ If a skill doesn't activate automatically, reference it explicitly:
 Use the conventions from instructions/playwright-typescript.instructions.md.
 ```
 
-### qa-test-planner Exception
-
-The `qa-test-planner` skill is intentionally strict — it activates only when called by name:
-
-```
-@workspace Use the skill qa-test-planner to create a test plan for the payments module.
-```
-
 ## Using Agents
 
 Agents appear in the Copilot Chat agent selector when placed in `.github/agents/`.

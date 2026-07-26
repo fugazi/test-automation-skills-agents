@@ -1,6 +1,6 @@
 ---
 name: a11y-playwright-testing
-description: 'Accessibility testing for web applications using Playwright (@playwright/test) with TypeScript and axe-core. Use when asked to write, run, or debug automated accessibility checks, keyboard navigation tests, focus management, ARIA/semantic validations, screen reader compatibility, or WCAG 2.1 Level AA compliance testing. Covers axe-core integration, POUR principles (perceivable, operable, understandable, robust), color contrast, form labels, landmarks, and accessible names.'
+description: 'Accessibility testing for web applications using Playwright (@playwright/test), TypeScript, and axe-core. Use to write, run, or debug WCAG 2.1 AA checks, keyboard and focus tests, ARIA/semantic validation, accessible names, form labels, color contrast, or screen-reader test patterns. Keywords: accessibility, WCAG, axe-core, keyboard navigation, focus management, ARIA.'
 ---
 
 # Playwright Accessibility Testing (TypeScript)

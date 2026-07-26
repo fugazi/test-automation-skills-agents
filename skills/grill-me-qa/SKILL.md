@@ -182,10 +182,11 @@ Detect and confront these anti-patterns during the grilling. When you spot one i
 These skills handle the implementation that follows a grilling. Mention them as next steps when relevant, but do not create a hard dependency — the grilling stands on its own.
 
 - **Dimension 2 (Framework & Tooling) →** `playwright-e2e-testing`, `api-testing`
-- **Dimension 3 (Test Architecture) →** `playwright-cli`
+- **Dimension 3 (Test Architecture) →** `playwright-e2e-testing`, `playwright-regression-testing`
+- **Live browser exploration & evidence →** `playwright-cli`
 - **Dimension 4 (AI Integration) →** AI tools available in the workspace
-- **General planning & coverage →** `qa-test-planner`, `qa-manual-istqb`
-- **Regression & cross-cutting quality →** `playwright-regression-testing`, `a11y-playwright-testing`, `webapp-playwright-testing`
+- **General planning & coverage →** `qa-manual-istqb`
+- **Regression & cross-cutting quality →** `playwright-regression-testing`, `a11y-playwright-testing`, `accessibility-selenium-testing`
 - **Selenium teams →** `webapp-selenium-testing`, `accessibility-selenium-testing`
 
 ## Output: Test Strategy Decision Record (TSDR)
