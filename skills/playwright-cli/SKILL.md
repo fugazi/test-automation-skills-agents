@@ -1,6 +1,6 @@
 ---
 name: playwright-cli
-description: 'Drive a live browser from the CLI via the playwright-cli command to navigate, interact, snapshot, and capture evidence. Use when asked to run ad-hoc browser commands, inspect a page, take screenshots, capture traces/videos, mock network requests, manage sessions, or debug a site interactively (as opposed to authoring @playwright/test spec files). Keywords: playwright-cli, browser automation, live session, snapshot, console, tracing, npx playwright cli.'
+description: 'Drive a live browser from the CLI with playwright-cli to navigate, interact, snapshot, and capture evidence. Use for ad-hoc browser commands, page inspection, screenshots, traces, network mocking, session management, or interactive debugging—not authoring @playwright/test specs. Keywords: playwright-cli, browser automation, live session, snapshot, console, tracing.'
 license: 'Complete terms in LICENSE.txt'
 ---
 

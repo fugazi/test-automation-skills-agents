@@ -138,7 +138,7 @@ This repository is unique in supporting **two testing frameworks** side by side.
 | ------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------------- |
 | Playwright-only    | Prefix with `playwright-` or include "Playwright" in name    | `playwright-e2e-testing`                                                |
 | Selenium-only      | Prefix with `webapp-selenium-` or include "Selenium" in name | `webapp-selenium-testing`                                               |
-| Framework-agnostic | No framework prefix                                          | `qa-test-planner`, `qa-manual-istqb`                                    |
+| Framework-agnostic | No framework prefix                                          | `qa-manual-istqb`                                                       |
 | Both frameworks    | Cover both in a single skill with clear sections             | `a11y-playwright-testing` + `accessibility-selenium-testing` (separate) |
 
 ### When to Use Separate Skills vs. Combined
@@ -216,7 +216,7 @@ Optional `.instructions.md` files for editor-specific guidance (VS Code, Cursor)
 | Main file            | `SKILL.md` (always uppercase)     | `SKILL.md`                       |
 | Playwright skills    | Prefix with `playwright-`         | `playwright-regression-testing/` |
 | Selenium skills      | Include `selenium` in name        | `webapp-selenium-testing/`       |
-| QA skills (agnostic) | Prefix with `qa-`                 | `qa-test-planner/`               |
+| QA skills (agnostic) | Prefix with `qa-`                 | `qa-manual-istqb/`               |
 | A11y skills          | Include `a11y` or `accessibility` | `a11y-playwright-testing/`       |
 
 ### Supporting Files

@@ -64,7 +64,7 @@ Create these rule files for the best experience:
 | `selenium-java.mdc`  | webapp-selenium-testing       | `**/*Test.java`, `**/selenium/**/*.java`  |
 | `a11y-testing.mdc`   | a11y-playwright-testing       | `**/*a11y*.spec.ts`, `**/*accessibility*` |
 | `regression.mdc`     | playwright-regression-testing | `playwright.config.*`, `**/*.spec.ts`     |
-| `test-planner.mdc`   | qa-test-planner               | Always apply: `false`                     |
+| `qa-artifacts.mdc`   | qa-manual-istqb               | Always apply: `false`                     |
 
 ## Activating Skills
 

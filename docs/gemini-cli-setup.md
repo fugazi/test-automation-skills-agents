@@ -74,10 +74,8 @@ To enable skill auto-discovery, list your skills in `GEMINI.md`:
 | a11y-playwright-testing        | Accessibility testing with Playwright      |
 | accessibility-selenium-testing | Accessibility testing with Selenium        |
 | playwright-regression-testing  | Regression suite strategy and optimization |
-| qa-manual-istqb                | ISTQB-aligned test artifacts               |
-| qa-test-planner                | Test plans, test cases, bug reports        |
+| qa-manual-istqb                | QA artifacts and ISTQB test design          |
 | playwright-cli                 | Browser automation via CLI                 |
-| webapp-playwright-testing      | Live browser testing and debugging         |
 ```
 
 ## Activating Skills

@@ -1,5 +1,7 @@
 # Implementation Plan v2 — Context Engineering Audit
 
+> **Historical baseline (pre-v3):** This completed plan reflects the 11-skill catalog at the time of its audit. For the v3 consolidation and migration map, see [implementation-plan-skills.md](./implementation-plan-skills.md).
+
 **Repo:** `fugazi/test-automation-skills-agents`
 **Branch:** `chore/context-engineering-optimization`
 **Fecha:** 2026-07-25

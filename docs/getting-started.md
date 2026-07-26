@@ -7,7 +7,7 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 | Component        | Purpose                                   | Count    |
 | ---------------- | ----------------------------------------- | -------- |
 | **Agents**       | Specialist personas for specific QA tasks | 7        |
-| **Skills**       | Procedural workflows for testing domains  | 11       |
+| **Skills**       | Procedural workflows for testing domains  | 9        |
 | **Instructions** | Rules, conventions, and standards         | 7        |
 | **References**   | Detailed technical reference material     | Multiple |
 | **Templates**    | Starter files for common test patterns    | Multiple |
@@ -31,7 +31,8 @@ Skills are activated based on what you're doing:
 - Writing E2E tests → activates `playwright-e2e-testing` or `webapp-selenium-testing`
 - Testing APIs → activates `api-testing`
 - Fixing flaky tests → activates `playwright-regression-testing`
-- Planning test strategy → activates `qa-test-planner`
+- Creating a test plan, cases, bugs, or traceability → activates `qa-manual-istqb`
+- Exploring a live browser session → activates `playwright-cli`
 - Running accessibility audit → activates `a11y-playwright-testing` or `accessibility-selenium-testing`
 
 ### 3. Using Agents
@@ -53,16 +54,14 @@ Agents are specialist personas you can invoke:
 ```
 test-automation-skills-agents/
 ├── agents/           # 7 agents (.agent.md)
-├── skills/           # 11 procedural workflows (SKILL.md per directory)
+├── skills/           # 9 procedural workflows (SKILL.md per directory)
 │   ├── playwright-e2e-testing/
-│   ├── webapp-playwright-testing/
 │   ├── webapp-selenium-testing/
 │   ├── a11y-playwright-testing/
 │   ├── accessibility-selenium-testing/
 │   ├── playwright-regression-testing/
 │   ├── playwright-cli/
 │   ├── qa-manual-istqb/
-│   ├── qa-test-planner/
 │   └── api-testing/
 ├── instructions/     # 7 rules and conventions (.instructions.md)
 ├── references/       # Detailed technical material

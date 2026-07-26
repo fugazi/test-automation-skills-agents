@@ -1,6 +1,6 @@
 ---
 name: webapp-selenium-testing
-description: 'Browser automation toolkit using Selenium WebDriver with Java and JUnit 5. Use for creating, debugging, or running Selenium tests, implementing Page Object Model, handling explicit waits, capturing screenshots, or setting up Maven test projects. Supports Chrome, Firefox, and Edge.'
+description: 'Author and maintain versioned Selenium WebDriver tests with Java and JUnit 5. Use for creating, debugging, or running Selenium specs, implementing Page Objects, handling explicit waits, capturing screenshots, or setting up Maven test projects. Supports Chrome, Firefox, and Edge.'
 ---
 
 # Web Application Testing with Selenium WebDriver

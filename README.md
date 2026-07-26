@@ -118,7 +118,7 @@ Then install the plugin:
 /plugin install test-automation-skills-agents@fugazi-test-automation
 ```
 
-This will make all 7 specialized QA agents and 11 reusable skills available in your Claude Code session.
+This will make all 7 specialized QA agents and 9 reusable skills available in your Claude Code session.
 
 **Local / development:**
 
@@ -141,14 +141,6 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill p
 
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill a11y-playwright-testing
-```
-
-```bash
-npx skills add https://github.com/fugazi/test-automation-skills-agents --skill webapp-playwright-testing
-```
-
-```bash
-npx skills add https://github.com/fugazi/test-automation-skills-agents --skill qa-test-planner
 ```
 
 ```bash
@@ -343,24 +335,20 @@ Typical triggers:
 - "Run axe-core checks, keyboard navigation, WCAG 2.1 AA" → `a11y-playwright-testing` or `accessibility-selenium-testing`
 - "Plan, organize, or optimize regression test suites" → `playwright-regression-testing`
 - "Generate ISTQB-aligned artifacts: test plan / bug report / traceability" → `qa-manual-istqb`
-- "Browser-based exploration and debugging" → `webapp-playwright-testing`
+- "Inspect a live page, capture evidence, or debug interactively" → `playwright-cli`
 
 ### Skills catalog (this repo)
 
 | Skill                            | Best for                                                     | Typical prompts                                                                          |
 | -------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `playwright-e2e-testing`         | Playwright TypeScript E2E + API-in-test patterns             | "Write Playwright tests for checkout with POM and stable locators."                      |
-| `webapp-playwright-testing`      | Live browser interaction + debugging via Playwright MCP      | "Navigate to /login, fill the form, and verify validation errors."                       |
+| `playwright-e2e-testing`         | Versioned Playwright TypeScript UI specs                      | "Write Playwright tests for checkout with POM and stable locators."                      |
 | `a11y-playwright-testing`        | WCAG 2.1 AA checks using Playwright + axe-core               | "Add automated a11y scans for auth pages and keyboard nav tests."                        |
 | `webapp-selenium-testing`        | Selenium Java automation patterns                            | "Create Selenium POM + JUnit 5 tests for login and profile update."                      |
 | `accessibility-selenium-testing` | A11y scanning with Selenium + axe-core                       | "Scan key pages for WCAG issues and generate an Allure-friendly report."                 |
 | `playwright-regression-testing`  | Regression strategy + test selection + CI/CD optimization    | "Organize tests into tiers (smoke, selective, full) and set up GitHub Actions pipeline." |
-| `qa-manual-istqb`                | ISTQB-aligned artifacts + test design techniques             | "Create a risk-based regression suite and a traceability matrix."                        |
-| `qa-test-planner`                | Test plans + test cases + bug reports + Playwright artifacts | "Use the skill qa-test-planner to create a test plan for payments."                      |
+| `qa-manual-istqb`                | QA artifacts + ISTQB test design techniques                  | "Create a test plan, cases, and traceability matrix for payments."                       |
 | `api-testing`                    | REST/GraphQL testing with Playwright and REST Assured        | "Create API tests for user endpoints with schema validation."                            |
 | `grill-me-qa`                    | Guided interview to challenge QA plans & tests strategies    | "Grill me on our Playwright migration strategy before we start building."               |
-
-> Note: `qa-test-planner` is intentionally strict: it is designed to trigger only when you call it by name.
 
 ### How skill discovery works
 
@@ -467,7 +455,7 @@ If a skill still does not activate automatically:
 | ---------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Agent not visible in selector      | Wrong folder path                                         | Ensure `.github/agents/*.agent.md` in target repo                         |
 | Skill never triggers               | Description too vague or folder not in canonical location | Improve `description` and ensure `.github/skills/<skill>/SKILL.md`        |
-| `qa-test-planner` doesn't activate | Designed to be explicit-only                              | Mention it by name: "use the skill qa-test-planner ..."                     |
+| Removed skill name in a prompt      | Catalog was consolidated in v3                           | See [skill migration plan](docs/enhancements/implementation-plan-skills.md) |
 | Generated tests are unstable       | Locator/wait anti-patterns                                | Follow the locator priority + web-first assertions from Playwright skills |
 | Selenium tests flaky               | `Thread.sleep()` or missing explicit waits                | Use `WebDriverWait` patterns from Selenium instructions/skills            |
 

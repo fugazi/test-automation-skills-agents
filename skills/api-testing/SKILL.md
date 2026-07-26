@@ -1,6 +1,6 @@
 ---
 name: api-testing
-description: 'Comprehensive API testing for REST and GraphQL endpoints. Use when asked to create, run, or debug API tests, validate schemas, test authentication, verify contracts, or check error handling. Covers Playwright request fixture (TypeScript) and REST Assured (Java 21+).'
+description: 'Test REST and GraphQL endpoint contracts using Playwright request fixture (TypeScript) or REST Assured (Java). Use for standalone API tests covering schemas, auth, status/error handling, pagination, idempotency, rate limits, or contract checks; not for browser E2E specs. Keywords: REST, GraphQL, API contract, schema validation, REST Assured.'
 ---
 
 # API Testing (Playwright + REST Assured)
