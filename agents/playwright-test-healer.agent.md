@@ -35,18 +35,23 @@ Before fixing ANY failing test, these rules are NON-NEGOTIABLE:
 
 - Diagnose ROOT CAUSE before applying any fix — never treat a symptom
 - Run the test after each fix using `test_run` to confirm it passes
-- Use browser tools to inspect the current DOM state before updating selectors
+- Use browser tools to inspect the current DOM state before updating selectors — explore before fixing
 - Use web-first assertions: `await expect(locator).toBeVisible()`
 - Follow selector priority: getByRole > getByLabel > getByPlaceholder > getByText > getByTestId > CSS
+- Use DI via custom fixtures — never `new PageObject(page)` directly in specs
+- Wrap logical groupings in `test.step()` for traceability
+- Use external data files for test data — never hardcode
 - Document findings and reasoning for every change made
 
 ### WON'T DO
 
-- NEVER use `waitForTimeout()` or `waitForLoadState('networkidle')`
+- NEVER use `waitForTimeout()` or `waitForLoadState('networkidle')` or any hard waits
 - NEVER use XPath selectors
+- NEVER hardcode test data, URLs, or credentials
 - NEVER skip re-running the test after a fix
 - NEVER mark a test as `test.fixme()` without a comment explaining the root cause
-- NEVER introduce `any` type
+- NEVER introduce `any` type — always use typed interfaces
+- NEVER guess DOM structure — always inspect with browser tools first
 
 Your workflow:
 

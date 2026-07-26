@@ -5,7 +5,7 @@ description: 'Test REST and GraphQL endpoint contracts using Playwright request 
 
 # API Testing (Playwright + REST Assured)
 
-Comprehensive API testing skill covering both Playwright TypeScript (request fixture, Supertest, Zod) and Java (REST Assured, AssertJ, JSON Schema Validator). Provides deep domain expertise for the `api-tester-specialist` agent.
+Comprehensive API testing skill covering both Playwright TypeScript (request fixture, Supertest, Zod) and Java (REST Assured, AssertJ, JSON Schema Validator).
 
 ## When to Use This Skill
 

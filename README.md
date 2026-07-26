@@ -238,6 +238,7 @@ When in doubt, keep the frontmatter minimal and portable:
 
 - Agents: `description` (required), plus optional `name`, `tools`, `target`, `infer`
 - Skills: `name` + `description` (required), optional `license`
+- Do **not** pin `model` in agent or skill frontmatter — let the tool harness choose
 
 ## Tool-agnostic usage (Claude/Cursor/OpenCode/Windsurf)
 
@@ -342,6 +343,7 @@ Typical triggers:
 | Skill                            | Best for                                                     | Typical prompts                                                                          |
 | -------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | `playwright-e2e-testing`         | Versioned Playwright TypeScript UI specs                      | "Write Playwright tests for checkout with POM and stable locators."                      |
+| `playwright-cli`                 | Live browser automation via CLI (snapshot, interact, debug)  | "Open a browser, navigate to the login page, and capture a snapshot."                   |
 | `a11y-playwright-testing`        | WCAG 2.1 AA checks using Playwright + axe-core               | "Add automated a11y scans for auth pages and keyboard nav tests."                        |
 | `webapp-selenium-testing`        | Selenium Java automation patterns                            | "Create Selenium POM + JUnit 5 tests for login and profile update."                      |
 | `accessibility-selenium-testing` | A11y scanning with Selenium + axe-core                       | "Scan key pages for WCAG issues and generate an Allure-friendly report."                 |
@@ -429,8 +431,11 @@ If a skill still does not activate automatically:
 1. Create `agents/<new-agent>.agent.md`.
 2. Follow the structure in `AGENTS.md`:
    - Required: frontmatter `description` (single-quoted)
-   - Recommended: `name`, `tools`, `model`, `target`, `handoffs`
-3. Keep the scope explicit (includes/excludes) and avoid tool overreach.
+   - Recommended: `name`, `target`, `handoffs`
+   - Optional: `tools` (omit for tool-agnostic agents), `infer`
+   - Do **not** pin `model` — let the tool harness decide
+3. Include a **Constitution** section (MUST DO / WON'T DO rules) aligned with the QA Orchestrator's Test Constitution
+4. Keep the scope explicit (includes/excludes) and avoid tool overreach
 
 ### Add a new skill
 

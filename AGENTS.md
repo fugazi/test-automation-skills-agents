@@ -84,7 +84,7 @@ license: 'Complete terms in LICENSE.txt' # Or SPDX identifier
 
 - **Line length**: Under 120 characters where practical
 - **Indentation**: 2 spaces for YAML and Markdown lists
-- **Quotes**: Use **single quotes** for YAML string values
+- **Quotes**: All YAML string values **must** use **single quotes** (e.g., `description: '...'`) — this is the applied standard across all `.agent.md` and `SKILL.md` files in this repository
 - **Frontmatter markers**: Triple-dash `---` at start and end
 - **Markdown headers**: `#` for title, `##` for sections, `###` for subsections
 - **Bullet lists**: `-` (hyphen) with space after

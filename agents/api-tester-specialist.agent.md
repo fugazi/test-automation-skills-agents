@@ -56,6 +56,9 @@ Before creating ANY API test, these rules are NON-NEGOTIABLE:
 - Cover happy path AND negative/error scenarios for every endpoint
 - Store credentials, tokens, and API keys in environment variables — never inline
 - Use external data files or constants for test data — never hardcode in test methods
+- Wrap logical groupings in `test.step()` (Playwright) or `@Step` (REST Assured/Allure) for traceability
+- Use web-first assertions: validate response schemas before asserting field values
+- Explore the live API (Swagger/OpenAPI docs) before writing tests — never guess endpoints
 - Run generated tests to confirm they pass before handing off
 
 ### WON'T DO
@@ -63,8 +66,11 @@ Before creating ANY API test, these rules are NON-NEGOTIABLE:
 - NEVER hardcode credentials, tokens, or API keys in test code
 - NEVER test only happy path — always include 4xx/5xx and edge cases
 - NEVER modify production API configurations or endpoints
-- NEVER use `any` type in TypeScript API tests
+- NEVER use `any` type in TypeScript API tests — always use typed interfaces or Zod schemas
 - NEVER skip response body or schema validation
+- NEVER use XPath selectors (irrelevant for API but inherited from Constitution — skip if N/A)
+- NEVER use hard waits (`waitForTimeout`, `Thread.sleep`) in API test setup
+- NEVER guess API structure — always verify from OpenAPI/Swagger docs or exploration
 
 ## Core Responsibilities
 

@@ -44,18 +44,20 @@ Before generating ANY test code, these rules are NON-NEGOTIABLE:
 ### MUST DO
 
 - Import `test` from `fixtures/test-base` or equivalent — never from `@playwright/test` directly in specs
-- Use custom fixtures for page object injection — never `new PageObject(page)` in specs
+- Use custom fixtures for page object injection — never `new PageObject(page)` in specs (DI via fixtures)
 - Use selector priority: getByRole > getByLabel > getByPlaceholder > getByText > getByTestId > CSS
 - Wrap all logical groupings in `test.step('description', async () => { ... })`
 - Use web-first assertions: `await expect(locator).toBeVisible()`
-- Explore the live application BEFORE writing locators (use browser tools)
+- Explore the live application BEFORE writing locators (use browser tools) — never guess DOM structure
+- Use external data files or factories for test data — never hardcode
+- Run the generated test to verify it passes before handing off
 
 ### WON'T DO
 
 - NEVER use XPath selectors
-- NEVER use `page.waitForTimeout()` or `waitForLoadState('networkidle')`
+- NEVER use `page.waitForTimeout()` or `waitForLoadState('networkidle')` or any hard waits
 - NEVER hardcode test data — use external data files or factories
-- NEVER use `any` type
+- NEVER use `any` type — always use typed interfaces
 - NEVER skip running the generated test to verify it passes
 
 # For each test you generate

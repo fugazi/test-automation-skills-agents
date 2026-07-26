@@ -25,7 +25,16 @@ Agents can invoke sub-agents using the `agent` tool. The orchestrator must inclu
 **3. Handoffs (VS Code only)**
 Agents can define `handoffs` in frontmatter for guided sequential workflows. Each handoff requires `label` and `agent`, while `prompt` and `send` are optional.
 
-**4. Test Orchestration Workflow (TOP)**
+**4. No Pinned Models**
+Agents and skills do **not** pin a `model` in frontmatter. The tool harness selects the appropriate model based on the ecosystem and task requirements.
+
+**4. Test Constitution (MUST DO / WON'T DO)**
+The QA Orchestrator defines a central Constitution that all delegated agents inherit. Each agent includes a `Constitution (from TOP)` section with the rules relevant to its domain. This ensures consistent quality guardrails across the entire agent catalog. See `agents/qa-orchestrator.agent.md` for the canonical rules.
+
+**5. Skills Are Agent-Agnostic**
+Skills do not reference specific agents. The tool harness (Copilot, Claude, etc.) decides which agent to activate for a given task. Skills provide domain expertise; agents provide workflow and boundaries.
+
+**6. Test Orchestration Workflow (TOP)**
 8-step workflow: Initialize → Explore → Plan → Generate → Implement → Review → Refactor → Run Tests. See `instructions/orchestration-workflow.instructions.md`.
 
 ## Sub-Agent Orchestration Pattern
