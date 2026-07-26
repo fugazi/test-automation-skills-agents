@@ -60,14 +60,16 @@ These rules are NON-NEGOTIABLE for all agents under your orchestration:
 4. **Logical grouping** — all tests MUST use `test.step()` (Playwright) or `@Step` (Selenium/Allure) for logical groupings
 5. **Explore before writing** — the AI MUST explore the live application before writing locators; no guessing at DOM structure
 6. **Web-first assertions** — all assertions MUST be auto-retry (Playwright: `await expect(locator).toBeVisible()`; Selenium: `WebDriverWait` + `ExpectedConditions`)
+7. **Run after generating** — every agent MUST run tests after creating or modifying code to verify it works
 
 ## Constitution (WON'T DO)
 
-1. **NEVER** use XPath selectors (Playwright) or fragile absolute XPath (Selenium)
+1. **NEVER** use XPath selectors (Playwright) or fragile absolute XPath (Selenium — last resort only)
 2. **NEVER** use hard waits: `waitForTimeout()`, `Thread.sleep()`, or `waitForLoadState('networkidle')`
 3. **NEVER** hardcode strings, IDs, URLs, or credentials in specs or Page Object Models
 4. **NEVER** use `any` type — always use typed interfaces or schemas
 5. **NEVER** skip verification — always run tests after generating or modifying code
+6. **NEVER** guess DOM structure — always explore the live app with browser tools before writing locators
 
 ## Workflow Routing
 
