@@ -160,3 +160,4 @@ Only reference the skills relevant to your project:
 - **Reference files, don't paste them.** Use file paths in prompts rather than pasting entire SKILL.md contents — Gemini CLI can read files directly.
 - **Use the agent pattern.** Start with "Read agents/[name].agent.md and use that persona" for consistent specialist behavior.
 - **Combine skill + instruction.** "Follow the playwright-e2e-testing skill AND the playwright-typescript instructions" gives Gemini the most context for high-quality output.
+- **Accessibility:** use skills (`a11y-playwright-testing`, `accessibility-selenium-testing`) instead of instructions — they load on-demand and include deeper content.

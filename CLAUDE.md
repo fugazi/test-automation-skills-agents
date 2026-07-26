@@ -20,7 +20,7 @@ AI Agents & Skills repository for test automation, covering:
 Skills use three-level loading: Discovery (`name` + `description`) → Instructions (full SKILL.md) → Resources (scripts, examples, docs when referenced).
 
 **2. Agent Orchestration**
-Agents can invoke sub-agents using the `agent` tool. The orchestrator must include all tools that sub-agents need. See `instructions/agents.instructions.md`.
+Agents can invoke sub-agents using the `agent` tool. The orchestrator must include all tools that sub-agents need.
 
 **3. Handoffs (VS Code only)**
 Agents can define `handoffs` in frontmatter for guided sequential workflows. Each handoff requires `label` and `agent`, while `prompt` and `send` are optional.
@@ -28,14 +28,11 @@ Agents can define `handoffs` in frontmatter for guided sequential workflows. Eac
 **4. No Pinned Models**
 Agents and skills do **not** pin a `model` in frontmatter. The tool harness selects the appropriate model based on the ecosystem and task requirements.
 
-**4. Test Constitution (MUST DO / WON'T DO)**
-The QA Orchestrator defines a central Constitution that all delegated agents inherit. Each agent includes a `Constitution (from TOP)` section with the rules relevant to its domain. This ensures consistent quality guardrails across the entire agent catalog. See `agents/qa-orchestrator.agent.md` for the canonical rules.
+**5. Test Constitution (MUST DO / WON'T DO)**
+The QA Orchestrator defines a central Constitution that all delegated agents inherit. Each agent includes a `Constitution (from TOP)` section with the rules relevant to its domain. See `agents/qa-orchestrator.agent.md` for the canonical rules.
 
-**5. Skills Are Agent-Agnostic**
+**6. Skills Are Agent-Agnostic**
 Skills do not reference specific agents. The tool harness (Copilot, Claude, etc.) decides which agent to activate for a given task. Skills provide domain expertise; agents provide workflow and boundaries.
-
-**6. Test Orchestration Workflow (TOP)**
-8-step workflow: Initialize → Explore → Plan → Generate → Implement → Review → Refactor → Run Tests. See `instructions/orchestration-workflow.instructions.md`.
 
 ## Sub-Agent Orchestration Pattern
 
@@ -59,7 +56,8 @@ This phase must be performed as the agent "<AGENT_NAME>" defined in "<AGENT_SPEC
 - Locator priority: role-based → label → placeholder → text → test ID → CSS
 - Web-first assertions with auto-retry (`await expect(locator).toBeVisible()`)
 - Page Object Model required
-- See `instructions/playwright-typescript.instructions.md`
+- See `instructions/playwright-typescript.instructions.md` for essentials
+- For full patterns (POM, fixtures, mocking): use the `playwright-e2e-testing` skill
 
 ### Selenium WebDriver (Java 21+)
 
@@ -85,14 +83,23 @@ This phase must be performed as the agent "<AGENT_NAME>" defined in "<AGENT_SPEC
 ### Accessibility Testing
 
 - WCAG 2.1 AA compliance with axe-core or Playwright accessibility tree
-- See `instructions/a11y.instructions.md`
+- Use the `a11y-playwright-testing` or `accessibility-selenium-testing` skills (loaded on-demand)
+
+## Instructions Design Philosophy
+
+This repo uses a **lean instructions** approach aligned with Context Engineering principles:
+
+- **Instructions** = cross-cutting essentials that apply to specific file types (scoped via `applyTo`)
+- **Skills** = deep domain expertise loaded progressively on-demand
+- **Agents** = workflow orchestration, boundaries, and Constitution enforcement
+
+Instructions should be short (30-60 lines) and contain only non-negotiable rules. Deep content belongs in skills where progressive loading avoids context tax.
 
 ## Reference Documentation
 
 - [AGENTS.md](./AGENTS.md) — Style guide and file standards
-- [Agent Creation Guidelines](./instructions/agents.instructions.md)
-- [Skill Creation Guidelines](./instructions/agent-skills.instructions.md)
-- [Orchestration Workflow (TOP)](./instructions/orchestration-workflow.instructions.md)
+- [Agent Authoring Guide](./docs/references/authoring-agents.md)
+- [Skill Authoring Guide](./docs/references/authoring-skills.md)
 - [Playwright File Map](./skills/playwright-e2e-testing/references/file-map-template.md)
 - [Selenium File Map](./skills/webapp-selenium-testing/references/file-map-template.md)
 - [Testing Anti-Patterns](./references/testing-anti-patterns.md) — 14 common mistakes with Bad/Good examples

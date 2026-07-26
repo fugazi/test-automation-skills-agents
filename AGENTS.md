@@ -9,7 +9,7 @@ The content is **tool-agnostic** (usable with GitHub Copilot, Claude, Cursor, Op
 ```
 agents/           # Custom AI agent definitions (*.agent.md)
 skills/           # Specialized testing skills (*/SKILL.md)
-instructions/     # Guidelines for creating agents/skills (*.instructions.md)
+instructions/     # Lean, scoped coding essentials (*.instructions.md)
 docs/             # Setup guides and documentation
 references/       # Shared reference material
 ```

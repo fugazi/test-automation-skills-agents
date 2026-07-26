@@ -219,9 +219,10 @@ This repository includes an `instructions/` layer that is unique to our structur
 
 | Pattern                                  | Example                                 | Purpose                             |
 | ---------------------------------------- | --------------------------------------- | ----------------------------------- |
-| `<framework>-<language>.instructions.md` | `playwright-typescript.instructions.md` | Framework-specific coding standards |
-| `<domain>.instructions.md`               | `a11y.instructions.md`                  | Domain-specific guidelines          |
-| `<concept>.instructions.md`              | `agents.instructions.md`                | Meta-guidelines for repo concepts   |
+| `<framework>-<language>.instructions.md` | `playwright-typescript.instructions.md` | Framework-specific coding essentials |
+| `<concept>.instructions.md`              | `cicd-testing.instructions.md`          | Domain-specific pipeline standards  |
+
+> **Note:** Meta-guidelines for authoring agents and skills have moved to `docs/references/authoring-agents.md` and `docs/references/authoring-skills.md`. Accessibility and deep domain content live in skills (loaded on-demand) rather than instructions.
 
 ### Instructions Content Structure
 
@@ -257,10 +258,11 @@ Links to related instructions, skills, or agents.
 
 | Instruction                               | Governs                                  |
 | ----------------------------------------- | ---------------------------------------- |
-| `agents.instructions.md`                  | Agent creation, orchestration, handoffs  |
-| `agent-skills.instructions.md`            | Skill creation standards                 |
-| `playwright-typescript.instructions.md`   | Playwright/TypeScript coding conventions |
+| `playwright-typescript.instructions.md`   | Playwright/TypeScript coding essentials  |
 | `selenium-webdriver-java.instructions.md` | Selenium/Java coding conventions         |
-| `a11y.instructions.md`                    | Accessibility testing standards          |
+| `cicd-testing.instructions.md`            | CI/CD pipeline configuration             |
+
+> **Moved to `docs/references/`:** Agent authoring guide and Skill authoring guide are now reference documentation, not active instructions.
+> **Moved to skills:** Accessibility standards now live in `a11y-playwright-testing` and `accessibility-selenium-testing` skills (loaded on-demand).
 
 ---

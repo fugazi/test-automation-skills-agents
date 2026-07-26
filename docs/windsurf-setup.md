@@ -30,6 +30,8 @@ cp test-automation-skills-agents/skills/playwright-regression-testing/SKILL.md .
 # Copy instructions as conventions
 cp test-automation-skills-agents/instructions/playwright-typescript.instructions.md .windsurf/rules/playwright-conventions.md
 cp test-automation-skills-agents/instructions/selenium-webdriver-java.instructions.md .windsurf/rules/selenium-conventions.md
+# a11y: use skills instead (loaded on-demand)
+# cp -r test-automation-skills-agents/skills/a11y-playwright-testing/ .windsurf/skills/
 ```
 
 ### Option C: Clone and Reference
