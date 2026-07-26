@@ -8,7 +8,7 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 | ---------------- | ----------------------------------------- | -------- |
 | **Agents**       | Specialist personas for specific QA tasks | 7        |
 | **Skills**       | Procedural workflows for testing domains  | 9        |
-| **Instructions** | Rules, conventions, and standards         | 7        |
+| **Instructions** | Lean, scoped coding essentials         | 3        |
 | **References**   | Detailed technical reference material     | Multiple |
 | **Templates**    | Starter files for common test patterns    | Multiple |
 
@@ -21,7 +21,7 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 | Claude Code    | [docs/claude-code-setup.md](./claude-code-setup.md) |
 | Cursor         | [docs/cursor-setup.md](./cursor-setup.md)           |
 | GitHub Copilot | [docs/copilot-setup.md](./copilot-setup.md)         |
-| Gemini CLI     | [docs/gemini-cli-setup.md](./gemini-cli-setup.md)   |
+| Antigravity CLI | [docs/antigravity-setup.md](./antigravity-setup.md) |
 | Windsurf       | [docs/windsurf-setup.md](./windsurf-setup.md)       |
 
 ### 2. How Skills Work

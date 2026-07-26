@@ -58,7 +58,7 @@ This repo is a **catalog**. Choose the integration style for your tool.
 | Claude Code    | [docs/claude-code-setup.md](./docs/claude-code-setup.md) |
 | Cursor         | [docs/cursor-setup.md](./docs/cursor-setup.md)           |
 | GitHub Copilot | [docs/copilot-setup.md](./docs/copilot-setup.md)         |
-| Gemini CLI     | [docs/gemini-cli-setup.md](./docs/gemini-cli-setup.md)   |
+| Antigravity CLI | [docs/antigravity-setup.md](./docs/antigravity-setup.md) |
 | Windsurf       | [docs/windsurf-setup.md](./docs/windsurf-setup.md)       |
 
 ### Option A - Copy into your target repository (most reliable)

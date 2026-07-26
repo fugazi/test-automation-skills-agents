@@ -1,6 +1,8 @@
-# Setup: Gemini CLI
+# Setup: Antigravity CLI
 
-Integration guide for using test-automation-skills-agents with [Gemini CLI](https://github.com/google-gemini/gemini-cli).
+Integration guide for using test-automation-skills-agents with [Antigravity CLI](https://developers.google.com/antigravity) (`agy`).
+
+> **Note:** Antigravity CLI replaces Gemini CLI as of June 18, 2026. If you are migrating from Gemini CLI, run `agy plugin import gemini` to convert your existing extensions. Your `GEMINI.md` context file keeps working — Antigravity CLI reads it natively.
 
 ## Installation
 
@@ -34,7 +36,7 @@ Instructions are in: /path/to/test-automation-skills-agents/instructions/
 git clone https://github.com/fugazi/test-automation-skills-agents.git
 ```
 
-Then reference specific files in your Gemini CLI sessions:
+Then reference specific files in your Antigravity CLI sessions:
 
 ```
 "Read /path/to/test-automation-skills-agents/skills/playwright-e2e-testing/SKILL.md and follow its workflow to write tests for the login page"
@@ -45,21 +47,38 @@ Then reference specific files in your Gemini CLI sessions:
 Copy the skills and instructions you need directly into your project:
 
 ```bash
-# Copy all skills
-cp -r test-automation-skills-agents/skills/ ./qa-skills/
+# Copy skills to .agents/skills/ (Antigravity convention)
+cp -r test-automation-skills-agents/skills/ .agents/skills/
 
 # Copy instructions
-cp -r test-automation-skills-agents/instructions/ ./qa-instructions/
+cp -r test-automation-skills-agents/instructions/ .agents/rules/
 
 # Copy agents
-cp -r test-automation-skills-agents/agents/ ./qa-agents/
+cp -r test-automation-skills-agents/agents/ .agents/agents/
 ```
 
 Reference these directories in your `GEMINI.md`.
 
-## How Skills Work with Gemini CLI
+### Option D: Migrate from Gemini CLI
 
-Gemini CLI discovers skills through configuration. The SKILL.md frontmatter `description` field tells Gemini when to activate each skill.
+If you have an existing Gemini CLI setup:
+
+```bash
+# One-command migration of extensions
+agy plugin import gemini
+
+# Move workspace skills to the new location
+mv .gemini/skills/ .agents/skills/
+```
+
+Your `GEMINI.md` keeps working as-is.
+
+## How Skills Work with Antigravity CLI
+
+Antigravity CLI discovers skills through configuration. The SKILL.md frontmatter `description` field tells Antigravity when to activate each skill. Skills are loaded from:
+
+- **Global:** `~/.gemini/config/skills/`
+- **Project:** `<project-root>/.agents/skills/`
 
 To enable skill auto-discovery, list your skills in `GEMINI.md`:
 
@@ -80,7 +99,7 @@ To enable skill auto-discovery, list your skills in `GEMINI.md`:
 
 ## Activating Skills
 
-Reference skills explicitly in your Gemini CLI prompts:
+Reference skills explicitly in your Antigravity CLI prompts:
 
 ```
 "Follow the playwright-e2e-testing skill to create tests for the checkout flow"
@@ -90,7 +109,7 @@ Reference skills explicitly in your Gemini CLI prompts:
 
 ## Using Agents
 
-Reference agent files in your Gemini session:
+Reference agent files in your Antigravity session:
 
 ```
 "Read agents/playwright-test-planner.agent.md and use that persona to create a test plan for the user registration flow"
@@ -156,7 +175,9 @@ Only reference the skills relevant to your project:
 
 ## Tips
 
-- **GEMINI.md is your entry point.** Keep it concise but specific. Include tech stack, conventions, and skill/agent locations.
-- **Reference files, don't paste them.** Use file paths in prompts rather than pasting entire SKILL.md contents — Gemini CLI can read files directly.
+- **GEMINI.md is your entry point.** Antigravity CLI reads it natively. Keep it concise but specific.
+- **Reference files, don't paste them.** Use file paths in prompts — Antigravity CLI can read files directly.
 - **Use the agent pattern.** Start with "Read agents/[name].agent.md and use that persona" for consistent specialist behavior.
-- **Combine skill + instruction.** "Follow the playwright-e2e-testing skill AND the playwright-typescript instructions" gives Gemini the most context for high-quality output.
+- **Combine skill + instruction.** "Follow the playwright-e2e-testing skill AND the playwright-typescript instructions" gives Antigravity the most context for high-quality output.
+- **Accessibility:** use skills (`a11y-playwright-testing`, `accessibility-selenium-testing`) instead of instructions — they load on-demand and include deeper content.
+- **Migrating from Gemini CLI:** run `agy plugin import gemini` and move `.gemini/skills/` to `.agents/skills/`.
