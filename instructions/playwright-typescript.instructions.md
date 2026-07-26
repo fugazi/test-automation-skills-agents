@@ -1,124 +1,29 @@
 ---
-description: 'Playwright test generation instructions'
-applyTo: '**'
+description: 'Playwright TypeScript essentials — locator priority, web-first assertions, no hard waits. Applied to all .spec.ts files.'
+applyTo: '**/*.spec.ts'
 ---
 
-## Test Writing Guidelines
+# Playwright TypeScript Essentials
 
-### Code Quality Standards
+## Locator Priority (always follow)
 
-- **Locators**: Prioritize user-facing, role-based locators (`getByRole`, `getByLabel`, `getByText`, etc.) for resilience and accessibility. Use `test.step()` to group interactions and improve test readability and reporting.
-- **Assertions**: Use auto-retrying web-first assertions. These assertions start with the `await` keyword (e.g., `await expect(locator).toHaveText()`). Avoid `expect(locator).toBeVisible()` unless specifically testing for visibility changes.
-- **Timeouts**: Rely on Playwright's built-in auto-waiting mechanisms. Avoid hard-coded waits or increased default timeouts.
-- **Clarity**: Use descriptive test and step titles that clearly state the intent. Add comments only to explain complex logic or non-obvious interactions.
-- **Page Object Model (POM)**: Every test must interact with the UI through Page Object classes. Encapsulate element locators and interaction logic within these classes.
-- **Fluent Interface**: Design Page Object methods to return this or the next Page object to allow method chaining, improving readability.
-- **Clean Code**: Follow SOLID principles. Keep tests focused on business logic and Page Objects focused on implementation details.
+1. `getByRole()` + accessible name
+2. `getByLabel()`
+3. `getByPlaceholder()`
+4. `getByText()`
+5. `getByTestId()`
+6. CSS (last resort)
 
-### Test Structure
+## Non-Negotiable Rules
 
-- **Imports**: Start with `import { test, expect } from "@playwright/test";`.
-- **Organization**: Group related tests for a feature under a `test.describe()` block.
-- **Hooks**: Use `beforeEach` for setup actions common to all tests in a `describe` block (e.g., navigating to a page).
-- **Titles**: Follow a clear naming convention, such as `Feature - Specific action or scenario`.
+- **Web-first assertions only**: `await expect(locator).toBeVisible()` — never throw-based
+- **No hard waits**: `waitForTimeout()` and `waitForLoadState('networkidle')` are banned
+- **No XPath**: use role-based locators instead
+- **No `any` type**: always typed interfaces
+- **test.step()**: wrap all logical groupings for traceability
+- **External test data**: environment variables, data files, or factories — never hardcoded
+- **POM required**: all UI interaction through Page Object classes, injected via custom fixtures
 
-### File Organization
+## References
 
-- **Location**: Store all test files in the `tests/` directory.
-- **Naming**: Use the convention `<feature-or-page>.spec.ts` (e.g., `login.spec.ts`, `search.spec.ts`).
-- **Scope**: Aim for one test file per major application feature or page.
-
-### Assertion Best Practices
-
-- **UI Structure**: Use `toMatchAriaSnapshot` to verify the accessibility tree structure of a component. This provides a comprehensive and accessible snapshot.
-- **Element Counts**: Use `toHaveCount` to assert the number of elements found by a locator.
-- **Text Content**: Use `toHaveText` for exact text matches and `toContainText` for partial matches.
-- **Navigation**: Use `toHaveURL` to verify the page URL after an action.
-
----
-
-## Example Test Structure
-
-```typescript
-import { test, expect } from "@playwright/test";
-
-test.describe("Movie Search Feature", () => {
-  test.beforeEach(async ({ page }) => {
-    // Navigate to the application before each test
-    await page.goto("https://debs-obrien.github.io/playwright-movies-app");
-  });
-
-  test("Search for a movie by title", async ({ page }) => {
-    await test.step("Activate and perform search", async () => {
-      await page.getByRole("search").click();
-      const searchInput = page.getByRole("textbox", { name: "Search Input" });
-      await searchInput.fill("Garfield");
-      await searchInput.press("Enter");
-    });
-
-    await test.step("Verify search results", async () => {
-      // Verify the accessibility tree of the search results
-      await expect(page.getByRole("main")).toMatchAriaSnapshot(`
-        - main:
-          - heading "Garfield" [level=1]
-          - heading "search results" [level=2]
-          - list "movies":
-            - listitem "movie":
-              - link "poster of The Garfield Movie The Garfield Movie rating":
-                - /url: /playwright-movies-app/movie?id=tt5779228&page=1
-                - img "poster of The Garfield Movie"
-                - heading "The Garfield Movie" [level=2]
-      `);
-    });
-  });
-});
-```
-
-## Locator Strategy (Priority Order)
-
-Use locators that mirror how users interact with the page:
-
-```typescript
-// ✅ BEST: Role-based (accessible, resilient)
-page.getByRole("button", { name: "Submit" });
-page.getByRole("textbox", { name: "Email" });
-page.getByRole("link", { name: "Sign up" });
-page.getByRole("heading", { name: "Welcome" });
-
-// ✅ GOOD: User-facing text
-page.getByLabel("Email address");
-page.getByPlaceholder("Enter your email");
-page.getByText("Welcome back");
-page.getByTitle("Profile settings");
-
-// ✅ GOOD: Test IDs (stable, explicit)
-page.getByTestId("submit-button");
-page.getByTestId("user-avatar");
-
-// ⚠️ AVOID: CSS selectors (brittle)
-page.locator(".btn-primary");
-page.locator("#submit");
-
-// ❌ NEVER: XPath (extremely brittle)
-page.locator('//div[@class="container"]/button[1]');
-```
-
----
-
-## Test Execution Strategy
-
-1. **Initial Run**: Execute tests with `npx playwright test --project=chromium`
-2. **Debug Failures**: Analyze test failures and identify root causes
-3. **Iterate**: Refine locators, assertions, or test logic as needed
-4. **Validate**: Ensure tests pass consistently and cover the intended functionality
-5. **Report**: Provide feedback on test results and any issues discovered
-
-## Quality Checklist
-
-Before finalizing tests, ensure:
-
-- [ ] All locators are accessible and specific and avoid strict mode violations
-- [ ] Tests are grouped logically and follow a clear structure
-- [ ] Assertions are meaningful and reflect user expectations
-- [ ] Tests follow consistent naming conventions
-- [ ] Code is properly formatted and commented
+For full patterns (POM, fixtures, mocking, debugging, visual regression): use the `playwright-e2e-testing` skill.

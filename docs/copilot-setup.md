@@ -136,8 +136,9 @@ cp test-automation-skills-agents/instructions/playwright-typescript.instructions
 # Selenium conventions
 cp test-automation-skills-agents/instructions/selenium-webdriver-java.instructions.md .github/instructions/
 
-# Accessibility standards
-cp test-automation-skills-agents/instructions/a11y.instructions.md .github/instructions/
+# Accessibility: use skills instead of instructions (loaded on-demand)
+# cp -r test-automation-skills-agents/skills/a11y-playwright-testing/ .github/skills/
+# cp -r test-automation-skills-agents/skills/accessibility-selenium-testing/ .github/skills/
 
 # CI/CD pipeline setup
 cp test-automation-skills-agents/instructions/cicd-testing.instructions.md .github/instructions/

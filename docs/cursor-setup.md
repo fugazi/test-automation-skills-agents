@@ -131,7 +131,8 @@ Copy instruction files as Cursor rules:
 ```bash
 cp test-automation-skills-agents/instructions/playwright-typescript.instructions.md .cursor/rules/playwright-conventions.mdc
 cp test-automation-skills-agents/instructions/selenium-webdriver-java.instructions.md .cursor/rules/selenium-conventions.mdc
-cp test-automation-skills-agents/instructions/a11y.instructions.md .cursor/rules/a11y-conventions.mdc
+# a11y: use skills instead (loaded on-demand)
+# cp -r test-automation-skills-agents/skills/a11y-playwright-testing/ .cursor/skills/
 ```
 
 Add MDC frontmatter with appropriate globs to each file.

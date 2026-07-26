@@ -25,21 +25,21 @@ This repository is designed to be **copied/embedded into real testing projects**
 ## What you get
 
 - **Agents** (in `agents/`): persona + responsibilities + boundaries for specialized AI behavior
-- **Instructions** (in `instructions/`): operational rules and standards that guide work consistently
+- **Instructions** (in `instructions/`): lean, scoped essentials (locator priority, no-hard-waits rules) — deep content lives in skills
 - **Skills** (in `skills/`): reusable workflows + references + scripts/templates (progressively loaded in Copilot; otherwise used as playbooks)
 
 ## Repository structure
 
 ```
 agents/           # Custom agent definitions (*.agent.md)
-instructions/     # Authoring & operational guidelines (*.instructions.md)
+instructions/     # Lean, scoped coding essentials (*.instructions.md)
 skills/           # Reusable capabilities (skills/*/SKILL.md + resources)
 docs/             # Setup guides, standards, and documentation
-├── references/   # Extracted reference material (section details, examples)
+├── references/   # Extracted reference material (authoring guides, examples)
 └── enhancements/ # Enhancement plans (CE audit, future improvements)
 references/       # Shared reference material (anti-patterns, patterns)
 AGENTS.md         # House style, file standards, frontmatter rules
-CLAUDE.md         # Additional guidance (legacy + architecture notes)
+CLAUDE.md         # Claude Code entry point + architecture notes
 ```
 
 ## Quick start (recommended workflow)
@@ -324,7 +324,7 @@ Examples:
   `.github/instructions/`.
 - Ensure Selenium suites never use `Thread.sleep()`: copy `instructions/selenium-webdriver-java.instructions.md` into
   `.github/instructions/`.
-- Standardize a11y approach: copy `instructions/a11y.instructions.md`.
+- For a11y standards: use the `a11y-playwright-testing` or `accessibility-selenium-testing` skills (loaded on-demand).
 
 ## How to use skills (when they help most)
 
@@ -436,6 +436,7 @@ If a skill still does not activate automatically:
    - Do **not** pin `model` — let the tool harness decide
 3. Include a **Constitution** section (MUST DO / WON'T DO rules) aligned with the QA Orchestrator's Test Constitution
 4. Keep the scope explicit (includes/excludes) and avoid tool overreach
+5. See the [Agent Authoring Guide](./docs/references/authoring-agents.md) for detailed standards
 
 ### Add a new skill
 
