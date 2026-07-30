@@ -80,16 +80,9 @@ test("user can login", async ({ page }) => {
 
 ### 2. Locator Strategy (Priority Order)
 
-| Priority | Locator                | Example                                   |
-| -------- | ---------------------- | ----------------------------------------- |
-| 1        | Role + accessible name | `getByRole('button', { name: 'Submit' })` |
-| 2        | Label                  | `getByLabel('Email')`                     |
-| 3        | Placeholder            | `getByPlaceholder('Enter email')`         |
-| 4        | Text                   | `getByText('Welcome')`                    |
-| 5        | Test ID                | `getByTestId('submit-btn')`               |
-| 6        | CSS (avoid)            | `locator('.btn-primary')`                 |
+Prefer role-based locators (`getByRole`) with accessible names, then label → placeholder → text → test ID → CSS (last resort). XPath is never used.
 
-See [Locator Strategies: Priority](./references/locator-strategies-priority.md) for detailed patterns.
+➡️ **Full priority hierarchy, role reference, and examples:** [Locator Strategies: Priority](./references/locator-strategies-priority.md) — the single source of truth.
 
 ### 3. Auto-Waiting & Web-First Assertions
 
