@@ -62,6 +62,7 @@ test-automation-skills-agents/
 │   ├── playwright-regression-testing/
 │   ├── playwright-cli/
 │   ├── qa-manual-istqb/
+│   ├── grill-me-qa/
 │   └── api-testing/
 ├── instructions/     # 7 rules and conventions (.instructions.md)
 ├── references/       # Detailed technical material
@@ -109,7 +110,7 @@ Skills that apply to both stacks provide examples in both languages.
 
 1. Pick the stack: Playwright + axe-core (`a11y-playwright-testing`) or Selenium + axe-core (`accessibility-selenium-testing`).
 2. Add a11y checks to critical flows (auth, checkout, forms, modals).
-3. Fail CI on WCAG 2.1 AA violations.
+3. Fail CI on WCAG 2.2 AA violations.
 
 ## Further Reading
 

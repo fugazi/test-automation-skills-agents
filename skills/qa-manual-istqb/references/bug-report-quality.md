@@ -1,5 +1,7 @@
 # Bug report quality checklist
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 ## Minimum viable bug report
 
 - Clear title that describes the issue + location

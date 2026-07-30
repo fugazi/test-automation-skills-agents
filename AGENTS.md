@@ -18,6 +18,14 @@ references/       # Shared reference material
 
 This repository has **no build system** — it is a documentation/knowledge base. Files are Markdown with YAML frontmatter, consumed by AI coding tools.
 
+The only validation is a structural lint that enforces the skill-anatomy standard:
+
+```bash
+node scripts/lint-skills.mjs        # 0 errors required; exit code 0 = pass
+```
+
+It checks frontmatter, `name`-matches-folder, SKILL.md ≤ 500 lines, back-link headers on references, intra-skill link resolution, kebab-case file naming, and the Selenium (Maven-only / Selenium Manager) rules. The same check runs in CI on PRs touching `skills/`, `agents/`, or `instructions/` (`.github/workflows/lint.yml`).
+
 ## File Naming Conventions
 
 | File Type     | Pattern                                  | Example                                 |
@@ -84,7 +92,7 @@ license: 'Complete terms in LICENSE.txt' # Or SPDX identifier
 
 - **Line length**: Under 120 characters where practical
 - **Indentation**: 2 spaces for YAML and Markdown lists
-- **Quotes**: All YAML string values **must** use **single quotes** (e.g., `description: '...'`) — this is the applied standard across all `.agent.md` and `SKILL.md` files in this repository
+- **Quotes**: YAML string values for `description` **must** use **single quotes** (e.g., `description: '...'`). The `name` field in `SKILL.md` follows standard Anthropic Agent Skills conventions and may be unquoted (e.g., `name: skill-name`).
 - **Frontmatter markers**: Triple-dash `---` at start and end
 - **Markdown headers**: `#` for title, `##` for sections, `###` for subsections
 - **Bullet lists**: `-` (hyphen) with space after

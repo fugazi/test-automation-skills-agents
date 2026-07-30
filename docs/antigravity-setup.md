@@ -94,6 +94,7 @@ To enable skill auto-discovery, list your skills in `GEMINI.md`:
 | accessibility-selenium-testing | Accessibility testing with Selenium        |
 | playwright-regression-testing  | Regression suite strategy and optimization |
 | qa-manual-istqb                | QA artifacts and ISTQB test design          |
+| grill-me-qa                    | Adversarial review of QA strategies/plans  |
 | playwright-cli                 | Browser automation via CLI                 |
 ```
 
@@ -132,7 +133,7 @@ Or paste agent content directly:
 | Playwright Test Healer    | "Use the playwright-test-healer agent to fix this failing test..."            |
 | API Tester Specialist     | "Use the api-tester-specialist agent to design API tests for..."              |
 | Selenium Test Specialist  | "Use the selenium-test-specialist agent to create Java tests for..."          |
-| Flaky Test Hunter         | "Use the playwright-test-healer agent to investigate this flaky test..."       |
+| QA Orchestrator           | "Use the qa-orchestrator agent to coordinate this multi-step testing workflow..." |
 | Test Refactor Specialist  | "Use the test-refactor-specialist agent to refactor this test suite..."       |
 
 ## Customization

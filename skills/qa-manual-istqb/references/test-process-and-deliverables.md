@@ -1,5 +1,7 @@
 # Test process and deliverables (ISTQB-aligned, practical)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Use this as a checklist to ensure the “testware” is complete and auditable.
 
 ## 1) Test planning

@@ -1,5 +1,7 @@
 # Contract Testing
 
+> Part of the `api-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Contract testing patterns for verifying the agreement between API producer and consumer. Focuses on request/response shape, status codes, and headers — not business logic.
 
 ## What Is a Contract Test

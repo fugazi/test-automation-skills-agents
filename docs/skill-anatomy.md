@@ -223,7 +223,7 @@ Optional `.instructions.md` files for editor-specific guidance (VS Code, Cursor)
 
 | Element         | Convention                         | Example                 |
 | --------------- | ---------------------------------- | ----------------------- |
-| Reference files | `lowercase-hyphen-separated.md`    | `locator_strategies.md` |
+| Reference files | `lowercase-hyphen-separated.md`    | `locator-strategies.md` |
 | Template files  | `lowercase-hyphen-separated.md`    | `test-case.md`          |
 | Script files    | `lowercase-hyphen-separated.<ext>` | `setup-project.sh`      |
 | Asset files     | `lowercase-hyphen-separated.<ext>` | `sample-report.html`    |
@@ -291,7 +291,7 @@ References are stored in `skills/<skill-name>/references/`, NOT at the project r
 
 ### Content Rules
 
-1. **One topic per file.** A reference file covers one subject (e.g., `locator_strategies.md`, NOT `playwright-guide.md` that covers everything).
+1. **One topic per file.** A reference file covers one subject (e.g., `locator-strategies.md`, NOT `playwright-guide.md` that covers everything).
 2. **Maximum 300 lines per reference file.** If a topic exceeds 300 lines, split into multiple focused files.
 3. **Must be linkable.** Every reference file must be referenced from at least one step in SKILL.md. Orphan references are dead weight.
 4. **Use relative paths.** Always reference as `./references/file-name.md` or `./scripts/file-name.sh`. Never use absolute paths.
@@ -379,7 +379,7 @@ Use this checklist when reviewing a skill:
 - [ ] No persona framing or motivational filler
 - [ ] Security rules are explicit and non-inferable
 - [ ] `<details>` noted as cosmetic (tokens still consumed)
-- [ ] References have back-links for files >100 lines
+- [ ] References have back-link headers (every reference file, regardless of length)
 - [ ] Templates clearly marked as starter code
 
 ---

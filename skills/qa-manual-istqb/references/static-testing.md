@@ -1,5 +1,7 @@
 # Static Testing (ISTQB Foundation Level)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Static testing examines work products (requirements, designs, code, test cases) **without executing** software. It finds defects early, reducing cost and rework.
 
 ## Static vs Dynamic Testing

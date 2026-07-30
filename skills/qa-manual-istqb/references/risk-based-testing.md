@@ -1,5 +1,7 @@
 # Risk-Based Testing (ISTQB Foundation Level)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Risk-based testing (RBT) prioritizes test effort based on the likelihood and impact of failures. It ensures the most important areas receive the most attention, optimizing limited testing resources.
 
 ## What Is Risk in Testing?

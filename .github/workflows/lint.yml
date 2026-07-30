@@ -1,0 +1,36 @@
+name: Lint Skills & Agents
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - "agents/**"
+      - "instructions/**"
+      - "scripts/lint-skills.mjs"
+      - ".github/workflows/lint.yml"
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+      - "agents/**"
+      - "instructions/**"
+      - "scripts/lint-skills.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Structural lint (anatomy standard)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run lint-skills
+        run: node scripts/lint-skills.mjs

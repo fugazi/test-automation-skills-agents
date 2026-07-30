@@ -69,28 +69,7 @@ Comprehensive toolkit for end-to-end testing of web applications using Playwrigh
 
 ### Common Rationalizations
 
-**Purpose:** The most distinctive feature of well-crafted skills. These are excuses agents use to skip important steps, paired with factual rebuttals.
-
-**Rules:**
-
-- MUST be a markdown table with two columns: `Rationalization` and `Reality`
-- Include at least 3 entries
-- Every skip-worthy step in the Core Process needs a corresponding entry
-- Be specific — generic entries like "I'll skip testing" are less useful
-
-**Example:**
-
-```markdown
-## Common Rationalizations
-
-| Rationalization                                                | Reality                                                                                                                                |
-| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| "The login test is simple, I don't need the POM pattern"       | Simple tests grow complex. Without POM, a locator change breaks every test that touches login.                                         |
-| "I'll add error handling after the tests pass"                 | Without error handling, test failures produce unhelpful stack traces. Add `test.step()` and proper assertions from the start.          |
-| "This selector worked locally, it's fine for CI"               | CI environments have different timing and rendering. Always use stable locators (`getByRole`, `getByTestId`) and web-first assertions. |
-| "Thread.sleep() is easier than explicit waits"                 | `Thread.sleep()` creates flaky tests that fail intermittently. Use `WebDriverWait` with `ExpectedConditions` for deterministic waits.  |
-| "I'll skip the accessibility assertions, they're not critical" | WCAG compliance is a legal requirement in many jurisdictions. Use axe-core assertions from the start.                                  |
-```
+> **Removed pattern.** This section previously recommended a `## Common Rationalizations` table (model excuses vs rebuttals). Anthropic eliminated it from Claude Code with no eval loss, and `docs/skill-anatomy.md` lists it under "Sections NOT Recommended". Do **not** add it to skills. If you must capture a *real observed* model failure, encode it as a one-line affirmative principle inside `## Red Flags` instead (e.g., "Never use `Thread.sleep()` as a wait — use `WebDriverWait`").
 
 ### Red Flags
 
@@ -124,7 +103,7 @@ Comprehensive toolkit for end-to-end testing of web applications using Playwrigh
 
 - MUST be a checklist using `- [ ]` syntax
 - Every checkbox must be verifiable with evidence (test output, build result, file existence, etc.)
-- Include at least 5 items
+- Include 3-5 non-inferable items (more is noise; do not list what an agent would obviously do)
 - Group by category when the checklist is long
 
 **Example:**
@@ -132,9 +111,9 @@ Comprehensive toolkit for end-to-end testing of web applications using Playwrigh
 ```markdown
 ## Verification
 
-1. No `Thread.sleep()` or `waitForTimeout()` — use auto-waits or explicit assertions
-2. Locators follow priority order (role > label > testId > CSS)
-3. No hardcoded credentials — all from environment variables
+- [ ] No `Thread.sleep()` or `waitForTimeout()` — use auto-waits or explicit assertions
+- [ ] Locators follow priority order (role > label > testId > CSS)
+- [ ] No hardcoded credentials — all from environment variables
 ```
 
 ---
@@ -157,7 +136,7 @@ For test planning and QA deliverables, activate the `qa-manual-istqb` skill.
 1. **Never duplicate content between skills.** If two skills need the same information, put it in one skill's `references/` and link from the other.
 2. **Reference by skill name, not file path.** Use `` `skill-name` `` not `skills/skill-name/SKILL.md`.
 3. **Keep references directional.** Avoid circular references (Skill A references Skill B which references Skill A).
-4. **Document cross-references in SKILLS-INDEX.md.** If a skill references another skill, add it to the dependency map.
+4. **Document routing in each skill.** Each SKILL.md records its boundaries in a "Do NOT Use For" list (where it defers to sibling skills) and lists its own references in `## References`. There is no central index file — routing lives in the skills themselves so each skill stays self-contained.
 
 ---
 

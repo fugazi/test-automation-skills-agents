@@ -1,5 +1,7 @@
 # AI Testing Interrogation — Expanded Question Bank
 
+> Part of the `grill-me-qa` skill. See [SKILL.md](../SKILL.md) for full context.
+
 When the grilling touches Dimension 4 (AI Integration), apply heightened scrutiny. AI in testing is powerful but introduces non-determinism, trust issues, and maintenance burdens that must be explicitly addressed.
 
 > **Gate question (required first):** *"Are you using or planning to use AI tools for testing?"*

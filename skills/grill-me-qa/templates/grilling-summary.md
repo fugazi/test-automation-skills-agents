@@ -33,7 +33,7 @@
 
 ## Dimension 1: Test Strategy & Coverage
 
-**Status:** ✅ Resolved / ⚠️ Deferred / ❌ Open
+**Status:** [ok] Resolved / [!] Deferred / [no] Open
 
 ### Decisions
 

@@ -1,5 +1,7 @@
 # File Map Template (Playwright TypeScript)
 
+> Part of the `playwright-e2e-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 When agents generate test code for a target project, they must follow this structure. Copy this section into the target project's CLAUDE.md or test configuration.
 
 ## Recommended Project Structure

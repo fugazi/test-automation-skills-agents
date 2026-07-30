@@ -1,5 +1,7 @@
 # Tracing
 
+> Part of the `playwright-cli` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Capture detailed execution traces for debugging and analysis. Traces include DOM snapshots, screenshots, network activity, and console logs.
 
 ## Basic Usage

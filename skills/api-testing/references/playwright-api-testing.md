@@ -1,5 +1,7 @@
 # Playwright API Testing
 
+> Part of the `api-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Detailed reference for API testing with Playwright's request fixture, Supertest, and Zod schema validation in TypeScript.
 
 ## Using Request Fixture

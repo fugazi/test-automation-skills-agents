@@ -1,3 +1,6 @@
+# code-patterns 
+
+> Part of the `accessibility-selenium-testing` skill. See [SKILL.md](../SKILL.md) for full context.
 ## Code Patterns
 
 ### Basic Full-Page Scan

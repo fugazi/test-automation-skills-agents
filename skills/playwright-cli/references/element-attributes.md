@@ -1,5 +1,7 @@
 # Inspecting Element Attributes
 
+> Part of the `playwright-cli` skill. See [SKILL.md](../SKILL.md) for full context.
+
 When the snapshot doesn't show an element's `id`, `class`, `data-*` attributes, or other DOM properties, use `eval` to inspect them.
 
 ## Examples

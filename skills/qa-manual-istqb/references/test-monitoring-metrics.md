@@ -1,5 +1,7 @@
 # Test Monitoring and Metrics (ISTQB Foundation Level)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Test monitoring tracks progress against the test plan and provides visibility to stakeholders. Metrics quantify quality and progress to support decision-making.
 
 ## Test Monitoring vs Test Control
@@ -110,12 +112,12 @@ Use metrics to evaluate readiness to stop testing.
 
 | Criterion                      | Target | Actual | Status |
 | ------------------------------ | ------ | ------ | ------ |
-| Test cases executed            | 100%   | 95%    | ⚠️     |
-| Test cases passed              | ≥95%   | 92%    | ❌     |
-| Critical defects open          | 0      | 0      | ✅     |
-| Major defects open             | ≤3     | 2      | ✅     |
-| High-risk requirements covered | 100%   | 100%   | ✅     |
-| Regression suite passed        | 100%   | 100%   | ✅     |
+| Test cases executed            | 100%   | 95%    | [!]     |
+| Test cases passed              | ≥95%   | 92%    | [no]     |
+| Critical defects open          | 0      | 0      | [ok]     |
+| Major defects open             | ≤3     | 2      | [ok]     |
+| High-risk requirements covered | 100%   | 100%   | [ok]     |
+| Regression suite passed        | 100%   | 100%   | [ok]     |
 
 **Decision:** Not ready—address remaining test cases and failed tests.
 
