@@ -74,13 +74,13 @@ Toolkit for implementing visual regression testing using Playwright's built-in s
    - If intentional change: update baseline with `--update-snapshots`
    - If regression: fix the UI change and re-run
 
-## Common Rationalizations
+## Affirmative Principles
 
-| Rationalization                                       | Reality                                                                                                                                                         |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| "Visual tests are too flaky to be useful"             | Flakiness comes from unmasked dynamic content and missing thresholds. Configure properly and visual tests become one of the most reliable regression detectors. |
-| "I'll update the baseline without reviewing the diff" | Blind baseline updates defeat the purpose of visual testing. Always review the diff image before accepting changes.                                             |
-| "One global threshold is enough for all pages"        | Different pages have different complexity. A 1% threshold may be fine for a static landing page but too loose for a data dashboard.                             |
+> Do NOT use a `## Common Rationalizations` table. Express recurring-step discipline as 1-line affirmative principles instead.
+
+- Always review the diff image before accepting a baseline update.
+- Use per-component thresholds; a single global threshold is too loose for complex pages.
+- Mask dynamic content (timestamps, ads, avatars) before capturing baselines.
 
 ## Red Flags
 
