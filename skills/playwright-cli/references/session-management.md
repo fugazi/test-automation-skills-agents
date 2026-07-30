@@ -1,5 +1,7 @@
 # Browser Session Management
 
+> Part of the `playwright-cli` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Run multiple isolated browser sessions concurrently with state persistence.
 
 ## Named Browser Sessions

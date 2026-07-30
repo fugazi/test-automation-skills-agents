@@ -1,5 +1,7 @@
 # REST API Patterns
 
+> Part of the `api-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Common REST API patterns to test, covering CRUD operations, pagination, filtering, sorting, error responses, and authentication.
 
 ## CRUD Operations

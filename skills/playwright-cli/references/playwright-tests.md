@@ -1,5 +1,7 @@
 # Running Playwright Tests
 
+> Part of the `playwright-cli` skill. See [SKILL.md](../SKILL.md) for full context.
+
 To run Playwright tests, use the `npx playwright test` command, or a package manager script. To avoid opening the interactive html report, use `PLAYWRIGHT_HTML_OPEN=never` environment variable.
 
 ```bash

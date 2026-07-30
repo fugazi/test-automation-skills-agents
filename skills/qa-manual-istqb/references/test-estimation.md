@@ -1,5 +1,7 @@
 # Test Estimation (ISTQB Foundation Level)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Test estimation predicts the effort, duration, and resources needed for testing activities. Accurate estimates are crucial for planning, budgeting, and managing stakeholder expectations.
 
 ## Why Estimation Is Difficult

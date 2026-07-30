@@ -1,5 +1,7 @@
 # Schema Validation
 
+> Part of the `api-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Schema validation patterns for both TypeScript (Zod) and Java (JSON Schema Validator). Ensures API responses match expected structure on every test.
 
 ## Zod (TypeScript)

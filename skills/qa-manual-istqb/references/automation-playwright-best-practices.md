@@ -1,5 +1,7 @@
 # Playwright automation best practices (practical + ISTQB-aligned)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 ## What to automate (and what not to)
 
 - Automate stable, high-value flows: smoke/regression, critical paths, repeated checks.

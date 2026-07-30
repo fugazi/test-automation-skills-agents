@@ -1,5 +1,7 @@
 # Storage Management
 
+> Part of the `playwright-cli` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Manage cookies, localStorage, sessionStorage, and browser storage state.
 
 ## Storage State

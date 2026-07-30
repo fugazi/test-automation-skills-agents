@@ -1,5 +1,7 @@
 # Flaky Test Management
 
+> Part of the `playwright-regression-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Detailed reference for managing flaky tests in Playwright regression suites. Covers retry policies, quarantine strategies, detection checklists, and suite health metrics.
 
 ## Retry Policy

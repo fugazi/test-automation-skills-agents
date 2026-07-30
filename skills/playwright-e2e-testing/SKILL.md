@@ -1,6 +1,7 @@
 ---
 name: playwright-e2e-testing
 description: 'Author and maintain versioned Playwright (@playwright/test) TypeScript UI specs for browser user flows. Use when asked to create, run, debug, or refactor E2E tests, form/navigation/auth flows, responsive checks, UI mocking, fixtures, Page Objects, or visual comparisons. Use api-testing for standalone REST/GraphQL contracts and playwright-cli for live browser sessions. Keywords: E2E spec, Playwright test, POM, fixtures, UI regression.'
+license: 'Complete terms in LICENSE.txt'
 ---
 
 # Playwright E2E Testing (TypeScript)
@@ -18,6 +19,13 @@ Comprehensive toolkit for end-to-end testing of web applications using Playwrigh
 - **Setup test infrastructure** with Page Object Model and fixtures
 - **Mock/intercept APIs** for isolated, deterministic testing
 - **Visual regression testing** with screenshot comparisons
+
+### Do NOT Use For
+
+- Standalone API/contract testing with no browser (use `api-testing`).
+- Driving a live browser interactively for exploration or debugging (use `playwright-cli`).
+- Governing a large regression suite, tiers, or CI sharding strategy (use `playwright-regression-testing`).
+- Selenium/Java browser automation (use `webapp-selenium-testing`).
 
 ## Prerequisites
 
@@ -81,19 +89,19 @@ test("user can login", async ({ page }) => {
 | 5        | Test ID                | `getByTestId('submit-btn')`               |
 | 6        | CSS (avoid)            | `locator('.btn-primary')`                 |
 
-See [Locator Strategies Guide](./references/locator_strategies.md) for detailed patterns.
+See [Locator Strategies: Priority](./references/locator-strategies-priority.md) for detailed patterns.
 
 ### 3. Auto-Waiting & Web-First Assertions
 
 Playwright auto-waits for elements. Never use `sleep()` or arbitrary timeouts.
 
 ```typescript
-// ✅ Web-first assertions (auto-retry)
+// [ok] Web-first assertions (auto-retry)
 await expect(page.getByRole("alert")).toBeVisible();
 await expect(page).toHaveURL(/dashboard/);
 await expect(page.getByTestId("status")).toHaveText("Success!");
 
-// ❌ Avoid manual waits
+// [no] Avoid manual waits
 await page.waitForTimeout(2000); // Bad practice
 ```
 
@@ -253,14 +261,36 @@ export default defineConfig({
 
 ---
 
+## Red Flags
+
+- CSS/XPath locators when a role/label/testId is available — brittle and breaks on refactor.
+- `waitForTimeout` / manual sleeps instead of web-first auto-retrying assertions.
+- Tests sharing state and depending on execution order — flaky and order-coupled.
+- Assertions only on status/URL with no visible-state check — hides render regressions.
+- Inline page setup repeated across tests instead of fixtures — duplication and drift.
+
+---
+
 ## References
 
-| Document                                                 | Content                                |
-| -------------------------------------------------------- | -------------------------------------- |
-| [Snippets](./references/snippets.md)                     | Ready-to-use code patterns             |
-| [Locator Strategies](./references/locator_strategies.md) | Complete locator guide                 |
-| [Page Object Model](./references/page_object_model.md)   | POM implementation patterns            |
-| [Debugging Guide](./references/debugging.md)             | Troubleshooting & debugging techniques |
+| Document                                                                         | Content                                                    |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [Snippets: Setup](./references/snippets-setup.md)                                | Config, auth setup, custom fixtures & logging              |
+| [Snippets: Interactions](./references/snippets-interactions.md)                  | Form interactions, API testing & network interception      |
+| [Snippets: Viewports & Auth](./references/snippets-viewports-auth.md)            | Responsive viewports & authentication patterns             |
+| [Snippets: Assertions & Debug](./references/snippets-assertions-debugging.md)    | Assertions, debug commands & utility helpers               |
+| [Locator Strategies: Priority](./references/locator-strategies-priority.md)      | Locator priority hierarchy & role-based locators           |
+| [Locator Strategies: Text](./references/locator-strategies-text.md)              | Label, text, placeholder, alt-text & test-ID locators      |
+| [Locator Strategies: Filtering](./references/locator-strategies-filtering.md)    | Filtering, chaining & complex locator patterns             |
+| [Locator Strategies: Anti & Debug](./references/locator-strategies-anti-debug.md)| Anti-patterns, CSS last-resort, debugging & quick reference|
+| [POM: Basics](./references/page-object-model-basics.md)                          | POM concepts, directory structure, base page & fluent API  |
+| [POM: Components](./references/page-object-model-components.md)                  | Page object & reusable component object implementation     |
+| [POM: Fixtures](./references/page-object-model-fixtures.md)                      | Custom & authenticated page-object fixtures                |
+| [POM: Practices](./references/page-object-model-practices.md)                    | Best practices, anti-patterns & a complete worked example  |
+| [Debugging: Tools & UI](./references/debugging-tools-ui.md)                      | Debugging tools, UI mode, Inspector & headed mode          |
+| [Debugging: Tracing & Logs](./references/debugging-tracing-logging.md)           | Trace viewer, verbose logging, screenshots & videos        |
+| [Debugging: Errors & Network](./references/debugging-errors-network.md)          | Console/page errors & network debugging                    |
+| [Debugging: Flaky & Locators](./references/debugging-flaky-locators.md)          | Flaky-test fixes, locator debugging & quick commands       |
 
 ---
 

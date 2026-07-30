@@ -1,5 +1,7 @@
 # ISTQB Glossary (Foundation Level - Key Terms)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Essential terminology from the ISTQB Foundation Level syllabus, organized by topic.
 
 ## Testing Fundamentals

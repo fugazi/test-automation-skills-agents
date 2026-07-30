@@ -1,5 +1,7 @@
 # Request Mocking
 
+> Part of the `playwright-cli` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Intercept, mock, modify, and block network requests.
 
 ## CLI Route Commands

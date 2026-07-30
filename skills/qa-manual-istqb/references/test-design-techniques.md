@@ -1,5 +1,7 @@
 # Test Design Techniques (ISTQB Foundation Level)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Test design techniques transform the test basis into test conditions and test cases. Choose techniques based on the type of testing and risk level.
 
 ## Technique Categories

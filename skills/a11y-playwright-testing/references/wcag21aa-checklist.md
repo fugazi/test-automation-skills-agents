@@ -1,6 +1,8 @@
-# Manual audit checklist (WCAG 2.1 Level AA / W3C WAI)
+# Manual audit checklist (WCAG 2.2 Level AA / W3C WAI)
 
-Use this to complement automated checks. Many success criteria require human judgment, assistive tech testing, or design review.
+> Part of the `a11y-playwright-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
+Use this to complement automated checks. WCAG 2.2 AA is a superset of 2.1 AA — it adds the success criteria listed in the "WCAG 2.2 additions" section below. Many success criteria require human judgment, assistive tech testing, or design review.
 
 ## Perceivable
 
@@ -58,6 +60,18 @@ Use this to complement automated checks. Many success criteria require human jud
 - **Name, role, value (4.1.2)**: Custom controls expose correct role, name, state, and value to assistive tech.
 - **Status messages (4.1.3)**: Announce dynamic updates (success/errors/loading) without moving focus unexpectedly.
 
+## WCAG 2.2 additions (AA-level new success criteria)
+
+These are the new AA success criteria introduced in WCAG 2.2 (axe tag `wcag22aa`). They are additive — verify them in addition to the 2.1 criteria above.
+
+- **Focus not obscured (minimum) (2.4.11)**: When a component receives focus it is not entirely hidden by sticky headers, footers, or non-user-interface content.
+- **Focus not obscured (enhanced) (2.4.12)** — AAA, optional: focus is not hidden at all by any content.
+- **Dragging movements (2.5.7)**: Functionality that uses dragging (sliders, Kanban boards, reorder lists) has a single-pointer alternative that does not require dragging (e.g., arrow keys, +/- buttons, menu).
+- **Target size (minimum) (2.5.8)**: Interactive targets are at least 24×24 CSS px, with documented exceptions (inline links, essential spacing, user-agent default). (2.5.5 is the stricter AAA 44×44.)
+- **Consistent help (3.2.6)**: Help mechanisms (contact, human contact, mech, self-help) appear in the same relative order across pages when present.
+- **Redundant entry (3.3.7)**: Information already entered/available is auto-populated or selectable, not re-keyed in the same process (e.g., shipping == billing address).
+- **Accessible authentication (minimum) (3.3.8)**: Authentication does not require a cognitive function test (no transcription of distorted text, no memory of personal info); copy/paste of passwords is allowed.
+
 ## Assistive technology and real-user checks
 
 - Screen reader smoke tests:
@@ -78,7 +92,7 @@ Use this to complement automated checks. Many success criteria require human jud
 
 ## W3C/WAI references
 
-- WCAG 2.1 (Recommendation): https://www.w3.org/TR/WCAG21/
-- WCAG 2.1 Quick Reference: https://www.w3.org/WAI/WCAG21/quickref/
+- WCAG 2.2 (Recommendation): https://www.w3.org/TR/WCAG22/
+- WCAG 2.2 Quick Reference: https://www.w3.org/WAI/WCAG22/quickref/
 - WAI-ARIA Authoring Practices Guide (APG): https://www.w3.org/WAI/ARIA/apg/
 - WAI-ARIA specification: https://www.w3.org/TR/wai-aria/

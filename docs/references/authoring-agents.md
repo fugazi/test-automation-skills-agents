@@ -152,12 +152,12 @@ Each handoff in the list must include the following properties:
 #### Best Practices
 
 - **Clear Labels**: Use action-oriented labels that clearly indicate the next step
-  - ✅ Good: "Start Implementation", "Review for Security", "Write Tests"
-  - ❌ Avoid: "Next", "Go to agent", "Do something"
+  - [ok] Good: "Start Implementation", "Review for Security", "Write Tests"
+  - [no] Avoid: "Next", "Go to agent", "Do something"
 
 - **Relevant Prompts**: Provide context-aware prompts that reference the completed work
-  - ✅ Good: `'Now implement the plan outlined above.'`
-  - ❌ Avoid: Generic prompts without context
+  - [ok] Good: `'Now implement the plan outlined above.'`
+  - [no] Avoid: Generic prompts without context
 
 - **Selective Use**: Don't create handoffs to every possible agent; focus on logical workflow transitions
   - Limit to 2-3 most relevant next steps per agent
@@ -428,7 +428,7 @@ Expected: write ${basePath}/analysis/report.md
 - **Sequential execution**: Run steps in order when dependencies exist between outputs/inputs
 - **Error handling**: Check results before proceeding to dependent steps
 
-### ⚠️ Tool Availability Requirement
+### [!] Tool Availability Requirement
 
 **Critical**: If a sub-agent requires specific tools (e.g., `edit`, `execute`, `search`), the orchestrator must include those tools in its own `tools` list. Sub-agents cannot access tools that aren't available to their parent orchestrator.
 
@@ -441,7 +441,7 @@ tools: ["read", "edit", "search", "execute", "agent"]
 
 The orchestrator's tool permissions act as a ceiling for all invoked sub-agents. Plan your tool list carefully to ensure all sub-agents have the tools they need.
 
-### ⚠️ Important Limitation
+### [!] Important Limitation
 
 **Sub-agent orchestration is NOT suitable for large-scale data processing.** Avoid using multi-step sub-agent pipelines when:
 
@@ -710,7 +710,7 @@ Task:
 ```markdown
 ## Step 2: Dependency Audit
 
-**Status:** ✅ SUCCESS / ⚠️ SKIPPED / ❌ FAILED
+**Status:** [ok] SUCCESS / [!] SKIPPED / [no] FAILED
 **Trigger:** package.json present
 **Started:** 2026-01-16T10:30:15Z
 **Completed:** 2026-01-16T10:31:05Z
@@ -971,33 +971,33 @@ Each level can override settings from previous levels.
 
 ### Frontmatter Errors
 
-- ❌ Missing `description` field
-- ❌ Description not wrapped in quotes
-- ❌ Invalid tool names without checking documentation
-- ❌ Incorrect YAML syntax (indentation, quotes)
+- [no] Missing `description` field
+- [no] Description not wrapped in quotes
+- [no] Invalid tool names without checking documentation
+- [no] Incorrect YAML syntax (indentation, quotes)
 
 ### Tool Configuration Issues
 
-- ❌ Granting excessive tool access unnecessarily
-- ❌ Missing required tools for agent's purpose
-- ❌ Not using tool aliases consistently
-- ❌ Forgetting MCP server namespace (`server-name/tool`)
+- [no] Granting excessive tool access unnecessarily
+- [no] Missing required tools for agent's purpose
+- [no] Not using tool aliases consistently
+- [no] Forgetting MCP server namespace (`server-name/tool`)
 
 ### Prompt Content Problems
 
-- ❌ Vague, ambiguous instructions
-- ❌ Conflicting or contradictory guidelines
-- ❌ Lack of clear scope definition
-- ❌ Missing output expectations
-- ❌ Overly verbose instructions (exceeding character limits)
-- ❌ No examples or context for complex tasks
+- [no] Vague, ambiguous instructions
+- [no] Conflicting or contradictory guidelines
+- [no] Lack of clear scope definition
+- [no] Missing output expectations
+- [no] Overly verbose instructions (exceeding character limits)
+- [no] No examples or context for complex tasks
 
 ### Organizational Issues
 
-- ❌ Filename doesn't reflect agent purpose
-- ❌ Wrong directory (confusing repo vs org level)
-- ❌ Using spaces or special characters in filename
-- ❌ Duplicate agent names causing conflicts
+- [no] Filename doesn't reflect agent purpose
+- [no] Wrong directory (confusing repo vs org level)
+- [no] Using spaces or special characters in filename
+- [no] Duplicate agent names causing conflicts
 
 ## Testing and Validation
 
@@ -1050,17 +1050,17 @@ Each level can override settings from previous levels.
 
 ### GitHub.com (Coding Agent)
 
-- ✅ Fully supports all standard frontmatter properties
-- ✅ Repository and org/enterprise level agents
-- ✅ MCP server configuration (org/enterprise)
-- ❌ Does not support `model`, `argument-hint`, `handoffs` properties
+- [ok] Fully supports all standard frontmatter properties
+- [ok] Repository and org/enterprise level agents
+- [ok] MCP server configuration (org/enterprise)
+- [no] Does not support `model`, `argument-hint`, `handoffs` properties
 
 ### VS Code / JetBrains / Eclipse / Xcode
 
-- ✅ Supports `model` property for AI model selection
-- ✅ Supports `argument-hint` and `handoffs` properties
-- ✅ User profile and workspace-level agents
-- ❌ Cannot configure MCP servers at repository level
-- ⚠️ Some properties may behave differently
+- [ok] Supports `model` property for AI model selection
+- [ok] Supports `argument-hint` and `handoffs` properties
+- [ok] User profile and workspace-level agents
+- [no] Cannot configure MCP servers at repository level
+- [!] Some properties may behave differently
 
 When creating agents for multiple environments, focus on common properties and test in all target environments. Use `target` property to create environment-specific agents when necessary.

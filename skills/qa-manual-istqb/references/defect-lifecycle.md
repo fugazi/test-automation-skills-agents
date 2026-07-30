@@ -1,5 +1,7 @@
 # Defect lifecycle (lightweight)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 ## Typical states
 
 - New → Triaged → In Progress → Fixed → Verified → Closed

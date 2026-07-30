@@ -1,6 +1,7 @@
 ---
 name: qa-manual-istqb
 description: 'Create QA artifacts from requirements: test plans, test conditions/cases, bug reports, regression suites, traceability, and exploratory charters. Use for test planning, test design, defects, coverage, or QA deliverables. Applies ISTQB risk-based techniques and loads templates only when needed. Keywords: test plan, test case, bug report, traceability, regression suite, QA artifact.'
+license: 'Complete terms in LICENSE.txt'
 ---
 
 # QA Test Design & ISTQB Artifacts
@@ -21,6 +22,13 @@ Complete ISTQB Foundation Level (CTFL) aligned workflow for QA test engineers co
 - Estimating test effort using ISTQB techniques
 - Reviewing testware through **static testing** practices
 - Selecting automation candidates and preparing traceable Playwright scaffolds
+
+### Do NOT Use For
+
+- Authoring/maintaining versioned Playwright spec code (use `playwright-e2e-testing`).
+- Selenium/Java test authoring (use `webapp-selenium-testing`).
+- Driving a live browser to debug (use `playwright-cli`) or governing an existing regression suite's CI (use `playwright-regression-testing`).
+- Adversarial strategy critique — that is the `grill-me-qa` skill's purpose; this skill produces artifacts, it does not interrogate them.
 
 ## Prerequisites
 
@@ -211,6 +219,13 @@ Use: `references/test-monitoring-metrics.md` for metrics definitions and dashboa
 
 ---
 
+## Red Flags
+
+- Generating test cases with no link back to a requirement or risk — untraceable coverage is theatre.
+- Bug reports missing repro steps, expected vs actual, or environment — unusable for developers.
+- Regression suites selected by gut feel instead of risk/change analysis — wasted effort and missed regressions.
+- Test plans with no entry/exit criteria or effort estimate — execution cannot be governed.
+- Confusing this artifact-producing skill with strategy critique (use `grill-me-qa` for adversarial review).
 
 ---
 

@@ -182,6 +182,22 @@ npx playwright cli
 npm install -g @playwright/cli@latest
 ```
 
+## When NOT to Use This Skill
+
+- Authoring or maintaining versioned `@playwright/test` spec files (use `playwright-e2e-testing`).
+- Selenium/Java browser automation (use `webapp-selenium-testing`).
+- Governing a large regression suite, tiers, or CI sharding (use `playwright-regression-testing`).
+- Long-running recorded test suites — playwright-cli drives a single live, interactive session, not a parallel run.
+
+## Red Flags
+
+- Relying on `--debug=cli` as a permanent test runner — it is an exploration/debug aid, not a CI executor.
+- Leaving background debug sessions running between scenarios — they leak state and ports; always stop them.
+- Opening the app URL directly instead of going through the seed test — custom setup in the test is then missed.
+- Using sleeps or `networkidle` as a fix for timing issues — prefer web-first assertions.
+
+---
+
 ## References
 
 - **Playwright tests** [references/playwright-tests.md](references/playwright-tests.md)
@@ -194,3 +210,13 @@ npm install -g @playwright/cli@latest
 - **Video recording** [references/video-recording.md](references/video-recording.md)
 - **Element attributes** [references/element-attributes.md](references/element-attributes.md)
 - **Spec-driven testing** [references/spec-driven-testing.md](references/spec-driven-testing.md)
+- **Spec-driven healing** [references/spec-driven-heal.md](references/spec-driven-heal.md)
+
+---
+
+## Verification
+
+- [ ] **Session lifecycle managed** — every `playwright-cli open`/`-s=<name> open` is paired with a `close`/`close-all`; no orphan sessions left running.
+- [ ] **Elements addressed by ref** — interactions use snapshot refs (`e15`) or generated locators, not guessed CSS selectors.
+- [ ] **Evidence captured where needed** — screenshots, traces, or console/request logs recorded for the task at hand.
+- [ ] **Background debug sessions stopped** — `--debug=cli` runs are terminated before moving on or finishing.

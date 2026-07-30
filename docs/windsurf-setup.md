@@ -158,5 +158,5 @@ Split large rule files by domain for better context management:
 - **`.windsurfrules` is always loaded.** Put your core QA conventions there. Domain-specific skills go in `.windsurf/rules/`.
 - **Reference files, don't inline.** Use file paths in prompts so Windsurf can read the full content when needed.
 - **Use the agent pattern consistently.** "Read agents/[name].agent.md and follow its approach" ensures repeatable specialist behavior.
-- **Start with one skill.** Don't copy all 10 skills at once. Start with the ones you use daily, then add more as needed.
+- **Start with one skill.** Don't copy all 9 skills at once. Start with the ones you use daily, then add more as needed.
 - **Keep rules focused.** Each rule file should cover one domain. Merged files create context noise and reduce output quality.

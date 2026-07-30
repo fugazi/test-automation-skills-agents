@@ -3,6 +3,9 @@
 Thumbs.db
 Desktop.ini
 
+# Editor / agent local state
+.zcode/
+
 # VS Code
 .vscode/
 !.vscode/extensions.json

@@ -1,5 +1,7 @@
 # Axe-Core Tags Reference
 
+> Part of the `a11y-playwright-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 | Tag             | WCAG Level   | Use Case                   |
 | --------------- | ------------ | -------------------------- |
 | `wcag2a`        | Level A      | Minimum compliance         |

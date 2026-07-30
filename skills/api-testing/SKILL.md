@@ -1,6 +1,7 @@
 ---
 name: api-testing
 description: 'Test REST and GraphQL endpoint contracts using Playwright request fixture (TypeScript) or REST Assured (Java). Use for standalone API tests covering schemas, auth, status/error handling, pagination, idempotency, rate limits, or contract checks; not for browser E2E specs. Keywords: REST, GraphQL, API contract, schema validation, REST Assured.'
+license: 'Complete terms in LICENSE.txt'
 ---
 
 # API Testing (Playwright + REST Assured)
@@ -17,6 +18,13 @@ Comprehensive API testing skill covering both Playwright TypeScript (request fix
 - Validate idempotency for PUT/DELETE operations
 - Contract testing between services
 - Rate limiting validation
+
+### Do NOT Use For
+
+- Browser-driven UI flows (use `playwright-e2e-testing` for Playwright specs, or `webapp-selenium-testing` for Selenium)
+- Live interactive browser sessions or snapshots (use `playwright-cli`)
+- Visual/layout regression (out of scope — no DOM)
+- End-to-end journeys that must drive a real browser across pages
 
 ## Prerequisites
 
@@ -73,6 +81,18 @@ void getUsers() {
 }
 ```
 
+
+---
+
+## Red Flags
+
+Stop and reconsider if you see any of these in generated API tests:
+
+- Assertions only on status code with no body/schema validation — an unvalidated response hides contract drift.
+- Hardcoded secrets/tokens committed to the test file — read from env or a secrets manager.
+- Tests sharing mutable state with no cleanup — flaky and order-dependent.
+- Skipping auth tests (no 401/403 assertions on protected endpoints) — security regression risk.
+- No coverage of error states (only happy-path 200s) — error handling is untested.
 
 ---
 

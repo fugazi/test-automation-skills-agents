@@ -26,27 +26,27 @@ applyTo: 'src/test/java/**/*.java, src/main/java/**/pages/**/*.java, src/main/ja
 Use locators that maximize stability and maintainability:
 
 ```java
-// ✅ BEST: ID-based (fastest, most stable)
+// [ok] BEST: ID-based (fastest, most stable)
 By.id("login-button")
 By.name("username")
 
-// ✅ GOOD: Test IDs (stable, explicit)
+// [ok] GOOD: Test IDs (stable, explicit)
 By.cssSelector("[data-testid='submit-button']")
 By.cssSelector("[data-qa='user-avatar']")
 
-// ✅ GOOD: Semantic CSS selectors
+// [ok] GOOD: Semantic CSS selectors
 By.cssSelector("form#login input[type='email']")
 By.cssSelector("button[aria-label='Close dialog']")
 
-// ⚠️ USE WITH CAUTION: Class-based (can change with styling)
+// [!] USE WITH CAUTION: Class-based (can change with styling)
 By.className("btn-primary")
 By.cssSelector(".card-header .title")
 
-// ⚠️ USE WITH CAUTION: XPath (only for complex DOM traversal)
+// [!] USE WITH CAUTION: XPath (only for complex DOM traversal)
 By.xpath("//table[@id='users']//tr[contains(@class,'active')]")
 By.xpath("//button[normalize-space()='Submit']")
 
-// ❌ NEVER: Fragile absolute XPath
+// [no] NEVER: Fragile absolute XPath
 By.xpath("/html/body/div[1]/div[2]/button[3]")
 ```
 
@@ -157,7 +157,7 @@ var names = elements.stream()
 **Mandatory**: Use Soft Assertions for multiple validations in a single test.
 
 ```java
-// ✅ CORRECT: Soft Assertions with descriptive messages
+// [ok] CORRECT: Soft Assertions with descriptive messages
 SoftAssertions.assertSoftly(softly -> {
     softly.assertThat(page.getHeaderText())
         .as("Page header should display 'Products'")
@@ -172,7 +172,7 @@ SoftAssertions.assertSoftly(softly -> {
         .isTrue();
 });
 
-// ✅ Collection Assertions
+// [ok] Collection Assertions
 softly.assertThat(productNames)
     .as("Product list")
     .hasSize(6)
@@ -561,7 +561,7 @@ junit.jupiter.execution.parallel.config.fixed.parallelism=4
 | Stale element reference | DOM changed after locating          | Re-locate element before interaction          |
 | Click intercepted       | Overlay or another element blocking | Scroll into view or wait for overlay to close |
 | Timeout Exception       | Element never became visible        | Verify locator, check for iframes             |
-| Session not created     | Driver/browser version mismatch     | Update WebDriverManager or browser            |
+| Session not created     | Driver/browser version mismatch     | Update browser; Selenium Manager (4.6+) auto-resolves the driver |
 | Flaky tests             | Race conditions, timing issues      | Add proper waits, use stable locators         |
 
 ---

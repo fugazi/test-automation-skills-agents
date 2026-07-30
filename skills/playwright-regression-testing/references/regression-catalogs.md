@@ -1,5 +1,7 @@
 # Regression Catalogs
 
+> Part of the `playwright-regression-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 ## Tier Model
 
 ```

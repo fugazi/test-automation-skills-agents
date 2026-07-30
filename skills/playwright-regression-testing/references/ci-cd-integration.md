@@ -1,5 +1,7 @@
 # CI/CD Integration
 
+> Part of the `playwright-regression-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Detailed reference for integrating Playwright regression tests with GitHub Actions. Covers parallelization, sharding, pipeline configuration, and reporting.
 
 ## Parallelization and Performance

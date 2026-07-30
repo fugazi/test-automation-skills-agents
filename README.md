@@ -15,7 +15,7 @@ This repository is **tool-agnostic by design**: the concepts and content can be 
 This repository is designed to be **copied/embedded into real testing projects** so your AI assistant can actively assist with:
 
 - UI, API, E2E, smoke, and regression testing
-- Accessibility testing (WCAG 2.1 AA)
+- Accessibility testing (WCAG 2.2 AA)
 - Flaky test investigation and stabilization
 - Test planning (ISTQB-aligned) and documentation
 - Framework patterns (Playwright TypeScript, Selenium Java)
@@ -209,7 +209,7 @@ Instructions are cross-cutting rules that keep outputs consistent:
 
 - Playwright coding standards, locator strategy, POM patterns
 - Selenium Java standards, explicit waits, AssertJ, Allure
-- Accessibility expectations (WCAG 2.1 AA)
+- Accessibility expectations (WCAG 2.2 AA)
 - CI/CD test pipeline configuration (GitHub Actions, test tiers, parallel execution)
 - Agent authoring guidelines (frontmatter, handoffs, tool selection)
 
@@ -333,7 +333,7 @@ Skills are best when the team repeats the same "playbook" frequently.
 Typical triggers:
 
 - "Write Playwright E2E tests with POM and stable locators" → `playwright-e2e-testing`
-- "Run axe-core checks, keyboard navigation, WCAG 2.1 AA" → `a11y-playwright-testing` or `accessibility-selenium-testing`
+- "Run axe-core checks, keyboard navigation, WCAG 2.2 AA" → `a11y-playwright-testing` or `accessibility-selenium-testing`
 - "Plan, organize, or optimize regression test suites" → `playwright-regression-testing`
 - "Generate ISTQB-aligned artifacts: test plan / bug report / traceability" → `qa-manual-istqb`
 - "Inspect a live page, capture evidence, or debug interactively" → `playwright-cli`
@@ -344,7 +344,7 @@ Typical triggers:
 | -------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | `playwright-e2e-testing`         | Versioned Playwright TypeScript UI specs                      | "Write Playwright tests for checkout with POM and stable locators."                      |
 | `playwright-cli`                 | Live browser automation via CLI (snapshot, interact, debug)  | "Open a browser, navigate to the login page, and capture a snapshot."                   |
-| `a11y-playwright-testing`        | WCAG 2.1 AA checks using Playwright + axe-core               | "Add automated a11y scans for auth pages and keyboard nav tests."                        |
+| `a11y-playwright-testing`        | WCAG 2.2 AA checks using Playwright + axe-core               | "Add automated a11y scans for auth pages and keyboard nav tests."                        |
 | `webapp-selenium-testing`        | Selenium Java automation patterns                            | "Create Selenium POM + JUnit 5 tests for login and profile update."                      |
 | `accessibility-selenium-testing` | A11y scanning with Selenium + axe-core                       | "Scan key pages for WCAG issues and generate an Allure-friendly report."                 |
 | `playwright-regression-testing`  | Regression strategy + test selection + CI/CD optimization    | "Organize tests into tiers (smoke, selective, full) and set up GitHub Actions pipeline." |
@@ -378,7 +378,7 @@ If a skill still does not activate automatically:
 
 ### Workflow 2 - Stabilize a flaky suite
 
-1. Use Flaky Test Hunter agent to identify patterns and root causes.
+1. Use the Playwright Test Healer agent to identify flaky-test patterns and root causes.
 2. Apply changes (wait strategy, locators, isolation, data seeding).
 3. Use Playwright Test Healer agent to validate and repair remaining failures.
 
@@ -388,7 +388,7 @@ If a skill still does not activate automatically:
    - Playwright + axe-core: `a11y-playwright-testing`
    - Selenium + axe-core: `accessibility-selenium-testing`
 2. Add a11y checks to critical flows (auth, checkout, forms, modals).
-3. Fail CI on WCAG 2.1 AA violations (with triage exceptions documented).
+3. Fail CI on WCAG 2.2 AA violations (with triage exceptions documented).
 
 ### Workflow 4 - Regression testing strategy
 

@@ -1,5 +1,7 @@
 # Test Levels and Test Types (ISTQB Foundation Level)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Understanding test levels and test types is fundamental to ISTQB. They define **when** and **what** we test.
 
 ## Test Levels

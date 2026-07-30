@@ -1,5 +1,7 @@
 # Running Custom Playwright Code
 
+> Part of the `playwright-cli` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Use `run-code` to execute arbitrary Playwright code for advanced scenarios not covered by CLI commands.
 
 ## Syntax

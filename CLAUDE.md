@@ -9,7 +9,7 @@ AI Agents & Skills repository for test automation, covering:
 - **Playwright** (TypeScript) — End-to-end browser automation
 - **Selenium WebDriver** (Java 21+) — UI testing with JUnit 5 and AssertJ
 - **API Testing** — REST/GraphQL with Playwright request fixture and REST Assured
-- **Accessibility Testing** — WCAG 2.1 AA compliance
+- **Accessibility Testing** — WCAG 2.2 AA compliance
 - **Manual QA** — ISTQB-based testing practices
 - **Test Planning** — Test strategy and documentation
 - **CI/CD Pipelines** — GitHub Actions test automation workflows
@@ -82,7 +82,7 @@ This phase must be performed as the agent "<AGENT_NAME>" defined in "<AGENT_SPEC
 
 ### Accessibility Testing
 
-- WCAG 2.1 AA compliance with axe-core or Playwright accessibility tree
+- WCAG 2.2 AA compliance with axe-core or Playwright accessibility tree
 - Use the `a11y-playwright-testing` or `accessibility-selenium-testing` skills (loaded on-demand)
 
 ## Instructions Design Philosophy

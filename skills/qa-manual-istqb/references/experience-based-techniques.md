@@ -1,5 +1,7 @@
 # Experience-Based Test Techniques (ISTQB Foundation Level)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Experience-based techniques leverage the tester's knowledge, intuition, and skills to design and execute tests. They complement specification-based techniques and are particularly valuable when documentation is incomplete or time is limited.
 
 ## Overview of Experience-Based Techniques

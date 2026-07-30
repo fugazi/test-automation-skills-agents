@@ -1,5 +1,7 @@
 # Regression suite strategy (risk-based)
 
+> Part of the `qa-manual-istqb` skill. See [SKILL.md](../SKILL.md) for full context.
+
 ## Principles
 
 - Optimize for risk reduction, not maximum test count.

@@ -1,5 +1,7 @@
 # REST Assured Testing
 
+> Part of the `api-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Detailed reference for API testing with REST Assured 5.x, AssertJ, and JSON Schema Validator in Java 21+.
 
 ## Base Test Class

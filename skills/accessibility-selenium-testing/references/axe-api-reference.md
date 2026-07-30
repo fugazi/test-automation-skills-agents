@@ -1,5 +1,7 @@
 # Axe-Core API Reference
 
+> Part of the `accessibility-selenium-testing` skill. See [SKILL.md](../SKILL.md) for full context.
+
 ## AxeBuilder Configuration
 
 | Method | Purpose | Example |
