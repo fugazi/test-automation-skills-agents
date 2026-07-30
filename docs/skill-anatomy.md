@@ -126,7 +126,22 @@ Every `SKILL.md` MUST include these sections:
 
 ## Section Details
 
-Each section type (Overview, When to Use, Core Process, Prerequisites, etc.) has detailed formatting guidance in [`references/section-details-guide.md`](references/section-details-guide.md). Key principles: be specific over general, process over knowledge, token-conscious.
+Key writing rules per section. Overarching principles: **specific over general, process over knowledge, token-conscious.**
+
+| Section | Rule | Good vs Bad |
+| --- | --- | --- |
+| `## Overview` | 1–2 sentences; what + why; **no** process steps | — |
+| `## When to Use` | Positive triggers ("Use when X") + negative exclusions ("NOT for Y"); name files/tools/scenarios | — |
+| `## Core Process` | Numbered, actionable steps; short code only; ≤200 lines (split larger into `references/`) | Good: `Run npx playwright test --reporter=html and verify exit code is 0` · Bad: `Make sure the tests pass` |
+| `## Red Flags` | Observable, detectable from code/output; ≥3 entries | — |
+| `## Verification` | `- [ ]` checklist; every item backed by evidence; 3–5 non-inferable items | — |
+
+### Cross-Skill Reference Rules
+
+1. **Never duplicate content between skills.** If two skills need the same information, put it in one skill's `references/` and link from the other.
+2. **Reference by skill name, not file path.** Use `` `skill-name` `` not `skills/skill-name/SKILL.md`.
+3. **Keep references directional.** Avoid circular references (Skill A → B → A).
+4. **Document routing in each skill.** Each SKILL.md records its boundaries in a "Do NOT Use For" list (where it defers to siblings) and lists its own references in `## References`. There is no central index file — routing lives in the skills so each stays self-contained.
 
 ## Dual-Stack Patterns (Playwright + Selenium)
 
@@ -200,11 +215,27 @@ Each framework skill MUST include a locator priority table:
 
 ## Instructions Layer
 
-Optional `.instructions.md` files for editor-specific guidance (VS Code, Cursor). See [`references/section-details-guide.md`](references/section-details-guide.md).
+`.instructions.md` files define cross-cutting coding essentials (scoped via `applyTo`), separate from skills. Distinctions:
+
+| Aspect | Skill | Instruction |
+| --- | --- | --- |
+| Purpose | Executable workflow for a task | Guideline for creating/using skills or agents |
+| Location | `skills/<name>/SKILL.md` | `instructions/<name>.instructions.md` |
+| Frontmatter | `name` + `description` | `description` + `applyTo` |
+| Activation | Automatic (description matching) | Loaded by `applyTo` scope |
+| Size limit | ≤500 lines body | ≤300 lines body |
+| References | Supported (`references/`, `templates/`) | Inline only |
 
 ## Supporting Files & Resource Types
 
-`references/` (docs), `templates/` (starter code), `scripts/` (automation), `assets/` (static files). See [`references/section-details-guide.md`](references/section-details-guide.md) for detailed rules.
+| Directory | Purpose | AI Interaction |
+| --- | --- | --- |
+| `references/` | Documentation loaded into AI context | Read and understood |
+| `templates/` | Starter code AI modifies and builds upon | Copied, filled, customized |
+| `scripts/` | Executable automation | Run when invoked |
+| `assets/` | Static files used AS-IS in output | Read and included verbatim |
+
+Create supporting files ONLY when reference material exceeds ~100 lines, when scripts are needed for setup/scaffolding, or when content is reused across skills. Keep patterns **inline** when under ~50 lines.
 
 ## Naming Conventions
 
