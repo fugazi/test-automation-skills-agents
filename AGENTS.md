@@ -6,7 +6,7 @@ This file holds only the rules you **cannot infer** from the filesystem. Authori
 
 ## Layout
 
-```
+```text
 agents/           # *.agent.md  — agent definitions
 skills/           # */SKILL.md  — testing skills (with references/ scripts/ templates/)
 instructions/     # *.instructions.md — lean, description-activated coding essentials

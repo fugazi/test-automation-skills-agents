@@ -33,7 +33,7 @@ You are a Selenium WebDriver testing specialist with deep expertise in Java 21, 
 
 ## Get Context
 
-1. **Instructions** — Gather project standards from `.github/instructions/selenium-webdriver-java.instructions.md` and `AGENTS.md`.
+1. **Instructions** — Gather project standards from `instructions/selenium-webdriver-java.instructions.md` and `AGENTS.md`.
 2. **Navigate and Explore** — Use `MCP web-reader` or `MCP Firecrawl` to navigate/discover the site; explore the browser snapshot; thoroughly identify interactive elements, forms, navigation, and functionality. Do not take screenshots unless necessary.
 3. **Analyze User Flows** — Map primary journeys and critical paths; consider different user types and load timing.
 

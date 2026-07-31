@@ -69,7 +69,7 @@ Headline result Anthropic reports: **"removed over 80% of Claude Code's system p
 
 Core law [S2]: *"finding the smallest possible set of high-signal tokens that maximize the likelihood of some desired outcome."*
 
-### 2.3 Agent Skills architecture [S3][S4][S5]
+### 2.3 Agent Skills architecture [S3] [S4] [S5]
 
 - **Progressive disclosure is THE core design principle.** Analogy: *"a well-organized manual: table of contents → chapters → detailed appendix."* [S3]
 - **Three tiers of loading:** Level 1 = frontmatter name+description only (injected into system prompt at startup); Level 2 = `SKILL.md` body read on demand; Level 3+ = bundled reference files discovered as needed. Because of this, *"context is effectively unbounded."* [S3]
@@ -79,7 +79,7 @@ Core law [S2]: *"finding the smallest possible set of high-signal tokens that ma
 - **Bundled scripts** are both executable tools and reference docs — *"make it clear whether Claude should run them or read them."* [S4]
 - **Do:** forward slashes in paths, descriptive filenames. **Don't:** vague names (`helper`/`utils`/`tools`), time-sensitive content, assuming packages are installed, deferring script errors to the model. [S4]
 
-### 2.4 Memory files (CLAUDE.md) [S1][S6]
+### 2.4 Memory files (CLAUDE.md) [S1] [S6]
 
 - Keep **lightweight and brief**; describe repo purpose + **gotchas the model can't infer from the filesystem**.
 - Avoid stating the obvious. Focus tokens on *"gotchas inside the codebase"* (e.g. types kept in one monolithic file).
