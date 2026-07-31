@@ -29,6 +29,10 @@ infer: true
 ---
 ```
 
+> **Tool-agnostic note — what is portable vs. what is an adapter field.**
+> The **portable** part of an agent is its body: the role, Constitution, workflow, and prompts. Only `description` is universally required for discovery.
+> The optional fields below — `tools`, `mcp-servers`, `handoffs`, `infer`, `target` — are **adapter fields specific to GitHub Copilot / VS Code**. Other harnesses (Claude Code, Cursor, Windsurf, OpenCode) do not recognize them and will ignore or map them to their own equivalents. Treat them as per-tool optimization, not as the source of truth. The body must remain usable and self-describing even if every adapter field is stripped.
+
 ### Core Frontmatter Properties
 
 #### **description** (REQUIRED)
