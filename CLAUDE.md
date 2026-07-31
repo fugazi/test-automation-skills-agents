@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-AI Agents & Skills repository for **test automation** (Playwright/TS, Selenium/Java, API, a11y, manual QA, CI/CD). Tool-agnostic, optimized for GitHub Copilot. Full standards live in [AGENTS.md](./AGENTS.md); authoring guides in [docs/](./docs/).
+AI Agents & Skills repository for **test automation** (Playwright/TS, Selenium/Java, API, a11y, manual QA, CI/CD). **Tool-agnostic**, consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). Full standards live in [AGENTS.md](./AGENTS.md); authoring guides in [docs/](./docs/).
 
 ## Gotchas (non-inferable rules)
 

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-AI Agents & Skills repository for **test automation**. Content is **tool-agnostic** (GitHub Copilot, Claude, Cursor, OpenCode, Windsurf…), with file formats and folder conventions optimized for **GitHub Copilot customizations**.
+AI Agents & Skills repository for **test automation**. Content is **tool-agnostic** — usable with GitHub Copilot, Claude, Cursor, OpenCode, Windsurf, and similar AI assistants, and consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). File formats and folder conventions follow widely-shared conventions; any tool-specific adapters (e.g., `.github/`, `.claude-plugin/`) are optional integration layers, not the source of truth.
 
 This file holds only the rules you **cannot infer** from the filesystem. Authoring depth lives in the canonical guides — don't duplicate it here.
 

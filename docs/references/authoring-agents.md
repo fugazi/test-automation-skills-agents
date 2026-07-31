@@ -1,18 +1,18 @@
 ---
-description: 'Guidelines for creating custom agent files for GitHub Copilot'
+description: 'Guidelines for creating custom agent definition files (*.agent.md), tool-agnostic'
 applyTo: '**/*.agent.md'
 ---
 
 # Custom Agent File Guidelines
 
-Instructions for creating effective and maintainable custom agent files that provide specialized expertise for specific development tasks in GitHub Copilot.
+Instructions for creating effective and maintainable custom agent definition files (`*.agent.md`). These are tool-agnostic; the same files can be adapted to GitHub Copilot, Claude, Cursor, and other AI assistants.
 
 ## Project Context
 
-- Target audience: Developers creating custom agents for GitHub Copilot
+- Target audience: Developers creating custom AI agents
 - File format: Markdown with YAML frontmatter
 - File naming convention: lowercase with hyphens (e.g., `test-specialist.agent.md`)
-- Location: `.github/agents/` directory (repository-level) or `agents/` directory (organization/enterprise-level)
+- Location: `agents/` directory (canonical). Tool-specific adapters (e.g., GitHub Copilot's `.github/agents/`) map from this source.
 - Purpose: Define specialized agents with tailored expertise, tools, and instructions for specific tasks
 - Official documentation: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents
 
