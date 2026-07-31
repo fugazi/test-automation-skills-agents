@@ -352,7 +352,7 @@ Typical triggers:
 
 ### How skill discovery works
 
-Copilot primarily uses the `description` in `SKILL.md` frontmatter to decide whether to load a skill.
+The tool harness uses the `description` in `SKILL.md` frontmatter to decide whether to load a skill. This is a tool-agnostic mechanism — it works the same way across GitHub Copilot, Claude Code, Cursor, Windsurf, and similar assistants.
 
 To improve activation:
 
@@ -363,7 +363,7 @@ To improve activation:
 If a skill still does not activate automatically:
 
 - Explicitly reference it in your prompt (e.g., "use the skill playwright-e2e-testing").
-- Copy the skill folder into `.github/skills/` (not just `skills/`) in your target repo.
+- Ensure the skill folder is in the canonical location your harness expects (e.g., `.github/skills/` for GitHub Copilot — see your tool's setup guide).
 
 ## Suggested end-to-end workflows
 
