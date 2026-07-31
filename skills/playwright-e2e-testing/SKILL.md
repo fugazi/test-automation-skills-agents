@@ -251,9 +251,6 @@ export default defineConfig({
 
 ---
 
-
----
-
 ## Red Flags
 
 - CSS/XPath locators when a role/label/testId is available — brittle and breaks on refactor.
