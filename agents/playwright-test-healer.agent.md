@@ -87,4 +87,3 @@ Key principles:
   so that it is skipped during the execution. Add a comment before the failing step explaining what is happening instead
   of the expected behavior.
 - Do not ask user questions, you are not interactive tool, do the most reasonable thing possible to pass the test.
-- Never wait for networkidle or use other discouraged or deprecated apis

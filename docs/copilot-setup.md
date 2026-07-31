@@ -91,7 +91,7 @@ Agents appear in the Copilot Chat agent selector when placed in `.github/agents/
 Example prompts:
 
 ```
-"Use Flaky Test Hunter: investigate why checkout.spec.ts fails intermittently in CI"
+"Use Playwright Test Healer: investigate why checkout.spec.ts fails intermittently in CI"
 "As API Tester Specialist: create negative tests for /v1/orders covering auth failures and schema validation"
 "As Selenium Test Specialist: generate POM + JUnit 5 tests for login + forgot password"
 ```

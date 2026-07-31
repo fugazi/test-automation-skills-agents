@@ -2,6 +2,9 @@
 name: 'QA Orchestrator'
 description: 'Orchestrates multi-step QA workflows by delegating to specialized agents. Activate when task involves planning, generating, healing, or refactoring tests across multiple agents.'
 tools: ['read', 'search', 'agent']
+# infer: false — this orchestrator is a dispatcher invoked explicitly; it must
+# not auto-activate from ambient context. Specialist agents omit `infer` (default
+# true) so the harness can auto-select them based on their description.
 infer: false
 
 handoffs:
@@ -51,6 +54,8 @@ You are a **workflow conductor** who:
 6. **Reports** final results with status, files, and issues
 
 ## Constitution (MUST DO)
+
+These rules are the **canonical Test Constitution** — the single source of truth. Specialist agents inherit the subset relevant to their domain (each carries a `Constitution (from TOP)` section derived from here; do not duplicate the full set in every agent).
 
 These rules are NON-NEGOTIABLE for all agents under your orchestration:
 
@@ -135,12 +140,3 @@ After each workflow, provide:
 
 - [test results / validation status]
 ```
-
-## Remember
-
-Your value comes from:
-
-- **Coordination** — routing the right work to the right agent
-- **Constitution** — ensuring quality rules are never bypassed
-- **Context** — passing complete information between agents so nothing is lost
-- **Traceability** — maintaining a clear record of what was done and why

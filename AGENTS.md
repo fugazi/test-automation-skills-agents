@@ -1,222 +1,41 @@
 # AGENTS.md
 
-This is an AI Agents & Skills repository for test automation.
+AI Agents & Skills repository for **test automation**. Content is **tool-agnostic** — usable with GitHub Copilot, Claude, Cursor, OpenCode, Windsurf, and similar AI assistants, and consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). File formats and folder conventions follow widely-shared conventions; any tool-specific adapters (e.g., `.github/`, `.claude-plugin/`) are optional integration layers, not the source of truth.
 
-The content is **tool-agnostic** (usable with GitHub Copilot, Claude, Cursor, OpenCode, Windsurf, etc.), while the file formats and folder conventions are primarily optimized for **GitHub Copilot customizations**.
+This file holds only the rules you **cannot infer** from the filesystem. Authoring depth lives in the canonical guides — don't duplicate it here.
 
-## Repository Structure
+## Layout
 
+```text
+agents/           # *.agent.md  — agent definitions
+skills/           # */SKILL.md  — testing skills (with references/ scripts/ templates/)
+instructions/     # *.instructions.md — lean, description-activated coding essentials
+docs/             # setup guides + authoring standards
+references/       # shared reference material
 ```
-agents/           # Custom AI agent definitions (*.agent.md)
-skills/           # Specialized testing skills (*/SKILL.md)
-instructions/     # Lean, scoped coding essentials (*.instructions.md)
-docs/             # Setup guides and documentation
-references/       # Shared reference material
-```
 
-## Build/Lint/Test Commands
+## Lint (the only validation)
 
-This repository has **no build system** — it is a documentation/knowledge base. Files are Markdown with YAML frontmatter, consumed by AI coding tools.
-
-The only validation is a structural lint that enforces the skill-anatomy standard:
+No build system. Structural lint enforces the skill-anatomy standard — **0 errors required**:
 
 ```bash
-node scripts/lint-skills.mjs        # 0 errors required; exit code 0 = pass
+node scripts/lint-skills.mjs        # exit code 0 = pass
 ```
 
-It checks frontmatter, `name`-matches-folder, SKILL.md ≤ 500 lines, back-link headers on references, intra-skill link resolution, kebab-case file naming, and the Selenium (Maven-only / Selenium Manager) rules. The same check runs in CI on PRs touching `skills/`, `agents/`, or `instructions/` (`.github/workflows/lint.yml`).
-
-## File Naming Conventions
-
-| File Type     | Pattern                                  | Example                                 |
-| ------------- | ---------------------------------------- | --------------------------------------- |
-| Agents        | `lowercase-with-hyphens.agent.md`        | `playwright-test-generator.agent.md`    |
-| Instructions  | `lowercase-with-hyphens.instructions.md` | `playwright-typescript.instructions.md` |
-| Skills        | `SKILL.md` (inside skill folder)         | `skills/my-skill/SKILL.md`              |
-| Skill folders | `lowercase-with-hyphens`                 | `playwright-e2e-testing/`               |
-
-## Frontmatter Requirements
-
-All `.agent.md` and `SKILL.md` files **must** include YAML frontmatter.
-
-### Agents (*.agent.md)
-
-Required fields:
-
-```yaml
----
-description: 'Clear description of purpose (50-150 chars)'
----
-```
-
-Optional fields:
-
-```yaml
----
-name: 'Display Name' # Defaults to filename
-tools: ['read', 'edit', 'search'] # Omit for all tools
-target: 'vscode' # 'vscode' or 'github-copilot'
-infer: true # Auto-selection (default: true)
-handoffs: # VS Code 1.106+ only
-  - label: 'Next Step'
-    agent: 'target-agent'
-    prompt: 'Continue with...'
-    send: false
----
-```
-
-> **Note:** Do not pin a specific model in tool-agnostic files. Let consumers choose based on their ecosystem.
-
-### Skills (SKILL.md)
-
-Required fields:
-
-```yaml
----
-name: 'skill-name' # Lowercase, hyphens, ≤64 chars
-description: 'WHAT it does, WHEN to use it, KEYWORDS for matching'
----
-```
-
-The `description` field is **critical** for automatic skill discovery. It must clearly state what the skill does, when to use it, and keywords users might mention.
-
-Optional field:
-
-```yaml
----
-license: 'Complete terms in LICENSE.txt' # Or SPDX identifier
----
-```
-
-## Formatting Standards
-
-- **Line length**: Under 120 characters where practical
-- **Indentation**: 2 spaces for YAML and Markdown lists
-- **Quotes**: YAML string values for `description` **must** use **single quotes** (e.g., `description: '...'`). The `name` field in `SKILL.md` follows standard Anthropic Agent Skills conventions and may be unquoted (e.g., `name: skill-name`).
-- **Frontmatter markers**: Triple-dash `---` at start and end
-- **Markdown headers**: `#` for title, `##` for sections, `###` for subsections
-- **Bullet lists**: `-` (hyphen) with space after
-- **Numbered lists**: `1.` with space after
-
-## Content Structure
-
-### Agents
-
-```markdown
-# Agent Identity
-
-Clear statement of who the agent is and its primary role.
-
-## Constitution (from TOP)
-
-### MUST DO
-
-- [5-6 rules that are NON-NEGOTIABLE for this agent]
-
-### WON'T DO
-
-- [4-5 rules that this agent must NEVER violate]
-
-## Core Responsibilities
-
-- List specific tasks the agent performs
-- Be explicit about scope boundaries
-
-## Approach and Methodology
-
-- How the agent works
-- Step-by-step workflow patterns
-
-## Guidelines and Constraints
-
-- What to do/avoid
-- Quality standards
-
-## Output Expectations
-
-- Expected format and quality
-```
-
-Agents that generate or modify test code should include a `## Constitution (from TOP)` section. The Constitution follows the Test Orchestration Pattern (TOP), defined centrally in `agents/qa-orchestrator.agent.md`. Individual agents copy the relevant MUST DO / WON'T DO rules so they are visible at the agent level.
-
-### Skills
-
-```markdown
-# Skill Title
-
-Brief overview of capabilities.
-
-## When to Use This Skill
-
-- List of scenarios and triggers
-
-## Prerequisites
-
-Required tools, dependencies, environment setup.
-
-## Step-by-Step Workflows
-
-Numbered steps for common tasks.
-
-## Troubleshooting
-
-| Issue   | Solution |
-| ------- | -------- |
-| Problem | Fix      |
-
-## References
-
-- [API Reference](./references/api_reference.md)
-```
-
-## Directory Organization
-
-**Skills subdirectories:**
-
-```
-skills/<skill-name>/
-├── SKILL.md              # Required: Main instructions
-├── LICENSE.txt           # Recommended: License terms
-├── scripts/              # Optional: Executable automation
-├── references/           # Optional: Documentation (loaded into context)
-├── assets/               # Optional: Static files (used as-is)
-└── templates/            # Optional: Starter code (AI modifies)
-```
-
-### Resource Types
-
-- `scripts/` — Executable automation (run when invoked)
-- `references/` — Documentation loaded into AI context when referenced
-- `assets/` — Static files used AS-IS in output
-- `templates/` — Starter code that AI modifies and builds upon
-
-## Conventions
-
-### Tool References
-
-Use lowercase aliases in `tools:` frontmatter: `read`, `edit`, `search`, `execute`, `agent`, `web`. For MCP servers: `playwright/*`, `github/*`, `server-name/tool-name`.
-
-### Variable Usage
-
-Use `${variableName}` syntax for dynamic values in prompts.
-
-## Quality Checklist
-
-When creating new agents or skills:
-
-- [ ] Valid YAML frontmatter with required fields
-- [ ] `description` clearly states WHAT, WHEN, and KEYWORDS (skills)
-- [ ] File naming follows lowercase-with-hyphens convention
-- [ ] Relative paths used for resource references
-- [ ] No hardcoded credentials or secrets
-- [ ] Agent content under 30,000 characters
-- [ ] Skill body under 500 lines (split large content into `references/`)
-- [ ] Orchestrator tool permissions cover all sub-agent needs
-
-## Reference Documentation
-
-- [Getting Started](./docs/getting-started.md) — Overview and quick start for all AI tools
-- [Skill Anatomy Standard](./docs/skill-anatomy.md) — How skills are structured and authored
-- [Creating Custom Agents](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents)
-- [Agent Skills Specification](https://agentskills.io/)
-- [VS Code Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
+Checks: frontmatter present, `name` matches folder, `SKILL.md` ≤ 500 lines, back-link headers on references, intra-skill link resolution, kebab-case naming, Selenium (Maven-only / Selenium Manager) rules. Runs in CI on PRs touching `skills/`, `agents/`, or `instructions/`.
+
+## Non-inferable rules
+
+- **No pinned models.** Do not set `model` in frontmatter — the harness selects it.
+- **Skills are agent-agnostic.** Skills never reference specific agents.
+- **YAML quoting.** `description` values MUST use single quotes (`description: '...'`). The `name` field follows Agent Skills conventions and may be unquoted (`name: skill-name`).
+- **Tool aliases** in frontmatter use lowercase: `read`, `edit`, `search`, `execute`, `agent`, `web`. MCP servers: `playwright/*`, `github/*`, `server-name/tool-name`.
+- **Dynamic values** in prompts use `${variableName}`.
+
+## Where authoring detail lives
+
+- **Authoring a skill** → [docs/skill-anatomy.md](./docs/skill-anatomy.md) (required sections, progressive disclosure, resource types, naming)
+- **Authoring an agent** → [docs/references/authoring-agents.md](./docs/references/authoring-agents.md) (frontmatter fields, handoffs, orchestration)
+- **Frontmatter fields & formatting** → [docs/references/authoring-skills.md](./docs/references/authoring-skills.md)
+- **Setup / quick start** → [docs/getting-started.md](./docs/getting-started.md)
+- **Anti-patterns** → [references/testing-anti-patterns.md](./references/testing-anti-patterns.md)

@@ -1,105 +1,18 @@
 # CLAUDE.md
 
-Claude Code entry point for this repository. Shared standards (naming, frontmatter, formatting, content structure) are in [AGENTS.md](./AGENTS.md) — refer there first.
+AI Agents & Skills repository for **test automation** (Playwright/TS, Selenium/Java, API, a11y, manual QA, CI/CD). **Tool-agnostic**, consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). Full standards live in [AGENTS.md](./AGENTS.md); authoring guides in [docs/](./docs/).
 
-## Repository Purpose
+## Gotchas (non-inferable rules)
 
-AI Agents & Skills repository for test automation, covering:
+- **No pinned models.** Agents and skills MUST NOT set a `model` in frontmatter — the tool harness selects the model.
+- **Skills are agent-agnostic.** Skills provide domain expertise only; they never reference specific agents. The harness decides activation.
+- **Lean instructions, deep skills.** Instructions (activated by their `description`) stay short (30–60 lines) with non-negotiable rules only. Deep content belongs in skills, loaded progressively to avoid context tax.
+- **Dual-stack discipline.** Never mix TypeScript and Java in the same code block; keep Playwright and Selenium content clearly separated.
+- **Test Constitution.** The QA Orchestrator (`agents/qa-orchestrator.agent.md`) defines the central MUST DO / WON'T DO rules; delegated agents inherit the subset relevant to their domain.
 
-- **Playwright** (TypeScript) — End-to-end browser automation
-- **Selenium WebDriver** (Java 21+) — UI testing with JUnit 5 and AssertJ
-- **API Testing** — REST/GraphQL with Playwright request fixture and REST Assured
-- **Accessibility Testing** — WCAG 2.2 AA compliance
-- **Manual QA** — ISTQB-based testing practices
-- **Test Planning** — Test strategy and documentation
-- **CI/CD Pipelines** — GitHub Actions test automation workflows
+## Where things live
 
-## Key Architectural Concepts
-
-**1. Progressive Loading (Skills)**
-Skills use three-level loading: Discovery (`name` + `description`) → Instructions (full SKILL.md) → Resources (scripts, examples, docs when referenced).
-
-**2. Agent Orchestration**
-Agents can invoke sub-agents using the `agent` tool. The orchestrator must include all tools that sub-agents need.
-
-**3. Handoffs (VS Code only)**
-Agents can define `handoffs` in frontmatter for guided sequential workflows. Each handoff requires `label` and `agent`, while `prompt` and `send` are optional.
-
-**4. No Pinned Models**
-Agents and skills do **not** pin a `model` in frontmatter. The tool harness selects the appropriate model based on the ecosystem and task requirements.
-
-**5. Test Constitution (MUST DO / WON'T DO)**
-The QA Orchestrator defines a central Constitution that all delegated agents inherit. Each agent includes a `Constitution (from TOP)` section with the rules relevant to its domain. See `agents/qa-orchestrator.agent.md` for the canonical rules.
-
-**6. Skills Are Agent-Agnostic**
-Skills do not reference specific agents. The tool harness (Copilot, Claude, etc.) decides which agent to activate for a given task. Skills provide domain expertise; agents provide workflow and boundaries.
-
-## Sub-Agent Orchestration Pattern
-
-1. Include `agent` in orchestrator tools list
-2. Orchestrator's tool permissions act as a ceiling for all sub-agents
-3. Use prompt-based orchestration with clear wrapper:
-
-```
-This phase must be performed as the agent "<AGENT_NAME>" defined in "<AGENT_SPEC_PATH>".
-- Read and apply the entire .agent.md spec
-- Work on "<WORK_UNIT_NAME>" with base path: "<BASE_PATH>"
-```
-
-4. Pass paths and identifiers, not entire file contents
-5. Launch sub-agents sequentially
-
-## Domain-Specific Guidelines
-
-### Playwright (TypeScript)
-
-- Locator priority: role-based → label → placeholder → text → test ID → CSS
-- Web-first assertions with auto-retry (`await expect(locator).toBeVisible()`)
-- Page Object Model required
-- See `instructions/playwright-typescript.instructions.md` for essentials
-- For full patterns (POM, fixtures, mocking): use the `playwright-e2e-testing` skill
-
-### Selenium WebDriver (Java 21+)
-
-- Stack: Selenium 4.x, JUnit 5, AssertJ Soft Assertions, Allure reporting
-- Locator priority: ID → test ID → semantic CSS → class → XPath
-- Explicit waits with `WebDriverWait` — never `Thread.sleep()`
-- Modern Java: Records, Streams, Optional, Pattern Matching
-- See `instructions/selenium-webdriver-java.instructions.md`
-
-### API Testing
-
-- Playwright request fixture (TS) and REST Assured (Java 21+)
-- Schema validation: Zod (TS) / JSON Schema Validator (Java)
-- Contract testing, idempotency, authentication flows
-- See `skills/api-testing/`
-
-### CI/CD Test Pipelines
-
-- Tiered: smoke → sanity → selective → full regression
-- GitHub Actions with sharding and parallel execution
-- See `instructions/cicd-testing.instructions.md`
-
-### Accessibility Testing
-
-- WCAG 2.2 AA compliance with axe-core or Playwright accessibility tree
-- Use the `a11y-playwright-testing` or `accessibility-selenium-testing` skills (loaded on-demand)
-
-## Instructions Design Philosophy
-
-This repo uses a **lean instructions** approach aligned with Context Engineering principles:
-
-- **Instructions** = cross-cutting essentials that apply to specific file types (scoped via `applyTo`)
-- **Skills** = deep domain expertise loaded progressively on-demand
-- **Agents** = workflow orchestration, boundaries, and Constitution enforcement
-
-Instructions should be short (30-60 lines) and contain only non-negotiable rules. Deep content belongs in skills where progressive loading avoids context tax.
-
-## Reference Documentation
-
-- [AGENTS.md](./AGENTS.md) — Style guide and file standards
-- [Agent Authoring Guide](./docs/references/authoring-agents.md)
-- [Skill Authoring Guide](./docs/references/authoring-skills.md)
-- [Playwright File Map](./skills/playwright-e2e-testing/references/file-map-template.md)
-- [Selenium File Map](./skills/webapp-selenium-testing/references/file-map-template.md)
-- [Testing Anti-Patterns](./references/testing-anti-patterns.md) — 14 common mistakes with Bad/Good examples
+- **Standards & formatting** → [AGENTS.md](./AGENTS.md)
+- **Author a skill / agent** → [docs/skill-anatomy.md](./docs/skill-anatomy.md), [docs/references/authoring-agents.md](./docs/references/authoring-agents.md), [docs/references/authoring-skills.md](./docs/references/authoring-skills.md)
+- **Domain depth** → the matching skill in `skills/` (loaded on-demand)
+- **Anti-patterns** → [references/testing-anti-patterns.md](./references/testing-anti-patterns.md)

@@ -10,14 +10,9 @@ Locator strategy, web-first assertions, test independence, step-based reporting,
 
 ### Locator Strategy (Priority Order)
 
-| Priority | Locator                | Example                                   |
-| -------- | ---------------------- | ----------------------------------------- |
-| 1        | Role + accessible name | `getByRole('button', { name: 'Submit' })` |
-| 2        | Label                  | `getByLabel('Email')`                     |
-| 3        | Placeholder            | `getByPlaceholder('Search...')`           |
-| 4        | Text                   | `getByText('Welcome back')`               |
-| 5        | Test ID                | `getByTestId('checkout-btn')`             |
-| 6        | CSS (last resort)      | `locator('.btn-primary')`                 |
+Prefer role-based locators (`getByRole`) with accessible names, then label → placeholder → text → test ID → CSS (last resort); never XPath.
+
+> The canonical priority hierarchy and role reference live in the `playwright-e2e-testing` skill (`references/locator-strategies-priority.md`). Do not duplicate it here — reference that source for the full table.
 
 ### Web-First Assertions (Auto-Retry)
 

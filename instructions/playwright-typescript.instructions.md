@@ -1,6 +1,5 @@
 ---
 description: 'Playwright TypeScript essentials — locator priority, web-first assertions, no hard waits. Applied to all .spec.ts files.'
-applyTo: '**/*.spec.ts'
 ---
 
 # Playwright TypeScript Essentials

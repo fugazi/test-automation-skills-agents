@@ -1,6 +1,6 @@
 ---
 name: webapp-selenium-testing
-description: 'Author and maintain versioned Selenium WebDriver tests with Java and JUnit 5. Use for creating, debugging, or running Selenium specs, implementing Page Objects, handling explicit waits, capturing screenshots, or setting up Maven test projects. Supports Chrome, Firefox, and Edge.'
+description: 'Author and maintain versioned Selenium WebDriver tests with Java and JUnit 5. Use for creating, debugging, or running Selenium specs, implementing Page Objects, handling explicit waits, capturing screenshots, or setting up Maven test projects. Supports Chrome, Firefox, and Edge. Keywords: Selenium WebDriver, Java, JUnit 5, Page Object Model, explicit waits, Maven, screenshots.'
 license: 'Complete terms in LICENSE.txt'
 ---
 

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="copilot-banner.jpg" width="500" alt="Test Automation AI Agents & Skills - Copilot DAWless Live Set">
+  <img src="copilot-banner.jpg" width="500" alt="Test Automation AI Agents & Skills - Tool-Agnostic QA Automation">
 </div>
 
 # Test Automation AI Agents & Skills (Tool-Agnostic) 🚀
@@ -175,9 +175,7 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill g
 
 > Note: Copilot's discovery typically looks at canonical locations like `.github/agents` and `.github/skills`. Keeping this repo as a submodule is fine, but you will generally still want a sync step into `.github/*`.
 
-> Packaging note: the current folder layout and `frontmatter` conventions are optimized for `GitHub Copilot` customizations.
-> If you use another tool, you can still reuse the same content by mapping it to that tool's
-> equivalent mechanisms (rules files, system prompts, playbooks, templates).
+> Packaging note: the folder layout and `frontmatter` conventions are **tool-agnostic** by design, so the same content works across GitHub Copilot, Claude, Cursor, OpenCode, and Windsurf. `.github/`, `.claude-plugin/`, and similar directories are optional tool-specific adapters — map to each tool's equivalent mechanisms (rules files, system prompts, playbooks, templates) as needed.
 
 ---
 
@@ -187,7 +185,7 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill g
 
 Agents define:
 
-- Identity and specialization (e.g., flaky test hunter)
+- Identity and specialization (e.g., Playwright Test Healer)
 - Scope boundaries (what the agent will / will not do)
 - Tool access (least-privilege when possible)
 - Workflow expectations and output format
@@ -236,7 +234,7 @@ Customizations can behave slightly differently depending on where you run Copilo
 
 When in doubt, keep the frontmatter minimal and portable:
 
-- Agents: `description` (required), plus optional `name`, `tools`, `target`, `infer`
+- Agents: `description` (required), plus optional `name`, `tools`, `target`, `infer`, `handoffs`
 - Skills: `name` + `description` (required), optional `license`
 - Do **not** pin `model` in agent or skill frontmatter — let the tool harness choose
 
@@ -247,7 +245,7 @@ Use this repo as a shared "QA automation brain" for your team:
 1. Keep this repository as the source of truth.
 2. Sync/copy its content into whichever format your AI tool supports.
 3. Keep the same names so prompts remain consistent across tools:
-   - "Use the Flaky Test Hunter agent."
+   - "Use the Playwright Test Healer agent."
    - "Follow the Playwright TypeScript instructions."
    - "Apply the playwright-e2e-testing skill playbook."
 
@@ -277,6 +275,8 @@ Key characteristics (by design):
 
 ## How to use agents (day-to-day)
 
+Agents are activated the same way across tools — by referencing the agent in a prompt (its `description` drives selection). The exact UI differs per assistant; the prompts below work everywhere. The flows below are GitHub Copilot-specific examples — for Claude Code, Cursor, Windsurf, and OpenCode see the matching [setup guide](#setup-guides).
+
 ### In VS Code (Copilot Chat)
 
 1. Open Copilot Chat.
@@ -285,7 +285,7 @@ Key characteristics (by design):
 
 Prompt examples:
 
-- "Use Flaky Test Hunter: investigate why `checkout.spec.ts` fails intermittently in CI and propose fixes."
+- "Use Playwright Test Healer: investigate why `checkout.spec.ts` fails intermittently in CI and propose fixes."
 - "As API Tester Specialist: create negative tests for `/v1/orders` covering auth failures and schema validation."
 - "As Selenium Test Specialist: generate POM + JUnit 5 tests for login + forgot password."
 
@@ -320,10 +320,8 @@ Use instructions when you want **consistent automation standards** across:
 
 Examples:
 
-- Add Playwright standards to a new repo: copy `instructions/playwright-typescript.instructions.md` into
-  `.github/instructions/`.
-- Ensure Selenium suites never use `Thread.sleep()`: copy `instructions/selenium-webdriver-java.instructions.md` into
-  `.github/instructions/`.
+- Add Playwright standards to a new repo: install `instructions/playwright-typescript.instructions.md` into your tool's instructions location (e.g., `.github/instructions/` for GitHub Copilot — see your [setup guide](#setup-guides)).
+- Ensure Selenium suites never use `Thread.sleep()`: install `instructions/selenium-webdriver-java.instructions.md` the same way.
 - For a11y standards: use the `a11y-playwright-testing` or `accessibility-selenium-testing` skills (loaded on-demand).
 
 ## How to use skills (when they help most)
@@ -354,7 +352,7 @@ Typical triggers:
 
 ### How skill discovery works
 
-Copilot primarily uses the `description` in `SKILL.md` frontmatter to decide whether to load a skill.
+The tool harness uses the `description` in `SKILL.md` frontmatter to decide whether to load a skill. This is a tool-agnostic mechanism — it works the same way across GitHub Copilot, Claude Code, Cursor, Windsurf, and similar assistants.
 
 To improve activation:
 
@@ -365,7 +363,7 @@ To improve activation:
 If a skill still does not activate automatically:
 
 - Explicitly reference it in your prompt (e.g., "use the skill playwright-e2e-testing").
-- Copy the skill folder into `.github/skills/` (not just `skills/`) in your target repo.
+- Ensure the skill folder is in the canonical location your harness expects (e.g., `.github/skills/` for GitHub Copilot — see your tool's setup guide).
 
 ## Suggested end-to-end workflows
 
@@ -461,7 +459,7 @@ If a skill still does not activate automatically:
 | ---------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Agent not visible in selector      | Wrong folder path                                         | Ensure `.github/agents/*.agent.md` in target repo                         |
 | Skill never triggers               | Description too vague or folder not in canonical location | Improve `description` and ensure `.github/skills/<skill>/SKILL.md`        |
-| Removed skill name in a prompt      | Catalog was consolidated in v3                           | See [skill migration plan](docs/enhancements/implementation-plan-skills.md) |
+| Removed skill name in a prompt      | Catalog was consolidated in v3                           | See [skill migration plan](docs/archive/enhancements/implementation-plan-skills.md) (archived) |
 | Generated tests are unstable       | Locator/wait anti-patterns                                | Follow the locator priority + web-first assertions from Playwright skills |
 | Selenium tests flaky               | `Thread.sleep()` or missing explicit waits                | Use `WebDriverWait` patterns from Selenium instructions/skills            |
 

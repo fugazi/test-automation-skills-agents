@@ -8,7 +8,7 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 | ---------------- | ----------------------------------------- | -------- |
 | **Agents**       | Specialist personas for specific QA tasks | 7        |
 | **Skills**       | Procedural workflows for testing domains  | 9        |
-| **Instructions** | Rules, conventions, and standards         | 7        |
+| **Instructions** | Rules, conventions, and standards         | 3        |
 | **References**   | Detailed technical reference material     | Multiple |
 | **Templates**    | Starter files for common test patterns    | Multiple |
 
@@ -64,11 +64,11 @@ test-automation-skills-agents/
 │   ├── qa-manual-istqb/
 │   ├── grill-me-qa/
 │   └── api-testing/
-├── instructions/     # 7 rules and conventions (.instructions.md)
+├── instructions/     # 3 rules and conventions (.instructions.md)
 ├── references/       # Detailed technical material
 ├── docs/             # Documentation, guides, and standards
-│   ├── references/   # Extracted reference material (section details, examples)
-│   └── enhancements/ # Enhancement plans (CE audit, future improvements)
+│   ├── references/   # Authoring guides and examples
+│   └── enhancements/ # CE audit (historical plans in docs/archive/)
 ├── AGENTS.md         # Agent registry and standards
 ├── CLAUDE.md         # Claude Code integration
 └── README.md         # Repository overview
@@ -96,7 +96,7 @@ Skills that apply to both stacks provide examples in both languages.
 
 ### Stabilize a flaky suite
 
-1. Use Flaky Test Hunter agent to identify patterns and root causes.
+1. Use Playwright Test Healer agent to identify patterns and root causes.
 2. Apply changes (wait strategy, locators, isolation, data seeding).
 3. Use Playwright Test Healer agent to validate and repair remaining failures.
 

@@ -9,11 +9,12 @@
 //   S1  Each skill folder has a SKILL.md.
 //   S2  SKILL.md has YAML frontmatter with `name` and `description`.
 //   S3  `name` matches the skill folder name.
-//   S4  `description` <= 600 chars (rides in every consumer's system prompt).
+//   S4  `description` <= 1024 chars (Anthropic's official Agent Skills limit).
 //   S5  SKILL.md body <= 500 lines.
 //   S6  Reference files <= 300 lines (WARNING, not a hard fail — large Java/POM
 //       catalogs may be intentionally kept whole; flagged for review).
-//   S7  Every reference file starts with a back-link header to SKILL.md.
+//   S7  Reference files SHOULD start with a back-link header to SKILL.md
+//       (WARNING — cosmetic; does not change agent behavior).
 //   S8  Intra-skill Markdown links resolve to existing files.
 //   S9  No snake_case names for new reference/template `.md` files (kebab-case only).
 //   S10 No `WebDriverManager` or `gradle` mentions in Selenium skills/agents/instructions.
@@ -34,7 +35,7 @@ const INSTRUCTIONS_DIR = join(ROOT, "instructions");
 
 const MAX_SKILL_LINES = 500;
 const MAX_REF_LINES = 300; // advisory
-const MAX_DESC_CHARS = 600;
+const MAX_DESC_CHARS = 1024;
 
 let errors = 0;
 let warnings = 0;
@@ -176,13 +177,13 @@ for (const skillDir of skillDirs) {
         warn(rloc, "S6", `reference is ${rlines} lines (target ${MAX_REF_LINES}) — consider splitting`);
       }
 
-      // S7: back-link header in first 5 non-empty lines
+      // S7: back-link header in first 5 non-empty lines (WARNING — cosmetic)
       const head = readLines(refPath)
         .filter((l) => l.trim().length > 0)
         .slice(0, 5)
         .join("\n");
       if (!/SKILL\.md/i.test(head)) {
-        err(rloc, "S7", "reference missing back-link header to SKILL.md (expected near top)");
+        warn(rloc, "S7", "reference missing back-link header to SKILL.md (expected near top)");
       }
 
       // S9: snake_case reference name

@@ -1,18 +1,17 @@
 ---
-description: 'Guidelines for creating custom agent files for GitHub Copilot'
-applyTo: '**/*.agent.md'
+description: 'Guidelines for creating custom agent definition files (*.agent.md), tool-agnostic'
 ---
 
 # Custom Agent File Guidelines
 
-Instructions for creating effective and maintainable custom agent files that provide specialized expertise for specific development tasks in GitHub Copilot.
+Instructions for creating effective and maintainable custom agent definition files (`*.agent.md`). These are tool-agnostic; the same files can be adapted to GitHub Copilot, Claude, Cursor, and other AI assistants.
 
 ## Project Context
 
-- Target audience: Developers creating custom agents for GitHub Copilot
+- Target audience: Developers creating custom AI agents
 - File format: Markdown with YAML frontmatter
 - File naming convention: lowercase with hyphens (e.g., `test-specialist.agent.md`)
-- Location: `.github/agents/` directory (repository-level) or `agents/` directory (organization/enterprise-level)
+- Location: `agents/` directory (canonical). Tool-specific adapters (e.g., GitHub Copilot's `.github/agents/`) map from this source.
 - Purpose: Define specialized agents with tailored expertise, tools, and instructions for specific tasks
 - Official documentation: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents
 
@@ -29,6 +28,10 @@ target: "vscode"
 infer: true
 ---
 ```
+
+> **Tool-agnostic note — what is portable vs. what is an adapter field.**
+> The **portable** part of an agent is its body: the role, Constitution, workflow, and prompts. Only `description` is universally required for discovery.
+> The optional fields below — `tools`, `mcp-servers`, `handoffs`, `infer`, `target` — are **adapter fields specific to GitHub Copilot / VS Code**. Other harnesses (Claude Code, Cursor, Windsurf, OpenCode) do not recognize them and will ignore or map them to their own equivalents. Treat them as per-tool optimization, not as the source of truth. The body must remain usable and self-describing even if every adapter field is stripped.
 
 ### Core Frontmatter Properties
 
@@ -66,9 +69,9 @@ infer: true
 
 #### **infer** (OPTIONAL)
 
-- Boolean controlling whether Copilot can automatically use this agent based on context
-- Default: `true` if omitted
-- Set to `false` to require manual agent selection
+- Boolean controlling whether the harness can automatically use this agent based on context
+- Default: `true` if omitted — specialist/worker agents omit it so they are auto-selectable by their description
+- Set to `false` explicitly for dispatchers/orchestrators that must only be invoked on purpose, never auto-activated from ambient context (e.g., `qa-orchestrator`)
 
 #### **metadata** (OPTIONAL, GitHub.com only)
 
