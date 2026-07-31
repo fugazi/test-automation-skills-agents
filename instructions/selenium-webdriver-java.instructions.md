@@ -1,6 +1,5 @@
 ---
 description: 'Selenium WebDriver 4+ / Java 21+ essentials — locator priority, explicit waits, POM, AssertJ Soft Assertions, Allure, modern Java. Applied to Java test and page-object files.'
-applyTo: 'src/test/java/**/*.java, src/main/java/**/pages/**/*.java, src/main/java/**/base/**/*.java, src/main/java/**/factories/**/*.java, **/pom.xml'
 ---
 
 # Selenium WebDriver + Java Essentials

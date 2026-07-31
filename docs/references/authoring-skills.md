@@ -1,6 +1,5 @@
 ---
 description: 'Guidelines for creating high-quality Agent Skills, tool-agnostic'
-applyTo: '**/.github/skills/**/SKILL.md, **/.claude/skills/**/SKILL.md'
 ---
 
 # Agent Skills File Guidelines

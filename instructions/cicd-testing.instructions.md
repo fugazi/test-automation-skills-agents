@@ -1,6 +1,5 @@
 ---
 description: 'CI/CD test pipeline essentials — test tiers, GitHub Actions patterns, sharding, reporting gates, flaky handling. Applied to CI/CD workflow files.'
-applyTo: '**/.github/workflows/*.yml, **/.github/workflows/*.yaml, **/Jenkinsfile, **/.gitlab-ci.yml'
 ---
 
 # CI/CD Test Pipeline Essentials

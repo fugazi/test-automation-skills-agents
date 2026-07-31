@@ -215,14 +215,14 @@ Each framework skill MUST include a locator priority table:
 
 ## Instructions Layer
 
-`.instructions.md` files define cross-cutting coding essentials (scoped via `applyTo`), separate from skills. Distinctions:
+`.instructions.md` files define cross-cutting coding essentials, separate from skills. Both are activated by description matching — no tool-specific scoping field is required. Distinctions:
 
 | Aspect | Skill | Instruction |
 | --- | --- | --- |
 | Purpose | Executable workflow for a task | Guideline for creating/using skills or agents |
 | Location | `skills/<name>/SKILL.md` | `instructions/<name>.instructions.md` |
-| Frontmatter | `name` + `description` | `description` + `applyTo` |
-| Activation | Automatic (description matching) | Loaded by `applyTo` scope |
+| Frontmatter | `name` + `description` | `description` only |
+| Activation | Description matching (tool-agnostic) | Description matching (tool-agnostic) |
 | Size limit | ≤500 lines body | ≤300 lines body |
 | References | Supported (`references/`, `templates/`) | Inline only |
 

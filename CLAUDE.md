@@ -6,7 +6,7 @@ AI Agents & Skills repository for **test automation** (Playwright/TS, Selenium/J
 
 - **No pinned models.** Agents and skills MUST NOT set a `model` in frontmatter — the tool harness selects the model.
 - **Skills are agent-agnostic.** Skills provide domain expertise only; they never reference specific agents. The harness decides activation.
-- **Lean instructions, deep skills.** Instructions (scoped via `applyTo`) stay short (30–60 lines) with non-negotiable rules only. Deep content belongs in skills, loaded progressively to avoid context tax.
+- **Lean instructions, deep skills.** Instructions (activated by their `description`) stay short (30–60 lines) with non-negotiable rules only. Deep content belongs in skills, loaded progressively to avoid context tax.
 - **Dual-stack discipline.** Never mix TypeScript and Java in the same code block; keep Playwright and Selenium content clearly separated.
 - **Test Constitution.** The QA Orchestrator (`agents/qa-orchestrator.agent.md`) defines the central MUST DO / WON'T DO rules; delegated agents inherit the subset relevant to their domain.
 

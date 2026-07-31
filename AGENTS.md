@@ -9,7 +9,7 @@ This file holds only the rules you **cannot infer** from the filesystem. Authori
 ```
 agents/           # *.agent.md  — agent definitions
 skills/           # */SKILL.md  — testing skills (with references/ scripts/ templates/)
-instructions/     # *.instructions.md — lean, applyTo-scoped coding essentials
+instructions/     # *.instructions.md — lean, description-activated coding essentials
 docs/             # setup guides + authoring standards
 references/       # shared reference material
 ```

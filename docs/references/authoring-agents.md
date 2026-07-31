@@ -1,6 +1,5 @@
 ---
 description: 'Guidelines for creating custom agent definition files (*.agent.md), tool-agnostic'
-applyTo: '**/*.agent.md'
 ---
 
 # Custom Agent File Guidelines
