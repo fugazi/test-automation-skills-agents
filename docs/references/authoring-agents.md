@@ -69,9 +69,9 @@ infer: true
 
 #### **infer** (OPTIONAL)
 
-- Boolean controlling whether Copilot can automatically use this agent based on context
-- Default: `true` if omitted
-- Set to `false` to require manual agent selection
+- Boolean controlling whether the harness can automatically use this agent based on context
+- Default: `true` if omitted — specialist/worker agents omit it so they are auto-selectable by their description
+- Set to `false` explicitly for dispatchers/orchestrators that must only be invoked on purpose, never auto-activated from ambient context (e.g., `qa-orchestrator`)
 
 #### **metadata** (OPTIONAL, GitHub.com only)
 
