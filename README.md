@@ -275,6 +275,8 @@ Key characteristics (by design):
 
 ## How to use agents (day-to-day)
 
+Agents are activated the same way across tools — by referencing the agent in a prompt (its `description` drives selection). The exact UI differs per assistant; the prompts below work everywhere. The flows below are GitHub Copilot-specific examples — for Claude Code, Cursor, Windsurf, and OpenCode see the matching [setup guide](#setup-guides).
+
 ### In VS Code (Copilot Chat)
 
 1. Open Copilot Chat.
@@ -318,10 +320,8 @@ Use instructions when you want **consistent automation standards** across:
 
 Examples:
 
-- Add Playwright standards to a new repo: copy `instructions/playwright-typescript.instructions.md` into
-  `.github/instructions/`.
-- Ensure Selenium suites never use `Thread.sleep()`: copy `instructions/selenium-webdriver-java.instructions.md` into
-  `.github/instructions/`.
+- Add Playwright standards to a new repo: install `instructions/playwright-typescript.instructions.md` into your tool's instructions location (e.g., `.github/instructions/` for GitHub Copilot — see your [setup guide](#setup-guides)).
+- Ensure Selenium suites never use `Thread.sleep()`: install `instructions/selenium-webdriver-java.instructions.md` the same way.
 - For a11y standards: use the `a11y-playwright-testing` or `accessibility-selenium-testing` skills (loaded on-demand).
 
 ## How to use skills (when they help most)
