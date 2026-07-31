@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="copilot-banner.jpg" width="500" alt="Test Automation AI Agents & Skills - Copilot DAWless Live Set">
+  <img src="copilot-banner.jpg" width="500" alt="Test Automation AI Agents & Skills - Tool-Agnostic QA Automation">
 </div>
 
 # Test Automation AI Agents & Skills (Tool-Agnostic) 🚀
@@ -185,7 +185,7 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill g
 
 Agents define:
 
-- Identity and specialization (e.g., flaky test hunter)
+- Identity and specialization (e.g., Playwright Test Healer)
 - Scope boundaries (what the agent will / will not do)
 - Tool access (least-privilege when possible)
 - Workflow expectations and output format
@@ -234,7 +234,7 @@ Customizations can behave slightly differently depending on where you run Copilo
 
 When in doubt, keep the frontmatter minimal and portable:
 
-- Agents: `description` (required), plus optional `name`, `tools`, `target`, `infer`
+- Agents: `description` (required), plus optional `name`, `tools`, `target`, `infer`, `handoffs`
 - Skills: `name` + `description` (required), optional `license`
 - Do **not** pin `model` in agent or skill frontmatter — let the tool harness choose
 
@@ -245,7 +245,7 @@ Use this repo as a shared "QA automation brain" for your team:
 1. Keep this repository as the source of truth.
 2. Sync/copy its content into whichever format your AI tool supports.
 3. Keep the same names so prompts remain consistent across tools:
-   - "Use the Flaky Test Hunter agent."
+   - "Use the Playwright Test Healer agent."
    - "Follow the Playwright TypeScript instructions."
    - "Apply the playwright-e2e-testing skill playbook."
 
@@ -283,7 +283,7 @@ Key characteristics (by design):
 
 Prompt examples:
 
-- "Use Flaky Test Hunter: investigate why `checkout.spec.ts` fails intermittently in CI and propose fixes."
+- "Use Playwright Test Healer: investigate why `checkout.spec.ts` fails intermittently in CI and propose fixes."
 - "As API Tester Specialist: create negative tests for `/v1/orders` covering auth failures and schema validation."
 - "As Selenium Test Specialist: generate POM + JUnit 5 tests for login + forgot password."
 
@@ -459,7 +459,7 @@ If a skill still does not activate automatically:
 | ---------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Agent not visible in selector      | Wrong folder path                                         | Ensure `.github/agents/*.agent.md` in target repo                         |
 | Skill never triggers               | Description too vague or folder not in canonical location | Improve `description` and ensure `.github/skills/<skill>/SKILL.md`        |
-| Removed skill name in a prompt      | Catalog was consolidated in v3                           | See [skill migration plan](docs/enhancements/implementation-plan-skills.md) |
+| Removed skill name in a prompt      | Catalog was consolidated in v3                           | See [skill migration plan](docs/archive/enhancements/implementation-plan-skills.md) (archived) |
 | Generated tests are unstable       | Locator/wait anti-patterns                                | Follow the locator priority + web-first assertions from Playwright skills |
 | Selenium tests flaky               | `Thread.sleep()` or missing explicit waits                | Use `WebDriverWait` patterns from Selenium instructions/skills            |
 
