@@ -175,8 +175,6 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill g
 
 > Note: Copilot's discovery typically looks at canonical locations like `.github/agents` and `.github/skills`. Keeping this repo as a submodule is fine, but you will generally still want a sync step into `.github/*`.
 
-> Packaging note: the folder layout and `frontmatter` conventions are **tool-agnostic** by design, so the same content works across GitHub Copilot, Claude, Cursor, OpenCode, and Windsurf. `.github/`, `.claude-plugin/`, and similar directories are optional tool-specific adapters — map to each tool's equivalent mechanisms (rules files, system prompts, playbooks, templates) as needed.
-
 ---
 
 ## Core concepts
