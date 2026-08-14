@@ -50,8 +50,8 @@ test("user sees order history", async ({ page }) => {
 
 ```typescript
 test(
-  "checkout flow @smoke @checkout",
-  { tag: ["@smoke", "@regression"] },
+  "checkout flow",
+  { tag: "@smoke" },
   async ({ page }) => {
     await test.step("Navigate to product page", async () => {
       await page.goto("/products/1");

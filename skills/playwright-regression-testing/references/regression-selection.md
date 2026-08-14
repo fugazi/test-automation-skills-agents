@@ -74,26 +74,19 @@ Prioritize tests by business impact and failure probability:
 | **Low**      | Edge cases, cosmetic flows                   | Run in full regression only |
 
 ```typescript
-// Tag tests with risk levels for prioritized execution
-test.describe(
-  "checkout flow @critical",
-  { tag: ["@critical", "@regression"] },
-  () => {
-    test("user can complete purchase", async ({ page }) => {
-      // Critical path — always part of smoke and regression
-    });
-  },
-);
+// Risk levels are decision inputs (see table above); execution tags stay single:
+// use exactly one of @smoke/@sanity/@regression/@e2e/@api/@destructive per test.
+test.describe("checkout flow", () => {
+  test("user can complete purchase", { tag: "@smoke" }, async ({ page }) => {
+    // Critical path — runs on every commit via @smoke
+  });
+});
 
-test.describe(
-  "profile settings @medium",
-  { tag: ["@medium", "@regression"] },
-  () => {
-    test("user can update avatar", async ({ page }) => {
-      // Medium risk — nightly regression only
-    });
-  },
-);
+test.describe("profile settings", () => {
+  test("user can update avatar", { tag: "@regression" }, async ({ page }) => {
+    // Medium risk — nightly regression via @regression
+  });
+});
 ```
 
 ### 3. Historical Selection (Failure-Prone Tests)
@@ -117,10 +110,10 @@ When CI time is constrained, select tests to fit within a time window:
 
 ```bash
 # Run critical tests within a 5-minute budget
-npx playwright test --grep @critical --timeout 300000
+npx playwright test --grep @smoke --timeout 300000
 
-# Run smoke + high-risk tests (skip medium/low)
-npx playwright test --grep "@smoke|@critical|@high"
+# Run smoke + regression (skip medium/low risk)
+npx playwright test --grep "@smoke|@regression"
 ```
 
 ## Test Naming Conventions
