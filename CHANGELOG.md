@@ -5,6 +5,24 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2026-08-14
+
+Single-tag taxonomy release — standardizes test classification across the whole library and aligns every existing tag reference with it.
+
+### Added
+
+- **Single-tag taxonomy** documented as a non-negotiable rule in `instructions/playwright-typescript.instructions.md` and `instructions/selenium-webdriver-java.instructions.md`: exactly one tag per test (`@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive`), never on `test.describe()`/class level, never combined. `@destructive` is reserved for tests that mutate shared/global state — excluded from parallel runs (`--grep-invert @destructive` / `-DforkCount=1`) and run sequentially.
+
+### Changed
+
+- **Tag usage aligned repo-wide** to the single-tag taxonomy (11 files):
+  - `instructions/cicd-testing.instructions.md`: tag-by-tier rule now uses `{ tag: '@smoke' }` (never in test titles) and the full 6-tag set.
+  - `agents/selenium-test-specialist.agent.md`: `mvn test -Psmoke` → `mvn test -Dgroups=smoke`; checklist requires exactly one `@Tag`.
+  - `skills/qa-manual-istqb/` (strategy + templates): tag annotation replaces tags-in-titles; `@full` removed from the tag conventions (not part of the taxonomy).
+  - `skills/playwright-regression-testing/` (strategy, selection, flaky-management, best-practices): combined tag arrays (`["@smoke", "@regression"]`) and tags in `describe()`/titles replaced with a single execution tag per test.
+
+---
+
 ## [4.0.0] - 2026-07-30
 
 A major alignment release with Anthropic's *"The new rules of context engineering for Claude 5 generation models"* and *"Effective context engineering for AI agents"*, plus a repositioning to **tool-agnostic / multi-model** (Claude 5, GPT-Sol, GLM-5.2, and others).
