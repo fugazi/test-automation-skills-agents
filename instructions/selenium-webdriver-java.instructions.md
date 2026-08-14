@@ -22,6 +22,7 @@ Stack: Selenium 4.x · Java 21+ · JUnit 5 · AssertJ (Soft Assertions) · Allur
 - **Fluent Page Objects**: methods return `this` or the next `Page` object
 - **Naming**: class `FeatureNameTest`, method `should[Result]When[Action]()`
 - **Reporting**: `@DisplayName`, `@Tag`, and Allure annotations (`@Epic`/`@Feature`/`@Story`/`@Severity`) on tests; `@Step` on Page Object actions
+- **Single-tag taxonomy**: exactly one `@Tag` per test — `smoke`, `sanity`, `regression`, `e2e`, `api`, or `destructive`; never combined, never on the class level. `destructive` mutates shared/global state (locale, permissions, roles, feature flags, global settings) — exclude from parallel runs and run it separately and sequentially (`mvn test -Dgroups=destructive -DforkCount=1`).
 - **Logging**: `@Slf4j` only — no `System.out.println`
 - **Driver lifecycle**: instantiated and quit in `BaseTest`; rely on Selenium Manager (built into 4.6+) to auto-resolve drivers — do NOT add any external driver-management library (Maven-only)
 - **Modern Java 21+**: Records for DTOs, Streams `.toList()`, `Optional`, Pattern Matching, Sequenced Collections (`.getFirst()`/`.getLast()`)
