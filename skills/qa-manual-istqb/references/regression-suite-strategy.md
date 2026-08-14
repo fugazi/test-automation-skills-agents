@@ -10,8 +10,8 @@
 
 ## Tagging approach (Playwright-friendly)
 
-- Put tags in test titles (e.g., `@smoke`, `@regression`) so CI can run subsets via `--grep`.
-- Keep tag taxonomy small and meaningful; document it in the suite definition.
+- Use Playwright's `tag` annotation (e.g., `{ tag: '@smoke' }`) — never in test titles — so CI can run subsets via `--grep`.
+- Keep the tag taxonomy small: exactly one of `@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive` per test; document it in the suite definition.
 
 ## Add/remove rules
 

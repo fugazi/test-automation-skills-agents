@@ -81,8 +81,8 @@ Use Playwright's `tag` annotation to classify tests for selective execution:
 import { test, expect } from "@playwright/test";
 
 test(
-  "user can log in @smoke @auth",
-  { tag: ["@smoke", "@regression"] },
+  "user can log in",
+  { tag: "@smoke" },
   async ({ page }) => {
     await page.goto("/login");
     await page.getByLabel("Email").fill("user@example.com");
@@ -93,8 +93,8 @@ test(
 );
 
 test(
-  "user can reset password @regression @auth",
-  { tag: ["@regression"] },
+  "user can reset password",
+  { tag: "@regression" },
   async ({ page }) => {
     await page.goto("/forgot-password");
     await page.getByLabel("Email").fill("user@example.com");

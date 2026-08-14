@@ -3,10 +3,10 @@ import { test, expect } from '@playwright/test';
 /**
  * Naming convention:
  * - Include test case ID (traceability): "TC-123 ..."
- * - Add suite tags for `--grep` runs: "@smoke", "@regression", etc.
+ * - Use the `tag` annotation for `--grep` runs: `{ tag: '@smoke' }` (one tag per test)
  */
 
-test('TC-001 @smoke example test', async ({ page }) => {
+test('TC-001 example test', { tag: '@smoke' }, async ({ page }) => {
   await page.goto('/');
 
   // Prefer stable locators (data-testid) when available.
