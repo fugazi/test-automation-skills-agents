@@ -11,15 +11,15 @@ Single-tag taxonomy release — standardizes test classification across the whol
 
 ### Added
 
-- **Single-tag taxonomy** documented as a non-negotiable rule in `instructions/playwright-typescript.instructions.md` and `instructions/selenium-webdriver-java.instructions.md`: exactly one tag per test (`@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive`), never on `test.describe()`/class level, never combined. `@destructive` is reserved for tests that mutate shared/global state — excluded from parallel runs (`--grep-invert @destructive` / `-DforkCount=1`) and run sequentially.
+- **Single-tag taxonomy** documented as a non-negotiable rule in `instructions/playwright-typescript.instructions.md` and `instructions/selenium-webdriver-java.instructions.md`: exactly one tag per test (`@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive`), never on `test.describe()`/class level, never combined. `@destructive` is reserved for tests that mutate shared/global state — excluded from parallel runs (`--grep-invert @destructive` / `-Dgroups=destructive -DforkCount=1 -Djunit.jupiter.execution.parallel.enabled=false`) and run sequentially.
 
 ### Changed
 
-- **Tag usage aligned repo-wide** to the single-tag taxonomy (11 files):
+- **Tag usage aligned repo-wide** to the single-tag taxonomy (14 files):
   - `instructions/cicd-testing.instructions.md`: tag-by-tier rule now uses `{ tag: '@smoke' }` (never in test titles) and the full 6-tag set.
   - `agents/selenium-test-specialist.agent.md`: `mvn test -Psmoke` → `mvn test -Dgroups=smoke`; checklist requires exactly one `@Tag`.
   - `skills/qa-manual-istqb/` (strategy + templates): tag annotation replaces tags-in-titles; `@full` removed from the tag conventions (not part of the taxonomy).
-  - `skills/playwright-regression-testing/` (strategy, selection, flaky-management, best-practices): combined tag arrays (`["@smoke", "@regression"]`) and tags in `describe()`/titles replaced with a single execution tag per test.
+  - `skills/playwright-regression-testing/` (SKILL.md, strategy, selection, flaky-management, best-practices, catalogs, ci-cd-integration): combined tag arrays (`["@smoke", "@regression"]`) and tags in `describe()`/titles replaced with a single execution tag per test; key tags and CLI quick reference aligned to the 6-tag set.
 
 ---
 

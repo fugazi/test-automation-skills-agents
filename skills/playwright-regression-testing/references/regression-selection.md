@@ -84,7 +84,7 @@ test.describe("checkout flow", () => {
 
 test.describe("profile settings", () => {
   test("user can update avatar", { tag: "@regression" }, async ({ page }) => {
-    // Medium risk — nightly regression via @regression
+    // Medium risk — runs via @regression
   });
 });
 ```
@@ -109,8 +109,8 @@ Use CI artifacts to analyze failure trends and prioritize flaky or failure-prone
 When CI time is constrained, select tests to fit within a time window:
 
 ```bash
-# Run critical tests within a 5-minute budget
-npx playwright test --grep @smoke --timeout 300000
+# Run smoke tests within a 5-minute budget
+npx playwright test --grep @smoke --global-timeout 300000
 
 # Run smoke + regression (skip medium/low risk)
 npx playwright test --grep "@smoke|@regression"

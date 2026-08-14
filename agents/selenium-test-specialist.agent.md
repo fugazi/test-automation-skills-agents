@@ -72,7 +72,7 @@ Before finalizing any test, ensure:
 - **All tests**: `mvn clean test -Dheadless=true -Dbrowser=chrome`
 - **Single class**: `mvn clean test -Dheadless=true -Dbrowser=chrome -Dtest=ClassName`
 - **Single method**: `mvn clean test -Dtest=ClassName#methodName`
-- **By tag**: `mvn test -Dgroups=smoke` or `mvn test -Dgroups=regression` (destructive: `mvn test -Dgroups=destructive -DforkCount=1`)
+- **By tag**: `mvn test -Dgroups=smoke` or `mvn test -Dgroups=regression` (destructive: `mvn test -Dgroups=destructive -DforkCount=1 -Djunit.jupiter.execution.parallel.enabled=false`)
 - **Headless**: `mvn test -Dheadless=true`
 - **Allure report**: `mvn allure:serve`
 

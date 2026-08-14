@@ -22,7 +22,11 @@ description: 'Playwright TypeScript essentials — locator priority, web-first a
 - **test.step()**: wrap all logical groupings for traceability
 - **External test data**: environment variables, data files, or factories — never hardcoded
 - **POM required**: all UI interaction through Page Object classes, injected via custom fixtures
-- **Single-tag taxonomy**: exactly one tag per test — `@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, or `@destructive` via `{ tag: '@smoke' }`; never on `test.describe()`, never combined. `@destructive` mutates shared/global state (locale, permissions, roles, feature flags, global settings) — exclude from parallel runs (`--grep-invert @destructive`) and run it separately with `--workers=1`.
+- **Single-tag taxonomy**: exactly one tag per test — `@smoke`, `@sanity`, `@regression`,
+  `@e2e`, `@api`, or `@destructive` via `{ tag: '@smoke' }`; never on `test.describe()`,
+  never combined. `@destructive` mutates shared/global state (locale, permissions, roles,
+  feature flags, global settings) — exclude from parallel runs
+  (`--grep-invert @destructive`) and run it separately with `--workers=1`.
 
 ## References
 

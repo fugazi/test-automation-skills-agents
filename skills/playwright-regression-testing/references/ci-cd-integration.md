@@ -280,7 +280,7 @@ export default defineConfig({
 | ----------------------------------------------- | ------------------------ |
 | `npx playwright test --grep @smoke`             | Run smoke tier only      |
 | `npx playwright test --grep @regression`        | Run regression suite     |
-| `npx playwright test --grep-invert @quarantine` | Skip quarantined tests   |
+| `npx playwright test --grep-invert @destructive` | Skip destructive tests (keep parallel stable) |
 | `npx playwright test --shard=1/4`               | Run shard 1 of 4         |
 | `npx playwright test --project=chromium`        | Run on Chromium only     |
 | `npx playwright test --reporter=html`           | Generate HTML report     |

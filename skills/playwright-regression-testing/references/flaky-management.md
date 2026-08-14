@@ -25,15 +25,15 @@ Isolate known flaky tests to prevent blocking the pipeline while tracking them f
 
 ```typescript
 // Mark flaky tests with fixme — skipped but tracked
-test.fixme("intermittent timeout on slow network @flaky", async ({ page }) => {
+test.fixme("intermittent timeout on slow network", async ({ page }) => {
   // TODO: investigate — see issue #1234
 });
 
-// Or use a dedicated tag for quarantine reporting
+// Quarantine: keep the execution tag (@regression) and track flakiness via annotation
 test(
   "payment callback race condition",
   {
-    tag: "@quarantine",
+    tag: "@regression",
     annotation: {
       type: "issue",
       description: "https://github.com/org/repo/issues/1234",
