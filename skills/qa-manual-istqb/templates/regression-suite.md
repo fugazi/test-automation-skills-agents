@@ -26,7 +26,7 @@
 
 ## Tags and execution
 
-- Tag conventions (example): `@smoke`, `@sanity`, `@regression`, `@full`
+- Tag conventions (example): exactly one of `@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive` per test
 - Playwright examples:
   - `npx playwright test --grep @smoke`
   - `npx playwright test --grep @regression`

@@ -61,7 +61,7 @@ These extend the Constitution with implementation detail (the rules above are au
 Before finalizing any test, ensure:
 
 - [ ] Uses `Duration` instead of int for timeouts (Selenium 4 compliance)
-- [ ] All test classes extend `BaseTest`; all test methods have `@DisplayName` and `@Tag`
+- [ ] All test classes extend `BaseTest`; all test methods have `@DisplayName` and exactly one `@Tag` (smoke, sanity, regression, e2e, api, or destructive)
 - [ ] Follows line length (120 chars) and indentation (4 spaces)
 - [ ] Handles JSON/API DTOs using Lombok and Jackson
 - [ ] Generates dynamic data with `Faker` for non-deterministic fields
@@ -72,7 +72,7 @@ Before finalizing any test, ensure:
 - **All tests**: `mvn clean test -Dheadless=true -Dbrowser=chrome`
 - **Single class**: `mvn clean test -Dheadless=true -Dbrowser=chrome -Dtest=ClassName`
 - **Single method**: `mvn clean test -Dtest=ClassName#methodName`
-- **By tag**: `mvn test -Psmoke` or `mvn test -Pregression`
+- **By tag**: `mvn test -Dgroups=smoke` or `mvn test -Dgroups=regression` (destructive: `mvn test -Dgroups=destructive -DforkCount=1 -Djunit.jupiter.execution.parallel.enabled=false`)
 - **Headless**: `mvn test -Dheadless=true`
 - **Allure report**: `mvn allure:serve`
 

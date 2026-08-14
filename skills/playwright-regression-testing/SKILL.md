@@ -44,9 +44,9 @@ Strategy and best practices for automated regression testing of web applications
 
 **Tiers:** Smoke (<2min, every commit) → Sanity (<10min, every PR) → Selective (<30min, on merge) → Full (<60min, nightly/pre-release).
 
-**Key tags:** `@smoke`, `@sanity`, `@regression`, `@critical`, `@slow`, `@quarantine`, `@a11y`.
+**Key tags:** `@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive` — exactly one per test, never on `describe()` blocks. Domain-specific extensions (e.g., `@a11y` in accessibility skills) are allowed alongside, but only one execution tag per test.
 
-**CLI:** `npx playwright test --grep @smoke` | `--grep @regression` | `--grep-invert @quarantine` | `--shard=1/4` | `--last-failed`
+**CLI:** `npx playwright test --grep @smoke` | `--grep @regression` | `--grep-invert @destructive` | `--shard=1/4` | `--last-failed`
 
 For full tier model, regression types table, and tag taxonomy, see [`references/regression-catalogs.md`](references/regression-catalogs.md).
 

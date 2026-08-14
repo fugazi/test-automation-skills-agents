@@ -50,8 +50,8 @@ test("user sees order history", async ({ page }) => {
 
 ```typescript
 test(
-  "checkout flow @smoke @checkout",
-  { tag: ["@smoke", "@regression"] },
+  "checkout flow",
+  { tag: "@smoke" },
   async ({ page }) => {
     await test.step("Navigate to product page", async () => {
       await page.goto("/products/1");
@@ -80,18 +80,15 @@ A complete regression test file demonstrating the patterns from this skill:
 // tests/regression/checkout/cart.spec.ts
 import { test, expect } from "@playwright/test";
 
-test.describe(
-  "shopping cart @regression @checkout",
-  { tag: ["@regression"] },
-  () => {
+test.describe("shopping cart", () => {
     test.beforeEach(async ({ page }) => {
       // Authenticate via stored state (setup dependency in config)
       await page.goto("/products");
     });
 
     test(
-      "user can add item to cart @smoke",
-      { tag: ["@smoke", "@critical"] },
+      "user can add item to cart",
+      { tag: "@smoke" },
       async ({ page }) => {
         await test.step("Select a product", async () => {
           await page.getByRole("link", { name: /Running Shoes/i }).click();
@@ -114,7 +111,7 @@ test.describe(
 
     test(
       "user can remove item from cart",
-      { tag: ["@regression"] },
+      { tag: "@regression" },
       async ({ page }) => {
         await test.step("Add an item first", async () => {
           await page.getByRole("link", { name: /Running Shoes/i }).click();
@@ -132,7 +129,7 @@ test.describe(
 
     test(
       "cart persists across page navigation",
-      { tag: ["@regression"] },
+      { tag: "@regression" },
       async ({ page }) => {
         await test.step("Add item and navigate away", async () => {
           await page.getByRole("link", { name: /Running Shoes/i }).click();

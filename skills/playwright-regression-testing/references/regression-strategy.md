@@ -81,8 +81,8 @@ Use Playwright's `tag` annotation to classify tests for selective execution:
 import { test, expect } from "@playwright/test";
 
 test(
-  "user can log in @smoke @auth",
-  { tag: ["@smoke", "@regression"] },
+  "user can log in",
+  { tag: "@smoke" },
   async ({ page }) => {
     await page.goto("/login");
     await page.getByLabel("Email").fill("user@example.com");
@@ -93,8 +93,8 @@ test(
 );
 
 test(
-  "user can reset password @regression @auth",
-  { tag: ["@regression"] },
+  "user can reset password",
+  { tag: "@regression" },
   async ({ page }) => {
     await page.goto("/forgot-password");
     await page.getByLabel("Email").fill("user@example.com");
@@ -110,11 +110,11 @@ Run tagged subsets from CLI:
 # Run only smoke tests
 npx playwright test --grep @smoke
 
-# Run regression tests excluding slow tests
-npx playwright test --grep @regression --grep-invert @slow
+# Run regression tests excluding destructive tests
+npx playwright test --grep @regression --grep-invert @destructive
 
 # Run tests for a specific feature
-npx playwright test --grep @auth
+npx playwright test --grep @api
 ```
 
 ### Tag Taxonomy
@@ -124,7 +124,8 @@ npx playwright test --grep @auth
 | `@smoke`      | Critical path, must always pass  | 0             |
 | `@sanity`     | Core feature verification        | 1             |
 | `@regression` | Standard regression coverage     | 2-3           |
-| `@critical`   | Revenue/business-critical flows  | 0-1           |
-| `@slow`       | Tests exceeding 30 seconds       | 3             |
-| `@quarantine` | Known flaky, under investigation | Skipped in CI |
-| `@a11y`       | Accessibility checks             | 2             |
+| `@e2e`        | Full user-journey flows          | 2-3           |
+| `@api`        | API-level tests                  | 1-2           |
+| `@destructive`| Mutates shared/global state      | Sequential    |
+
+> Only these six tags are allowed. Exactly one per test — never combined, never on `describe()` blocks. Tags outside this set (e.g., `@a11y` in accessibility skills) are domain-specific extensions, not execution tags.

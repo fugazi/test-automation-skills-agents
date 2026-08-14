@@ -27,7 +27,8 @@ Tier 3 — Full        (< 60 min)  → Complete regression, runs nightly/pre-rel
 | `@smoke`      | Critical path, must always pass  | 0             |
 | `@sanity`     | Core feature verification        | 1             |
 | `@regression` | Standard regression coverage     | 2-3           |
-| `@critical`   | Revenue/business-critical flows  | 0-1           |
-| `@slow`       | Tests exceeding 30 seconds       | 3             |
-| `@quarantine` | Known flaky, under investigation | Skipped in CI |
-| `@a11y`       | Accessibility checks             | 2             |
+| `@e2e`        | Full user-journey flows          | 2-3           |
+| `@api`        | API-level tests                  | 1-2           |
+| `@destructive`| Mutates shared/global state      | Sequential    |
+
+> Only these six tags are allowed. Exactly one per test — never combined, never on `describe()` blocks. Tags outside this set (e.g., `@a11y` in accessibility skills) are domain-specific extensions, not execution tags.

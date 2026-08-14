@@ -15,7 +15,7 @@ description: 'CI/CD test pipeline essentials — test tiers, GitHub Actions patt
 
 ## Non-Negotiable Rules
 
-- **Tag by tier** for selective execution: `@smoke`, `@sanity`, `@regression` (e.g., `test('login works @smoke', ...)`)
+- **Tag by tier** for selective execution: exactly one tag per test — `@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive` via `{ tag: '@smoke' }` (never in test titles, never combined). Exclude `@destructive` from parallel runs (`--grep-invert @destructive`) and run it separately with `--workers=1`.
 - **Shard for speed**: matrix `shard: [1/4, 2/4, 3/4, 4/4]` + `--shard=${{ matrix.shard }}`; `fail-fast: false`
 - **Reporter split**: HTML + JSON in CI, `list` locally; `reporter` keyed on `process.env.CI`
 - **Retries CI-only**: `retries: process.env.CI ? 2 : 0`; capture `trace: "on-first-retry"`, `screenshot: "only-on-failure"`, `video: "retain-on-failure"`

@@ -25,15 +25,15 @@ Isolate known flaky tests to prevent blocking the pipeline while tracking them f
 
 ```typescript
 // Mark flaky tests with fixme — skipped but tracked
-test.fixme("intermittent timeout on slow network @flaky", async ({ page }) => {
+test.fixme("intermittent timeout on slow network", async ({ page }) => {
   // TODO: investigate — see issue #1234
 });
 
-// Or use a dedicated tag for quarantine reporting
+// Quarantine: keep the execution tag (@regression) and track flakiness via annotation
 test(
-  "payment callback race condition @quarantine",
+  "payment callback race condition",
   {
-    tag: ["@quarantine", "@regression"],
+    tag: "@regression",
     annotation: {
       type: "issue",
       description: "https://github.com/org/repo/issues/1234",
@@ -75,7 +75,7 @@ Track these metrics to maintain regression suite quality:
 | Smoke suite too slow   | Too many tests tagged `@smoke`    | Keep smoke under 10 tests; move others to `@regression`               |
 | Shards unbalanced      | Test durations vary widely        | Use `--shard` with `fullyParallel: true`; split large describe blocks |
 | CI flakes not local    | Environment or timing differences | Match CI config locally; use `trace: 'on-first-retry'`                |
-| Tag not filtering      | Missing `tag` annotation          | Use `{ tag: ['@smoke'] }` in test options, not just title             |
+| Tag not filtering      | Missing `tag` annotation          | Use `{ tag: '@smoke' }` in test options, not just the title          |
 | Merge reports fail     | Artifact names mismatch           | Ensure consistent `upload-artifact` naming pattern per shard          |
 | Auth setup fails       | Login page changed                | Update `auth.setup.ts`; check `storageState` path                     |
 | Tests run out of order | Missing `dependencies` in config  | Set project `dependencies: ['setup']` for auth                        |
