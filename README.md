@@ -20,13 +20,13 @@ This repository is designed to be **copied/embedded into real testing projects**
 - Test planning (ISTQB-aligned) and documentation
 - Framework patterns (Playwright TypeScript, Selenium Java)
 
-> Important: This repository is a **documentation/knowledge base**. It has **no build/lint/test** system.
+> Important: This repository is a **documentation/knowledge base** — no build or test system. The only validation is a dependency-free structural linter: `node scripts/lint-skills.mjs` (**0 errors required**; runs in CI on PRs touching `skills/`, `agents/`, or `instructions/`).
 
 ## What you get
 
 - **Agents** (in `agents/`): persona + responsibilities + boundaries for specialized AI behavior
 - **Instructions** (in `instructions/`): lean, scoped essentials (locator priority, no-hard-waits rules) — deep content lives in skills
-- **Skills** (in `skills/`): reusable workflows + references + scripts/templates (progressively loaded in Copilot; otherwise used as playbooks)
+- **Skills** (in `skills/`): reusable workflows + references + scripts/templates (progressively loaded by supporting tools; otherwise used as playbooks)
 
 ## Repository structure
 
@@ -35,11 +35,15 @@ agents/           # Custom agent definitions (*.agent.md)
 instructions/     # Lean, scoped coding essentials (*.instructions.md)
 skills/           # Reusable capabilities (skills/*/SKILL.md + resources)
 docs/             # Setup guides, standards, and documentation
-├── references/   # Extracted reference material (authoring guides, examples)
-└── enhancements/ # Enhancement plans (CE audit, future improvements)
+├── references/   # Authoring guides and examples
+├── enhancements/ # Enhancement plans (CE audit, deferred decisions)
+└── archive/      # Completed/stale planning logs (kept for history)
 references/       # Shared reference material (anti-patterns, patterns)
+scripts/          # Structural linter (lint-skills.mjs — the repo's only validation)
+.claude-plugin/   # Claude Code plugin/marketplace metadata
 AGENTS.md         # House style, file standards, frontmatter rules
 CLAUDE.md         # Claude Code entry point + architecture notes
+CHANGELOG.md      # Release history (Keep a Changelog)
 ```
 
 ## Quick start (recommended workflow)
@@ -207,6 +211,7 @@ Instructions are cross-cutting rules that keep outputs consistent:
 - Selenium Java standards, explicit waits, AssertJ, Allure
 - Accessibility expectations (WCAG 2.2 AA)
 - CI/CD test pipeline configuration (GitHub Actions, test tiers, parallel execution)
+- Single-tag test classification: exactly one tag per test (`@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive`) — never on `describe()`/class level, never combined; `@destructive` runs sequentially, excluded from parallel runs
 - Agent authoring guidelines (frontmatter, handoffs, tool selection)
 
 In practice:
@@ -433,6 +438,7 @@ If a skill still does not activate automatically:
 3. Include a **Constitution** section (MUST DO / WON'T DO rules) aligned with the QA Orchestrator's Test Constitution
 4. Keep the scope explicit (includes/excludes) and avoid tool overreach
 5. See the [Agent Authoring Guide](./docs/references/authoring-agents.md) for detailed standards
+6. Verify: `node scripts/lint-skills.mjs` — **0 errors required** (CI enforces it)
 
 ### Add a new skill
 
@@ -444,6 +450,7 @@ If a skill still does not activate automatically:
    - `scripts/` for deterministic automation
    - `templates/` for scaffolds Copilot can modify
    - `assets/` for static content used as-is
+3. Verify: `node scripts/lint-skills.mjs` — **0 errors required** (CI enforces it)
 
 ## Security & safety
 
