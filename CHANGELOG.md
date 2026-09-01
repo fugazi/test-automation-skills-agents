@@ -5,6 +5,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.3.0] - 2026-09-01
+
+Aligns the **`playwright-cli`** skill with upstream `playwright-cli` v0.1.19 (Microsoft), closing the one functional gap found in a side-by-side comparison.
+
+### Added
+
+- **`recording-start` / `recording-stop`** to the `playwright-cli` SKILL.md command reference — these record the actions you perform in the live browser and print ready-to-paste Playwright code on stop. This was the only command pair present in upstream v0.1.19 that was missing from this repo's skill.
+- **`Recording user actions as Playwright code`** section in `skills/playwright-cli/references/video-recording.md` — covers the manual-record → codegen workflow, when to use it (bootstrap a spec from a repro, share a reproduction, seed actions), and the caveat that it is an exploration/codegen aid, not a CI runner.
+
+### Changed
+
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.2.1` → `4.3.0` — so Claude Code picks up the updated skill.
+
+---
+
 ## [4.2.1] - 2026-08-31
 
 Adjusts the **`qa-investigation`** skill documentation granularity to the investment level, so a low-value flake does not require the full three-file record.
