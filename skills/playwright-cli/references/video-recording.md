@@ -22,8 +22,8 @@ Use this to:
 
 - **Bootstrap a spec** from a manual repro — the emitted code becomes the body of a `@playwright/test` case.
 - **Share a concrete reproduction** — the code is clearer than a prose description.
-- **Seed adders/assertions** — the recording captures actions only, so add `await expect(...)` assertions after
-the generated calls (see `test-generation.md`).
+- **Seed the action steps** — the recording captures actions only, so add `await expect(...)` assertions after
+  the generated calls (see [test-generation.md](test-generation.md)).
 
 > Recording is an exploration/codegen aid, not a CI runner. It drives a single live session — do not treat it as
 > a parallel test executor.
