@@ -34,7 +34,7 @@ from evidence, not an input. The method is identical whether the outcome is
 > environment snapshot). Note the suspected nature — infrastructure/environment,
 > application logic, or test-side timing. Then **escalate or flag for
 > observation** instead of pretending to have an answer. Log the decision and
-> reason to `findings.md`, so the effort is not lost even when the failure
+> reason to `qa_investigation_findings.md`, so the effort is not lost even when the failure
 > couldn't be pinned.
 
 ### Phase 2 — Evidence Collection
@@ -44,7 +44,10 @@ from evidence, not an input. The method is identical whether the outcome is
 - Capture logs, stack traces, screenshots, traces, retry counts, dependency
   activity, timings, and the exact failing assertion.
 - Multimodal content (screenshots, page/dependency data, PDFs) does not persist
-  in context — write the key facts to `findings.md` as text immediately.
+  in context — write the key facts to `qa_investigation_findings.md` as text immediately.
+- **Redact sensitive data** (tokens, cookies, credentials, email addresses, PII) before
+  persisting; do not write raw screenshots, traces, logs, or network captures verbatim —
+  summarize them in text with sensitive parts masked.
 - Record environment specifics: build/version, OS/platform, device, data
   conditions, worker count, test-run id.
 
@@ -96,7 +99,7 @@ Match the depth of the investigation to the cost of the failure.
 
 1. **Create the plan first** — non-negotiable; the plan is your persistent memory.
 2. **2-Action Rule** — after every 2 read/search ops, save key findings to
-   `findings.md`; multimodal content does not persist in context.
+   `qa_investigation_findings.md`; multimodal content does not persist in context.
 3. **Read before decide** — re-read the plan before major decisions.
 4. **Update after act** — mark phase status, log errors, note files changed.
 5. **Log ALL errors** — with attempt number and resolution.
@@ -106,7 +109,7 @@ Match the depth of the investigation to the cost of the failure.
 
 ## 3-Strike Error Protocol
 
-```
+```text
 ATTEMPT 1: Diagnose & Fix
   -> Read the error carefully
   -> Identify root cause
@@ -173,7 +176,9 @@ The investigation is done when:
 1. Every phase is complete (or explicitly closed as not applicable).
 2. The root cause is recorded with evidence, or the failure is documented as
    non-reproducible with suspected nature and escalation.
-3. The fix is applied and validated stable over repeated runs.
+3. The fix is applied and validated stable over repeated runs, **or** the issue is
+   documented as requiring escalation or a product-owner handoff (for non-reproducible
+   failures or product-owned bugs), with the owner and relevant evidence recorded.
 4. A prevention action is recorded (even if deferred with a reason).
 
 ## File lifecycle

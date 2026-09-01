@@ -27,6 +27,7 @@ local" are illustrative — substitute the equivalent concept in your stack.
 | 5. Prevention | [ ] pending | |
 
 ## Classification (discovered in Phase 1, not assumed)
+Select exactly one outcome below; fill in the evidence fields for the one chosen.
 - [ ] Flaky (intermittent) — evidence:
 - [ ] Deterministic bug — evidence:
 - [ ] Non-reproducible — evidence / suspected nature / escalation:
@@ -54,7 +55,8 @@ local" are illustrative — substitute the equivalent concept in your stack.
 - **Symptom:** [what fails, frequency, contexts where it passes/fails]
 - **Root cause:** [confirmed cause, proved by evidence]
 - **Evidence:**
-  - [log / trace / screenshot / run id / reproducer]
+  - [log / trace / screenshot / run id / reproducer -- summarize in text, redact
+    tokens, cookies, credentials, email addresses, and PII before persisting]
   - [environment specifics: build, platform, data, worker count]
 - **Fix applied / decision:** [what changed and why]
 - **Alternatives rejected:**

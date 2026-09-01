@@ -39,11 +39,12 @@ The phases are the same whether the failure is flaky or a deterministic bug. The
 - Record the classification and the evidence that supports it.
 - **Goal:** a confirmed reproduction **or** a documented non-reproducible failure.
 
-> **Non-reproducible path:** if the failure cannot be reproduced after a bounded number of attempts, do **not** force a label. Record it as non-reproducible with partial evidence, note the suspected nature (infrastructure, app logic, or test-side timing), and **escalate or flag for observation**. Log the decision and reason to `findings.md`. See [Flow](./references/flow.md) for detail.
+> **Non-reproducible path:** if the failure cannot be reproduced after a bounded number of attempts, do **not** force a label. Record it as non-reproducible with partial evidence, note the suspected nature (infrastructure, app logic, or test-side timing), and **escalate or flag for observation**. Log the decision and reason to `qa_investigation_findings.md`. See [Flow](./references/flow.md) for detail.
 
 ### Phase 2: Evidence Collection
 - Capture logs, stack traces, screenshots, traces, retry counts, dependency activity, timings.
-- Multimodal content (images, page/dependency data, PDFs) does not persist in context — write it to `findings.md` as text immediately.
+- Multimodal content (images, page/dependency data, PDFs) does not persist in context — write it to `qa_investigation_findings.md` as text immediately.
+- **Redact sensitive data** (tokens, cookies, credentials, email addresses, PII) before persisting; do not write raw screenshots, traces, logs, or network captures verbatim — summarize them in text with sensitive parts masked.
 - Note environment specifics: build/version, platform, device, data conditions, worker count.
 - **Goal:** enough evidence for a defensible hypothesis.
 
@@ -75,7 +76,7 @@ Each investigation creates three files in the **project root**:
 ## Critical Rules
 
 1. **Create the plan first** — non-negotiable; the plan is your persistent memory.
-2. **2-Action Rule** — after every 2 read/search ops, save key findings to `findings.md`.
+2. **2-Action Rule** — after every 2 read/search ops, save key findings to `qa_investigation_findings.md`.
 3. **Read before decide** — re-read the plan before major decisions.
 4. **Update after act** — mark phase status, log errors, note files changed.
 5. **Log ALL errors** — with attempt number and resolution.
