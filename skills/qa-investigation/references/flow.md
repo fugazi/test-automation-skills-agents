@@ -1,7 +1,9 @@
-# QA Investigation — Methodology (Flow)
+# QA Investigation — Methodology and Reference
 
-This expands the five-phase investigation into a working procedure. It is
-tool-agnostic: substitute the concepts for your own stack.
+> Part of the `qa-investigation` skill. See [SKILL.md](../SKILL.md) for full context.
+
+Tool-agnostic: substitute the concepts for your own stack. Terms like "browser",
+"selector", "CI vs local" are illustrative, not requirements.
 
 ## How the classification emerges
 
@@ -78,16 +80,91 @@ from evidence, not an input. The method is identical whether the outcome is
 - Document the pattern in the repo's contributing / test guide.
 - Add a regression guard or targeted test around the fixed behavior.
 
-## Triage the effort first
+## Invest Judgement Early (Triage the Effort)
 
-Not every failure needs the full pipeline. Before starting, judge the depth:
+Not every failure warrants the full five-phase pipeline. Before starting, triage
+the **investment**:
 
-- **High value / blocking (P1):** full investigation + fix + prevention.
-- **Medium value:** investigate to root cause and fix, scope tight.
-- **Low value / cosmetic flake:** record the evidence and classification,
-  capture the suspected cause, then move on without gold-plating.
+- **High value / blocking** (P1): full investigation, fix, prevention.
+- **Medium value:** investigate to root cause and fix, keep scope tight.
+- **Low value / cosmetic flake:** record the evidence and classification, capture
+  the suspected cause, then move on without building the full pipeline.
 
 Match the depth of the investigation to the cost of the failure.
+
+## Critical Rules (detail)
+
+1. **Create the plan first** — non-negotiable; the plan is your persistent memory.
+2. **2-Action Rule** — after every 2 read/search ops, save key findings to
+   `findings.md`; multimodal content does not persist in context.
+3. **Read before decide** — re-read the plan before major decisions.
+4. **Update after act** — mark phase status, log errors, note files changed.
+5. **Log ALL errors** — with attempt number and resolution.
+6. **Never repeat failures** — if an action failed, the next must differ.
+7. **Classify after reproducing, not before** — a wrong early label poisons the
+   investigation.
+
+## 3-Strike Error Protocol
+
+```
+ATTEMPT 1: Diagnose & Fix
+  -> Read the error carefully
+  -> Identify root cause
+  -> Apply a targeted fix
+
+ATTEMPT 2: Alternative Approach
+  -> Same error? Try a different method
+  -> Different tool? Different technique?
+  -> NEVER repeat the exact same failing action
+
+ATTEMPT 3: Broader Rethink
+  -> Question assumptions
+  -> Search for solutions
+  -> Consider updating the plan
+
+AFTER 3 FAILURES: Escalate to User
+  -> Explain what you tried (with an attempt log)
+  -> Share the specific error
+  -> Ask for guidance
+```
+
+## Read vs Write Decision Matrix
+
+| Situation | Action | Reason |
+|-----------|--------|--------|
+| Just wrote a file | Don't read it | Content still in context |
+| Viewed an image/screenshot/PDF | Write findings NOW | Multimodal content does not persist |
+| Page/dependency data returned | Write to file | Transient state does not persist |
+| Starting a new phase | Read plan/findings | Re-orient if context is stale |
+| Error occurred | Read relevant file | Need current state to fix |
+| Resuming after a gap | Read all planning files | Recover full state |
+
+## 5-Question Reboot Test
+
+If you can answer these from your planning files, context is solid:
+
+| Question | Answer Source |
+|----------|--------------|
+| Where am I? | Current phase in `qa_investigation_plan.md` |
+| Where am I going? | Remaining phases |
+| What is the goal? | Goal statement in plan |
+| What have I learned? | `qa_investigation_findings.md` |
+| What have I done? | `qa_investigation_progress.md` |
+
+## Anti-Patterns
+
+| Don't | Do Instead |
+|-------|------------|
+| State the goal once and forget | Re-read plan before decisions |
+| Hide errors and retry silently | Log every error to the plan |
+| Stuff everything in context | Store large content in files |
+| Start executing immediately | Create the plan file FIRST |
+| Repeat failed actions | Track attempts, mutate approach |
+| Assume flaky or bug before reproducing | Classify in Phase 1 from evidence |
+| Mask a race with a longer timeout | Fix the root cause |
+| Use fixed sleeps to "stabilize" | Use conditional waits (state/response/availability) |
+| Label a non-reproducible failure | Record it as non-reproducible and escalate/flag |
+| Leave orphaned plan files | Close or archive them on completion |
 
 ## Completion (exit criteria)
 

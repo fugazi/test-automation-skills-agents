@@ -1,5 +1,7 @@
 # QA Investigation — Examples
 
+> Part of the `qa-investigation` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Concrete examples of how the investigation plays out. Tool-agnostic: each shows
 the reasoning, not a specific framework. The terms are illustrative — substitute
 your own stack.

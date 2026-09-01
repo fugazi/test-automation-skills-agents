@@ -1,5 +1,7 @@
 # QA Investigation — File Templates
 
+> Part of the `qa-investigation` skill. See [SKILL.md](../SKILL.md) for full context.
+
 Starter templates for the three planning files. Copy to your project root and
 fill in the bracketed sections. Use these with the `qa-investigation` skill.
 
