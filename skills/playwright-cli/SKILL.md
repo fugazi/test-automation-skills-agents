@@ -107,6 +107,8 @@ playwright-cli requests
 playwright-cli request <index>
 playwright-cli run-code "<js>" | --filename=<f>
 playwright-cli tracing-start | tracing-stop
+playwright-cli recording-start      # record user actions; print Playwright code on stop
+playwright-cli recording-stop
 playwright-cli video-start <file> | video-chapter "<title>" [--description= --duration=] | video-stop
 playwright-cli video-show-actions [--duration= --position=] | video-hide-actions
 playwright-cli show --annotate          # UI review / design feedback

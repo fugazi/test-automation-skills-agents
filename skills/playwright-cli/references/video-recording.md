@@ -4,6 +4,30 @@
 
 Capture browser automation sessions as video for debugging, documentation, or verification. Produces WebM (VP8/VP9 codec).
 
+## Recording user actions as Playwright code
+
+Instead of scripting, let `playwright-cli` watch the actions you perform in the live browser and emit
+ready-to-paste Playwright test code when you stop:
+
+```bash
+playwright-cli open            # start a session
+playwright-cli recording-start  # begin recording your actions
+playwright-cli goto https://example.com
+playwright-cli fill e2 "test input"
+playwright-cli click e3
+playwright-cli recording-stop   # prints the Playwright code for the recorded actions
+```
+
+Use this to:
+
+- **Bootstrap a spec** from a manual repro — the emitted code becomes the body of a `@playwright/test` case.
+- **Share a concrete reproduction** — the code is clearer than a prose description.
+- **Seed the action steps** — the recording captures actions only, so add `await expect(...)` assertions after
+  the generated calls (see [test-generation.md](test-generation.md)).
+
+> Recording is an exploration/codegen aid, not a CI runner. It drives a single live session — do not treat it as
+> a parallel test executor.
+
 ## Basic Recording
 
 ```bash
