@@ -86,14 +86,20 @@ from evidence, not an input. The method is identical whether the outcome is
 ## Invest Judgement Early (Triage the Effort)
 
 Not every failure warrants the full five-phase pipeline. Before starting, triage
-the **investment**:
+the **investment**; it also sets the **file scope** (see SKILL.md File Purposes):
 
-- **High value / blocking** (P1): full investigation, fix, prevention.
-- **Medium value:** investigate to root cause and fix, keep scope tight.
-- **Low value / cosmetic flake:** record the evidence and classification, capture
-  the suspected cause, then move on without building the full pipeline.
+- **P1 — High value / blocking:** full investigation, fix, prevention. Files:
+  `plan` + `findings` + `progress` (full record).
+- **P2 — Medium value:** investigate to root cause and fix, keep scope tight.
+  Files: `plan` + `findings`; add `progress` only if the session runs long.
+- **P3 — Low value / cosmetic flake:** record the evidence and classification,
+  capture the suspected cause, then move on. File: `findings` only (it serves as
+  both the plan and the record).
 
-Match the depth of the investigation to the cost of the failure.
+Match the depth of the investigation — and the number of files — to the cost of
+the failure. Do not over-document a trivial flake, and do not under-document a
+blocking one. For a P3, the `findings` file is created first (it is the plan);
+session log / run history is not required.
 
 ## Critical Rules (detail)
 

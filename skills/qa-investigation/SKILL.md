@@ -65,7 +65,15 @@ The phases are the same whether the failure is flaky or a deterministic bug. The
 
 ## File Purposes
 
-Each investigation creates three files in the **project root**:
+Scale the file scope to the investment level (triaged at the start — see [Flow](./references/flow.md)). Higher value = fuller record; lower value = leaner:
+
+| Investment | Files in project root | How much to write |
+|------------|----------------------|-------------------|
+| **P1** high-value / blocking | All three: `plan` + `findings` + `progress` | Full pipeline: goal, phases, decisions, errors, run log |
+| **P2** medium | `plan` + `findings` | Phases and the why; `progress` only if the session runs long |
+| **P3** low-value / cosmetic flake | `findings` only | Evidence + classification + suspected cause; move on |
+
+Each investigation creates the files above in the **project root**:
 
 | File | Purpose | When to Update |
 |------|---------|----------------|
@@ -75,7 +83,7 @@ Each investigation creates three files in the **project root**:
 
 ## Critical Rules
 
-1. **Create the plan first** — non-negotiable; the plan is your persistent memory.
+1. **Create the plan first** — non-negotiable; the plan is your persistent memory. For a **P3** (low-value) case, the `findings` file is the plan — create that first.
 2. **2-Action Rule** — after every 2 read/search ops, save key findings to `qa_investigation_findings.md`.
 3. **Read before decide** — re-read the plan before major decisions.
 4. **Update after act** — mark phase status, log errors, note files changed.
