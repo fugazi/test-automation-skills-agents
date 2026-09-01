@@ -5,6 +5,28 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.2.0] - 2026-08-31
+
+Adds the **`qa-investigation`** skill — a persistent, file-backed investigation journal for failing tests. It detects whether a failure is flaky (intermittent) or a deterministic bug during reproduction, then documents the evidence, the decision, and the why.
+
+### Added
+
+- **`qa-investigation` skill** (`skills/qa-investigation/`) — the execution layer for failure investigation. Resolves a specific test failure to its root cause; it does not validate strategy (`grill-me-qa`) nor generate QA artifacts (`qa-manual-istqb`).
+  - **Unified flaky + bug:** the classification is discovered in Phase 1 (reproduction/triage), never assumed up front.
+  - **Non-reproducible path:** records non-reproducible failures with partial evidence and escalation rather than forcing a label.
+  - **Self-contained:** full decision tracking; no dependency on another skill being installed.
+  - **Tool-agnostic:** browser/selector/CI-vs-local are illustrative, not requirements — works for web, API, mobile, embedded, and unit-test stacks.
+  - **Exit criteria + file lifecycle:** defines when an investigation is done and how to close/archive generated files.
+  - **Aligned to Anthropic / CE best practices:** progressive disclosure (SKILL.md 89 lines), description ≤ 450 chars, back-link headers on all reference files.
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.1.0` → `4.2.0`; description updated to reflect 10 reusable skills.
+
+### Changed
+
+- **Catalog count updated to 10 skills** across `README.md`, `CLAUDE.md`, `docs/claude-code-setup.md`, and `docs/windsurf-setup.md` (was 9).
+- **README.md:** added `qa-investigation` to the skills catalog table, the skills.sh install commands, the typical-triggers list, and the `Key Features` mention.
+
+---
+
 ## [4.1.0] - 2026-08-14
 
 Single-tag taxonomy release — standardizes test classification across the whole library and aligns every existing tag reference with it.
