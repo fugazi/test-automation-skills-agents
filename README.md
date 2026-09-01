@@ -122,7 +122,7 @@ Then install the plugin:
 /plugin install test-automation-skills-agents@fugazi-test-automation
 ```
 
-This will make all 7 specialized QA agents and 9 reusable skills available in your Claude Code session.
+This will make all 7 specialized QA agents and 10 reusable skills available in your Claude Code session.
 
 **Local / development:**
 
@@ -173,6 +173,10 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill a
 
 ```bash
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill grill-me-qa
+```
+
+```bash
+npx skills add https://github.com/fugazi/test-automation-skills-agents --skill qa-investigation
 ```
 
 ---
@@ -338,6 +342,7 @@ Typical triggers:
 - "Plan, organize, or optimize regression test suites" → `playwright-regression-testing`
 - "Generate ISTQB-aligned artifacts: test plan / bug report / traceability" → `qa-manual-istqb`
 - "Inspect a live page, capture evidence, or debug interactively" → `playwright-cli`
+- "Find the root cause of a failing or flaky test" → `qa-investigation`
 
 ### Skills catalog (this repo)
 
@@ -352,6 +357,7 @@ Typical triggers:
 | `qa-manual-istqb`                | QA artifacts + ISTQB test design techniques                  | "Create a test plan, cases, and traceability matrix for payments."                       |
 | `api-testing`                    | REST/GraphQL testing with Playwright and REST Assured        | "Create API tests for user endpoints with schema validation."                            |
 | `grill-me-qa`                    | Guided interview to challenge QA plans & tests strategies    | "Grill me on our Playwright migration strategy before we start building."               |
+| `qa-investigation`               | Root-cause investigation of failing/flaky tests              | "Find the root cause of the checkout test that fails intermittently."                   |
 
 ### How skill discovery works
 
