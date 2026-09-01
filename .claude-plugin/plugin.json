@@ -1,7 +1,7 @@
 {
   "name": "test-automation-skills-agents",
   "description": "Tool-agnostic QA Automation library: Playwright, Selenium, API testing, accessibility (WCAG 2.2 AA), ISTQB-aligned QA artifacts, and a root-cause investigation skill for failing/flaky tests. Includes 7 specialized agents and 10 reusable skills. Multi-model (Claude 5, GPT-Sol, GLM-5.2).",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "author": {
     "name": "Douglas Urrea Ocampo"
   },

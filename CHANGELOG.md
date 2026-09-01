@@ -5,6 +5,17 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.2.1] - 2026-08-31
+
+Adjusts the **`qa-investigation`** skill documentation granularity to the investment level, so a low-value flake does not require the full three-file record.
+
+### Changed
+
+- **`qa-investigation` skill** — file scope now scales by triaged investment: **P1** (blocking) uses `plan` + `findings` + `progress`; **P2** (medium) uses `plan` + `findings`; **P3** (cosmetic flake) uses `findings` only (which serves as the plan). The `findings` file is created first for a P3. Skipped: no longer forces all three files for every case.
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.2.1` — so Claude Code picks up the updated skill.
+
+---
+
 ## [4.2.0] - 2026-08-31
 
 Adds the **`qa-investigation`** skill — a persistent, file-backed investigation journal for failing tests. It detects whether a failure is flaky (intermittent) or a deterministic bug during reproduction, then documents the evidence, the decision, and the why.
