@@ -103,7 +103,7 @@ Before generating ANY test code, these rules are NON-NEGOTIABLE:
   // seed: tests/seed.spec.ts
 
   test.describe('Adding New Todos', () => {
-    test('Add Valid Todo', async { page } => {
+    test('Add Valid Todo', async ({ page }) => {
       // 1. Click in the "What needs to be done?" input field
       await page.click(...);
 
