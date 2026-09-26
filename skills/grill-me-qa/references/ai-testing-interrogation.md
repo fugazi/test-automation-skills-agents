@@ -93,14 +93,14 @@ Maintain a complete audit log: every AI action records what was done, what promp
 
 ### Interrogation points
 
-- What temperature/decoding settings are used for test generation?
+- How is non-determinism controlled in AI test generation, now that current models no longer accept sampling parameters (temperature/top_p)?
 - How are AI outputs validated against the actual application behavior?
 - What happens when the AI generates code that doesn't compile or references non-existent elements?
 - How do you handle AI tests that pass today and fail tomorrow (semantic drift)?
 
 ### Recommended answer
 
-- Use low-temperature settings (0.0-0.3) for test generation to reduce randomness.
+- Control variance through structure, not decoding: current models no longer accept sampling parameters (removed, or rejected with a 400 on adaptive-thinking models). Constrain generation with explicit specs and schema-shaped outputs.
 - Validate every AI-generated selector/assertion against the live application during review. Never trust AI descriptions of UI structure.
 - For semantic drift: run AI-generated tests in a "canary" mode for 7 days before promoting to the main suite. If the test flakes or fails during canary, it is not ready.
 - Maintain a feedback loop: track AI test quality metrics (rejection rate, post-merge flakiness, mutation score) and feed back into prompt engineering.

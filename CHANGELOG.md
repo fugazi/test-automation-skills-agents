@@ -5,6 +5,17 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.4.1] - 2026-09-26
+
+Corrects outdated sampling-parameter advice in the **`grill-me-qa`** skill, closing a Claude Code audit finding.
+
+### Fixed
+
+- **`grill-me-qa` references** (`ai-testing-interrogation.md`, `qa-decision-tree.md`) — replaced the "use low-temperature settings (0.0-0.3)" recommendations and rephrased the interrogation questions that assumed decode settings were the randomness lever. Current models no longer accept sampling parameters (removed, or rejected with a 400 on adaptive-thinking models); the guidance now points to structural variance control — explicit specs, schema-shaped outputs, live validation, canary, and feedback metrics.
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.4.0` → `4.4.1` — so Claude Code / `npx skills update` pick up the corrected skill.
+
+---
+
 ## [4.4.0] - 2026-09-26
 
 Aligns the **`playwright-cli`** skill with upstream `playwright-cli` v0.1.21 (Microsoft), closing the gaps found in a side-by-side comparison of the bundled skill against this repo's curated version.

@@ -174,14 +174,14 @@ This reference contains the complete interrogation tree for all five dimensions.
 
 ### 4.4 How are hallucinations and non-deterministic outputs mitigated?
 
-- What temperature/decoding settings are used for test generation?
+- How is non-determinism controlled in AI test generation, now that current models no longer accept sampling parameters (temperature/top_p)?
 - How are AI outputs validated against the actual application?
 
-**Recommended answer:** Use low-temperature settings (0.0-0.3) for test generation. Validate every AI selector/assertion against the live app during review. Run AI tests in a 7-day "canary" before promoting to the main suite. Track AI test quality metrics and feed them back into prompt engineering.
+**Recommended answer:** Control variance through structure, not decoding — current models no longer accept sampling parameters (temperature/top_p). Validate every AI selector/assertion against the live app during review. Run AI tests in a 7-day "canary" before promoting to the main suite. Track AI test quality metrics and feed them back into prompt engineering.
 
-- **SDET:** Low temperature + canary mode; manual validation of selectors.
+- **SDET:** Structural variance control + canary mode; manual validation of selectors.
 - **QA Lead:** Canary + feedback loop metrics; quality trends reported.
-- **Individual:** Low temperature + spot-check validation; canary when CI allows.
+- **Individual:** Structural variance control + spot-check validation; canary when CI allows.
 
 ---
 
