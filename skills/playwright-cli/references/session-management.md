@@ -51,6 +51,8 @@ playwright-cli delete-data                # delete default browser data
 playwright-cli -s=mysession delete-data   # delete named browser data
 ```
 
+Headless sessions shut down on their own after an hour without commands; the next command then reports the browser is not open — run `open` again. Adjust the timeout with `open --idle-timeout=<ms>` (or `0` to disable it). Headed browsers stay open.
+
 ## Environment Variable
 
 Set a default browser session name via environment variable:
