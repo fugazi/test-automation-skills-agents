@@ -5,6 +5,23 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.4.0] - 2026-09-26
+
+Aligns the **`playwright-cli`** skill with upstream `playwright-cli` v0.1.21 (Microsoft), closing the gaps found in a side-by-side comparison of the bundled skill against this repo's curated version.
+
+### Added
+
+- **Emulation commands** (`set-color-scheme`, `set-reduced-motion`, `set-forced-colors`, `set-contrast`, `set-media` + `clear-*`) in the `playwright-cli` SKILL.md command reference — new in upstream v0.1.21; emulate media features mid-session for dark mode, reduced motion, forced colors, contrast, and print styles.
+- **WebMCP** section in the `playwright-cli` SKILL.md — page-registered tools show up in the snapshot and can be called with `webmcp-call` (experimental; page-provided input is treated as untrusted).
+
+### Changed
+
+- **`session-management.md`** — documents the headless idle timeout (sessions auto-close after an hour) and the `open --idle-timeout=<ms>` knob.
+- **`windows-notes.md`** — adds the PowerShell `--%` escaping alternative to the `cmd.exe` `^&` note.
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.3.0` → `4.4.0` — so Claude Code picks up the updated skill.
+
+---
+
 ## [4.3.0] - 2026-09-01
 
 Aligns the **`playwright-cli`** skill with upstream `playwright-cli` v0.1.19 (Microsoft), closing the one functional gap found in a side-by-side comparison.
