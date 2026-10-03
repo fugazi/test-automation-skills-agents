@@ -5,6 +5,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.5.0] - 2026-10-03
+
+Aligns the **`playwright-cli`** skill with upstream `@playwright/cli` v0.1.22 (Microsoft), picking up the useful deltas found in a side-by-side comparison of the upstream bundled skill.
+
+### Added
+
+- **`find --filename=<file>`** in the `playwright-cli` SKILL.md command reference (Core + Snapshots) — new in upstream v0.1.22; saves `find` results to a file when a query produces too many matches to read in the terminal.
+- **`run-code` sandbox note** in the DevTools section — documents the isolated execution context: no `require`, `process`, or Node modules; timers (`setTimeout`/`setInterval`), `fetch`, `URL`, `Buffer`, `crypto`, `AbortController`, `TextEncoder`, and `TextDecoder` are available. Prevents agents from failing on `require` inside `run-code`.
+
+### Changed
+
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.4.1` → `4.5.0` — so Claude Code / `npx skills update` pick up the updated skill.
+
+---
+
 ## [4.4.1] - 2026-09-26
 
 Corrects outdated sampling-parameter advice in the **`grill-me-qa`** skill, closing a Claude Code audit finding.
