@@ -37,7 +37,7 @@ playwright-cli upload <path>
 playwright-cli check <ref>
 playwright-cli uncheck <ref>
 playwright-cli snapshot
-playwright-cli find "<text>" | --regex "<pattern>" [--regex "/pattern/i"]
+playwright-cli find "<text>" | --regex "<pattern>" [--regex "/pattern/i"] [--filename=<file>]
 playwright-cli eval "<js>" [ref]
 playwright-cli dialog-accept ["text"]
 playwright-cli dialog-dismiss
@@ -118,6 +118,8 @@ playwright-cli console [warning|error]
 playwright-cli requests
 playwright-cli request <index>
 playwright-cli run-code "<js>" | --filename=<f>
+# runs in an isolated context (not full Node): no require/process/Node modules;
+# timers, fetch, URL, Buffer, crypto, AbortController, TextEncoder/TextDecoder available
 playwright-cli tracing-start | tracing-stop
 playwright-cli recording-start      # record user actions; print Playwright code on stop
 playwright-cli recording-stop
@@ -172,7 +174,7 @@ After each command, playwright-cli provides a snapshot of the current browser st
 
 ```bash
 playwright-cli snapshot [ref] [--filename=] [--depth=N] [--boxes]
-playwright-cli find "<text>"
+playwright-cli find "<text>" [--filename=results.md]
 playwright-cli find --regex "\\$[0-9]+\\.[0-9]{2}"
 ```
 
