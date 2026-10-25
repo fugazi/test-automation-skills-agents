@@ -358,6 +358,7 @@ Typical triggers:
 | `api-testing`                    | REST/GraphQL testing with Playwright and REST Assured        | "Create API tests for user endpoints with schema validation."                            |
 | `grill-me-qa`                    | Guided interview to challenge QA plans & tests strategies    | "Grill me on our Playwright migration strategy before we start building."               |
 | `qa-investigation`               | Root-cause investigation of failing/flaky tests              | "Find the root cause of the checkout test that fails intermittently."                   |
+| `agent-qa-testing`              | Web/mobile regression tests with advanced memidex memory and self-improvement | "Validate the agent-qa checkout test and inspect its failed run." |
 
 ### How skill discovery works
 
