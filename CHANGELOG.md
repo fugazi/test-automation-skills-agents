@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `agent-qa-testing` skill for scoped web/mobile regression runs, evidence-based triage, and advanced memidex memory with self-improvement.
 
+### Changed
+
+- Bump the plugin manifest to `4.6.0` so marketplace updates include the new agent-qa skill.
+
 ## [4.5.0] - 2026-10-03
 
 Aligns the **`playwright-cli`** skill with upstream `@playwright/cli` v0.1.22 (Microsoft), picking up the useful deltas found in a side-by-side comparison of the upstream bundled skill.
