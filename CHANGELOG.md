@@ -5,6 +5,25 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.6.0] - 2026-11-09
+
+Aligns the **`playwright-cli`** skill with the Playwright 1.65.0 bundled reference and fixes an invalid assertion matcher.
+
+### Added
+
+- **Event listener note** in `references/running-code.md` — event listener errors are reported as console errors, matching the Playwright 1.65.0 reference.
+- **Domain/path-scoped cookie deletion** in `references/storage-state.md` — documents `cookie-delete <name> --domain=<domain> --path=<path>`; other domains keep their cookie.
+
+### Fixed
+
+- **`references/test-generation.md`** — replaced the nonexistent `toBeUnchecked()` matcher with the valid negation `not.toBeChecked()` for Playwright 1.65.
+
+### Changed
+
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.5.0` → `4.6.0` — so Claude Code / `npx skills update` pick up the updated skill.
+
+---
+
 ## [4.5.0] - 2026-10-03
 
 Aligns the **`playwright-cli`** skill with upstream `@playwright/cli` v0.1.22 (Microsoft), picking up the useful deltas found in a side-by-side comparison of the upstream bundled skill.
