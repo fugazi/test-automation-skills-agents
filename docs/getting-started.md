@@ -7,7 +7,7 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 | Component        | Purpose                                   | Count    |
 | ---------------- | ----------------------------------------- | -------- |
 | **Agents**       | Specialist personas for specific QA tasks | 7        |
-| **Skills**       | Procedural workflows for testing domains  | 9        |
+| **Skills**       | Procedural workflows for testing domains  | 10       |
 | **Instructions** | Rules, conventions, and standards         | 3        |
 | **References**   | Detailed technical reference material     | Multiple |
 | **Templates**    | Starter files for common test patterns    | Multiple |
@@ -22,7 +22,7 @@ A tool-agnostic library of agents, instructions, and skills for QA Automation En
 | Cursor         | [docs/cursor-setup.md](./cursor-setup.md)           |
 | GitHub Copilot | [docs/copilot-setup.md](./copilot-setup.md)         |
 | Antigravity CLI | [docs/antigravity-setup.md](./antigravity-setup.md) |
-| Windsurf       | [docs/windsurf-setup.md](./windsurf-setup.md)       |
+| Devin Desktop (formerly Windsurf) | [docs/devin-desktop-setup.md](./devin-desktop-setup.md) |
 
 ### 2. How Skills Work
 

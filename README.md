@@ -6,7 +6,7 @@
 
 A practical library of **agents**, **instructions**, and **skills** designed specifically for QA Automation Engineers, focusing on production-oriented solutions.
 
-This repository is **tool-agnostic by design**: the concepts and content can be used with GitHub Copilot, Claude, Cursor, OpenCode, Windsurf, and similar AI assistants.
+This repository is **tool-agnostic by design**: the concepts and content can be used with GitHub Copilot, Claude, Cursor, OpenCode, Devin Desktop, and similar AI assistants.
 
 ---
 
@@ -53,7 +53,7 @@ This repo is a **catalog**. Choose the integration style for your tool.
 ### Integration choices
 
 - **GitHub Copilot (customizations)**: use `.github/agents`, `.github/instructions`, and `.github/skills`.
-- **Claude/Cursor/OpenCode/Windsurf/etc.**: copy the same content into the tool's repo/workspace rules system, keeping the same structure and naming so your team shares a consistent vocabulary.
+- **Claude/Cursor/OpenCode/Devin Desktop/etc.**: copy the same content into the tool's repo/workspace rules system, keeping the same structure and naming so your team shares a consistent vocabulary.
 
 ### Setup guides
 
@@ -63,7 +63,7 @@ This repo is a **catalog**. Choose the integration style for your tool.
 | Cursor         | [docs/cursor-setup.md](./docs/cursor-setup.md)           |
 | GitHub Copilot | [docs/copilot-setup.md](./docs/copilot-setup.md)         |
 | Antigravity CLI | [docs/antigravity-setup.md](./docs/antigravity-setup.md) |
-| Windsurf       | [docs/windsurf-setup.md](./docs/windsurf-setup.md)       |
+| Devin Desktop (formerly Windsurf) | [docs/devin-desktop-setup.md](./docs/devin-desktop-setup.md) |
 
 ### Option A - Copy into your target repository (most reliable)
 
@@ -98,7 +98,7 @@ In your target repository:
 
 ### Verify other AI tools can use the content
 
-If you are using Claude/Cursor/OpenCode/Windsurf (or another assistant), verification is typically:
+If you are using Claude/Cursor/OpenCode/Devin Desktop (or another assistant), verification is typically:
 
 1. Ensure the files are present in the tool's configured rules/prompts scope (repo-level or workspace-level).
 2. Start a new chat session so the tool reloads instructions.
@@ -264,7 +264,7 @@ The agent **body** and `description` are portable. These frontmatter fields are 
 
 Skills are the most portable surface: `skills/<name>/SKILL.md` is read natively by Claude Code (as a plugin or under `.claude/skills/`) and by Copilot's skill support.
 
-## Tool-agnostic usage (Claude/Cursor/OpenCode/Windsurf)
+## Tool-agnostic usage (Claude/Cursor/OpenCode/Devin Desktop)
 
 Use this repo as a shared "QA automation brain" for your team:
 
@@ -301,7 +301,7 @@ Key characteristics (by design):
 
 ## How to use agents (day-to-day)
 
-Agents are activated the same way across tools — by referencing the agent in a prompt (its `description` drives selection). The exact UI differs per assistant; the prompts below work everywhere. The flows below are GitHub Copilot-specific examples — for Claude Code, Cursor, Windsurf, and OpenCode see the matching [setup guide](#setup-guides).
+Agents are activated the same way across tools — by referencing the agent in a prompt (its `description` drives selection). The exact UI differs per assistant; the prompts below work everywhere. The flows below are GitHub Copilot-specific examples — for Claude Code, Cursor, Devin Desktop, and OpenCode see the matching [setup guide](#setup-guides).
 
 ### In VS Code (Copilot Chat)
 
@@ -380,7 +380,7 @@ Typical triggers:
 
 ### How skill discovery works
 
-The tool harness uses the `description` in `SKILL.md` frontmatter to decide whether to load a skill. This is a tool-agnostic mechanism — it works the same way across GitHub Copilot, Claude Code, Cursor, Windsurf, and similar assistants.
+The tool harness uses the `description` in `SKILL.md` frontmatter to decide whether to load a skill. This is a tool-agnostic mechanism — it works the same way across GitHub Copilot, Claude Code, Cursor, Devin Desktop, and similar assistants.
 
 To improve activation:
 
