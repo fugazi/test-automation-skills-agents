@@ -5,11 +5,32 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [4.7.0] - 2026-11-16
+
+Cross-tool compatibility pass: portable agent tools, a corrected Claude Code guide, and the Windsurf → Devin Desktop rename.
+
+### Added
+
+- **Cross-tool compatibility matrix** in `README.md` — maps each agent frontmatter field to GitHub Copilot / VS Code and Claude Code, separating portable fields from adapter fields.
+- **Devin Desktop setup guide** (`docs/devin-desktop-setup.md`) — covers `AGENTS.md`, `.devin/rules/*.md` with `trigger` frontmatter, `.devin/skills/<name>/SKILL.md`, and the Windsurf → Devin Desktop migration.
 
 ### Changed
 
-- **Windsurf renamed to Devin Desktop.** Renamed `docs/windsurf-setup.md` to `docs/devin-desktop-setup.md` and updated the current references. The guide now documents Devin Desktop's `AGENTS.md`, `.devin/rules/`, and `.devin/skills/` locations, keeps the legacy `.windsurf/` paths for backward compatibility, and covers the Windsurf → Devin Desktop migration.
+- **Portable agent tools.** Agent frontmatter now uses canonical tool names (`Read`, `Edit`, `Grep`, `Glob`, `Bash`, `Task`) that both GitHub Copilot and Claude Code resolve. The QA Orchestrator now exposes `Task`, so delegation works in Claude Code; Copilot keeps `handoffs`.
+- **Claude Code guide corrected.** `docs/claude-code-setup.md` now explains that `--add-dir` grants file access only, that `instructions/*.instructions.md` is not loaded by Claude Code, and documents the agent frontmatter compatibility table.
+- **Windsurf renamed to Devin Desktop.** Renamed `docs/windsurf-setup.md` to `docs/devin-desktop-setup.md` and updated the current references. The legacy `.windsurf/` paths remain supported.
+- **Authoring guidance aligned** in `AGENTS.md`, `CLAUDE.md`, and `docs/references/authoring-agents.md` with the portable-vs-adapter rules.
+- **Plugin version bump** `.claude-plugin/plugin.json` `4.6.0` → `4.7.0` — so Claude Code / `npx skills update` pick up the new content.
+
+### Fixed
+
+- **Broken Related Files links** in `docs/references/authoring-agents.md`.
+- **Skills count** in `docs/getting-started.md` corrected from 9 to 10.
+
+### Housekeeping
+
+- Ignored `.remember/` local state.
+- Added supply-chain pin reminders for `npx` and `npm install` commands.
 
 ## [4.6.0] - 2026-11-09
 
