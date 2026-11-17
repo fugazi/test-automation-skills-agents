@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **Windsurf renamed to Devin Desktop.** Renamed `docs/windsurf-setup.md` to `docs/devin-desktop-setup.md` and updated the current references. The guide now documents Devin Desktop's `AGENTS.md`, `.devin/rules/`, and `.devin/skills/` locations, keeps the legacy `.windsurf/` paths for backward compatibility, and covers the Windsurf → Devin Desktop migration.
+
 ## [4.6.0] - 2026-11-09
 
 Aligns the **`playwright-cli`** skill with the Playwright 1.65.0 bundled reference and fixes an invalid assertion matcher.

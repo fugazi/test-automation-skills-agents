@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A **documentation/knowledge catalog** (no build system, no package.json) of AI agents, skills, and instructions for QA automation — Playwright/TS, Selenium/Java, API, a11y, ISTQB, CI/CD. **Tool-agnostic** by design (Claude Code, Copilot, Cursor, Windsurf, …) and consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). Also published as a Claude Code plugin via `.claude-plugin/`.
+A **documentation/knowledge catalog** (no build system, no package.json) of AI agents, skills, and instructions for QA automation — Playwright/TS, Selenium/Java, API, a11y, ISTQB, CI/CD. **Tool-agnostic** by design (Claude Code, Copilot, Cursor, Devin Desktop, …) and consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). Also published as a Claude Code plugin via `.claude-plugin/`.
 
 Current catalog: 7 agents (`agents/`), 10 skills (`skills/`), 3 instructions (`instructions/`).
 

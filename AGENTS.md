@@ -1,6 +1,6 @@
 # AGENTS.md
 
-AI Agents & Skills repository for **test automation**. Content is **tool-agnostic** — usable with GitHub Copilot, Claude, Cursor, OpenCode, Windsurf, and similar AI assistants, and consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). File formats and folder conventions follow widely-shared conventions; any tool-specific adapters (e.g., `.github/`, `.claude-plugin/`) are optional integration layers, not the source of truth.
+AI Agents & Skills repository for **test automation**. Content is **tool-agnostic** — usable with GitHub Copilot, Claude, Cursor, OpenCode, Devin Desktop, and similar AI assistants, and consumed by multiple frontier models (Claude 5, GPT-Sol, GLM-5.2, and others). File formats and folder conventions follow widely-shared conventions; any tool-specific adapters (e.g., `.github/`, `.claude-plugin/`) are optional integration layers, not the source of truth.
 
 This file holds only the rules you **cannot infer** from the filesystem. Authoring depth lives in the canonical guides — don't duplicate it here.
 
@@ -34,7 +34,7 @@ Checks (errors): frontmatter with `name` + `description`, `name` matches folder,
 - **Single-tag taxonomy.** Exactly one tag per test — `@smoke`, `@sanity`, `@regression`, `@e2e`, `@api`, `@destructive` — never on `test.describe()`/class level, never combined; `@destructive` (mutates shared/global state) is excluded from parallel runs and run sequentially.
 - **YAML quoting.** `description` values MUST use single quotes (`description: '...'`). The `name` field follows Agent Skills conventions and may be unquoted (`name: skill-name`).
 - **Portable tool names** in agent frontmatter use the canonical names: `Read`, `Edit`, `Write`, `Grep`, `Glob`, `Bash`, `Task`, `WebFetch`, `WebSearch`, `TodoWrite`. They are valid Copilot aliases and the names Claude Code expects, so the same file resolves in both harnesses. MCP servers: `playwright/*`, `github/*`, `server-name/tool-name`.
-- **Portable core vs adapter fields.** The agent body plus `description` are portable. `handoffs`, `infer`, `mcp-servers`, `target`, `capabilities`, `scope`, and `decision-autonomy` are GitHub Copilot / VS Code adapter fields: other harnesses (Claude Code, Cursor, Windsurf, OpenCode) ignore them. Keep the body self-contained so the agent still works when every adapter field is stripped.
+- **Portable core vs adapter fields.** The agent body plus `description` are portable. `handoffs`, `infer`, `mcp-servers`, `target`, `capabilities`, `scope`, and `decision-autonomy` are GitHub Copilot / VS Code adapter fields: other harnesses (Claude Code, Cursor, Devin Desktop, OpenCode) ignore them. Keep the body self-contained so the agent still works when every adapter field is stripped.
 - **Dynamic values** in prompts use `${variableName}`.
 - **Lean instructions, deep skills.** Instructions stay short (30–60 lines) with non-negotiable rules only; all depth lives in the matching skill, loaded progressively.
 - **Test Constitution.** The QA Orchestrator (`agents/qa-orchestrator.agent.md`) owns the canonical MUST DO / WON'T DO set; specialist agents carry only the domain-relevant subset — never duplicate the full set. Only the orchestrator sets `infer: false`.
