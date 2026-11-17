@@ -1,7 +1,7 @@
 ---
 name: 'QA Orchestrator'
 description: 'Orchestrates multi-step QA workflows by delegating to specialized agents. Activate when task involves planning, generating, healing, or refactoring tests across multiple agents.'
-tools: ['read', 'search', 'agent']
+tools: ['Read', 'Grep', 'Glob', 'Task']
 # infer: false — this orchestrator is a dispatcher invoked explicitly; it must
 # not auto-activate from ambient context. Specialist agents omit `infer` (default
 # true) so the harness can auto-select them based on their description.

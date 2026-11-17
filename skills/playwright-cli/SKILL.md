@@ -209,6 +209,8 @@ npx playwright cli
 npm install -g @playwright/cli@latest
 ```
 
+> **Pin in CI:** `@latest` is convenient for local use; pin an explicit version (`@playwright/cli@<version>`) in CI for reproducible installs.
+
 ## When NOT to Use This Skill
 
 - Authoring or maintaining versioned `@playwright/test` spec files (use `playwright-e2e-testing`).

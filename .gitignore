@@ -5,6 +5,7 @@ Desktop.ini
 
 # Editor / agent local state
 .zcode/
+.remember/
 
 # VS Code
 .vscode/
