@@ -50,6 +50,8 @@ npx skills add https://github.com/fugazi/test-automation-skills-agents --skill w
 npx skills add https://github.com/fugazi/test-automation-skills-agents --skill a11y-playwright-testing
 ```
 
+> **Supply-chain note:** `npx` downloads and runs the `skills` CLI. Pin a version in CI (for example `npx skills@<version> add ...`) and review the package before running it.
+
 Browse all available skills: `https://skills.sh/?q=fugazi/test-automation-skills-agents`
 
 ## How Copilot Discovers Customizations

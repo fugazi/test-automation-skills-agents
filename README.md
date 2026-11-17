@@ -245,6 +245,25 @@ When in doubt, keep the frontmatter minimal and portable:
 - Skills: `name` + `description` (required), optional `license`
 - Do **not** pin `model` in agent or skill frontmatter — let the tool harness choose
 
+### Cross-tool compatibility matrix
+
+The agent **body** and `description` are portable. These frontmatter fields are adapter-specific:
+
+| Field | GitHub Copilot / VS Code | Claude Code | Notes |
+| --- | --- | --- | --- |
+| `description` | Required | Required | Portable |
+| `name` | Display name | Display name | Portable |
+| `tools` | Aliases (`read`, `edit`, `search`, …) | Canonical names (`Read`, `Edit`, `Grep`, …) | Use the canonical names above; both harnesses resolve them |
+| `model` | Supported | Supported | This repo intentionally does not pin it |
+| `handoffs` | Supported (VS Code 1.106+) | Ignored | Claude Code delegates with the `Task` tool |
+| `infer` | Supported | Ignored | Claude Code auto-selects by `description` |
+| `mcp-servers` | Organization/enterprise | Ignored | Configure MCP at the plugin or user level in Claude Code |
+| `target` | Supported | Ignored | Copilot/VS Code only |
+| `capabilities`, `scope`, `decision-autonomy` | Ignored (documentation) | Ignored | Keep the body self-contained |
+| `.agent.md` extension | Canonical | Loaded by the plugin loader | Keep as-is |
+
+Skills are the most portable surface: `skills/<name>/SKILL.md` is read natively by Claude Code (as a plugin or under `.claude/skills/`) and by Copilot's skill support.
+
 ## Tool-agnostic usage (Claude/Cursor/OpenCode/Windsurf)
 
 Use this repo as a shared "QA automation brain" for your team:

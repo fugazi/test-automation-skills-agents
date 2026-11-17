@@ -1,7 +1,7 @@
 ---
 name: Test Refactor Specialist
 description: 'Improves test code quality and maintainability. Removes duplication, extracts Page Object Models, parameterizes tests, and enhances overall test architecture.'
-tools: ['read', 'edit', 'search', 'bash']
+tools: ['Read', 'Edit', 'Grep', 'Glob', 'Bash']
 
 handoffs:
   - label: Return to Orchestrator

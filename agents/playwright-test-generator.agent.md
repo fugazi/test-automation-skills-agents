@@ -2,7 +2,8 @@
 name: playwright-test-generator
 description: 'Generates Playwright tests from test plans by recording real interactions. Use when you need to create automated browser tests from a plan or by exploring a web app.'
 tools:
-  - search
+  - Grep
+  - Glob
   - playwright-test/browser_click
   - playwright-test/browser_drag
   - playwright-test/browser_evaluate

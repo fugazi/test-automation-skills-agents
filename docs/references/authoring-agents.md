@@ -303,6 +303,8 @@ All aliases are case-insensitive:
 | `web`     | WebSearch, WebFetch                  | Web access       | Fetch web content and search                |
 | `todo`    | TodoWrite                            | Task management  | Create and manage task lists (VS Code only) |
 
+> **Portable names (recommended).** Prefer the canonical names in the *Alternative Names* column — `Read`, `Edit`, `Write`, `Grep`, `Glob`, `Bash`, `Task`, `WebFetch`, `WebSearch`, `TodoWrite`. They are valid Copilot aliases and the names Claude Code expects, so the same agent file resolves in both harnesses.
+
 ### Built-in MCP Server Tools
 
 **GitHub MCP Server**:
@@ -1046,8 +1048,9 @@ Each level can override settings from previous levels.
 
 ### Related Files
 
-- [Prompt Files Guidelines](./prompt.instructions.md) - For creating prompt files
-- [Instructions Guidelines](./instructions.instructions.md) - For creating instruction files
+- [Skill Authoring Guidelines](./authoring-skills.md) - Frontmatter fields and formatting for skills
+- [Section Details Guide](./section-details-guide.md) - How much detail each section needs
+- [Writing Principles](./writing-principles.md) - Voice, structure, and progressive disclosure
 
 ## Version Compatibility Notes
 

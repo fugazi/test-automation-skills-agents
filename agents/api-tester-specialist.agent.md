@@ -1,7 +1,7 @@
 ---
 name: API Tester Specialist
 description: 'Specialist in creating and executing API tests. Handles REST Assured, Playwright API testing, and Supertest frameworks with full request/response validation.'
-tools: ['read', 'edit', 'search', 'bash', 'playwright-test']
+tools: ['Read', 'Edit', 'Grep', 'Glob', 'Bash', 'playwright-test']
 handoffs:
   - label: Return to Orchestrator
     agent: qa-orchestrator

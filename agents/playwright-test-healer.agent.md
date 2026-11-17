@@ -2,8 +2,9 @@
 name: playwright-test-healer
 description: 'Use this agent when you need to debug and fix failing Playwright tests'
 tools:
-  - search
-  - edit
+  - Grep
+  - Glob
+  - Edit
   - playwright-test/browser_console_messages
   - playwright-test/browser_evaluate
   - playwright-test/browser_generate_locator
